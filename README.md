@@ -7,4 +7,4 @@
 [^_^](https://docs.unity3d.com/ScriptReference/MenuItem.html)
 OR
 [O_o](https://docs.unity3d.com/ScriptReference/EditorUtility.SetDirty.html)
-![s6ak6vr8bbpz](C:\Users\HP\AppData\Local\Temp\s6ak6vr8bbpz.jpg)
+![s6ak6vr8bbpz](https://github.com/Z01berg/2023_13_Diploma/assets/68197745/ff3a66ba-9a1e-4117-a80a-7ff280d81ac8)
