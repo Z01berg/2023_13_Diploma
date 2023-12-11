@@ -105,6 +105,17 @@ public class RoomNodeSO : ScriptableObject
         {
             ProcessLeftClickDownEvent();
         }
+        //right clickdown
+        else if (currentEvent.button == 1)
+        {
+            ProcessingRightClickDownEvent(currentEvent);
+        }
+    }
+    
+    //process right click down event
+    private void ProcessingRightClickDownEvent(Event currentEvent)
+    {
+        roomNodeGraph.SetNodeToDrawConnectionLineFrom(this,currentEvent.mousePosition);
     }
     
     //process left click down event
