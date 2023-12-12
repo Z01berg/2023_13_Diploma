@@ -7,6 +7,7 @@ using UnityEditor.MPE;
 public class RoomNodeGraphEditor : EditorWindow
 {
    private GUIStyle roomNodeStyle;
+   private GUIStyle roomNodeSelectedStyle;
    private static RoomNodeGraphSO currentRoomNodeGraph;
    private RoomNodeSO currentRoomNode = null;
    private RoomNodeTypeListSO roomNodeTypeList;
@@ -33,6 +34,13 @@ public class RoomNodeGraphEditor : EditorWindow
       //Define Node layot
       roomNodeStyle = new GUIStyle();
       roomNodeStyle.normal.background = EditorGUIUtility.Load("node1") as Texture2D;
+      roomNodeStyle.normal.textColor = Color.white;
+      roomNodeStyle.padding = new RectOffset(nodePadding, nodePadding, nodePadding, nodePadding);
+      roomNodeStyle.border = new RectOffset(nodeBorder, nodeBorder, nodeBorder, nodeBorder);
+      
+      //define selected node style
+      roomNodeStyle = new GUIStyle();
+      roomNodeStyle.normal.background = EditorGUIUtility.Load("node1 on") as Texture2D;
       roomNodeStyle.normal.textColor = Color.white;
       roomNodeStyle.padding = new RectOffset(nodePadding, nodePadding, nodePadding, nodePadding);
       roomNodeStyle.border = new RectOffset(nodeBorder, nodeBorder, nodeBorder, nodeBorder);
@@ -162,6 +170,12 @@ public class RoomNodeGraphEditor : EditorWindow
       {
          ShowContextMenu(currentEvent.mousePosition);
       }
+      //process left mouse down on graph event
+      else if (currentEvent.button == 0)
+      {
+         ClearLineDrag();
+         ClearAllSelectedRoomNodes();
+      }
    }
    
    //Show the context menu
@@ -208,6 +222,20 @@ public class RoomNodeGraphEditor : EditorWindow
       
       //refresh graph node dictionary
       currentRoomNodeGraph.OnValidate();
+   }
+   
+   //clear selection from all room nodes
+   private void  ClearAllSelectedRoomNodes()
+   {
+      foreach (RoomNodeSO roomNode in currentRoomNodeGraph.roomNodeList)
+      {
+         if (roomNode.isSelected)
+         {
+            roomNode.isSelected = false;
+
+            GUI.changed = true;
+         }
+      }
    }
    
    //process mouse up event
@@ -328,7 +356,14 @@ public class RoomNodeGraphEditor : EditorWindow
       //loop through all room nodes and draw them
       foreach (RoomNodeSO roomNode in currentRoomNodeGraph.roomNodeList)
       {
-         roomNode.Draw(roomNodeStyle);
+         if (roomNode.isSelected)
+         {
+            roomNode.Draw(roomNodeSelectedStyle);
+         }
+         else
+         {
+            roomNode.Draw(roomNodeStyle);
+         }
       }
 
       GUI.changed = true;
