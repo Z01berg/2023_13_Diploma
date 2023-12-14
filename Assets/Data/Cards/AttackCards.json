@@ -1,0 +1,12 @@
+[
+    {
+        "id": 0,
+        "isActive": true,
+        "name": "ExampleAttackCard1",
+        "cost": 1,
+        "damage": 1,
+        "backgroundPath": "Assets/Content/Graphics/CardBackgrounds/AttackCards/AttackCardBackground.png",
+        "spritePath": "Assets/Content/Graphics/CardSprites/AttackCards/ExampleAttackCard1.png",
+        "description": "This card deals 1 dmg to one enemy. Lorem ipsum dolor."
+    }
+]
