@@ -25,8 +25,8 @@ public class CardDisplay : MonoBehaviour
         attack.text = cardSO.damage.ToString();
         move.text = cardSO.move.ToString();
 
-        BG.sprite = Resources.Load(cardSO.backgroundPath) as Sprite;
-        banner.sprite = Resources.Load(cardSO.spritePath) as Sprite;
+        BG.sprite = Resources.Load<Sprite>(cardSO.backgroundPath);
+        banner.sprite = Resources.Load<Sprite>(cardSO.spritePath);
     }
 
     

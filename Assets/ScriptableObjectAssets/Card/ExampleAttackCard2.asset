@@ -20,5 +20,5 @@ MonoBehaviour:
   cost: 232
   damage: 22
   move: 2
-  backgroundPath: Assets/Content/Graphics/CardBackgrounds/AttackCards/AttackCardBackground.png
-  spritePath: Assets/Content/Graphics/CardSprites/AttackCards/ExampleAttackCard1.png
+  backgroundPath: Graphics/CardBackgrounds/AttackCards/AttackCardBackground
+  spritePath: Graphics/CardSprites/AttackCards/ExampleAttackCard1
