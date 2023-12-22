@@ -69,14 +69,15 @@ public class Timer : MonoBehaviour
     {
         bool anyTimerReachedZero = false;
 
-        foreach (TimerData timer in timers)
+        for (int i = 0; i < timers.Count; i++)
         {
-            if (timer.Value > 0)
+            if (timers[i].Value > 0)
             {
-                timer.Value--;
+                timers[i].Value--;
             }
             else
             {
+                activeTimerIndex = i;
                 anyTimerReachedZero = true;
                 timeToPause = 1f;
             }
