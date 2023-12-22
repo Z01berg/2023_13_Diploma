@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 
@@ -8,6 +10,8 @@ public class Timer : MonoBehaviour
     private List<TimerData> timers = new List<TimerData>();
     private int activeTimerIndex = 0;
     private bool counting = false;
+    
+    private float timeToPause = 1f;
     
     public void AddTextFromSetTimer(TMP_Text newText)
     {
@@ -26,21 +30,33 @@ public class Timer : MonoBehaviour
     void Update()
     {
         HandleTimerInput();
+        
+        UpdateTexts();
+        
         if (counting)
         {
             StartCountdown();
         }
     }
-
+    
     void HandleTimerInput()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             ChangeActiveTimer(1);
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             ChangeActiveTimer(-1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            ChangeActiveTimerValue(1);
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            ChangeActiveTimerValue(-1);
         }
 
         if (Input.GetKeyDown(KeyCode.Return))
@@ -62,10 +78,22 @@ public class Timer : MonoBehaviour
             else
             {
                 anyTimerReachedZero = true;
+                timeToPause = 1f;
             }
         }
 
         UpdateTexts();
+        Thread.Sleep((int)(timeToPause * 100f));
+
+        if (timeToPause > 0.1)
+        {
+            timeToPause -= 0.05f;
+        }
+        else
+        {
+            timeToPause = 0.1f;
+        }
+
 
         if (anyTimerReachedZero)
         {
@@ -73,6 +101,18 @@ public class Timer : MonoBehaviour
         }
     }
 
+    void ChangeActiveTimerValue(int change)
+    {
+        for (int i = 0; i < timers.Count; i++)
+        {
+            if (i == activeTimerIndex)
+            {
+                timers[i].Value += change;
+            }
+        }
+        UpdateTexts();
+    }
+    
     void ChangeActiveTimer(int change)
     {
         activeTimerIndex += change;
