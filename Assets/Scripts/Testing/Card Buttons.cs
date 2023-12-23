@@ -8,16 +8,26 @@ public class CardButtons : MonoBehaviour
 {
     public GameObject card;
     public Transform hand;
+    private int _cardsInHand;
+    
 
     public void AddCard()
-    { 
-        Instantiate(card, hand, true).transform.SetParent(hand);
-        
+    {
+        _cardsInHand = GameObject.FindGameObjectsWithTag("Card").Length;
+        if (_cardsInHand < 10)
+        {
+            Instantiate(card, hand, true).transform.SetParent(hand);
+        }
     }
 
     public void DeleteCard()
     {
+        
         GameObject[] cards = GameObject.FindGameObjectsWithTag("Card");
-        Destroy(cards[cards.Length-1]);
+        if (cards.Length > 0)
+        {
+           Destroy(cards[cards.Length-1]); 
+        }
+        
     }
 }
