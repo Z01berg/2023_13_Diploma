@@ -7,23 +7,25 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private List<TMP_Text> texts = new List<TMP_Text>();
+    [SerializeField] private List<String> id = new List<String>();
     private List<TimerData> timers = new List<TimerData>();
     private int activeTimerIndex = 0;
     private bool counting = false;
     
     private float timeToPause = 1f;
     
-    public void AddTextFromSetTimer(TMP_Text newText)
+    public void AddTextFromSetTimer(TMP_Text newText, String text)
     {
         texts.Add(newText);
+        id.Add(text);
     }
 
     void Start()
     {
-        foreach (TMP_Text text in texts)
+        for (int i = 0; i < texts.Count; i++)
         {
-            int value = int.Parse(text.text);
-            timers.Add(new TimerData { Value = value });
+            int value = int.Parse(texts[i].text);
+            timers.Add(new TimerData { Value = value, Tag = id[i]});
         }
     }
     
@@ -75,7 +77,8 @@ public class Timer : MonoBehaviour
             {
                 timers[i].Value--;
             }
-            else
+
+            if (timers[i].Value == 0)
             {
                 activeTimerIndex = i;
                 anyTimerReachedZero = true;
@@ -148,4 +151,5 @@ public class Timer : MonoBehaviour
 public class TimerData
 {
     public int Value { get; set; }
+    public string Tag { get; set; }
 }
