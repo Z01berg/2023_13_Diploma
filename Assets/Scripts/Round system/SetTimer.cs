@@ -36,19 +36,23 @@ public class SetTimer : MonoBehaviour
         
         if (bohater)
         {
-            code = "P";
+            code = "Player";
         }
         else if (enemy)
         {
-            code = "E";
+            code = "Enemy";
         }
         else if (item)
         {
-            code = "I";
+            code = "Item";
         }
         else if (boss)
         {
-            code = "B";
+            code = "Boss";
+        }
+        else
+        {
+            code = "N/A";
         }
 
         return code;

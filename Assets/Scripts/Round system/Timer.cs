@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
+    [SerializeField] private TMP_Text turn;
     [SerializeField] private List<TMP_Text> texts = new List<TMP_Text>();
     [SerializeField] private List<String> id = new List<String>();
     private List<TimerData> timers = new List<TimerData>();
@@ -81,6 +82,7 @@ public class Timer : MonoBehaviour
             if (timers[i].Value == 0)
             {
                 activeTimerIndex = i;
+                turn.text = "Turn: " + timers[i].Tag;
                 anyTimerReachedZero = true;
                 timeToPause = 1f;
             }
