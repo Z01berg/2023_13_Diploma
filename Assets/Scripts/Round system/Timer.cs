@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using TMPro;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class Timer : MonoBehaviour
     [SerializeField] private List<TMP_Text> texts = new List<TMP_Text>();
     [SerializeField] private List<String> id = new List<String>();
     private List<TimerData> timers = new List<TimerData>();
+    
     private int activeTimerIndex = 0;
     private bool counting = false;
     
@@ -81,10 +83,12 @@ public class Timer : MonoBehaviour
 
             if (timers[i].Value == 0)
             {
-                activeTimerIndex = i;
+                CalculatePriority();
+               
                 turn.text = "Turn: " + timers[i].Tag;
                 anyTimerReachedZero = true;
                 timeToPause = 1f;
+                
             }
         }
 
@@ -148,6 +152,50 @@ public class Timer : MonoBehaviour
             texts[i].text = timers[i].Value.ToString();
         }
     }
+
+    void CalculatePriority()
+    {
+        Dictionary<string, int> tagPriority = new Dictionary<string, int>
+        {
+            { "Item", 0 },    
+            { "Player", 1 },
+            { "Boss", 2 },
+            { "Enemy", 3 },
+            { "N/A", 4 }
+        };
+
+        int highestPriority = int.MaxValue;
+        int highestPriorityIndex = -1;
+
+        for (int i = 0; i < timers.Count; i++)
+        {
+            string currentTag = timers[i].Tag;
+
+            if (tagPriority.ContainsKey(currentTag))
+            {
+                int currentPriority = tagPriority[currentTag];
+            
+                if (currentPriority < highestPriority)
+                {
+                    highestPriority = currentPriority;
+                    highestPriorityIndex = i;
+                }
+            }
+        }
+
+        if (highestPriorityIndex != -1)
+        {
+            activeTimerIndex = highestPriorityIndex;
+            UpdateTexts();
+        }
+        else
+        { 
+            activeTimerIndex = 4;
+            UpdateTexts();
+        }
+    }
+
+    
 }
 
 public class TimerData
