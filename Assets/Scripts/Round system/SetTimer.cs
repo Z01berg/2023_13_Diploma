@@ -30,31 +30,12 @@ public class SetTimer : MonoBehaviour
         }
     }
 
-    private String Define(Boolean bohater, Boolean enemy, Boolean item, Boolean boss)
+    private string Define(bool bohater, bool enemy, bool item, bool boss)
     {
-        string code = ""; 
-        
-        if (bohater)
-        {
-            code = "Player";
-        }
-        else if (enemy)
-        {
-            code = "Enemy";
-        }
-        else if (item)
-        {
-            code = "Item";
-        }
-        else if (boss)
-        {
-            code = "Boss";
-        }
-        else
-        {
-            code = "N/A";
-        }
-
-        return code;
+        return bohater ? "Player" :
+            enemy ? "Enemy" :
+            item ? "Item" :
+            boss ? "Boss" :
+            "N/A";
     }
 }

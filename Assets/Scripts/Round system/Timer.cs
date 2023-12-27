@@ -76,25 +76,35 @@ public class Timer : MonoBehaviour
 
         for (int i = 0; i < timers.Count; i++)
         {
-            if (timers[i].Value > 0)
-            {
-                timers[i].Value--;
-            }
-
             if (timers[i].Value == 0)
             {
+                anyTimerReachedZero = true;
+                counting = false;
                 CalculatePriority();
                
                 turn.text = "Turn: " + timers[i].Tag;
-                anyTimerReachedZero = true;
                 timeToPause = 1f;
-                
             }
         }
 
-        UpdateTexts();
-        Thread.Sleep((int)(timeToPause * 100f));
+        if (!anyTimerReachedZero)
+        {
+            counting = true;
+            for (int i = 0; i < timers.Count; i++)
+            {
+                if (timers[i].Value > 0)
+                {
+                    timers[i].Value--;
+                }
+            }
+            
+            UpdateTexts();
+            Thread.Sleep(animationPause());
+        }
+    }
 
+    int animationPause()
+    {
         if (timeToPause > 0.1)
         {
             timeToPause -= 0.05f;
@@ -104,11 +114,7 @@ public class Timer : MonoBehaviour
             timeToPause = 0.1f;
         }
 
-
-        if (anyTimerReachedZero)
-        {
-            counting = false;
-        }
+        return (int)(timeToPause * 100f);
     }
 
     void ChangeActiveTimerValue(int change)
@@ -157,14 +163,14 @@ public class Timer : MonoBehaviour
     {
         Dictionary<string, int> tagPriority = new Dictionary<string, int>
         {
-            { "Item", 0 },    
-            { "Player", 1 },
+            { "Item", 4 },    
+            { "Player", 3 },
             { "Boss", 2 },
-            { "Enemy", 3 },
-            { "N/A", 4 }
+            { "Enemy", 1 },
+            { "N/A", 0 }
         };
 
-        int highestPriority = int.MaxValue;
+        int highestPriority = -1; // Initialize with lowest priority
         int highestPriorityIndex = -1;
 
         for (int i = 0; i < timers.Count; i++)
@@ -174,8 +180,8 @@ public class Timer : MonoBehaviour
             if (tagPriority.ContainsKey(currentTag))
             {
                 int currentPriority = tagPriority[currentTag];
-            
-                if (currentPriority < highestPriority)
+        
+                if (currentPriority > highestPriority)
                 {
                     highestPriority = currentPriority;
                     highestPriorityIndex = i;
@@ -190,10 +196,11 @@ public class Timer : MonoBehaviour
         }
         else
         { 
-            activeTimerIndex = 4;
+            activeTimerIndex = timers.FindIndex(timer => timer.Tag == "N/A");
             UpdateTexts();
         }
     }
+
 
     
 }
