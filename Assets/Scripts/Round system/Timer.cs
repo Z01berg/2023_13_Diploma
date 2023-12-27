@@ -82,7 +82,7 @@ public class Timer : MonoBehaviour
                 counting = false;
                 CalculatePriority();
                
-                turn.text = "Turn: " + timers[i].Tag;
+                turn.text = "Turn: " + timers[activeTimerIndex].Tag;
                 timeToPause = 1f;
             }
         }
@@ -163,25 +163,26 @@ public class Timer : MonoBehaviour
     {
         Dictionary<string, int> tagPriority = new Dictionary<string, int>
         {
-            { "Item", 4 },    
-            { "Player", 3 },
-            { "Boss", 2 },
-            { "Enemy", 1 },
-            { "N/A", 0 }
+            { "Item", 3 },    
+            { "Player", 2 },
+            { "Boss", 1 },
+            { "Enemy", 0 },
+            { "N/A", -1 }
         };
 
-        int highestPriority = -1; // Initialize with lowest priority
+        int highestPriority = -1;
         int highestPriorityIndex = -1;
 
         for (int i = 0; i < timers.Count; i++)
         {
             string currentTag = timers[i].Tag;
+            int currentValue = timers[i].Value;
 
             if (tagPriority.ContainsKey(currentTag))
             {
                 int currentPriority = tagPriority[currentTag];
         
-                if (currentPriority > highestPriority)
+                if (currentPriority > highestPriority && currentValue == 0)
                 {
                     highestPriority = currentPriority;
                     highestPriorityIndex = i;
@@ -200,9 +201,6 @@ public class Timer : MonoBehaviour
             UpdateTexts();
         }
     }
-
-
-    
 }
 
 public class TimerData
