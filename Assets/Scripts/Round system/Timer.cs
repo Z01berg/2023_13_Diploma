@@ -146,7 +146,7 @@ public class Timer : MonoBehaviour
     {
         for (int i = 0; i < timers.Count; i++)
         {
-            if (i == activeTimerIndex)
+            if (i == activeTimerIndex && !counting)
             {
                 texts[i].color = Color.red;
             }
