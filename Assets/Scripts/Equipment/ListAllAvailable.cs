@@ -16,8 +16,8 @@ public class ListAllAvailable : MonoBehaviour
         {
             var item = Instantiate(prefab);
             item.transform.SetParent(parent);
-            item.gameObject.GetComponentInChildren<UnityEngine.UI.Image>().sprite = x.icon;
-
+            var img = item.gameObject.GetComponentInChildren<UnityEngine.UI.Image>();
+            img.sprite = x.icon;
         }
     }
 

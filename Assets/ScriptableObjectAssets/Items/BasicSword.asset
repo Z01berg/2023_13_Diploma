@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: BasicSword
   m_EditorClassIdentifier: 
   itemName: Basic sword
-  description: 
+  description: Everyone knows what a sword is
   cards:
   - {fileID: 8950692613614814383, guid: 6af9ee187b808c54db08c9309d7052b0, type: 3}
   - {fileID: 8950692613614814383, guid: 6af9ee187b808c54db08c9309d7052b0, type: 3}
   - {fileID: 8950692613614814383, guid: 6af9ee187b808c54db08c9309d7052b0, type: 3}
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 36eab10a7ce2f9347bd9a1472111a499, type: 3}
