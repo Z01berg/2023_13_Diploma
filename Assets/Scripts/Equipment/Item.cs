@@ -6,9 +6,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Item", menuName = "Scriptable Objects/Item")]
 public class Item : ScriptableObject
 {
-    [SerializeField] private string itemName = "PLC";
+    public string itemName = "PLC";
     [TextArea]
-    [SerializeField] private string description;
-    [SerializeField] private List<Object> cards = new List<Object>();
-    [SerializeField] private Sprite icon;
+    public string description;
+    public List<Object> cards = new List<Object>();
+    public Sprite icon;
 }
