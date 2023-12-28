@@ -15,9 +15,13 @@ public class ListAllAvailable : MonoBehaviour
         foreach(var x in Inventory.Instance.items)
         {
             var item = Instantiate(prefab);
-            item.transform.SetParent(parent);
-            var img = item.gameObject.GetComponentInChildren<UnityEngine.UI.Image>();
-            img.sprite = x.icon;
+            var img = item.GetComponentsInChildren<UnityEngine.UI.Image>();
+            foreach(var y in img)
+            {
+                if(y.gameObject.transform.parent != null)
+                    y.sprite = x.icon;
+            }
+            item.transform.SetParent(parent);   
         }
     }
 
