@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6edbbd9d6e38d284088822ae57f76e59, type: 3}
-  m_Name: New Item
+  m_Name: BasicSword
   m_EditorClassIdentifier: 
-  itemName: PLC
+  itemName: Basic sword
+  description: 
   cards:
   - {fileID: 8950692613614814383, guid: 6af9ee187b808c54db08c9309d7052b0, type: 3}
   - {fileID: 8950692613614814383, guid: 6af9ee187b808c54db08c9309d7052b0, type: 3}
