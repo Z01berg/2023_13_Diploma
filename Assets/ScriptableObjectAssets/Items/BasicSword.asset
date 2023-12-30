@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6edbbd9d6e38d284088822ae57f76e59, type: 3}
   m_Name: BasicSword
   m_EditorClassIdentifier: 
+  itemType: 1
   itemName: Basic sword
   description: Everyone knows what a sword is
   cards:
