@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum ItemType
 {
-    cheast,hand,head,boots,legs,additional
+    cheast,hand,head,boots,legs,additional,any
 }
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Scriptable Objects/Item")]
@@ -16,6 +16,6 @@ public class Item : ScriptableObject
     public string itemName = "PLC";
     [TextArea]
     public string description;
-    public List<Object> cards = new List<Object>();
+    public List<GameObject> cards = new List<GameObject>();
     public Sprite icon;
 }

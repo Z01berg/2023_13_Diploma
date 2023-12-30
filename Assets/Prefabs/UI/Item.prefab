@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6141925231979923281}
   - component: {fileID: 4976711739670643035}
   - component: {fileID: 1268821115365771769}
+  - component: {fileID: 7209174629169379893}
+  - component: {fileID: 6785985665988339811}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -75,3 +77,31 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7209174629169379893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7288296044172928481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2ace553393331c48985ff83705ac2d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 0}
+  parentTransform: {fileID: 0}
+  originParentTransform: {fileID: 0}
+  cardSlotPF: {fileID: 8866716665883820152, guid: 2db94fb9ad95b234aaf7f1f01d9e768d, type: 3}
+--- !u!225 &6785985665988339811
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7288296044172928481}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

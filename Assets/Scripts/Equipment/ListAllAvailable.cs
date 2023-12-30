@@ -18,16 +18,16 @@ public class ListAllAvailable : MonoBehaviour
             var slot = Instantiate(slotPrefab);
             slot.transform.SetParent(parent);
 
+            slot.GetComponent<ItemSlot>().allowedItemType = ItemType.any;
+
             var item = Instantiate(itemUIPrefab);
             item.transform.SetParent(slot.transform);
             item.GetComponent<UnityEngine.UI.Image>().sprite = x.icon;
-            //var img = item.GetComponentsInChildren<UnityEngine.UI.Image>();
-            //foreach(var y in img)
-            //{
-            //    if(y.gameObject.transform.parent != null)
-            //        y.sprite = x.icon;
-            //}
-            
+            var d = item.GetComponent<UIItemDragNDrop>();
+            d.item = x;
+            d.parentTransform = slot.transform;
+            d.originParentTransform = slot.transform;
+
         }
     }
 
