@@ -93,6 +93,7 @@ MonoBehaviour:
   parentTransform: {fileID: 0}
   originParentTransform: {fileID: 0}
   cardSlotPF: {fileID: 8866716665883820152, guid: 2db94fb9ad95b234aaf7f1f01d9e768d, type: 3}
+  itemSlotPF: {fileID: 6549335557892417539, guid: d27b8cde4b4ab3a4c9b6d2437e60da8a, type: 3}
 --- !u!225 &6785985665988339811
 CanvasGroup:
   m_ObjectHideFlags: 0

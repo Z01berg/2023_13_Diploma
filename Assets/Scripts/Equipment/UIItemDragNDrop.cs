@@ -15,6 +15,8 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     private GameObject cardsPanel;
     private List<GameObject> cardsList = new List<GameObject>();
     [SerializeField] private GameObject cardSlotPF;
+    private GameObject itemsPanel;
+    public GameObject itemSlotPF;
 
     private void Awake()
     {
@@ -22,6 +24,7 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
         canvas = FindAnyObjectByType<Canvas>();
         canvasGroup = GetComponent<CanvasGroup>();
         cardsPanel = GameObject.Find("CardsPanel").gameObject;
+        itemsPanel = GameObject.Find("ItemsPanel").gameObject;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -42,15 +45,29 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
         canvasGroup.blocksRaycasts = true;
         if(transform.parent.transform == parentTransform)
         {
+
+            if(originParentTransform == null)
+            {
+                var sl = Instantiate(itemSlotPF);
+                sl.transform.SetParent(itemsPanel.transform);
+                originParentTransform = sl.transform;
+            }
+
             rectTransform.position = originParentTransform.position;
             rectTransform.SetParent(originParentTransform);
 
             RemoveCardsFromDeck();
+            Equipment.Instance.Remove(item);
+            Inventory.Instance.Add(item);
+
+
 
         }
         else
         {
             AddCardsToDeck();
+            Equipment.Instance.Add(item);
+            Inventory.Instance.Remove(item);
         }
         parentTransform = transform.parent.transform;
         
@@ -70,11 +87,7 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     {
         foreach(var c in item.cards)
         {
-            /*
-            var slot = Instantiate(cardSlotPF);
-            slot.transform.SetParent(cardsPanel.transform);
-            */
-
+            
             var card = Instantiate(c);
             card.transform.SetParent(cardsPanel.transform);
             

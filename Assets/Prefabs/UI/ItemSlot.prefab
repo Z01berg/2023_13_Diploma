@@ -88,3 +88,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac9e76f027e3adf419546bbc870f8078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allowedItemType: 0
+  itemUIPrefab: {fileID: 7288296044172928481, guid: 1ed3f4528b76b0540b25eb640515f683, type: 3}
+  itemSlot: {fileID: 6549335557892417539}
