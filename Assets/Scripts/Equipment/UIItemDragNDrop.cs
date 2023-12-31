@@ -17,6 +17,7 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     [SerializeField] private GameObject cardSlotPF;
     private GameObject itemsPanel;
     public GameObject itemSlotPF;
+    private bool cardsSpawned = false;
 
     private void Awake()
     {
@@ -31,7 +32,7 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     {
         canvasGroup.alpha = .6f;
         canvasGroup.blocksRaycasts = false;
-
+        
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -55,22 +56,16 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
 
             rectTransform.position = originParentTransform.position;
             rectTransform.SetParent(originParentTransform);
-
             RemoveCardsFromDeck();
-            Equipment.Instance.Remove(item);
-            Inventory.Instance.Add(item);
-
-
-
+            
         }
         else
         {
             AddCardsToDeck();
-            Equipment.Instance.Add(item);
-            Inventory.Instance.Remove(item);
+            
         }
         parentTransform = transform.parent.transform;
-        
+
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -85,25 +80,29 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
 
     public void AddCardsToDeck()
     {
+        if (cardsSpawned) return;
+
         foreach(var c in item.cards)
         {
             
             var card = Instantiate(c);
             card.transform.SetParent(cardsPanel.transform);
-            
             cardsList.Add(card);
+
+            cardsSpawned = true;
+            
         }
     }
 
     public void RemoveCardsFromDeck()
     {
-        
-        if(cardsList.Count > 0)
+        if (!cardsSpawned) return;
+
+        if (cardsList.Count > 0)
             foreach (var c in cardsList)
             {
-                
                 Destroy(c);
-                
+                cardsSpawned = false;
             }
         
     }

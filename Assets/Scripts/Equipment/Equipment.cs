@@ -21,15 +21,20 @@ public class Equipment : MonoBehaviour
 
     #endregion
 
-    public List<Item> equipment = new List<Item>();
+    public Item head;
+    public Item chest;
+    public Item legs;
+    public Item boots;
+    public Item rightHand;
+    public Item leftHand;
 
-    public void Add(Item item)
-    {
-        equipment.Add(item);
-    }
+    public Item item1;
+    public Item item2;
+    public Item item3;
+    public Item item4;
+    public Item item5;
+    public Item item6;
 
-    public void Remove(Item item)
-    {
-        equipment.Remove(item);
-    }
+    public List<GameObject> cards = new List<GameObject>();
+
 }

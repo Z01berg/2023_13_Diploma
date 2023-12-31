@@ -11,7 +11,6 @@ public enum ItemType
 [CreateAssetMenu(fileName = "New Item", menuName = "Scriptable Objects/Item")]
 public class Item : ScriptableObject
 {
-   
     public ItemType itemType;
     public string itemName = "PLC";
     [TextArea]

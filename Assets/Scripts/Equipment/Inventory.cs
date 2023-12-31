@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Inventory : MonoBehaviour
 {
 
@@ -24,11 +25,11 @@ public class Inventory : MonoBehaviour
 
     public void Add(Item item)
     {
-        items.Add(item);
+        //items.Add(item);
     }
 
     public void Remove(Item item)
     {
-        items.Remove(item);
+        //items.Remove(item);
     }
 }

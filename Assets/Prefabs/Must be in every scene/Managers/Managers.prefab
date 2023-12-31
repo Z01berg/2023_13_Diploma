@@ -195,7 +195,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b71e823d4577aa4ba9e2811556a82d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
+  items:
+  - {fileID: 11400000, guid: 2f288bdaa3a780a45a87f4074d8a54f6, type: 2}
+  - {fileID: 11400000, guid: 5b4c0ba538d820842b532ee36a12da30, type: 2}
 --- !u!114 &1826230495348557069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,9 +210,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eda5d2905a8fe1148b2591afcbdc3e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipment:
-  - {fileID: 11400000, guid: 2f288bdaa3a780a45a87f4074d8a54f6, type: 2}
-  - {fileID: 11400000, guid: 5b4c0ba538d820842b532ee36a12da30, type: 2}
+  head: {fileID: 0}
+  chest: {fileID: 0}
+  legs: {fileID: 0}
+  boots: {fileID: 0}
+  rightHand: {fileID: 0}
+  leftHand: {fileID: 0}
+  item1: {fileID: 0}
+  item2: {fileID: 0}
+  item3: {fileID: 0}
+  item4: {fileID: 0}
+  item5: {fileID: 0}
+  item6: {fileID: 0}
+  cards: []
 --- !u!1 &8773931647790370286
 GameObject:
   m_ObjectHideFlags: 0
