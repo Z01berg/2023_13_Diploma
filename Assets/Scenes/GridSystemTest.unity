@@ -244,8 +244,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a95c10f4a8fc74a8732383db2002ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _width: 16
-  _height: 9
+  _width: 32
+  _height: 18
   _tilePrefab: {fileID: 6248522862510925435, guid: 0a7eaf14608bf7747b0647e51dbf70f6, type: 3}
   _cam: {fileID: 810885574}
 --- !u!4 &1150834180
@@ -316,7 +316,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3738374918967409683, guid: 0a7eaf14608bf7747b0647e51dbf70f6, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a7eaf14608bf7747b0647e51dbf70f6, type: 3}
@@ -325,5 +326,5 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 810885574}
-  - {fileID: 680605941236398240}
   - {fileID: 1150834180}
+  - {fileID: 680605941236398240}
