@@ -14,7 +14,7 @@ public class SetTimer : MonoBehaviour
     [SerializeField] private Boolean item = false;
     [SerializeField] private Boolean boss = false;
     
-    private void Start()
+    private void Awake()
     {
         Timer timer = FindObjectOfType<Timer>();
         
