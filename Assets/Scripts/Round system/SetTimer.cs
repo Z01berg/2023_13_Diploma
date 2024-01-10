@@ -4,25 +4,30 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+public enum CharacterType
+{
+    Player,
+    Enemy,
+    Item,
+    Boss,
+    None
+}
+
 public class SetTimer : MonoBehaviour
 {
     [SerializeField] private TMP_Text _Text;
-    
-    //boleans
-    [SerializeField] private Boolean bohater = false;
-    [SerializeField] private Boolean enemy = false;
-    [SerializeField] private Boolean item = false;
-    [SerializeField] private Boolean boss = false;
-    
+
+    [SerializeField] private CharacterType characterType = CharacterType.None;
+
     private void Awake()
     {
         Timer timer = FindObjectOfType<Timer>();
-        
-        String Person = Define(bohater, enemy, item, boss);;
+
+        string person = Define(characterType);
 
         if (timer != null)
         {
-            timer.AddTextFromSetTimer(_Text, Person);
+            timer.AddTextFromSetTimer(_Text, person);
         }
         else
         {
@@ -30,12 +35,9 @@ public class SetTimer : MonoBehaviour
         }
     }
 
-    private string Define(bool bohater, bool enemy, bool item, bool boss)
+    private string Define(CharacterType type)
     {
-        return bohater ? "Player" :
-            enemy ? "Enemy" :
-            item ? "Item" :
-            boss ? "Boss" :
-            "N/A";
+        return type.ToString();
     }
 }
+

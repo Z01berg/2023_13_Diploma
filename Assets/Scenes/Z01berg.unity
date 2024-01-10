@@ -267,6 +267,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4772301317793902476, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
+      propertyPath: characterType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6453728171809700323, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
       propertyPath: m_text
       value: 100
@@ -290,6 +294,10 @@ PrefabInstance:
     - target: {fileID: 5056939184495829581, guid: 8f11782371414594ab07ea4cded8442a, type: 3}
       propertyPath: m_Name
       value: Item (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931473751678551129, guid: 8f11782371414594ab07ea4cded8442a, type: 3}
+      propertyPath: characterType
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8073811637771290375, guid: 8f11782371414594ab07ea4cded8442a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -390,6 +398,10 @@ PrefabInstance:
     - target: {fileID: 3915433133722241345, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4772301317793902476, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
+      propertyPath: characterType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6453728171809700323, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
       propertyPath: m_text
@@ -515,6 +527,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hero
       objectReference: {fileID: 0}
+    - target: {fileID: 7665014861113986791, guid: b9c0ff75b34069b4e82f3d5fb66619e3, type: 3}
+      propertyPath: characterType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -534,6 +550,10 @@ PrefabInstance:
     - target: {fileID: 450017779551564573, guid: 9498e2874e6bd8d4da1b2353bb15f277, type: 3}
       propertyPath: m_Name
       value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 3977005064265850566, guid: 9498e2874e6bd8d4da1b2353bb15f277, type: 3}
+      propertyPath: characterType
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5127135900269221084, guid: 9498e2874e6bd8d4da1b2353bb15f277, type: 3}
       propertyPath: m_LocalPosition.x
