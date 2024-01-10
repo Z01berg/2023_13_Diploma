@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -81,7 +82,7 @@ public class Timer : MonoBehaviour
                 anyTimerReachedZero = true;
                 counting = false;
                 CalculatePriority();
-               
+            
                 turn.text = "Turn: " + timers[activeTimerIndex].Tag;
                 timeToPause = 1f;
             }
@@ -97,24 +98,26 @@ public class Timer : MonoBehaviour
                     timers[i].Value--;
                 }
             }
-            
+        
             UpdateTexts();
-            Thread.Sleep(animationPause());
+            StartCoroutine(AnimationPauseCoroutine());
         }
     }
 
-    int animationPause()
+    IEnumerator AnimationPauseCoroutine()
     {
         if (timeToPause > 0.1)
         {
-            timeToPause -= 0.05f;
+            timeToPause -= 0.005f;
         }
         else
         {
             timeToPause = 0.1f;
         }
 
-        return (int)(timeToPause * 100f);
+        yield return new WaitForSeconds(timeToPause);
+
+        StartCountdown();
     }
 
     void ChangeActiveTimerValue(int change)
