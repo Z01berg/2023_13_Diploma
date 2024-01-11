@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51a5a1fad4f20824d8ec432780ab1840, type: 3}
+  m_Name: ExampleAttackCard2
+  m_EditorClassIdentifier: 
+  id: 1
+  isActive: 1
+  cardQuality: 0
+  title: ExampleAttackCard2
+  description: This card deals 2 dmg to one enemy. Lorem ipsum dolor.
+  cost: 232
+  damage: 22
+  move: 2
+  backgroundPath: Graphics/CardBackgrounds/AttackCards/AttackCardBackground
+  spritePath: Graphics/CardSprites/AttackCards/ExampleAttackCard1

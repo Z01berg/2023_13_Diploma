@@ -1,0 +1,32 @@
+{
+    "attackCardsList":[
+        {
+            "id": 0,
+            "isActive": true,
+            "cardQuality": 0,
+            
+            "title": "ExampleAttackCard1",
+            "description": "This card deals 1 dmg to one enemy. Lorem ipsum dolor.",
+            "cost": 1,
+            "damage": 1,
+            "move": 0,
+            
+            "backgroundPath": "Graphics/CardBackgrounds/AttackCards/AttackCardBackground",
+            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+        },
+        {
+            "id": 1,
+            "isActive": true,
+            "cardQuality": 0,
+            
+            "title": "ExampleAttackCard2",
+            "description": "This card deals 2 dmg to one enemy. Lorem ipsum dolor.",
+            "cost": 232,
+            "damage": 22,
+            "move": 2,
+            
+            "backgroundPath": "Graphics/CardBackgrounds/AttackCards/AttackCardBackground",
+            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+        }
+    ]
+}
