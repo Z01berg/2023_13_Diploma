@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIInventory : MonoBehaviour
 {
@@ -90,6 +91,7 @@ public class UIInventory : MonoBehaviour
         else
             Equipment.Instance.item6 = null;
 
+        SceneManager.LoadScene("Z01berg");
     }
 
     public void LoadState()

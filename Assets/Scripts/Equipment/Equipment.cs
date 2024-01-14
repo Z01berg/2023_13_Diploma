@@ -14,7 +14,7 @@ public class Equipment : MonoBehaviour
         if (Instance != null)
         {
             Debug.LogWarning("More than one instance of Equipment found!");
-            return;
+            //return;
         }
         Instance = this;
     }
