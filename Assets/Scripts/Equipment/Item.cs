@@ -15,6 +15,6 @@ public class Item : ScriptableObject
     public string itemName = "PLC";
     [TextArea]
     public string description;
-    public List<GameObject> cards = new List<GameObject>();
+    public List<CardsSO> cards = new List<CardsSO>();
     public Sprite icon;
 }

@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
 {
     public Item item;
+    public GameObject cardPrefab;
     public Transform parentTransform;
     public Transform originParentTransform;
     private RectTransform rectTransform;
@@ -85,7 +86,8 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
         foreach(var c in item.cards)
         {
             
-            var card = Instantiate(c);
+            var card = Instantiate(cardPrefab);
+            card.GetComponent<CardDisplay>().cardSO = c;
             card.transform.SetParent(cardsPanel.transform);
             cardsList.Add(card);
 

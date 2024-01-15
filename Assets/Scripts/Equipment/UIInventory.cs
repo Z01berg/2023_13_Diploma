@@ -16,7 +16,7 @@ public class UIInventory : MonoBehaviour
 
         foreach (Transform card in cardsPanel.transform)
         {
-            Equipment.Instance.cards.Add(card.gameObject);
+            Equipment.Instance.cards.Add(card.GetComponent<CardDisplay>().cardSO);
         }
 
         GameObject slot = EquipmentPanel.gameObject.transform.Find("HeadSlot").gameObject;
@@ -91,7 +91,7 @@ public class UIInventory : MonoBehaviour
         else
             Equipment.Instance.item6 = null;
 
-        SceneManager.LoadScene("Z01berg");
+        SceneManager.LoadScene("SampleScene");
     }
 
     public void LoadState()

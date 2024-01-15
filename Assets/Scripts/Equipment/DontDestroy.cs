@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class DontDestroy : MonoBehaviour
 {
-    private string tag;
-    
     private void Awake()
     {
-
-        tag = this.gameObject.tag;
-
-        GameObject[] objs = GameObject.FindGameObjectsWithTag(tag);
+        GameObject[] objs = GameObject.FindGameObjectsWithTag(this.gameObject.tag);
 
         if (objs.Length > 1)
         {

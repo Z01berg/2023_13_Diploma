@@ -35,6 +35,6 @@ public class Equipment : MonoBehaviour
     public Item item5;
     public Item item6;
 
-    public List<GameObject> cards = new List<GameObject>();
+    public List<CardsSO> cards = new List<CardsSO>();
 
 }
