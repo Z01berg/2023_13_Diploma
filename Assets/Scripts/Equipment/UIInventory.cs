@@ -91,7 +91,7 @@ public class UIInventory : MonoBehaviour
         else
             Equipment.Instance.item6 = null;
 
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Z01berg");
     }
 
     public void LoadState()
