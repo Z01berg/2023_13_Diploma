@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: BetterButStillBasicSword
   description: LOL
   cards:
-  - {fileID: 8950692613614814383, guid: b39b562af1f9bb64eaff2618d35013fc, type: 3}
-  - {fileID: 8950692613614814383, guid: b39b562af1f9bb64eaff2618d35013fc, type: 3}
-  - {fileID: 8950692613614814383, guid: b39b562af1f9bb64eaff2618d35013fc, type: 3}
+  - {fileID: 11400000, guid: 425c1e001405a2b4dbfd229fd74b8d48, type: 2}
+  - {fileID: 11400000, guid: 425c1e001405a2b4dbfd229fd74b8d48, type: 2}
+  - {fileID: 11400000, guid: 425c1e001405a2b4dbfd229fd74b8d48, type: 2}
   icon: {fileID: 21300000, guid: 36eab10a7ce2f9347bd9a1472111a499, type: 3}

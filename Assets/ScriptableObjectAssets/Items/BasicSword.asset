@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Basic sword
   description: Everyone knows what a sword is
   cards:
-  - {fileID: 8950692613614814383, guid: 3c834bab3541a2e4fb9f837fa487ec80, type: 3}
-  - {fileID: 8950692613614814383, guid: 3c834bab3541a2e4fb9f837fa487ec80, type: 3}
-  - {fileID: 8950692613614814383, guid: 3c834bab3541a2e4fb9f837fa487ec80, type: 3}
+  - {fileID: 11400000, guid: de7d948152d1b234f872c90a64215e4b, type: 2}
+  - {fileID: 11400000, guid: de7d948152d1b234f872c90a64215e4b, type: 2}
+  - {fileID: 11400000, guid: de7d948152d1b234f872c90a64215e4b, type: 2}
   icon: {fileID: 21300000, guid: 36eab10a7ce2f9347bd9a1472111a499, type: 3}
