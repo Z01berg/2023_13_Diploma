@@ -90,7 +90,7 @@ public class Timer : MonoBehaviour
 
         if (!anyTimerReachedZero)
         {
-            counting = true;
+            counting = false;
             for (int i = 0; i < timers.Count; i++)
             {
                 if (timers[i].Value > 0)
@@ -108,7 +108,7 @@ public class Timer : MonoBehaviour
     {
         if (timeToPause > 0.1)
         {
-            timeToPause -= 0.005f;
+            timeToPause -= 0.5f;
         }
         else
         {
