@@ -27,6 +27,7 @@ public class Timer : MonoBehaviour
     {
         texts.Add(newText);
         id.Add(text);
+        HP_adres.Add(HP);
     }
 
     void Start()
