@@ -8,15 +8,18 @@ namespace Player
         [SerializeField] private float _moveSpeed = 5f;
         [SerializeField] private Transform _movePoint;
         [SerializeField] private LayerMask _whatStopsMovement;
+
+        public bool DidSmth = false; //dla Timer kiedy jakaś karta rozegrana true inaczej treba 2 razy kliknąć enter
         
         private void Start()
         {
             _movePoint.parent = null;
+            GetComponent<PlayerController>().enabled = !GetComponent<PlayerController>().enabled;
+            EventSystem.PlayerMove.AddListener(ToogleScrypt);
         }
     
         private void Update()
         {
-
             transform.position = Vector3.MoveTowards(
                 transform.position, 
                 _movePoint.position, 
@@ -45,6 +48,11 @@ namespace Player
                     }
                 }
             }
+        }
+
+        private void ToogleScrypt()
+        {
+            GetComponent<PlayerController>().enabled = !GetComponent<PlayerController>().enabled;
         }
     }
 }

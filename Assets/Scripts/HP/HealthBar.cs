@@ -1,38 +1,80 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
+    [SerializeField] private GameObject man;
     [SerializeField] private Slider slider;
-    private int health = 10;
-
+    [SerializeField] private TMP_Text data;
+    private string[] parts;
+    private int maxValue = 0;
+    private int value = 0;
+    
+    private bool This = false;
+    
     private void Start()
     {
-        SetMaxHealth(health);
+        Split();
+        SetData();
+        UpdateHealthText();
+        
+        EventSystem.WhatHP.AddListener(HandleWhatHP);
     }
 
     private void Update()
     {
-        SetHealth(health);
+        Kill();
+
+        if (Input.GetKeyDown(KeyCode.P) && This)
+        {
+            ChangeHealth(-1);
+            UpdateHealthText();
+        }
     }
 
-
-    public void SetMaxHealth(int health)
+    private void Split()
     {
-        slider.maxValue = health;
-        slider.value = health;
+        parts = (data.text).Split('/');
     }
-    
-    public void SetHealth(int health)
+
+    private void SetData()
     {
-        slider.value = health;
+        maxValue = int.Parse(parts[1]);
+        value = int.Parse(parts[0]);
+    }
+
+    private void UpdateHealth()
+    {
+        value = int.Parse(parts[0]);
     }
 
     public void ChangeHealth(int health)
     {
-        this.health += health;
+        value += health;
+    }
+
+    private void UpdateHealthText()
+    {
+        data.text = value.ToString() + " / " + maxValue.ToString();
+    }
+
+    private void Kill()
+    {
+        if (value <= 0)
+        {
+            Destroy(man);
+        }
+    }
+
+    private void HandleWhatHP(GameObject recieved)
+    {
+        if (recieved == man)
+        {
+            This = !This;
+        }
     }
 }
