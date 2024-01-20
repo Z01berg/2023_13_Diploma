@@ -4,9 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - HeadSlot
-  - Managers
-  - Inventory
+  - Card
   layers:
   - Default
   - TransparentFX
@@ -14,9 +12,9 @@ TagManager:
   - 
   - Water
   - UI
-  - StopMovement
-  - GroundLayer
-  - GridOverlay
+  - Zoom
+  - 
+  - 
   - 
   - 
   - 
@@ -44,6 +42,33 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Timer
-    uniqueID: 671427865
+  - name: Card1
+    uniqueID: 1604910259
+    locked: 0
+  - name: Card2
+    uniqueID: 1798399573
+    locked: 0
+  - name: Card3
+    uniqueID: 199771187
+    locked: 0
+  - name: Card4
+    uniqueID: 486965641
+    locked: 0
+  - name: Card5
+    uniqueID: 4053282879
+    locked: 0
+  - name: Card6
+    uniqueID: 1256478677
+    locked: 0
+  - name: Card7
+    uniqueID: 1381830855
+    locked: 0
+  - name: Card8
+    uniqueID: 4294224937
+    locked: 0
+  - name: Card9
+    uniqueID: 1827464899
+    locked: 0
+  - name: Card10
+    uniqueID: 2124695297
     locked: 0
