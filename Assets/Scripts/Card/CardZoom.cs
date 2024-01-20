@@ -30,7 +30,7 @@ public class CardZoom : MonoBehaviour
         transform.localScale= new Vector2(1.5f, 1.5f);
         transform.position += new Vector3(-65, 130, 0);
         
-        Debug.Log("entered");
+        // Debug.Log("entered");
         
 
     }
@@ -39,7 +39,7 @@ public class CardZoom : MonoBehaviour
     {
         transform.localScale= new Vector2(1f, 1f);
         transform.position -= new Vector3(-65, 130, 0);
-        Debug.Log("exit");
+        // Debug.Log("exit");
         
     }
 }
