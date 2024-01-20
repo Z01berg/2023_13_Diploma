@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inventory
       objectReference: {fileID: 0}
+    - target: {fileID: 6127265301049716241, guid: e35ed926946a6ac4a833427ea70c885d, type: 3}
+      propertyPath: m_TagString
+      value: Inventory
+      objectReference: {fileID: 0}
     - target: {fileID: 7342973753402904916, guid: e35ed926946a6ac4a833427ea70c885d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
