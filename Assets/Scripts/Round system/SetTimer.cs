@@ -19,6 +19,8 @@ public class SetTimer : MonoBehaviour
 
     [SerializeField] private CharacterType characterType = CharacterType.None;
 
+    [SerializeField] private GameObject HP;
+
     private void Awake()
     {
         Timer timer = FindObjectOfType<Timer>();
@@ -27,7 +29,7 @@ public class SetTimer : MonoBehaviour
 
         if (timer != null)
         {
-            timer.AddTextFromSetTimer(_Text, person);
+            timer.AddTextFromSetTimer(_Text, person, HP);
         }
         else
         {

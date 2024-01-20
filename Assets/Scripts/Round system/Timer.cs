@@ -5,23 +5,29 @@ using System.Linq;
 using System.Threading;
 using TMPro;
 using UnityEngine;
+using Object = System.Object;
 
 public class Timer : MonoBehaviour
 {
     [SerializeField] private TMP_Text turn;
     [SerializeField] private List<TMP_Text> texts = new List<TMP_Text>();
     [SerializeField] private List<String> id = new List<String>();
+    [SerializeField] private List<GameObject> HP_adres = new List<GameObject>();
     private List<TimerData> timers = new List<TimerData>();
     
-    private int activeTimerIndex = 0;
-    private bool counting = false;
+    private int activeTimerIndex = 0; //czyja runda
+    private bool counting = false; // po wciśnięciu enter
     
-    private float timeToPause = 1f;
+    private float timeToPause = 1f; //do animacji timerów
     
-    public void AddTextFromSetTimer(TMP_Text newText, String text)
+
+    private bool Cheat = false; // włączenie na "R CTRL" zmieniania znaczenia timerów
+    
+    public void AddTextFromSetTimer(TMP_Text newText, String text, GameObject HP)
     {
         texts.Add(newText);
         id.Add(text);
+        HP_adres.Add(HP);
     }
 
     void Start()
@@ -29,12 +35,17 @@ public class Timer : MonoBehaviour
         for (int i = 0; i < texts.Count; i++)
         {
             int value = int.Parse(texts[i].text);
-            timers.Add(new TimerData { Value = value, Tag = id[i]});
+            timers.Add(new TimerData { Value = value, Tag = id[i], HP = HP_adres[i]});
         }
     }
     
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.RightControl))
+        {
+            Cheat = !Cheat;
+        }
+        
         HandleTimerInput();
         
         UpdateTexts();
@@ -47,20 +58,20 @@ public class Timer : MonoBehaviour
     
     void HandleTimerInput()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow) && Cheat)
         {
             ChangeActiveTimer(1);
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) && Cheat)
         {
             ChangeActiveTimer(-1);
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) && Cheat)
         {
             ChangeActiveTimerValue(1);
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && Cheat)
         {
             ChangeActiveTimerValue(-1);
         }
@@ -82,7 +93,14 @@ public class Timer : MonoBehaviour
                 anyTimerReachedZero = true;
                 counting = false;
                 CalculatePriority();
-            
+                
+                EventSystem.WhatHP.Invoke(timers[activeTimerIndex].HP);
+                
+                if (timers[activeTimerIndex].Tag == "Player")
+                {
+                    EventSystem.PlayerMove.Invoke();
+                }
+              
                 turn.text = "Turn: " + timers[activeTimerIndex].Tag;
                 timeToPause = 1f;
             }
@@ -90,7 +108,7 @@ public class Timer : MonoBehaviour
 
         if (!anyTimerReachedZero)
         {
-            counting = true;
+            counting = false;
             for (int i = 0; i < timers.Count; i++)
             {
                 if (timers[i].Value > 0)
@@ -108,7 +126,7 @@ public class Timer : MonoBehaviour
     {
         if (timeToPause > 0.1)
         {
-            timeToPause -= 0.005f;
+            timeToPause -= 0.5f;
         }
         else
         {
@@ -210,4 +228,5 @@ public class TimerData
 {
     public int Value { get; set; }
     public string Tag { get; set; }
+    public GameObject HP { get; set; }
 }

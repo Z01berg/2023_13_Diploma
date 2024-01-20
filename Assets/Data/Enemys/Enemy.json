@@ -1,0 +1,30 @@
+{
+    "EnemyList":[
+        {
+            "id": 0,
+            
+            "title": "ExampleEnemy1",
+            "max_HP": 10,
+            "damage": 1,
+            "move": 0,
+            
+            "startTimer": 5,
+            "startDefence": 0,
+            
+            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+        },
+        {
+            "id": 1,
+
+            "title": "ExampleEnemy2",
+            "max_HP": 20,
+            "damage": 2,
+            "move": 1,
+            
+            "startTimer": 10,
+            "startDefence": 5,
+
+            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+        }
+    ]
+}
