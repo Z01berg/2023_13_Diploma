@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6edbbd9d6e38d284088822ae57f76e59, type: 3}
-  m_Name: BetterButStillBasicSword
+  m_Name: basic sword
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: BetterButStillBasicSword
-  description: LOL
+  itemName: basic sword
+  description: dasdawdawdsadawdadwadasd
   cards:
-  - {fileID: 11400000, guid: 425c1e001405a2b4dbfd229fd74b8d48, type: 2}
-  - {fileID: 11400000, guid: 425c1e001405a2b4dbfd229fd74b8d48, type: 2}
-  - {fileID: 11400000, guid: 425c1e001405a2b4dbfd229fd74b8d48, type: 2}
+  - {fileID: 11400000, guid: de7d948152d1b234f872c90a64215e4b, type: 2}
+  - {fileID: 11400000, guid: de7d948152d1b234f872c90a64215e4b, type: 2}
+  - {fileID: 11400000, guid: de7d948152d1b234f872c90a64215e4b, type: 2}
   icon: {fileID: 21300000, guid: 36eab10a7ce2f9347bd9a1472111a499, type: 3}

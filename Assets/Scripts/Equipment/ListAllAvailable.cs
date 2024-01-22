@@ -11,9 +11,9 @@ public class ListAllAvailable : MonoBehaviour
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private GameObject itemUIPrefab;
 
-    void Start()
+    public void ListAllItemsInInv()
     {
-        foreach(var x in Inventory.Instance.items)
+        foreach (var x in Inventory.Instance.items)
         {
             var slot = Instantiate(slotPrefab);
             slot.transform.SetParent(parent);
@@ -30,6 +30,4 @@ public class ListAllAvailable : MonoBehaviour
 
         }
     }
-
-    
 }

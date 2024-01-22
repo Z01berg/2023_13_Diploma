@@ -1,0 +1,27 @@
+{
+    "itemsList":[
+        {
+            "itemType": "hand",
+            "itemName": "basic sword",
+            "description": "dasdawdawdsadawdadwadasd",
+            "cards":[
+                "ExampleAttackCard1",
+                "ExampleAttackCard1",
+                "ExampleAttackCard1"
+            ],
+            "icon": "Graphics/Item/Placeholder"
+        },
+        {
+            "itemType": "hand",
+            "itemName": "basic sword but better",
+            "description": "dasdawdawdsadawdadwadasd",
+            "cards":[
+                "ExampleAttackCard2",
+                "ExampleAttackCard2",
+                "ExampleAttackCard2"
+            ],
+            "icon": "Graphics/Item/Placeholder"
+            
+        }
+    ]
+}
