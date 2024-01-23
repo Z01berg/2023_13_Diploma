@@ -117,7 +117,8 @@ public class Deserialization : MonoBehaviour
             AssetDatabase.CreateAsset(s, itemsPath + s.itemName + ".asset");
             AssetDatabase.SaveAssets();
             
-            Inventory.Instance.items.Add(AssetDatabase.LoadAssetAtPath<Item>(itemsPath + s.itemName + ".asset"));
+            // not needed. Left just in case
+            //Inventory.Instance.items.Add(AssetDatabase.LoadAssetAtPath<Item>(itemsPath + s.itemName + ".asset"));
         }
         GameObject.Find("ItemsPanel").GetComponent<ListAllAvailable>().ListAllItemsInInv();
     }

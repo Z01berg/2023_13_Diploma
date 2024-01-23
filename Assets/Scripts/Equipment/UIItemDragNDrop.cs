@@ -94,6 +94,7 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
             cardsSpawned = true;
             
         }
+
     }
 
     public void RemoveCardsFromDeck()

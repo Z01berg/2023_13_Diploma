@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
-
+using UnityEngine.Windows;
 
 public class Inventory : MonoBehaviour
 {
@@ -17,6 +21,14 @@ public class Inventory : MonoBehaviour
             return;
         }
         Instance = this;
+
+        string[] fileEntries = System.IO.Directory.GetFiles("Assets/ScriptableObjectAssets/Items/");
+        foreach (string fileEntry in fileEntries)
+        {
+            if(fileEntry.EndsWith(".asset"))
+                items.Add(AssetDatabase.LoadAssetAtPath<Item>(fileEntry));
+        }
+        
     }
 
     #endregion
