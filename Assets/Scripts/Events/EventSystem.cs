@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EventSystem: MonoBehaviour
+public static class EventSystem
 {
-    public static UnityEvent PlayerMove = new UnityEvent();
+    public static UnityEvent<bool> PlayerMove = new UnityEvent<bool>();
     public static UnityEvent<GameObject> WhatHP = new UnityEvent<GameObject>();
 }

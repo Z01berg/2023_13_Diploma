@@ -50,9 +50,9 @@ namespace Player
             }
         }
 
-        private void ToogleScrypt()
+        private void ToogleScrypt(bool yes)
         {
-            GetComponent<PlayerController>().enabled = !GetComponent<PlayerController>().enabled;
+            this.enabled = yes;
         }
     }
 }

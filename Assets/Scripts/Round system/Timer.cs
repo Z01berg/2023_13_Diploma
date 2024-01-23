@@ -98,7 +98,11 @@ public class Timer : MonoBehaviour
                 
                 if (timers[activeTimerIndex].Tag == "Player")
                 {
-                    EventSystem.PlayerMove.Invoke();
+                    EventSystem.PlayerMove.Invoke(true);
+                }
+                else
+                {
+                    EventSystem.PlayerMove.Invoke(false);
                 }
               
                 turn.text = "Turn: " + timers[activeTimerIndex].Tag;
