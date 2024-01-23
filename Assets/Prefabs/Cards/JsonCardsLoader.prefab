@@ -47,3 +47,4 @@ MonoBehaviour:
   jsonFile: {fileID: 4900000, guid: 60994e482724f00498b798b61e4e7146, type: 3}
   objects:
     attackCardsList: []
+  jsonItemsFile: {fileID: 4900000, guid: e72c0269f9aa8dd4db0601af25b4df9d, type: 3}
