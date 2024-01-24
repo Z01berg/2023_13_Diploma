@@ -3,24 +3,14 @@ using UnityEngine.UI;
 
 public class CardZoom : MonoBehaviour
 {
-    private GameObject Canvas;
     private GameObject zoomedCard;
     // public GridLayoutGroup gridLayoutGroup;
     // public GridLayout grid;
     // public HorizontalLayoutGroup HorizontalLayoutGroup;
     private void Awake()
     {
-        Canvas = GameObject.Find("Game Canvas");
-        resizeUnlock();
     }
 
-    public void resizeUnlock()
-    {
-       
-    }
-    
-    
-    
     public void OnMouseEnter()
     {
         // zoomedCard = Instantiate(gameObject, new Vector2(Input.mousePosition.x, Input.mousePosition.y + 250),

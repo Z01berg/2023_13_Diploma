@@ -1,57 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class HandController : MonoBehaviour
 {
 
-    public GameObject[] cards;
-    public Transform container;
-    public Transform  minPos, maxPos;
-    public static int maxAmountOfCards = 10;
+    public List<GameObject> cardsInHand;
+    public GameObject cardPrefab;
+    public Transform hand;
+    private bool cardsSpawned;
     
-    private List<int> order = new List<int>();
-    private Vector3[] cardPosisionsArray = new Vector3[maxAmountOfCards];
-    private int[] cardPositionsOrder = {5, 4, 6, 3, 7, 2, 8, 1, 9};
     void Start()
     {
-        CountPositions();
-        
-        cards = GameObject.FindGameObjectsWithTag("Card");
-        SetCardsInPosition();
+        cardsInHand = GameObject.FindGameObjectsWithTag("Card").ToList();
+        foreach (var c in cardsInHand)
+        {
+            c.GetComponent<RectTransform>().sizeDelta = new Vector2(180, 240);
+        }
+        // InstantiateCardsInHand();
     }
 
-    public void CountPositions()
+    public void InstantiateCardsInHand()
     {
-        Vector2 distanceBetweenCards = (maxPos.position - minPos.position)/maxAmountOfCards;
-        Debug.Log(distanceBetweenCards);
-        for (int i = 1; i < cardPosisionsArray.Length; i++)
-        {
-            cardPosisionsArray[i] = (Vector2)minPos.position + (distanceBetweenCards * i);
-        }
-    }
+        // var cards = Equipment.Instance.cards;
+        if (!cardsSpawned) return;
 
-    public void SetCardsInPosition()
-    {
         
-        for (int i = 0; i < cards.Length; i++)
+        foreach(var card in cardsInHand)
         {
-            Debug.Log("Pozycja " + cardPositionsOrder[i]);
-            cards[i].transform.position = new Vector3(cardPosisionsArray[cardPositionsOrder[i]].x,
-                cardPosisionsArray[cardPositionsOrder[i]].y, cardPositionsOrder[i]);
-            cards[i].transform.SetSiblingIndex(i);
-            order.Add(cardPositionsOrder[i]);
-            // Debug.Log("Index " + cards[i].transform.GetSiblingIndex());
+            var prefabCard = Instantiate(cardPrefab);
+            // prefabCard.GetComponent<CardDisplay>().cardSO = GetComponent<>().cardSO;
+            prefabCard.transform.SetParent(hand);
+
+            cardsSpawned = true;
         }
-        
-        order.Sort();
-        
-        for (int i = 0; i < order.Count; i++)
-        {
-            cards[i].transform.SetSiblingIndex(order.IndexOf(cardPositionsOrder[i]));
-            Debug.Log(cards[i].transform.GetSiblingIndex());
-        }
-        
-        
     }
+  
 }
