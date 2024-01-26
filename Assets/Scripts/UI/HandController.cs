@@ -1,16 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HandController : MonoBehaviour
 {
 
     public List<GameObject> cardsInHand;
     public GameObject cardPrefab;
-    public Transform hand;
+    private static GameObject hand;
     private bool cardsSpawned;
+
+    private int cardsAmount;
+    // private int cardsAmount;
     
     void Start()
     {
@@ -19,7 +23,21 @@ public class HandController : MonoBehaviour
         {
             c.GetComponent<RectTransform>().sizeDelta = new Vector2(180, 240);
         }
+
+        hand = gameObject;
+        cardsAmount = gameObject.transform.childCount;
+
+        // cardsAmount = cardsInHand.Count;
         // InstantiateCardsInHand();
+    }
+
+    private void Update()
+    {
+        if (cardsAmount != gameObject.transform.childCount)
+        {
+            UpdateHandLayout();
+            cardsAmount = gameObject.transform.childCount;
+        }
     }
 
     public void InstantiateCardsInHand()
@@ -32,10 +50,35 @@ public class HandController : MonoBehaviour
         {
             var prefabCard = Instantiate(cardPrefab);
             // prefabCard.GetComponent<CardDisplay>().cardSO = GetComponent<>().cardSO;
-            prefabCard.transform.SetParent(hand);
+            prefabCard.transform.SetParent(hand.transform);
 
             cardsSpawned = true;
         }
     }
-  
+
+    public void UpdateHandLayout()
+    {
+        // LayoutRebuilder.ForceRebuildLayoutImmediate(hand.GetComponent<RectTransform>());
+        // // Canvas.ForceUpdateCanvases();
+
+        Debug.Log("LayoutUpdated");
+        StartCoroutine(DelayedMethod());
+                
+
+    }
+    
+    IEnumerator DelayedMethod()
+    {
+        // Debug.Log("Początek metody");
+
+        // Poczekaj 2 sekundy
+        yield return new WaitForSeconds(0f);
+        LayoutRebuilder.ForceRebuildLayoutImmediate(hand.GetComponent<RectTransform>());
+        
+    }
+
+    public void ChangeTurn()
+    {
+        CardUse.isPlayersTurn = !CardUse.isPlayersTurn;
+    }
 }

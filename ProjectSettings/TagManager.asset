@@ -9,6 +9,7 @@ TagManager:
   - Inventory
   - Managers
   - Loader
+  - Hand
   layers:
   - Default
   - TransparentFX
