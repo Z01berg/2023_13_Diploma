@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 563386427}
   m_Layer: 8
   m_Name: GridOverlay
-  m_TagString: Untagged
+  m_TagString: GridOverlayTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44917,7 +44917,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _visionRangeInTiles: 5
-  _gridOverlayTilemap: {fileID: 563386428}
   _tileSize: 1
 --- !u!1 &2097581878
 GameObject:

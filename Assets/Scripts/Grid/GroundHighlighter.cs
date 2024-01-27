@@ -84,7 +84,7 @@ namespace Grid
             switch (_currentHighlightMode)
             {
                 case HighlightMode.MoveRange:
-                    HighlightMoveRange(2);
+                    HighlightMoveRange(3);
                     break;
 
                 case HighlightMode.SkillRange:
