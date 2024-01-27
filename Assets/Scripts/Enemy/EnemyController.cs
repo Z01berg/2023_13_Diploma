@@ -22,7 +22,7 @@ namespace Enemy
                 _gridOverlayTilemap = gridOverlayObject.GetComponent<Tilemap>();
             }
             else
-            {a
+            {
                 Debug.LogError("GridOverlay object not found with the specified tag!");
             }
 
