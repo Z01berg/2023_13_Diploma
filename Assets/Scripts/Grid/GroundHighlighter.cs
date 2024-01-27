@@ -15,6 +15,8 @@ namespace Grid
         private Vector3Int _previousMousePosition;
         private HighlightMode _currentHighlightMode = HighlightMode.SingleTile;
         private Transform _playerTransform;
+        private Vector3Int _previousPlayerPosition;
+        private Vector3Int _currentPlayerPosition;
 
         private enum HighlightMode
         {
@@ -27,11 +29,14 @@ namespace Grid
         {
             _grid = gameObject.GetComponent<UnityEngine.Grid>();
             _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+            _currentPlayerPosition = GetPlayerPosition();
+            _previousPlayerPosition = _currentPlayerPosition;
         }
 
         private void Update()
         {
             Vector3Int mousePosition = GetMousePosition();
+            _currentPlayerPosition = GetPlayerPosition();
 
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
@@ -46,11 +51,26 @@ namespace Grid
                 _currentHighlightMode = HighlightMode.SingleTile;
             }
 
-            if (!mousePosition.Equals(_previousMousePosition))
+            if (_currentHighlightMode == HighlightMode.SkillRange || _currentHighlightMode == HighlightMode.SingleTile)
+            {
+                if (!mousePosition.Equals(_previousMousePosition))
+                {
+                    ClearTiles();
+                    HighlightTiles(mousePosition);
+                    _previousMousePosition = mousePosition;
+                }
+            }
+            else
             {
                 ClearTiles();
-                HighlightTiles(mousePosition);
-                _previousMousePosition = mousePosition;
+                HighlightTiles(_currentPlayerPosition);
+                _previousPlayerPosition = _currentPlayerPosition;
+                if (!_currentPlayerPosition.Equals(_previousPlayerPosition))
+                {
+                    ClearTiles();
+                    HighlightTiles(_currentPlayerPosition);
+                    _previousPlayerPosition = _currentPlayerPosition;
+                }
             }
         }
 
@@ -121,5 +141,6 @@ namespace Grid
             Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             return _grid.WorldToCell(mouseWorldPosition);
         }
+        
     }
 }
