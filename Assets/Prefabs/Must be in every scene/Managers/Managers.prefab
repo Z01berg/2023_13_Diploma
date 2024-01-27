@@ -393,6 +393,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 404082218437203262}
     m_Modifications:
+    - target: {fileID: 644737647203989721, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9d823cb2c79322247a9e9181197a893d, type: 3}
+    - target: {fileID: 644737647203989721, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
+      propertyPath: jsonFile
+      value: 
+      objectReference: {fileID: 4900000, guid: 60994e482724f00498b798b61e4e7146, type: 3}
+    - target: {fileID: 644737647203989721, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
+      propertyPath: background
+      value: 
+      objectReference: {fileID: 21300000, guid: 5ea655ef3683cfa4989b63bf18661686, type: 3}
     - target: {fileID: 1418568890399150010, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
       propertyPath: m_Name
       value: JsonCardsLoader

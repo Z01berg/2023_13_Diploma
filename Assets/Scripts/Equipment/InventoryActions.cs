@@ -7,7 +7,7 @@ public class InventoryActions : MonoBehaviour
     private bool _active;
     [SerializeField] private GameObject _inv;
 
-    public bool locked = false;
+    private bool locked = false;
 
     private void Start()
     {
@@ -29,5 +29,12 @@ public class InventoryActions : MonoBehaviour
                 _active=true;
             }
         }
+    }
+
+    public void LockInventory()
+    {
+        locked = !locked;
+        _active = false;
+        _inv.gameObject.SetActive(false);
     }
 }
