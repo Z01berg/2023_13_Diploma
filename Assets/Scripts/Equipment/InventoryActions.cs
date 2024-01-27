@@ -7,6 +7,8 @@ public class InventoryActions : MonoBehaviour
     private bool _active;
     [SerializeField] private GameObject _inv;
 
+    public bool locked = false;
+
     private void Start()
     {
         _active = _inv.activeSelf;
@@ -14,7 +16,7 @@ public class InventoryActions : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && !locked)
         {
             if(_active)
             {

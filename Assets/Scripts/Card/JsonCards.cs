@@ -29,4 +29,5 @@ public struct Card
     public int move;
     public string backgroundPath;
     public string spritePath;
+    public int range;
 }

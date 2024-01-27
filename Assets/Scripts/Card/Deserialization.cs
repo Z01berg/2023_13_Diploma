@@ -30,7 +30,7 @@ public class Deserialization : MonoBehaviour
     [SerializeField] private JsonItems itemsObjects;
     string itemsPath = "Assets/ScriptableObjectAssets/Items/";
 
-    void Start()
+    public void Import()
     {
         //Inventory.Instance.items = new List<Item>();
         
@@ -50,6 +50,7 @@ public class Deserialization : MonoBehaviour
             s.move = obj.move;
             s.backgroundPath = obj.backgroundPath;
             s.spritePath = obj.spritePath;
+            s.range = obj.range;
 
             AssetDatabase.CreateAsset(s, cPath + s.title + ".asset");
             AssetDatabase.SaveAssets();
@@ -120,7 +121,7 @@ public class Deserialization : MonoBehaviour
             // not needed. Left just in case
             //Inventory.Instance.items.Add(AssetDatabase.LoadAssetAtPath<Item>(itemsPath + s.itemName + ".asset"));
         }
-        GameObject.Find("ItemsPanel").GetComponent<ListAllAvailable>().ListAllItemsInInv();
+        //GameObject.Find("ItemsPanel").GetComponent<ListAllAvailable>().ListAllItemsInInv();
     }
 
 }

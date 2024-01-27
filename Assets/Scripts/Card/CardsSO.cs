@@ -6,6 +6,7 @@ using UnityEngine;
 public class CardsSO : ScriptableObject
 {
     public int id;
+    public int range;
     public bool isActive;
     public int cardQuality;
     public string title;

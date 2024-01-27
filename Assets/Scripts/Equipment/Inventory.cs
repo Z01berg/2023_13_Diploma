@@ -28,7 +28,7 @@ public class Inventory : MonoBehaviour
             if(fileEntry.EndsWith(".asset"))
                 items.Add(AssetDatabase.LoadAssetAtPath<Item>(fileEntry));
         }
-        
+        GameObject.Find("ItemsPanel").GetComponent<ListAllAvailable>().ListAllItemsInInv();
     }
 
     #endregion
