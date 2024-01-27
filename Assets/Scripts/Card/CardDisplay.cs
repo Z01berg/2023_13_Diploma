@@ -27,7 +27,6 @@ public class CardDisplay : MonoBehaviour
         attack.text = cardSO.damage.ToString();
         move.text = cardSO.move.ToString();
         range = cardSO.range;
-        id = cardSO.id;
 
         BG.sprite = Resources.Load<Sprite>(cardSO.backgroundPath);
         banner.sprite = Resources.Load<Sprite>(cardSO.spritePath);

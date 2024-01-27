@@ -18,3 +18,21 @@ public class CustomJsonImportIspector : Editor
         }
     }
 }
+
+[CustomEditor(typeof(CardCreator))]
+public class CustomJsonCardExportInspector : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+
+        CardCreator cc = (CardCreator)target;
+
+        if (GUILayout.Button("Export"))
+        {
+            cc.CreateCard();
+        }
+        
+    }
+    
+}

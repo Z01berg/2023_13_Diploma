@@ -397,6 +397,82 @@ PrefabInstance:
       propertyPath: m_Name
       value: JsonCardsLoader
       objectReference: {fileID: 0}
+    - target: {fileID: 2334520803194486116, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
+      propertyPath: objects.attackCardsList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334520803194486116, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
+      propertyPath: objects.attackCardsList.Array.data[1].id
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334520803194486116, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
+      propertyPath: objects.attackCardsList.Array.data[0].cost
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334520803194486116, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
+      propertyPath: objects.attackCardsList.Array.data[1].cost
+      value: 232
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334520803194486116, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
+      propertyPath: objects.attackCardsList.Array.data[1].move
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334520803194486116, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
+      propertyPath: objects.attackCardsList.Array.data[0].range
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334520803194486116, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
+      propertyPath: objects.attackCardsList.Array.data[0].title
+      value: ExampleAttackCard1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334520803194486116, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
+      propertyPath: objects.attackCardsList.Array.data[1].range
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334520803194486116, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
+      propertyPath: objects.attackCardsList.Array.data[1].title
+      value: ExampleAttackCard2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334520803194486116, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
+      propertyPath: objects.attackCardsList.Array.data[0].damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334520803194486116, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
+      propertyPath: objects.attackCardsList.Array.data[1].damage
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334520803194486116, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
+      propertyPath: objects.attackCardsList.Array.data[0].isActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334520803194486116, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
+      propertyPath: objects.attackCardsList.Array.data[1].isActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334520803194486116, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
+      propertyPath: objects.attackCardsList.Array.data[0].spritePath
+      value: Graphics/CardSprites/AttackCards/ExampleAttackCard1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334520803194486116, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
+      propertyPath: objects.attackCardsList.Array.data[1].spritePath
+      value: Graphics/CardSprites/AttackCards/ExampleAttackCard1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334520803194486116, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
+      propertyPath: objects.attackCardsList.Array.data[0].description
+      value: This card deals 1 dmg to one enemy. Lorem ipsum dolor.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334520803194486116, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
+      propertyPath: objects.attackCardsList.Array.data[1].description
+      value: This card deals 2 dmg to one enemy. Lorem ipsum dolor.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334520803194486116, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
+      propertyPath: objects.attackCardsList.Array.data[0].backgroundPath
+      value: Graphics/CardBackgrounds/AttackCards/AttackCardBackground
+      objectReference: {fileID: 0}
+    - target: {fileID: 2334520803194486116, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
+      propertyPath: objects.attackCardsList.Array.data[1].backgroundPath
+      value: Graphics/CardBackgrounds/AttackCards/AttackCardBackground
+      objectReference: {fileID: 0}
     - target: {fileID: 6620751609888550850, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1152.4419
