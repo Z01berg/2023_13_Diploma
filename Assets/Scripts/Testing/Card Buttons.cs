@@ -14,12 +14,11 @@ public class CardButtons : MonoBehaviour
 
     public void AddCard()
     {
-        // _cardsInHand = GameObject.FindGameObjectsWithTag("Card").Length;
-        // if (_cardsInHand < 10)
-        // {
-        //     Instantiate(card, hand.transform, true).transform.SetParent(hand.transform);
-        // }
-        // HandController.UpdateHandLayout();
+        _cardsInHand = GameObject.FindGameObjectsWithTag("Card").Length;
+        if (_cardsInHand < 10)
+        {
+            Instantiate(card, hand.transform, true).transform.SetParent(hand.transform);
+        }
 
     }
 
