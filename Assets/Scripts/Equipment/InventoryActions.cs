@@ -22,6 +22,7 @@ public class InventoryActions : MonoBehaviour
             {
                 _inv.gameObject.SetActive(false);
                 _active = false;
+                _inv.GetComponent<UIInventory>().SaveState();
             }
             else
             {
