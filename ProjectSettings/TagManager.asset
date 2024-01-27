@@ -7,6 +7,9 @@ TagManager:
   - Card
   - Undefined
   - Inventory
+  - Managers
+  - Loader
+  - Hand
   layers:
   - Default
   - TransparentFX

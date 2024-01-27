@@ -2,12 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 public class CardButtons : MonoBehaviour
 {
     public GameObject card;
-    public Transform hand;
+    public GameObject hand;
     private int _cardsInHand;
     
 
@@ -16,8 +17,9 @@ public class CardButtons : MonoBehaviour
         _cardsInHand = GameObject.FindGameObjectsWithTag("Card").Length;
         if (_cardsInHand < 10)
         {
-            Instantiate(card, hand, true).transform.SetParent(hand);
+            Instantiate(card, hand.transform, true).transform.SetParent(hand.transform);
         }
+
     }
 
     public void DeleteCard()

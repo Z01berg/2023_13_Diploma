@@ -16,4 +16,5 @@ public class CardsSO : ScriptableObject
     public int move;
     public string backgroundPath;
     public string spritePath;
+    public object transform;
 }
