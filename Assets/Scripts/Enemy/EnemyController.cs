@@ -6,16 +6,27 @@ namespace Enemy
     public class EnemyController : MonoBehaviour
     {
         [SerializeField] private int _visionRangeInTiles = 5;
-        [SerializeField] private Tilemap _gridOverlayTilemap;
         [SerializeField] private float _tileSize = 1f;
 
         private Transform _player;
+        private Tilemap _gridOverlayTilemap;
         private bool _isCombatStarted;
 
         void Start()
         {
             _player = GameObject.FindGameObjectWithTag("Player").transform;
-            _gridOverlayTilemap = transform.Find("GridOverlay").GetComponent<Tilemap>();
+
+            GameObject gridOverlayObject = GameObject.FindWithTag("GridOverlayTag");
+            if (gridOverlayObject != null)
+            {
+                _gridOverlayTilemap = gridOverlayObject.GetComponent<Tilemap>();
+            }
+            else
+            {a
+                Debug.LogError("GridOverlay object not found with the specified tag!");
+            }
+
+            ExitCombat();
         }
 
         void Update()
