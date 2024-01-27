@@ -46,14 +46,12 @@ namespace Enemy
         bool EnterCombat()
         {
                 _gridOverlayTilemap.GetComponent<Renderer>().enabled = true;
-                Debug.Log("Player detected - initiating combat");
                 return _isCombatStarted = true;
         }
 
         bool ExitCombat()
         {
                 _gridOverlayTilemap.GetComponent<Renderer>().enabled = false;
-                Debug.Log("Player outside combat zone");
                 return _isCombatStarted = false;
         }
         
