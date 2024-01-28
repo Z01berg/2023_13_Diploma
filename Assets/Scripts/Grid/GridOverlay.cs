@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -5,12 +6,20 @@ namespace Grid
 {
     public class GridOverlay : MonoBehaviour
     {
-        private Tilemap _gridOverlayTilemap;
-
+        private Renderer _gridOverlayTilemapRenderer;
+        private bool _checkGridOverlay;
+        
         void Start()
         {
-            _gridOverlayTilemap = transform.Find("GridOverlay").GetComponent<Tilemap>();
-            _gridOverlayTilemap.GetComponent<Renderer>().enabled = true;
+            _gridOverlayTilemapRenderer = transform.GetComponent<Tilemap>().GetComponent<Renderer>();
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                _gridOverlayTilemapRenderer.enabled = !_gridOverlayTilemapRenderer.enabled;
+            }
         }
     }
 }

@@ -54196,13 +54196,14 @@ GameObject:
   - component: {fileID: 623464794}
   - component: {fileID: 623464796}
   - component: {fileID: 623464795}
+  - component: {fileID: 623464797}
   m_Layer: 8
   m_Name: GridOverlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &623464794
 Transform:
   m_ObjectHideFlags: 0
@@ -54238,7 +54239,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 935226206a4d4c546b2f368c07b4b3c5, type: 2}
+  - {fileID: 2100000, guid: f4b6a5aa26ec39342a4bb56d1efeda14, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -54258,7 +54259,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -76169,6 +76170,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &623464797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623464793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a3e73233b96ffb47b027457d51c0e53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &860587648
 GameObject:
   m_ObjectHideFlags: 3
@@ -76432,7 +76445,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1041079099}
   - component: {fileID: 1041079098}
-  - component: {fileID: 1041079097}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -76440,18 +76452,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1041079097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1041079096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a3e73233b96ffb47b027457d51c0e53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!156049354 &1041079098
 Grid:
   m_ObjectHideFlags: 0
