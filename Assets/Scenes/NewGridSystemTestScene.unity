@@ -22598,6 +22598,9 @@ MonoBehaviour:
   _whatStopsMovement:
     serializedVersion: 2
     m_Bits: 64
+  _actionPoints: 2
+  _skillRange: 2
+  _skillDamage: 2
 --- !u!212 &1593484815
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -44918,6 +44921,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _visionRangeInTiles: 5
   _tileSize: 1
+  _healthPoints: 0
 --- !u!1 &2097581878
 GameObject:
   m_ObjectHideFlags: 0
