@@ -75,11 +75,13 @@ namespace Enemy
             set => _healthPoints = value;
         }
 
+        /*
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube(transform.position, new Vector3(_visionRangeInTiles * _tileSize * 2, _visionRangeInTiles * _tileSize * 2, 0));
         }
+        */
         
     }
 }
