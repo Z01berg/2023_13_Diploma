@@ -7,6 +7,7 @@ namespace Enemy
     {
         [SerializeField] private int _visionRangeInTiles = 5;
         [SerializeField] private float _tileSize = 1f;
+        [SerializeField] private int _healthPoints;
 
         private Transform _player;
         private Tilemap _gridOverlayTilemap;
@@ -65,7 +66,15 @@ namespace Enemy
                 _gridOverlayTilemap.GetComponent<Renderer>().enabled = false;
                 return _isCombatStarted = false;
         }
-        
+
+        public bool IsCombatStarted => _isCombatStarted;
+
+        public int HealthPoints
+        {
+            get => _healthPoints;
+            set => _healthPoints = value;
+        }
+
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
