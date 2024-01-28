@@ -20,7 +20,6 @@ public class Timer : MonoBehaviour
     
     private float timeToPause = 1f; //do animacji timerów
     
-
     private bool Cheat = false; // włączenie na "R CTRL" zmieniania znaczenia timerów
     
     public void AddTextFromSetTimer(TMP_Text newText, String text, GameObject HP)
