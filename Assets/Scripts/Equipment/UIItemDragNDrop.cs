@@ -88,11 +88,12 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
             
             var card = Instantiate(cardPrefab);
             card.GetComponent<CardDisplay>().cardSO = c;
+            Destroy(card.GetComponent<CardZoom>());
+            Destroy(card.GetComponent<CardUse>());
             card.transform.SetParent(cardsPanel.transform);
             cardsList.Add(card);
 
             cardsSpawned = true;
-            
         }
 
     }
