@@ -10,7 +10,7 @@ namespace Grid
         void Start()
         {
             _gridOverlayTilemap = transform.Find("GridOverlay").GetComponent<Tilemap>();
-            _gridOverlayTilemap.GetComponent<Renderer>().enabled = false;
+            _gridOverlayTilemap.GetComponent<Renderer>().enabled = true;
         }
     }
 }
