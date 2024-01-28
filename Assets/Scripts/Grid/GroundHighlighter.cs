@@ -1,3 +1,5 @@
+using Enemy;
+using Player;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -7,16 +9,19 @@ namespace Grid
     public class GroundHighlighter : MonoBehaviour
     {
         private UnityEngine.Grid _grid;
+        private PlayerController _playerController;
+        private EnemyController _enemyController;
         [SerializeField] private Tilemap interactiveTilemap;
         [SerializeField] private Tile hoverTile;
         [SerializeField] private Tile moveRangeTile;
         [SerializeField] private Tile skillRangeTile;
-
-        private Vector3Int _previousMousePosition;
+        
         private HighlightMode _currentHighlightMode = HighlightMode.SingleTile;
         private Transform _playerTransform;
         private Vector3Int _previousPlayerPosition;
         private Vector3Int _currentPlayerPosition;
+        private Vector3Int _previousMousePosition;
+        private Vector3Int _currentMousePosition;
 
         private enum HighlightMode
         {
@@ -29,66 +34,63 @@ namespace Grid
         {
             _grid = gameObject.GetComponent<UnityEngine.Grid>();
             _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-            _currentPlayerPosition = GetPlayerPosition();
-            _previousPlayerPosition = _currentPlayerPosition;
+            _playerController = FindObjectOfType<PlayerController>();
+            _enemyController = FindObjectOfType<EnemyController>();
         }
 
         private void Update()
         {
-            Vector3Int mousePosition = GetMousePosition();
+            _currentMousePosition = GetMousePosition();
             _currentPlayerPosition = GetPlayerPosition();
 
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (_enemyController.IsCombatStarted)
             {
-                _currentHighlightMode = HighlightMode.MoveRange;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                _currentHighlightMode = HighlightMode.SkillRange;
-            }
-            else if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                _currentHighlightMode = HighlightMode.SingleTile;
-            }
-
-            if (_currentHighlightMode == HighlightMode.SkillRange || _currentHighlightMode == HighlightMode.SingleTile)
-            {
-                if (!mousePosition.Equals(_previousMousePosition))
+                if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
-                    ClearTiles();
-                    HighlightTiles(mousePosition);
-                    _previousMousePosition = mousePosition;
+                    _currentHighlightMode = HighlightMode.MoveRange;
+                } else if (Input.GetKeyDown(KeyCode.Alpha2))
+                {
+                    _currentHighlightMode = HighlightMode.SkillRange;
                 }
             }
             else
             {
-                ClearTiles();
-                HighlightTiles(_currentPlayerPosition);
-                _previousPlayerPosition = _currentPlayerPosition;
+                _currentHighlightMode = HighlightMode.SingleTile;
+            }
+            
+            if (_currentHighlightMode == HighlightMode.SkillRange || _currentHighlightMode == HighlightMode.SingleTile)
+            {
+                ClearTilesWMousePosition();
+                if (!_currentMousePosition.Equals(_previousMousePosition))
+                {
+                    ClearTilesWMousePosition();
+                }
+            }
+            else
+            {
+                ClearTilesWPlayerPosition();
                 if (!_currentPlayerPosition.Equals(_previousPlayerPosition))
                 {
-                    ClearTiles();
-                    HighlightTiles(_currentPlayerPosition);
-                    _previousPlayerPosition = _currentPlayerPosition;
+                    ClearTilesWPlayerPosition();
                 }
             }
         }
 
-        void ClearTiles()
+        private void ClearTiles()
         {
             interactiveTilemap.ClearAllTiles();
         }
 
-        void HighlightTiles(Vector3Int mousePosition)
+        private void HighlightTiles(Vector3Int mousePosition)
         {
             switch (_currentHighlightMode)
             {
                 case HighlightMode.MoveRange:
-                    HighlightMoveRange(3);
+                    HighlightMoveRange(_playerController.ActionPoints);
                     break;
 
                 case HighlightMode.SkillRange:
-                    HighlightSkillRange(mousePosition, 2);
+                    HighlightSkillRange(mousePosition, _playerController.SkillRange);
                     break;
 
                 case HighlightMode.SingleTile:
@@ -97,7 +99,7 @@ namespace Grid
             }
         }
 
-        void HighlightMoveRange(int actionPoints)
+        private void HighlightMoveRange(int actionPoints)
         {
             Vector3Int playerPosition = GetPlayerPosition();
 
@@ -130,13 +132,27 @@ namespace Grid
                 }
             }
         }
+
+        private void ClearTilesWMousePosition()
+        {
+            ClearTiles();
+            HighlightTiles(_currentMousePosition);
+            _previousMousePosition = _currentMousePosition;
+        }
+
+        private void ClearTilesWPlayerPosition()
+        {
+            ClearTiles();
+            HighlightTiles(_currentPlayerPosition);
+            _previousPlayerPosition = _currentPlayerPosition;
+        }
         
-        Vector3Int GetPlayerPosition()
+        private Vector3Int GetPlayerPosition()
         {
             return _grid.WorldToCell(_playerTransform.position);
         }
 
-        Vector3Int GetMousePosition()
+        private Vector3Int GetMousePosition()
         {
             Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             return _grid.WorldToCell(mouseWorldPosition);
