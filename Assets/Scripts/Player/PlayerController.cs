@@ -54,9 +54,9 @@ namespace Player
             }
         }
 
-        private void ToogleScrypt(bool yes)
+        private void ToogleScrypt(bool isThis)
         {
-            this.enabled = yes;
+            this.enabled = isThis;
         }
         
         public int ActionPoints => _actionPoints;
