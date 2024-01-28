@@ -11,6 +11,10 @@ namespace Player
 
         public bool DidSmth = false; //dla Timer kiedy jakaś karta rozegrana true inaczej treba 2 razy kliknąć enter
         
+        [SerializeField] private int _actionPoints;
+        [SerializeField] private int _skillRange;
+        [SerializeField] private int _skillDamage;
+        
         private void Start()
         {
             _movePoint.parent = null;
@@ -54,5 +58,10 @@ namespace Player
         {
             this.enabled = yes;
         }
+        
+        public int ActionPoints => _actionPoints;
+        public int SkillRange => _skillRange;
+        public int SkillDamage => _skillDamage; 
+        
     }
 }

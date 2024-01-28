@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Enemy
-{
     public class EnemyController : MonoBehaviour
     {
         [SerializeField] private int _visionRangeInTiles = 5;
@@ -84,4 +82,4 @@ namespace Enemy
         */
         
     }
-}
+
