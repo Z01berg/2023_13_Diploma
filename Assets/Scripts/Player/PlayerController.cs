@@ -8,6 +8,9 @@ namespace Player
         [SerializeField] private float _moveSpeed = 5f;
         [SerializeField] private Transform _movePoint;
         [SerializeField] private LayerMask _whatStopsMovement;
+        [SerializeField] private int _actionPoints;
+        [SerializeField] private int _skillRange;
+        [SerializeField] private int _skillDamage;
         
         private void Start()
         {
@@ -46,5 +49,10 @@ namespace Player
                 }
             }
         }
+        
+        public int ActionPoints => _actionPoints;
+        public int SkillRange => _skillRange;
+        public int SkillDamage => _skillDamage;
+
     }
 }
