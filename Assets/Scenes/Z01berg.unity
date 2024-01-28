@@ -54212,7 +54212,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &623464794
 Transform:
   m_ObjectHideFlags: 0
@@ -54248,7 +54248,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 935226206a4d4c546b2f368c07b4b3c5, type: 2}
+  - {fileID: 2100000, guid: f4b6a5aa26ec39342a4bb56d1efeda14, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -54268,7 +54268,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -98863,6 +98863,18 @@ PrefabInstance:
     - target: {fileID: 299063472759132790, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
       propertyPath: DidSmth
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 299063472759132790, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
+      propertyPath: _skillRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 299063472759132790, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
+      propertyPath: _skillDamage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 299063472759132790, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
+      propertyPath: _actionPoints
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1220835084138148249, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
       propertyPath: m_LocalPosition.x

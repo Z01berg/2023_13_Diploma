@@ -10,6 +10,9 @@ TagManager:
   - Managers
   - Loader
   - Hand
+  - HeadSlot
+  - Enemy
+  - GridOverlayTag
   layers:
   - Default
   - TransparentFX
