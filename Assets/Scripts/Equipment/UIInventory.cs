@@ -10,6 +10,11 @@ public class UIInventory : MonoBehaviour
     [SerializeField] private GameObject itemsPanel;
     [SerializeField] private GameObject EquipmentPanel;
 
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void SaveState()
     {
         Equipment.Instance.cards.Clear();
