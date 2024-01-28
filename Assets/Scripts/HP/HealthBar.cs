@@ -7,7 +7,9 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    [SerializeField] private GameObject man;
+    [SerializeField] private GameObject game_object;
+    [SerializeField] private GameObject body;
+    
     [SerializeField] private Slider slider;
     [SerializeField] private TMP_Text data;
     private string[] parts;
@@ -64,15 +66,16 @@ public class HealthBar : MonoBehaviour
 
     private void Kill()
     {
-        if (value <= 0)
+        if (value <= 0 && This)
         {
-            Destroy(man);
+            Destroy(game_object);
+            Destroy(body);
         }
     }
 
     private void HandleWhatHP(GameObject recieved)
     {
-        if (recieved == man)
+        if (recieved != game_object)
         {
             This = !This;
         }
