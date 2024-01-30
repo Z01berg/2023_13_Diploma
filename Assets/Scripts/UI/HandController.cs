@@ -69,9 +69,6 @@ public class HandController : MonoBehaviour
     
     IEnumerator DelayedMethod()
     {
-        // Debug.Log("Początek metody");
-
-        // Poczekaj 2 sekundy
         yield return new WaitForSeconds(0f);
         LayoutRebuilder.ForceRebuildLayoutImmediate(hand.GetComponent<RectTransform>());
         
