@@ -191,7 +191,76 @@ public class RoomNodeSO : ScriptableObject
     //add childID to the node (returns true if the node has been added, false otherwise)
     public bool AddChildRoomNodeIDToRoomNode(string childID)
     {
-        childRoomNodeIDList.Add(childID);
+        //Check child node can be added validly to parent
+        if (IsChildRoomValid(childID))
+        {
+            childRoomNodeIDList.Add(childID);
+            return true;
+        }
+        return false;
+    }
+
+    //Check the child node can be validly added to the parent node - return true if it can otherwise return false
+    public bool IsChildRoomValid(string childID)
+    {
+        bool isConnectedBossNodeAlready = false;
+        
+        //check if there is already connected boss room in node graph
+        foreach (RoomNodeSO roomNode in roomNodeGraph.roomNodeList)
+        {
+            if (roomNode.roomNodeType.isBossRoom && roomNode.parentRoomNodeIDList.Count > 0)
+            {
+                isConnectedBossNodeAlready = true;
+            }
+        }
+        
+        //if child node have coonection with boss room already
+        if (roomNodeGraph.GetRoomNode(childID).roomNodeType.isBossRoom && isConnectedBossNodeAlready)
+            return false;
+        
+        //if child have type None
+        if (roomNodeGraph.GetRoomNode(childID).roomNodeType.isNone)
+            return false;
+        
+        //if child alredy have child with this child
+        if (childRoomNodeIDList.Contains(childID))
+            return false;
+        
+        //if nodeID and childID same
+        if (id == childID)
+            return false;
+        
+        //if childID is the parentID
+        if (parentRoomNodeIDList.Contains(childID))
+            return false;
+        
+        //if child have parent return false
+        if (roomNodeGraph.GetRoomNode(childID).parentRoomNodeIDList.Count > 0)
+            return false;
+        
+        //if child Corridor and parent too
+        if (roomNodeGraph.GetRoomNode(childID).roomNodeType.isCorridor && roomNodeType.isCorridor)
+            return false;
+        
+        // if child not corridor and parent not as well
+        if (!roomNodeGraph.GetRoomNode(childID).roomNodeType.isCorridor && !roomNodeType.isCorridor)
+            return false;
+        
+        // if add corridor will not be > than max value
+        if (roomNodeGraph.GetRoomNode(childID).roomNodeType.isCorridor &&
+            childRoomNodeIDList.Count >= Settings.maxChildCorridors)
+            return false;
+        
+        //if child is enterance (must be top level parent mode)
+        if (roomNodeGraph.GetRoomNode(childID).roomNodeType.isEntrance)
+            return false;
+        
+        //if corridor have already connected room
+        if (!roomNodeGraph.GetRoomNode(childID).roomNodeType.isCorridor && childRoomNodeIDList.Count > 0)
+            return false;
+        
+        //and finally if you are still alive "THE CHOOSEN ONE" go with this "TRUE" as "TROPHY" and remember not every have this "TROPHY"
+        //go around world and remember my MERCY!!!
         return true;
     }
     

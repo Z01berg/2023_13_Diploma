@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEditor;
@@ -31,6 +32,9 @@ public class RoomNodeGraphEditor : EditorWindow
 
    private void OnEnable()
    {
+      //Selection change event (on inspector)
+      Selection.selectionChanged += InspectorSelectionChanged;
+      
       //Define Node layot
       roomNodeStyle = new GUIStyle();
       roomNodeStyle.normal.background = EditorGUIUtility.Load("node1") as Texture2D;
@@ -39,16 +43,22 @@ public class RoomNodeGraphEditor : EditorWindow
       roomNodeStyle.border = new RectOffset(nodeBorder, nodeBorder, nodeBorder, nodeBorder);
       
       //define selected node style
-      roomNodeStyle = new GUIStyle();
-      roomNodeStyle.normal.background = EditorGUIUtility.Load("node1 on") as Texture2D;
-      roomNodeStyle.normal.textColor = Color.white;
-      roomNodeStyle.padding = new RectOffset(nodePadding, nodePadding, nodePadding, nodePadding);
-      roomNodeStyle.border = new RectOffset(nodeBorder, nodeBorder, nodeBorder, nodeBorder);
+      roomNodeSelectedStyle = new GUIStyle();
+      roomNodeSelectedStyle.normal.background = EditorGUIUtility.Load("node1 on") as Texture2D;
+      roomNodeSelectedStyle.normal.textColor = Color.white;
+      roomNodeSelectedStyle.padding = new RectOffset(nodePadding, nodePadding, nodePadding, nodePadding);
+      roomNodeSelectedStyle.border = new RectOffset(nodeBorder, nodeBorder, nodeBorder, nodeBorder);
       
       //Load Room node types
       roomNodeTypeList = GameResources.Instance.roomNodeTypeList;
    }
-   
+
+   private void OnDisable()
+   {
+      //Unsubscribe Selection change event (on inspector)
+      Selection.selectionChanged -= InspectorSelectionChanged;
+   }
+
    //Open the room node graph editor window if a room node graph scriptable object asset is double clicked in the inspector
    
    [OnOpenAsset(0)] //Need the namespace UnityEditor.Callback
@@ -184,6 +194,8 @@ public class RoomNodeGraphEditor : EditorWindow
       GenericMenu menu = new GenericMenu();
       
       menu.AddItem(new GUIContent("Create Room Node"), false, CreateRoomNode, mousePosition);
+      menu.AddSeparator("");
+      menu.AddItem(new GUIContent("Select All Room Nodes"), false, SelectAllRoomNode);
       
       menu.ShowAsContext();
    }
@@ -236,6 +248,16 @@ public class RoomNodeGraphEditor : EditorWindow
             GUI.changed = true;
          }
       }
+   }
+   
+   //Select all room nodes
+   private void SelectAllRoomNode()
+   {
+      foreach (RoomNodeSO roomNode in currentRoomNodeGraph.roomNodeList)
+      {
+         roomNode.isSelected = true;
+      }
+      GUI.changed = true;
    }
    
    //process mouse up event
@@ -369,5 +391,15 @@ public class RoomNodeGraphEditor : EditorWindow
       GUI.changed = true;
    }
    
-   
+   //Selection changed in the inspector
+   private void InspectorSelectionChanged()
+   {
+      RoomNodeGraphSO roomNodeGraph = Selection.activeObject as RoomNodeGraphSO;
+
+      if (roomNodeGraph != null)
+      {
+         currentRoomNodeGraph = roomNodeGraph;
+         GUI.changed = true;
+      }
+   }
 }
