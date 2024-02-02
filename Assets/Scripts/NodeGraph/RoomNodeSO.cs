@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -55,6 +56,32 @@ public class RoomNodeSO : ScriptableObject
             int selection = EditorGUILayout.Popup("", selected, GetRoomNodeTypesToDisplay());
 
             roomNodeType = roomNodeTypeList.list[selection];
+
+            //if the room type selection has changed making child connections potentially invalid
+            if (roomNodeTypeList.list[selected].isCorridor && !roomNodeTypeList.list[selection].isCorridor
+                || !roomNodeTypeList.list[selected].isCorridor && roomNodeTypeList.list[selection].isCorridor
+                || !roomNodeTypeList.list[selected].isBossRoom && roomNodeTypeList.list[selection].isBossRoom)
+            {
+                //if roomnode type has changed and it already have childrens then delete the parent child links
+                if (childRoomNodeIDList.Count > 0)
+                {
+                    for (int i = childRoomNodeIDList.Count -1; i >= 0; i--)
+                    {
+                        //get child room node
+                        RoomNodeSO childRoomNode = roomNodeGraph.GetRoomNode(childRoomNodeIDList[i]);
+               
+                        //if child node is selected
+                        if (childRoomNode != null)
+                        {
+                            //remove childID from parent
+                            RemoveChildRoomNodeIDFromRoomNode(childRoomNode.id);
+                  
+                            //remove parentID from child
+                            childRoomNode.RemoveParentRoomNodeIDFromRoomNode(id);
+                        }
+                    }
+                }
+            }
         }
 
         if (EditorGUI.EndChangeCheck())
@@ -271,8 +298,29 @@ public class RoomNodeSO : ScriptableObject
         return true;
     }
     
+    //remove childID from node
+    public bool RemoveChildRoomNodeIDFromRoomNode(string childID)
+    {
+        //if node contains childID then remove it
+        if (childRoomNodeIDList.Contains(childID))
+        {
+            childRoomNodeIDList.Remove(childID);
+            return true;
+        }
+        return false;
+    }
     
-    
+    //remove parentID from the Node
+    public bool RemoveParentRoomNodeIDFromRoomNode(string parentID)
+    {
+        //if node have ParentID then remove it
+        if (parentRoomNodeIDList.Contains(parentID))
+        {
+            parentRoomNodeIDList.Remove(parentID);
+            return true;
+        }
+        return false;
+    }
     
 #endif
 

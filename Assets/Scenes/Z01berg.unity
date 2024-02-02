@@ -98762,6 +98762,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3175473839444849471, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3175473839444849471, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3915433133722241345, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.79
