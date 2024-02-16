@@ -13,6 +13,9 @@ TagManager:
   - HeadSlot
   - Enemy
   - GridOverlayTag
+  - groundTilemap
+  - collisionTilemap
+  - minimapTilemap
   layers:
   - Default
   - TransparentFX
@@ -37,9 +40,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - Room
+  - Wall
+  - MiniMap
   - 
   - 
   - 
@@ -47,6 +50,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ground
+    uniqueID: 1142449295
+    locked: 0
+  - name: Collision
+    uniqueID: 2053827435
+    locked: 0
+  - name: Minimap
+    uniqueID: 2031271367
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
