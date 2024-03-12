@@ -1,0 +1,49 @@
+{
+    "attackCardsList":[
+        {
+            "id": 0,
+            "isActive": true,
+            "cardQuality": 0,
+            
+            "title": "DefaultMovementkCard",
+            "description": "This card lets you move by 1 squares.",
+            "cost": 1,
+            "damage": 0,
+            "range": 0,
+            "move": 1,
+            
+            "backgroundPath": "Graphics/CardBackgrounds/MovementCards/MovementCardBronzeTier",
+            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+        },
+        {
+            "id": 1,
+            "isActive": true,
+            "cardQuality": 1,
+            
+            "title": "ExampleMovementCard1",
+            "description": "This card lets you move by 3 squares.",
+            "cost": 3,
+            "damage": 0,
+            "range": 0,
+            "move": 3,
+            
+            "backgroundPath": "Graphics/CardBackgrounds/MovementCards/MovementCardSilverTier",
+            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+        },
+        {
+            "id": 2,
+            "isActive": true,
+            "cardQuality": 2,
+            
+            "title": "ExampleMovementCard2",
+            "description": "This card lets you move by 5 squares.",
+            "cost": 7,
+            "damage": 0,
+            "range": 0,
+            "move": 5,
+            
+            "backgroundPath": "Graphics/CardBackgrounds/MovementCards/MovementCardGoldTier",
+            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+        }
+    ]
+}

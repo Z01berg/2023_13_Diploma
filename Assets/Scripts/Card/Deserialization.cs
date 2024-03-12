@@ -22,9 +22,17 @@ public struct JItem
 
 public class Deserialization : MonoBehaviour
 {
-    [SerializeField] private TextAsset jsonFile;
+    [SerializeField] private TextAsset AttackFile;
     [SerializeField] private JsonCards objects;
-    string cPath = "Assets/ScriptableObjectAssets/Card/";
+    string cPath = "Assets/ScriptableObjectAssets/Card/Attack/";
+
+    [SerializeField] private TextAsset DefenceFile;
+    [SerializeField] private JsonCards dObjects;
+    string dPath = "Assets/ScriptableObjectAssets/Card/Defence/";
+
+    [SerializeField] private TextAsset MovementFile;
+    [SerializeField] private JsonCards mObjects;
+    string mPath = "Assets/ScriptableObjectAssets/Card/Move/";
 
     [SerializeField] private TextAsset jsonItemsFile;
     [SerializeField] private JsonItems itemsObjects;
@@ -34,7 +42,7 @@ public class Deserialization : MonoBehaviour
     {
         //Inventory.Instance.items = new List<Item>();
         
-        objects = JsonUtility.FromJson<JsonCards>(jsonFile.text);
+        objects = JsonUtility.FromJson<JsonCards>(AttackFile.text);
 
         foreach (var obj in objects.attackCardsList)
         {
@@ -55,7 +63,51 @@ public class Deserialization : MonoBehaviour
             AssetDatabase.CreateAsset(s, cPath + s.title + ".asset");
             AssetDatabase.SaveAssets();
         }
-        
+
+        dObjects = JsonUtility.FromJson<JsonCards>(DefenceFile.text);
+
+        foreach (var obj in dObjects.attackCardsList)
+        {
+            var s = ScriptableObject.CreateInstance<CardsSO>();
+
+            s.id = obj.id;
+            s.isActive = obj.isActive;
+            s.cardQuality = obj.cardQuality;
+            s.title = obj.title;
+            s.description = obj.description;
+            s.cost = obj.cost;
+            s.damage = obj.damage;
+            s.move = obj.move;
+            s.backgroundPath = obj.backgroundPath;
+            s.spritePath = obj.spritePath;
+            s.range = obj.range;
+
+            AssetDatabase.CreateAsset(s, dPath + s.title + ".asset");
+            AssetDatabase.SaveAssets();
+        }
+
+        mObjects = JsonUtility.FromJson<JsonCards>(MovementFile.text);
+
+        foreach (var obj in mObjects.attackCardsList)
+        {
+            var s = ScriptableObject.CreateInstance<CardsSO>();
+
+            s.id = obj.id;
+            s.isActive = obj.isActive;
+            s.cardQuality = obj.cardQuality;
+            s.title = obj.title;
+            s.description = obj.description;
+            s.cost = obj.cost;
+            s.damage = obj.damage;
+            s.move = obj.move;
+            s.backgroundPath = obj.backgroundPath;
+            s.spritePath = obj.spritePath;
+            s.range = obj.range;
+
+            AssetDatabase.CreateAsset(s, mPath + s.title + ".asset");
+            AssetDatabase.SaveAssets();
+        }
+
         itemsObjects = JsonUtility.FromJson<JsonItems>(jsonItemsFile.text);
 
         foreach (var obj in itemsObjects.itemsList)

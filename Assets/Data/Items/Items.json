@@ -7,9 +7,9 @@
             "cards":[
                 "ExampleAttackCard1",
                 "ExampleAttackCard1",
-                "ExampleAttackCard1"
+                "ExampleAttackCard2"
             ],
-            "icon": "Graphics/Item/Placeholder"
+            "icon": "Graphics/PLC/swordPLC"
         },
         {
             "itemType": "hand",
@@ -20,8 +20,62 @@
                 "ExampleAttackCard2",
                 "ExampleAttackCard2"
             ],
-            "icon": "Graphics/Item/Placeholder"
-            
+            "icon": "Graphics/PLC/BetterSwordPLC"
+        },
+        {
+            "itemType": "hand",
+            "itemName": "basic shield",
+            "description": "for protection",
+            "cards":[
+                "ExampleDefenceCard2",
+                "ExampleDefenceCard2",
+                "ExampleDefenceCard2"
+            ],
+            "icon": "Graphics/PLC/shieldPLC"
+        },
+        {
+            "itemType": "cheast",
+            "itemName": "chest armor",
+            "description": "protec chest",
+            "cards":[
+                "ExampleDefenceCard1",
+                "ExampleDefenceCard1",
+                "ExampleDefenceCard2"
+            ],
+            "icon": "Graphics/PLC/chestArmorPLC"
+        },
+        {
+            "itemType": "legs",
+            "itemName": "lek armor",
+            "description": "protec lek",
+            "cards":[
+                "ExampleMovementCard1",
+                "ExampleMovementCard1",
+                "ExampleMovementCard2"
+            ],
+            "icon": "Graphics/PLC/LegArmorPLC"
+        },
+        {
+            "itemType": "hand",
+            "itemName": "simple bow",
+            "description": "shooti shooti",
+            "cards":[
+                "BowAttack",
+                "BowAttack",
+                "BowAttack"
+            ],
+            "icon": "Graphics/PLC/BowPLC"
+        },
+        {
+            "itemType": "head",
+            "itemName": "helmet",
+            "description": "protec head",
+            "cards":[
+                "ExampleDefenceCard1",
+                "ExampleDefenceCard1",
+                "ExampleDefenceCard1"
+            ],
+            "icon": "Graphics/PLC/helmetPLC"
         }
     ]
 }

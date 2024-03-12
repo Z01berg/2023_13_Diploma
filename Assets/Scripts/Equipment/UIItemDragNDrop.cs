@@ -71,7 +71,7 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("Pressed on " + item.itemName);
+        
     }
 
     public void OnDrop(PointerEventData eventData)

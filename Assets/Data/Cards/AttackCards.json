@@ -5,29 +5,59 @@
             "isActive": true,
             "cardQuality": 0,
             
-            "title": "ExampleAttackCard1",
+            "title": "DefoultAttackCard",
             "description": "This card deals 1 dmg to one enemy. Lorem ipsum dolor.",
             "cost": 1,
             "damage": 1,
             "range": 1,
             "move": 0,
             
-            "backgroundPath": "Graphics/CardBackgrounds/AttackCards/AttackCardBackground",
+            "backgroundPath": "Graphics/CardBackgrounds/AttackCards/AttackCardBronzeTier",
             "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
         },
         {
             "id": 1,
             "isActive": true,
-            "cardQuality": 0,
+            "cardQuality": 1,
+            
+            "title": "ExampleAttackCard1",
+            "description": "This card deals 5 dmg to one enemy. Lorem ipsum dolor.",
+            "cost": 3,
+            "damage": 5,
+            "range": 1,
+            "move": 0,
+            
+            "backgroundPath": "Graphics/CardBackgrounds/AttackCards/AttackCardSilverTier",
+            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+        },
+        {
+            "id": 2,
+            "isActive": true,
+            "cardQuality": 2,
             
             "title": "ExampleAttackCard2",
-            "description": "This card deals 2 dmg to one enemy. Lorem ipsum dolor.",
-            "cost": 232,
+            "description": "This card deals 22 dmg to one enemy. Lorem ipsum dolor.",
+            "cost": 5,
             "damage": 22,
             "range": 1,
             "move": 2,
             
-            "backgroundPath": "Graphics/CardBackgrounds/AttackCards/AttackCardBackground",
+            "backgroundPath": "Graphics/CardBackgrounds/AttackCards/AttackCardGoldTier",
+            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+        },
+        {
+            "id": 3,
+            "isActive": true,
+            "cardQuality": 1,
+            
+            "title": "BowAttack",
+            "description": "This card deals 13 range dmg.",
+            "cost": 3,
+            "damage": 8,
+            "range": 3,
+            "move": 0,
+            
+            "backgroundPath": "Graphics/CardBackgrounds/AttackCards/AttackCardSilverTier",
             "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
         }
     ]
