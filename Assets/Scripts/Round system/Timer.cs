@@ -21,6 +21,8 @@ public class Timer : MonoBehaviour
     private float timeToPause = 1f; //do animacji timerów
     
     private bool Cheat = false; // włączenie na "R CTRL" zmieniania znaczenia timerów
+
+    //private Animator _animator;
     
     public void AddTextFromSetTimer(TMP_Text newText, String text, GameObject HP)
     {
@@ -31,6 +33,8 @@ public class Timer : MonoBehaviour
 
     void Start()
     {
+        //_animator = GetComponent<Animator>();
+        
         for (int i = 0; i < texts.Count; i++)
         {
             int value = int.Parse(texts[i].text);
@@ -97,13 +101,24 @@ public class Timer : MonoBehaviour
                 
                 if (timers[activeTimerIndex].Tag == "Player")
                 {
+                    //_animator.SetBool("Now_Turn", true);
                     EventSystem.PlayerMove.Invoke(true);
                 }
                 else
                 {
                     EventSystem.PlayerMove.Invoke(false);
                 }
-              
+
+                if (timers[activeTimerIndex].Tag == "Enemy" )
+                {
+                    //_animator.SetBool("Now_Turn", true);
+                    EventSystem.EnemyMove.Invoke(true);
+                }
+                else
+                {
+                    EventSystem.EnemyMove.Invoke(false);
+                }
+                
                 turn.text = "Turn: " + timers[activeTimerIndex].Tag;
                 timeToPause = 1f;
             }
