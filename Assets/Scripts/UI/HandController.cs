@@ -12,16 +12,21 @@ public class HandController : MonoBehaviour
     private List<Wrapper> _cards = new();
     
     [SerializeField] private ZoomConfig zoomConfig;
-    [Header("Constraints")][SerializeField] private bool forceFitContainer;
-    [Header("Alignment")] [SerializeField] private CardAlignment _alignment = CardAlignment.Center;
+    [Header("Constraints")]
+    [SerializeField] private bool forceFitContainer;
+    [Header("Alignment")]
+    [SerializeField] private CardAlignment _alignment = CardAlignment.Center;
 
     private Wrapper currDraggedCard;
     
-
     [SerializeField] private EventsConfig eventsConfig;
+    [SerializeField] public GameObject placeHolder;
+    
+    private RectTransform _placeHolderPosition;
     private void Start()
     {
         _rectTransform = GetComponent<RectTransform>();
+        _placeHolderPosition = placeHolder.GetComponent<RectTransform>();
         InitCards();
     }
 
@@ -174,5 +179,15 @@ public class HandController : MonoBehaviour
             default:
                 return 0;
         }
+    }
+
+    public Vector2 getPlaceHolderPosition()
+    {
+        return _placeHolderPosition.transform.position;
+    }
+
+    public void SwitchCardsAtPlaceHolder()
+    {
+        
     }
 }

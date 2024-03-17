@@ -10,7 +10,7 @@ namespace UI
         
         public UnityEvent<CardPlayed> onCardPlay;
         public UnityEvent<CardHover> cardHover;
-        public UnityEvent<CardUnhover> cardUnhover;
+        public UnityEvent<CardUnhover> cardUnHover;
         public UnityEvent<CardDestroy> cardDestroy;
     }
 }
