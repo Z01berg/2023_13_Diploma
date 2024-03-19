@@ -20,7 +20,7 @@ public class CardDisplay : MonoBehaviour
     void Start()
     {
         //cardSO.Print();
-
+        id = cardSO.id;
         title.text = cardSO.title;
         description.text = cardSO.description;
         cost.text = cardSO.cost.ToString();
