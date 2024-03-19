@@ -21,9 +21,9 @@ public class Wrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     
     public EventsConfig eventsConfig;
 
-    private static Wrapper cardInUse;
+    public static Wrapper cardInUse;
     
-
+    private CardDisplay _display;
 
     public float width
     {
@@ -32,6 +32,7 @@ public class Wrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     private void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
+        _display = GetComponent<CardDisplay>();
     }
 
     private void Start()
@@ -121,6 +122,7 @@ public class Wrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
             if (PlaceHolder._isTaken)
             {
                 cardInUse._isPressed = false;
+                // _reader.ReadCard(_display);
             }
             _isPressed = true;
             cardInUse = this;
