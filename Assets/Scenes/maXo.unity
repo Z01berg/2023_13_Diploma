@@ -390,6 +390,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 039d869f270322b4eb762de3b99d8a7d, type: 3}
+--- !u!1 &341008501 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5504249420455825556, guid: d9bea3df7e25ecd458503145e5918217, type: 3}
+  m_PrefabInstance: {fileID: 1691420645105549676}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &362923279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1440,12 +1445,13 @@ MonoBehaviour:
     cardHover:
       m_PersistentCalls:
         m_Calls: []
-    cardUnhover:
+    cardUnHover:
       m_PersistentCalls:
         m_Calls: []
     cardDestroy:
       m_PersistentCalls:
         m_Calls: []
+  placeHolder: {fileID: 341008501}
 --- !u!1 &1349437739
 GameObject:
   m_ObjectHideFlags: 0
@@ -2170,7 +2176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5504249420455825556, guid: d9bea3df7e25ecd458503145e5918217, type: 3}
       propertyPath: m_Name
-      value: Spot
+      value: Card in use placeholder
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
