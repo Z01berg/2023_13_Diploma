@@ -12,7 +12,7 @@ public class UIInventory : MonoBehaviour
 
     private void Start()
     {
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     public void SaveState()
