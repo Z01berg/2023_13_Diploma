@@ -22,6 +22,19 @@ public struct JItem
 
 public class Deserialization : MonoBehaviour
 {
+    [SerializeField] private GameObject _head;
+    [SerializeField] private GameObject _chest;
+    [SerializeField] private GameObject _legs;
+    [SerializeField] private GameObject _boots;
+    [SerializeField] private GameObject _rightHand;
+    [SerializeField] private GameObject _leftHand;
+    [SerializeField] private GameObject _it1;
+    [SerializeField] private GameObject _it2;
+    [SerializeField] private GameObject _it3;
+    [SerializeField] private GameObject _it4;
+    [SerializeField] private GameObject _it5;
+    [SerializeField] private GameObject _it6;
+
     [SerializeField] private TextAsset AttackFile;
     [SerializeField] private JsonCards objects;
     string cPath = "Assets/ScriptableObjectAssets/Card/Attack/";
@@ -62,6 +75,20 @@ public class Deserialization : MonoBehaviour
 
             AssetDatabase.CreateAsset(s, cPath + s.title + ".asset");
             AssetDatabase.SaveAssets();
+
+            if (s.name.Contains("Defoult"))
+            {
+                var lScript = _leftHand.GetComponent<DefaultCards>();
+                var rScript = _rightHand.GetComponent<DefaultCards>();
+                lScript.clearList();
+                rScript.clearList();
+
+                for (int i = 0; i < 3; i++)
+                {
+                    lScript.assignCard(s);
+                    rScript.assignCard(s);
+                }
+            }
         }
 
         dObjects = JsonUtility.FromJson<JsonCards>(DefenceFile.text);
@@ -84,6 +111,21 @@ public class Deserialization : MonoBehaviour
 
             AssetDatabase.CreateAsset(s, dPath + s.title + ".asset");
             AssetDatabase.SaveAssets();
+
+            if (s.name.Contains("Default"))
+            {
+                var headScript = _head.GetComponent<DefaultCards>();
+                var chestScript = _chest.GetComponent<DefaultCards>();
+                headScript.clearList();
+                chestScript.clearList();
+
+                for (int i = 0; i < 3; i++)
+                {
+                    headScript.assignCard(s);
+                    chestScript.assignCard(s);
+                }
+            }
+
         }
 
         mObjects = JsonUtility.FromJson<JsonCards>(MovementFile.text);
@@ -106,6 +148,17 @@ public class Deserialization : MonoBehaviour
 
             AssetDatabase.CreateAsset(s, mPath + s.title + ".asset");
             AssetDatabase.SaveAssets();
+
+            if (s.name.Contains("Default"))
+            {
+                var legsScript = _legs.GetComponent<DefaultCards>();
+                legsScript.clearList();
+                
+                for (int i = 0; i < 3; i++)
+                {
+                    legsScript.assignCard(s);
+                }
+            }
         }
 
         itemsObjects = JsonUtility.FromJson<JsonItems>(jsonItemsFile.text);

@@ -54,10 +54,10 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
                 sl.transform.SetParent(itemsPanel.transform);
                 originParentTransform = sl.transform;
             }
-
             rectTransform.position = originParentTransform.position;
             rectTransform.SetParent(originParentTransform);
             RemoveCardsFromDeck();
+            
             
         }
         else

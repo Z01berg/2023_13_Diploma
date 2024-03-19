@@ -11,7 +11,7 @@ public class InventoryActions : MonoBehaviour
 
     private void Start()
     {
-        _active = _inv.activeSelf;
+        //_active = _inv.activeSelf;
     }
 
     void Update()
