@@ -21,8 +21,10 @@ public class Wrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     
     public EventsConfig eventsConfig;
 
-    private static Wrapper cardInUse;
-    
+    public static Wrapper cardInUse;
+
+    private Reader _reader;
+    private CardDisplay _display;
 
 
     public float width
@@ -32,6 +34,7 @@ public class Wrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     private void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
+        _display = GetComponent<CardDisplay>();
     }
 
     private void Start()

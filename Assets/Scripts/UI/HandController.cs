@@ -185,9 +185,4 @@ public class HandController : MonoBehaviour
     {
         return _placeHolderPosition.transform.position;
     }
-
-    public void SwitchCardsAtPlaceHolder()
-    {
-        
-    }
 }
