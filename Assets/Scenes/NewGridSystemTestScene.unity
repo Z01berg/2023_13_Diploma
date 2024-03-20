@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 181211725}
   - component: {fileID: 181211724}
-  - component: {fileID: 181211726}
   - component: {fileID: 181211727}
   m_Layer: 0
   m_Name: Grid
@@ -173,18 +172,6 @@ Transform:
   - {fileID: 2011107002}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &181211726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181211723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a3e73233b96ffb47b027457d51c0e53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &181211727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,6 +271,7 @@ GameObject:
   - component: {fileID: 563386426}
   - component: {fileID: 563386428}
   - component: {fileID: 563386427}
+  - component: {fileID: 563386429}
   m_Layer: 8
   m_Name: GridOverlay
   m_TagString: GridOverlayTag
@@ -22257,6 +22245,18 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &563386429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563386425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a3e73233b96ffb47b027457d51c0e53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &824031279
 GameObject:
   m_ObjectHideFlags: 3
@@ -22598,6 +22598,7 @@ MonoBehaviour:
   _whatStopsMovement:
     serializedVersion: 2
     m_Bits: 64
+  DidSmth: 0
   _actionPoints: 2
   _skillRange: 2
   _skillDamage: 2
