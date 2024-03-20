@@ -41,6 +41,19 @@ namespace Grid
         {
             _currentMousePosition = GetMousePosition();
             _currentPlayerPosition = GetPlayerPosition();
+            
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                _currentHighlightMode = HighlightMode.SingleTile;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                _currentHighlightMode = HighlightMode.MoveRange;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                _currentHighlightMode = HighlightMode.SkillRange;
+            }
 
             if (_enemyController.IsCombatStarted)
             {
