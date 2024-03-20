@@ -18,7 +18,7 @@ namespace Player
         private void Start()
         {
             _movePoint.parent = null;
-            GetComponent<PlayerController>().enabled = !GetComponent<PlayerController>().enabled;
+            //GetComponent<PlayerController>().enabled = !GetComponent<PlayerController>().enabled;
             EventSystem.PlayerMove.AddListener(ToogleScrypt);
         }
     
