@@ -5,18 +5,36 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+ * Publiczna clasa HealthBar jest klasą która robi wszystkie działanie na HP
+ *
+ * ma w sobie informacje o:
+ * - znaczenie slidera
+ * - tekst na sliderze
+ * - do kogo jest podpięty ten HpBar
+ * - dostęp do gameObjectu podpiętego objektu
+ *
+ * Kiedy HealthBar dostaje informacje od eventu że jest urażony to sprawdza czy jest to właściwy obiekt
+ * - jeżeli nie to nic nie robi
+ * - jeżeli tak to zmienia _currentObject = true
+ *
+ * Jeżeli _currentObject to można
+ * - zmienić health public ChangeHealth
+ * - zabić przeciwnika Kill() jeżeli health<0
+ */
+
 public class HealthBar : MonoBehaviour
 {
-    [SerializeField] private GameObject game_object;
-    [SerializeField] private GameObject body;
+    [SerializeField] private GameObject _gameObject;
+    [SerializeField] private GameObject _body;
     
-    [SerializeField] private Slider slider;
-    [SerializeField] private TMP_Text data;
-    private string[] parts;
-    private int maxValue = 0;
-    private int value = 0;
+    [SerializeField] private Slider _slider;
+    [SerializeField] private TMP_Text _data;
+    private string[] _parts;
+    private int _maxValue = 0;
+    private int _value = 0;
     
-    private bool This = false;
+    private bool _currentObject = false;
     
     private void Start()
     {
@@ -31,7 +49,7 @@ public class HealthBar : MonoBehaviour
     {
         Kill();
 
-        if (Input.GetKeyDown(KeyCode.P) && This)
+        if (Input.GetKeyDown(KeyCode.P) && _currentObject)
         {
             ChangeHealth(-1);
             UpdateHealthText();
@@ -40,44 +58,44 @@ public class HealthBar : MonoBehaviour
 
     private void Split()
     {
-        parts = (data.text).Split('/');
+        _parts = (_data.text).Split('/');
     }
 
     private void SetData()
     {
-        maxValue = int.Parse(parts[1]);
-        value = int.Parse(parts[0]);
+        _maxValue = int.Parse(_parts[1]);
+        _value = int.Parse(_parts[0]);
     }
 
     private void UpdateHealth()
     {
-        value = int.Parse(parts[0]);
+        _value = int.Parse(_parts[0]);
     }
 
     public void ChangeHealth(int health)
     {
-        value += health;
+        _value += health;
     }
 
     private void UpdateHealthText()
     {
-        data.text = value.ToString() + " / " + maxValue.ToString();
+        _data.text = _value.ToString() + " / " + _maxValue.ToString();
     }
 
     private void Kill()
     {
-        if (value <= 0 && This)
+        if (_value <= 0 && _currentObject)
         {
-            Destroy(game_object);
-            Destroy(body);
+            Destroy(_gameObject);
+            Destroy(_body);
         }
     }
 
     private void HandleWhatHP(GameObject recieved)
     {
-        if (recieved != game_object)
+        if (recieved != _gameObject)
         {
-            This = !This;
+            _currentObject = !_currentObject;
         }
     }
 }

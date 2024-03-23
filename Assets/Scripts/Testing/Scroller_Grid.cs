@@ -13,4 +13,4 @@ public class Scroller_Grid : MonoBehaviour
         _img.uvRect = new Rect(_img.uvRect.position + new Vector2(_x, _y) * Time.deltaTime, _img.uvRect.size);
     }
 }
-// TODO DELETE ME
+// TODO delete me or use: can be used as decoration background or canvas infinity looper
