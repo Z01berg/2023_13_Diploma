@@ -1,9 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
+
+/**
+ * The class is used for converting data in JSON files to Scriptable Objects.
+ * The data types are divided into attack cards, defense cards, movement cards, items.
+ * The subsequent objects are created and saved.
+ */
 
 public struct JsonItems
 {
@@ -80,13 +84,13 @@ public class Deserialization : MonoBehaviour
             {
                 var lScript = _leftHand.GetComponent<DefaultCards>();
                 var rScript = _rightHand.GetComponent<DefaultCards>();
-                lScript.clearList();
-                rScript.clearList();
+                lScript.ClearList();
+                rScript.ClearList();
 
                 for (int i = 0; i < 3; i++)
                 {
-                    lScript.assignCard(s);
-                    rScript.assignCard(s);
+                    lScript.AssignCard(s);
+                    rScript.AssignCard(s);
                 }
             }
         }
@@ -116,13 +120,13 @@ public class Deserialization : MonoBehaviour
             {
                 var headScript = _head.GetComponent<DefaultCards>();
                 var chestScript = _chest.GetComponent<DefaultCards>();
-                headScript.clearList();
-                chestScript.clearList();
+                headScript.ClearList();
+                chestScript.ClearList();
 
                 for (int i = 0; i < 3; i++)
                 {
-                    headScript.assignCard(s);
-                    chestScript.assignCard(s);
+                    headScript.AssignCard(s);
+                    chestScript.AssignCard(s);
                 }
             }
 
@@ -152,11 +156,11 @@ public class Deserialization : MonoBehaviour
             if (s.name.Contains("Default"))
             {
                 var legsScript = _legs.GetComponent<DefaultCards>();
-                legsScript.clearList();
+                legsScript.ClearList();
                 
                 for (int i = 0; i < 3; i++)
                 {
-                    legsScript.assignCard(s);
+                    legsScript.AssignCard(s);
                 }
             }
         }

@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Progress;
 
+/**
+ * Class purpose is to store information about the equipment put in item slots, and about cards 
+ * assigned to your deck.
+ * There can be only one instance of this class in a scene.
+ */
+
 public class Equipment : MonoBehaviour
 {
 

@@ -1,5 +1,10 @@
 using System.Collections.Generic;
 
+/**
+ * Class used as a middle man between importing from JSON and creating scriptable object of a card.
+ * The classes must mirror the card JSON file scheme.
+ */
+
 [System.Serializable]
 public struct JsonCards
 {
