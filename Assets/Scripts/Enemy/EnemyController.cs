@@ -1,9 +1,31 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+/**
+ * Klasa EnemyController odpowiedzialna jest za opisywanie zachowania
+ * testowego modelu przeciwnika. Znajduje się w nim logika
+ * odpowiedzialna za wykrywanie postaci gracza i inicjowanie
+ * walki poprzez generowanie widoku siatki. Jest to wstępny
+ * prototyp na bazie którego zostaną wykreowane lepsze
+ * rozwiązania.
+ */
+
     public class EnemyController : MonoBehaviour
     {
+        
+        /*
+         * Zmienne _visionRangeInTiles i _tileSize
+         * związane są z kalkulacją systemu wykrycia
+         * gracza przez przeciwnika. Jeśli potrzebne będą
+         * zmiany w układzie używanych tilemap,
+         * można będzie dostosować poniższe wartości
+         * z poziomu edytora Unity. Pomocna w tym będzie metoda
+         * OnDrawGizmos().
+         */
+        
+        //określa zasięg wykrycia gracza przez przeciwnika co X tileów
         [SerializeField] private int _visionRangeInTiles = 5;
+        //defaultowo 1f, ale można zmienić w zależności od potrzeb
         [SerializeField] private float _tileSize = 1f;
         [SerializeField] private int _healthPoints;
 
@@ -24,8 +46,6 @@ using UnityEngine.Tilemaps;
             {
                 Debug.LogError("GridOverlay object not found with the specified tag!");
             }
-
-            ExitCombat();
         }
 
         void Update()
@@ -72,7 +92,7 @@ using UnityEngine.Tilemaps;
             get => _healthPoints;
             set => _healthPoints = value;
         }
-
+        
         /*
         private void OnDrawGizmos()
         {
@@ -80,6 +100,7 @@ using UnityEngine.Tilemaps;
             Gizmos.DrawWireCube(transform.position, new Vector3(_visionRangeInTiles * _tileSize * 2, _visionRangeInTiles * _tileSize * 2, 0));
         }
         */
+        
         
     }
 
