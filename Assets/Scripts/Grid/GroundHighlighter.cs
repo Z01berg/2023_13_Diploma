@@ -10,10 +10,10 @@ namespace Grid
         private UnityEngine.Grid _grid;
         private PlayerController _playerController;
         private EnemyController _enemyController;
-        [SerializeField] private Tilemap interactiveTilemap;
-        [SerializeField] private Tile hoverTile;
-        [SerializeField] private Tile moveRangeTile;
-        [SerializeField] private Tile skillRangeTile;
+        [SerializeField] private Tilemap _interactiveTilemap;
+        [SerializeField] private Tile _hoverTile;
+        [SerializeField] private Tile _moveRangeTile;
+        [SerializeField] private Tile _skillRangeTile;
         
         private HighlightMode _currentHighlightMode = HighlightMode.SingleTile;
         private Transform _playerTransform;
@@ -41,6 +41,19 @@ namespace Grid
         {
             _currentMousePosition = GetMousePosition();
             _currentPlayerPosition = GetPlayerPosition();
+            
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                _currentHighlightMode = HighlightMode.SingleTile;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                _currentHighlightMode = HighlightMode.MoveRange;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                _currentHighlightMode = HighlightMode.SkillRange;
+            }
 
             if (_enemyController.IsCombatStarted)
             {
@@ -77,7 +90,7 @@ namespace Grid
 
         private void ClearTiles()
         {
-            interactiveTilemap.ClearAllTiles();
+            _interactiveTilemap.ClearAllTiles();
         }
 
         private void HighlightTiles(Vector3Int mousePosition)
@@ -93,7 +106,7 @@ namespace Grid
                     break;
 
                 case HighlightMode.SingleTile:
-                    interactiveTilemap.SetTile(mousePosition, hoverTile);
+                    _interactiveTilemap.SetTile(mousePosition, _hoverTile);
                     break;
             }
         }
@@ -110,7 +123,7 @@ namespace Grid
                     if (distance <= actionPoints)
                     {
                         Vector3Int tilePosition = new Vector3Int(playerPosition.x + x, playerPosition.y + y, playerPosition.z);
-                        interactiveTilemap.SetTile(tilePosition, moveRangeTile);
+                        _interactiveTilemap.SetTile(tilePosition, _moveRangeTile);
                     }
                 }
             }
@@ -126,7 +139,7 @@ namespace Grid
                     if (distance <= skillRange)
                     {
                         Vector3Int tilePosition = new Vector3Int(mousePosition.x + x, mousePosition.y + y, mousePosition.z);
-                        interactiveTilemap.SetTile(tilePosition, skillRangeTile);
+                        _interactiveTilemap.SetTile(tilePosition, _skillRangeTile);
                     }
                 }
             }
