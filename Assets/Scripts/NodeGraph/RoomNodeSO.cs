@@ -275,7 +275,7 @@ public class RoomNodeSO : ScriptableObject
         
         // if add corridor will not be > than max value
         if (roomNodeGraph.GetRoomNode(childID).roomNodeType.isCorridor &&
-            childRoomNodeIDList.Count >= Settings.maxChildCorridors)
+            childRoomNodeIDList.Count >= Settings.MAXCHILDCORRIDORS)
             return false;
         
         //if child is enterance (must be top level parent mode)

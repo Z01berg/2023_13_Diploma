@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/**
+ * 
+ */
+
 public enum CharacterType
 {
     Player,
@@ -15,25 +19,25 @@ public enum CharacterType
 
 public class SetTimer : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _Text;
+    [SerializeField] private TMP_Text _text;
 
-    [SerializeField] private CharacterType characterType = CharacterType.None;
+    [SerializeField] private CharacterType _characterType = CharacterType.None;
 
-    [SerializeField] private GameObject HP;
+    [SerializeField] private GameObject _hp;
 
     private void Awake()
     {
         Timer timer = FindObjectOfType<Timer>();
 
-        string person = Define(characterType);
+        string person = Define(_characterType);
 
         if (timer != null)
         {
-            timer.AddTextFromSetTimer(_Text, person, HP);
+            timer.AddTextFromSetTimer(_text, person, _hp);
         }
         else
         {
-            Debug.LogError("WSTAW MANAGERS HALO <( ‵□′)───C＜─___-)||");
+            Debug.LogError("WSTAW \"MANAGERS\" HALO <( ‵□′)───C＜─___-)||");
         }
     }
 

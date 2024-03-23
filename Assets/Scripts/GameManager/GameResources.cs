@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class GameResources : MonoBehaviour
 {
-   private static GameResources instance;
+   private static GameResources _instance;
 
    public static GameResources Instance
    {
       get
       {
-         if (instance == null)
+         if (_instance == null)
          {
-            instance = Resources.Load<GameResources>("GameResources");
+            _instance = Resources.Load<GameResources>("GameResources");
          }
 
-         return instance;
+         return _instance;
       }
    }
 

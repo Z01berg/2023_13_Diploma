@@ -1,17 +1,23 @@
 using UnityEngine;
 
+/**
+ *  Publiczna clasa GridShow jest wykorzystywana:
+ *  - Na starcie dla odczytu wszystkich csv gridów na mapie
+ *  - Update przy wciśnięcu przyciska "O" _isVisiblle = !_isVisible
+ */
+
 public class GridShow : MonoBehaviour
 {
-    private bool isVisible = false;
-    private Transform[] children;
+    private bool _isVisible = false;
+    private Transform[] _children;
 
     void Start()
     {
         // Pobierz wszystkie dzieci obiektu Parenta
-        children = new Transform[transform.childCount];
+        _children = new Transform[transform.childCount];
         for (int i = 0; i < transform.childCount; i++)
         {
-            children[i] = transform.GetChild(i);
+            _children[i] = transform.GetChild(i);
         }
     }
 
@@ -20,15 +26,15 @@ public class GridShow : MonoBehaviour
         // Sprawdź czy został wciśnięty przycisk "O"
         if (Input.GetKeyDown(KeyCode.O))
         {
-            isVisible = !isVisible;
-            SetVisibility(isVisible);
+            _isVisible = !_isVisible;
+            SetVisibility(_isVisible);
         }
     }
 
     // Metoda ustawiająca widoczność wszystkich dzieci
     void SetVisibility(bool visible)
     {
-        foreach (Transform child in children)
+        foreach (Transform child in _children)
         {
             child.gameObject.SetActive(visible);
         }
