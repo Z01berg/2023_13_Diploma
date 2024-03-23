@@ -1,10 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
-using static UnityEditor.Progress;
+
+/**
+ * Klasa pozwala na upuszczanie przedmiotow na odpowiednie sloty ekwipunku.
+ * 
+ * allowedItemType - przechowuje informacje na temat typu itemu przyjmowanego przez dany slot
+ * itemUIPrefab - prefab ojektu Item UI
+ * 
+ * w momencie aktywacji publicznej funkcji OnDrop() sprawdzany jest dozwolony typ itemu, jesli 
+ * sie zgadza to item przypisywany jest do danego slotu w ekwipunku.
+ */
 
 public class ItemSlot : MonoBehaviour, IDropHandler
 {

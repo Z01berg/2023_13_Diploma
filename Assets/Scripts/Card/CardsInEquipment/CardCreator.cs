@@ -1,8 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.Serialization.Json;
 using UnityEditor;
 using UnityEngine;
+
+/**
+ * A class used for creating a card, reformating it into JSON and 
+ * putting it into the right JSON file.
+ * The whole JSON file is overwritten and the new card is added at the end.
+ */
 
 public enum CardType
 {

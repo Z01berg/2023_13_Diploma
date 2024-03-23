@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+/**
+ * A class that lets you visualize imported, or exported cards in UNITY inspector.
+ */
+
 [CustomEditor(typeof(Deserialization))]
 public class CustomJsonImportIspector : Editor
 {

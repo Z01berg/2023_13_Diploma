@@ -3,6 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Progress;
 
+/**
+ * The class keeps track of item slots and gives a player default cards if a certain
+ * part of equipment has not been assigned, or takes them away when if it has been assigned.
+ * 
+ * It contains public classes:
+ *  DisplayCards() - displayes default cards assigned to a slot
+ *  HideCards() - hides default cards assigned to a slot
+ *  AssignCard() - adds card to a list of all cards contained by slot
+ *  ClearList() - clears a list of all cards of a slot
+ */
+
 public class DefaultCards : MonoBehaviour
 {
     public List<CardsSO> _cards = new();
@@ -15,7 +26,7 @@ public class DefaultCards : MonoBehaviour
     {
         if(transform.childCount < 1)
         {
-            displayCards();
+            DisplayCards();
         }
     }
 
@@ -23,17 +34,17 @@ public class DefaultCards : MonoBehaviour
     {
         if (transform.childCount > 0 && _defaultAdded)
         {
-            hideCards();
+            HideCards();
             _defaultAdded = false;
         }
         else if(transform.childCount < 1 && !_defaultAdded)
         {
-            displayCards();
+            DisplayCards();
             _defaultAdded = true;
         }
     }
 
-    private void displayCards()
+    private void DisplayCards()
     {
         _cardsList = new();
         foreach (var c in _cards)
@@ -47,7 +58,7 @@ public class DefaultCards : MonoBehaviour
         }
     }
 
-    private void hideCards()
+    private void HideCards()
     {
         foreach(var c in _cardsList)
         {
@@ -55,12 +66,12 @@ public class DefaultCards : MonoBehaviour
         }
     }
 
-    public void assignCard(CardsSO card)
+    public void AssignCard(CardsSO card)
     {
         _cards.Add(card);
     }
 
-    public void clearList()
+    public void ClearList()
     {
         _cards = new();
     }
