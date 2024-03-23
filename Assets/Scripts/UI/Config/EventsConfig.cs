@@ -8,9 +8,9 @@ namespace UI
     public class EventsConfig
     {
         
-        public UnityEvent<CardPlayed> onCardPlay;
+        public UnityEvent<CardPlayed> onCardPlay; //To jeszcze trzeba dorobić
         public UnityEvent<CardHover> cardHover;
         public UnityEvent<CardUnhover> cardUnHover;
-        public UnityEvent<CardDestroy> cardDestroy;
+        public UnityEvent<CardDestroy> cardDestroy; //To też
     }
 }

@@ -20,14 +20,14 @@ namespace UI
 
         private void Update()
         {
-            if (PlaceHolder._isTaken)
+            if (PlaceHolder.isTaken)
             {
                 _card = Wrapper.cardInUse;
                 ReadCard(_card.GetComponent<CardDisplay>());
             }
         }
 
-        public void ReadCard(CardDisplay display)
+        private void ReadCard(CardDisplay display)
         {
             _text.text = $"ID: {display.id.ToString()}\n" +
                          $"Cost: {display.cost.text}\n" +

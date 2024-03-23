@@ -4,6 +4,6 @@ namespace UI
 {
     public class PlaceHolder : MonoBehaviour
     {
-        public static bool _isTaken = false;
+        public static bool isTaken = false;
     }
 }
