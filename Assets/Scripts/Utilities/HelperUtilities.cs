@@ -2,6 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Klasa HelperUtilities to statyczna klasa narzędziowa zawierająca metody pomocnicze do walidacji danych.
+ *
+ * * Metoda ValidateCheckEmptyString służy do sprawdzania czy dany ciąg znaków jest pusty.
+     * Zwraca true, jeśli ciąg jest pusty, w przeciwnym razie zwraca false.
+ *
+ * * Metoda ValidateCheckEnumerableValues służy do sprawdzania czy kolekcja zawiera elementy oraz czy nie zawiera wartości null.
+     * Zwraca true, jeśli kolekcja jest pusta lub zawiera wartości null.
+ */
+
 public static class HelperUtilities 
 {
     //TODO Empty String check debug

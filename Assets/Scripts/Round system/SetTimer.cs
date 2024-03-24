@@ -5,7 +5,14 @@ using TMPro;
 using UnityEngine;
 
 /**
- * 
+ * Publiczna klasa SetTimer jest odpowiedzialna za ustawienie czasomierza oraz wyświetlenie tekstu na podstawie typu postaci.
+ *
+ * Ma w sobie informacje o:
+ * - tekście do wyświetlenia
+ * - typie postaci (Player, Enemy, Item, Boss, None)
+ * - obiekcie HealthBar, z którym jest powiązany
+ *
+ * Na podstawie typu postaci, SetTimer określa tekst do wyświetlenia oraz przekazuje go do czasomierza.
  */
 
 public enum CharacterType

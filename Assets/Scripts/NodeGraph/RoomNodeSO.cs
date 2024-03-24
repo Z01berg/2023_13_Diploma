@@ -3,17 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
+
+/**
+ * Public class RoomNodeSO jest obiektem skryptowym (ScriptableObject) reprezentującym pojedynczy węzeł pokoju w grze.
+ *
+ * Zawiera informacje o:
+ * - identyfikatorze węzła
+ * - liście identyfikatorów rodziców węzła
+ * - liście identyfikatorów dzieci węzła
+ * - grafice węzłów pokoi, do którego należy węzeł
+ * - typie węzła pokoju
+ *
+ * Działa w trybie edytora:
+ * - przechowuje pozycję i stan węzła w trybie edytora
+ * - umożliwia rysowanie węzła i obsługę interakcji z nim w trybie edytora
+ *
+ * Możliwe akcje:
+ * - inicjalizacja węzła pokoju
+ * - rysowanie węzła pokoju
+ * - obsługa zdarzeń związanych z węzłem pokoju (np. kliknięcie, przeciągnięcie)
+ * - dodawanie, usuwanie i sprawdzanie poprawności połączeń między węzłami
+ */
 
 public class RoomNodeSO : ScriptableObject
 {
-    [HideInInspector] public string id;
+    [HideInInspector] public string ID;
     [HideInInspector] public List<string> parentRoomNodeIDList = new List<string>();
     [HideInInspector] public List<string> childRoomNodeIDList = new List<string>();
     [HideInInspector] public RoomNodeGraphSO roomNodeGraph;
     public RoomNodeTypeSO roomNodeType;
     [HideInInspector] public RoomNodeTypeListSO roomNodeTypeList;
 
-    //Don't Open this YOU WILL DIE (literally ^_^)
+    //Don't Open this YOU WILL DIE (literally ^_^) TODO joke of the year BUT before diploma delete
     #region Editor Code
 
 #if UNITY_EDITOR
@@ -25,7 +47,7 @@ public class RoomNodeSO : ScriptableObject
     public void Initialize(Rect rect, RoomNodeGraphSO nodeGraph, RoomNodeTypeSO roomNodeType)
     {
         this.rect = rect;
-        this.id = Guid.NewGuid().ToString();
+        this.ID = Guid.NewGuid().ToString();
         this.name = "RoomNode";
         this.roomNodeGraph = nodeGraph;
         this.roomNodeType = roomNodeType;
@@ -74,10 +96,10 @@ public class RoomNodeSO : ScriptableObject
                         if (childRoomNode != null)
                         {
                             //remove childID from parent
-                            RemoveChildRoomNodeIDFromRoomNode(childRoomNode.id);
+                            RemoveChildRoomNodeIDFromRoomNode(childRoomNode.ID);
                   
                             //remove parentID from child
-                            childRoomNode.RemoveParentRoomNodeIDFromRoomNode(id);
+                            childRoomNode.RemoveParentRoomNodeIDFromRoomNode(ID);
                         }
                     }
                 }
@@ -254,7 +276,7 @@ public class RoomNodeSO : ScriptableObject
             return false;
         
         //if nodeID and childID same
-        if (id == childID)
+        if (ID == childID)
             return false;
         
         //if childID is the parentID

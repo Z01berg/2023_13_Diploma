@@ -2,6 +2,26 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+
+/**
+ * Public class RoomNodeGraphSO jest obiektem skryptowym (ScriptableObject) reprezentującym graf węzłów pokoi w grze.
+ *
+ * Zawiera informacje o:
+ * - liście węzłów pokoi
+ * - słowniku węzłów pokoi
+ * - typach węzłów pokoi
+ * - węźle, z którego prowadzony jest aktualnie rysowany połączenie
+ * - pozycji aktualnie rysowanego połączenia
+ *
+ * Działa w trybie edytora:
+ * - automatycznie aktualizuje słownik węzłów po każdej zmianie
+ * - umożliwia rysowanie połączeń między węzłami w trybie edytora
+ *
+ * Możliwe akcje:
+ * - pobranie węzła pokoju na podstawie jego identyfikatora
+ * - ustawienie węzła, z którego będzie prowadzone połączenie, w trybie edytora
+ */
 
 [CreateAssetMenu(fileName = "RoomNodeGraph", menuName = "Scriptable Objects/Dungeon/Room Node Graph")]
 public class RoomNodeGraphSO : ScriptableObject
@@ -23,7 +43,7 @@ public class RoomNodeGraphSO : ScriptableObject
         //Populate dictionary
         foreach (RoomNodeSO node in roomNodeList)
         {
-            roomNodeDictionary[node.id] = node;
+            roomNodeDictionary[node.ID] = node;
         }
     }
 

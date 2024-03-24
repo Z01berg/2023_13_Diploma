@@ -12,8 +12,17 @@ using Object = System.Object;
  * - Value (znaczenie zegarka)
  * - Tag (Tag z enuma "boss"; "player")
  * - HP (znaczenie HP)
- * 
- * Publiczna clasa Timer 
+ */
+
+/**
+ * Publiczna klasa Timer ma za zadanie zarządzać funkcjonalnością zegarów oraz nimi samymi.
+ *
+ * Ma możliwość:
+ * - Dodawania tekstu, tagu i odnośnika do obiektu HP dla nowego zegara.
+ * - Obsługiwanie wejścia z klawiatury w celu manipulacji zegarami.
+ * - Aktualizacji tekstów zegarów.
+ * - Uruchamiania odliczania zegarów.
+ * - Obliczania priorytetu dla aktywnego zegara.
  */
 
 public class Timer : MonoBehaviour

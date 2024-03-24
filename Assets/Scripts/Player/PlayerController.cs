@@ -9,7 +9,7 @@ namespace Player
         [SerializeField] private Transform _movePoint;
         [SerializeField] private LayerMask _whatStopsMovement;
 
-        public bool DidSmth = false; //dla Timer kiedy jakaś karta rozegrana true inaczej treba 2 razy kliknąć enter
+        public bool DidSmth = false; //dla Timer kiedy jakaś karta rozegrana true inaczej treba 2 razy kliknąć enter TODO not sure that i use need to check
         
         [SerializeField] private int _actionPoints;
         [SerializeField] private int _skillRange;

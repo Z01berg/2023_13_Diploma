@@ -3,6 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Public class RoomNodeTypeSO jest obiektem skryptowym (ScriptableObject) reprezentującym typ węzła pokoju w grze.
+ *
+ * Zawiera informacje o rodzaju węzła pokoju, takie jak nazwa, czy ma być widoczny w edytorze, czy jest to korytarz, itp.
+ *
+ * Działa w trybie edytora:
+ * - zapewnia walidację nazwy typu węzła pokoju
+ */
+
 [CreateAssetMenu(fileName = "RoomNodeType_", menuName = "Scriptable Objects/Dungeon/Room Node Type")]
 
 public class RoomNodeTypeSO : ScriptableObject
