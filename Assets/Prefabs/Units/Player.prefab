@@ -611,10 +611,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474b96fe696944558daca330d8d41cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bohater: {fileID: 6006849603054320163}
-  timer: {fileID: 6622016385714225401}
-  x: 0.5
-  y: -0.2
+  _bohater: {fileID: 6006849603054320163}
+  _timer: {fileID: 6622016385714225401}
+  _x: 0.5
+  _y: -0.2
 --- !u!114 &154899486079335315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,9 +627,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e07aa5c85b8f3204da8c424d7013c25c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Text: {fileID: 168721498808235815}
-  characterType: 0
-  HP: {fileID: 642104159361244498}
+  _text: {fileID: 168721498808235815}
+  _characterType: 0
+  _hp: {fileID: 642104159361244498}
 --- !u!114 &457709341750019891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -642,10 +642,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474b96fe696944558daca330d8d41cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bohater: {fileID: 6006849603054320163}
-  timer: {fileID: 4972906141958680033}
-  x: 0
-  y: 0.76
+  _bohater: {fileID: 6006849603054320163}
+  _timer: {fileID: 4972906141958680033}
+  _x: 0
+  _y: 0.76
 --- !u!114 &6164728444775605331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -658,10 +658,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d12b0eeb0e71e64a938c93174bbdadc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game_object: {fileID: 642104159361244498}
-  body: {fileID: 2709433044352046491}
-  slider: {fileID: 2149619698750589151}
-  data: {fileID: 1881339646750721677}
+  _gameObject: {fileID: 642104159361244498}
+  _body: {fileID: 2709433044352046491}
+  _slider: {fileID: 2149619698750589151}
+  _data: {fileID: 1881339646750721677}
 --- !u!1 &5317322208143259690
 GameObject:
   m_ObjectHideFlags: 0

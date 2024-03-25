@@ -50,10 +50,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474b96fe696944558daca330d8d41cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bohater: {fileID: 3971339169402520909}
-  timer: {fileID: 2937126179612971140}
-  x: 0.5
-  y: -0.2
+  _bohater: {fileID: 3971339169402520909}
+  _timer: {fileID: 2937126179612971140}
+  _x: 0.5
+  _y: -0.2
 --- !u!114 &4772301317793902476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,9 +66,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e07aa5c85b8f3204da8c424d7013c25c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Text: {fileID: 6453728171809700323}
-  characterType: 1
-  HP: {fileID: 1426799569206578443}
+  _text: {fileID: 6453728171809700323}
+  _characterType: 1
+  _hp: {fileID: 1426799569206578443}
 --- !u!114 &5220638113784284899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,10 +81,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474b96fe696944558daca330d8d41cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bohater: {fileID: 3971339169402520909}
-  timer: {fileID: 7972497969229430716}
-  x: 0.03
-  y: 0.76
+  _bohater: {fileID: 3971339169402520909}
+  _timer: {fileID: 7972497969229430716}
+  _x: 0.03
+  _y: 0.76
 --- !u!114 &8747931835173625541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,10 +97,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d12b0eeb0e71e64a938c93174bbdadc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game_object: {fileID: 1426799569206578443}
-  body: {fileID: 9778427497311827}
-  slider: {fileID: 5715775629161368082}
-  data: {fileID: 4071996917017221321}
+  _gameObject: {fileID: 1426799569206578443}
+  _body: {fileID: 9778427497311827}
+  _slider: {fileID: 5715775629161368082}
+  _data: {fileID: 4071996917017221321}
 --- !u!1 &1043278491967500237
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,7 +727,7 @@ GameObject:
   - component: {fileID: 428580614451002958}
   - component: {fileID: 1115995846797643908}
   m_Layer: 0
-  m_Name: Icon
+  m_Name: Icon_
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
