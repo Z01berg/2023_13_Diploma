@@ -113,6 +113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7610770793480828523}
   - component: {fileID: 1215020377644578965}
+  - component: {fileID: 8693768392632690205}
   m_Layer: 0
   m_Name: Timer
   m_TagString: Untagged
@@ -147,10 +148,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca3b4419c482c14da904fb5cdcfe541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turn: {fileID: 0}
-  texts: []
-  id: []
-  HP_adres: []
+  _turn: {fileID: 0}
+  _texts: []
+  _id: []
+  _hpAdres: []
+--- !u!95 &8693768392632690205
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3505373189155625271}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 35f33fdcaa055264495977e1add94cfd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &6925467776441148032
 PrefabInstance:
   m_ObjectHideFlags: 0
