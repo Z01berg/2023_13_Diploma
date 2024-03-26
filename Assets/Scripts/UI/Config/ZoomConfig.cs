@@ -1,33 +1,25 @@
 using System;
 using UnityEngine;
 
+namespace UI.Config
+{
+    /**
+     * Klasa ta przechowuje ustawienia, które wpływają na ustawienia przybliżenia/powiększenia karty
+     * Większość zmian dokonuje się w inspektorze
+    */
     [Serializable]
-    public class ZoomConfig {
-
-        [SerializeField]
+    public class ZoomConfig
+    {
         public bool zoomOnHover;
-    
-        [Range(1f, 5f)]
-        [SerializeField]
-        public float multiplier = 1;
-        
-        [Tooltip("This is the Y position of the card when it is zoomed in. If this is -1, the card will not be moved on the Y axis.")]
-        [SerializeField]
-        public float overrideYPosition = -1;
 
-        [Header("UI Layer")]
-        [Tooltip("This is the sorting order of the first card when it is not zoomed in. Subsequent cards will have a higher sorting order.")]
-        [SerializeField]
-        public int defaultSortOrder;
-        
-        [SerializeField]
+        [Range(1f, 5f)] public float multiplier = 1;
+
+        public float overrideYPosition = -1; // -1 oznacza że nic się nie zmienia
+
+        [Header("UI Layer")] public int defaultSortOrder;
+
         public bool bringToFrontOnHover;
-        
-        [Tooltip("This is the sorting order of the card when it is zoomed in.")]
-        [SerializeField]
-        public int zoomedSortOrder;
 
-        [SerializeField]
-        public bool resetRotationOnZoom;
-    
+        public int zoomedSortOrder;
+    }
 }

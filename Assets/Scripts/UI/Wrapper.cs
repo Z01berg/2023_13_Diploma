@@ -1,4 +1,5 @@
-﻿using UI.Events;
+﻿using UI.Config;
+using UI.Events;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,8 +11,8 @@ namespace UI
          * Publiczna metoda wrapper kontroluję kartę, do której należy (dlatego jest przypisywana ze wstrony HandContoller)
          * Uruchamia wszystkie eventy tej karty, zmiany jej pozycji, zmiany rozmiaru, zmiany skali itp.
          */
-        
         public Vector2 targetPosition;
+
         public float targetVerticalDisplacement;
 
         public int uiLayer;
@@ -27,13 +28,14 @@ namespace UI
         public AnimationConfig animationConfig;
 
         public static Wrapper cardInUse;
-    
+
         private CardDisplay _display;
 
         public float Width
         {
             get => _rectTransform.rect.width * _rectTransform.localScale.x;
         }
+
         private void Awake()
         {
             _rectTransform = GetComponent<RectTransform>();
@@ -51,22 +53,27 @@ namespace UI
             UpdateScale();
             UpdateUILayer();
         }
-    
-        private void UpdatePosition() {
-            if (!_isPressed) {
+
+        private void UpdatePosition()
+        {
+            if (!_isPressed)
+            {
                 var target = new Vector2(targetPosition.x, targetPosition.y + targetVerticalDisplacement);
-                if (_isHovered && zoomConfig.overrideYPosition != -1) {
+                if (_isHovered && zoomConfig.overrideYPosition != -1)
+                {
                     target = new Vector2(target.x, zoomConfig.overrideYPosition);
                 }
 
                 var distance = Vector2.Distance(_rectTransform.position, target);
-                _rectTransform.position = Vector2.Lerp(_rectTransform.position, target, animationConfig.positionChangeSpeed / distance * Time.deltaTime);
+                _rectTransform.position = Vector2.Lerp(_rectTransform.position, target,
+                    animationConfig.positionChangeSpeed / distance * Time.deltaTime);
             }
             else
             {
                 var inUsePosition = handController.getPlaceHolderPosition();
                 var distance = Vector2.Distance(_rectTransform.position, inUsePosition);
-                _rectTransform.position = Vector2.Lerp(_rectTransform.position, inUsePosition, animationConfig.positionChangeSpeed / distance * Time.deltaTime);
+                _rectTransform.position = Vector2.Lerp(_rectTransform.position, inUsePosition,
+                    animationConfig.positionChangeSpeed / distance * Time.deltaTime);
             }
         }
 
@@ -74,7 +81,8 @@ namespace UI
         {
             var targetZoom = (_isPressed || _isHovered) && zoomConfig.zoomOnHover ? zoomConfig.multiplier : 1;
             var delta = Mathf.Abs(_rectTransform.localScale.x - targetZoom);
-            var newZoom = Mathf.Lerp(_rectTransform.localScale.x, targetZoom, animationConfig.zoomSpeed / delta * Time.deltaTime);
+            var newZoom = Mathf.Lerp(_rectTransform.localScale.x, targetZoom,
+                animationConfig.zoomSpeed / delta * Time.deltaTime);
             _rectTransform.localScale = new Vector3(newZoom, newZoom, 1);
         }
 
@@ -90,7 +98,6 @@ namespace UI
         {
             _rectTransform.anchorMin = min;
             _rectTransform.anchorMax = max;
-        
         }
 
         public void OnPointerEnter(PointerEventData eventData)
@@ -104,7 +111,7 @@ namespace UI
             {
                 _canvas.sortingOrder = zoomConfig.zoomedSortOrder;
             }
-        
+
             eventsConfig?.cardHover?.Invoke(new CardHover(this));
             _isHovered = true;
         }
@@ -130,6 +137,7 @@ namespace UI
                     cardInUse._isPressed = false;
                     cardInUse._isHovered = false;
                 }
+
                 _isPressed = true;
                 cardInUse = this;
                 _isHovered = false;
@@ -142,12 +150,9 @@ namespace UI
                 if (_isPressed)
                 {
                     _isPressed = false;
-                    PlaceHolder.isTaken = false;    
+                    PlaceHolder.isTaken = false;
                 }
-                
             }
         }
-    
-    
     }
 }

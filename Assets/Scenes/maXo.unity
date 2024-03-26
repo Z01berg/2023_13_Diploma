@@ -824,17 +824,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6475674081033944082, guid: 86ab7c7c94dcd674497a34684e82a3b6, type: 3}
   m_PrefabInstance: {fileID: 7494227693889789424}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &700439651 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8919250353676268150, guid: 86ab7c7c94dcd674497a34684e82a3b6, type: 3}
-  m_PrefabInstance: {fileID: 7494227693889789424}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c5d83363c1469849becdea98b307abb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &700439652 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 829482449118105253, guid: 86ab7c7c94dcd674497a34684e82a3b6, type: 3}
@@ -1582,8 +1571,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -18, y: 79}
-  m_SizeDelta: {x: -1168.8975, y: 100}
+  m_AnchoredPosition: {x: -73.302826, y: 79}
+  m_SizeDelta: {x: -1279.5032, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1231627124
 MonoBehaviour:
@@ -1597,17 +1586,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97126f3069f77384a80ecdbf05adbe9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoomConfig:
+  _zoomConfig:
     zoomOnHover: 1
-    multiplier: 1.1
-    overrideYPosition: 120
+    multiplier: 1.15
+    overrideYPosition: 85
     defaultSortOrder: 0
     bringToFrontOnHover: 1
     zoomedSortOrder: 100
-    resetRotationOnZoom: 0
-  forceFitContainer: 1
-  _alignment: 1
-  eventsConfig:
+  _forceFitContainer: 1
+  _animationConfig:
+    positionChangeSpeed: 7000
+    zoomSpeed: 2
+  _eventsConfig:
     onCardPlay:
       m_PersistentCalls:
         m_Calls: []
@@ -1620,7 +1610,7 @@ MonoBehaviour:
     cardDestroy:
       m_PersistentCalls:
         m_Calls: []
-  placeHolder: {fileID: 341008501}
+  _placeHolder: {fileID: 341008501}
 --- !u!1001 &1279119457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2122,7 +2112,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 700439651}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CardButtons, Assembly-CSharp
         m_MethodName: DeleteCard
         m_Mode: 1
@@ -2255,7 +2245,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 700439651}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CardButtons, Assembly-CSharp
         m_MethodName: AddCard
         m_Mode: 1

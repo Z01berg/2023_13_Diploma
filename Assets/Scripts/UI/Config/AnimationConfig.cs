@@ -2,6 +2,10 @@ using System;
 
 namespace UI
 {
+    /**
+     * Klasa ta przechowuje informacje na temat szybkości animacji kart.
+     * Większość zmian dokonuje się w inspektorze
+    */
     [Serializable]
     public class AnimationConfig
     {
