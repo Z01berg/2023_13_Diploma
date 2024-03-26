@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
+using UI.Events;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI
@@ -20,22 +22,25 @@ namespace UI
         private RectTransform _rectTransform;
         private List<Wrapper> _cards = new(); 
     
-        [SerializeField] private ZoomConfig zoomConfig;
+        [SerializeField] private ZoomConfig _zoomConfig;
+        [FormerlySerializedAs("forceFitContainer")]
         [Header("Constraints")]
-        [SerializeField] private bool forceFitContainer; //Decyduje czy karty się na siebie nakładają lub nie
+        [SerializeField] private bool _forceFitContainer; //Decyduje czy karty się na siebie nakładają lub nie
         [Header("Alignment")]
-        [SerializeField] private CardAlignment _alignment = CardAlignment.Center; 
+        [SerializeField] private CardAlignment _alignment = CardAlignment.Center;
+
+        [SerializeField] private AnimationConfig _animationConfig;
 
         private Wrapper _currDraggedCard;
     
-        [SerializeField] private EventsConfig eventsConfig;
-        [SerializeField] public GameObject placeHolder;
+        [SerializeField] private EventsConfig _eventsConfig;
+        [SerializeField] private GameObject _placeHolder;
     
         private RectTransform _placeHolderPosition;
         private void Start()
         {
             _rectTransform = GetComponent<RectTransform>();
-            _placeHolderPosition = placeHolder.GetComponent<RectTransform>();
+            _placeHolderPosition = _placeHolder.GetComponent<RectTransform>();
             InitCards();
         }
 
@@ -65,9 +70,10 @@ namespace UI
             
                 AddOtherComponentsIfNeeded(wrapper);
 
-                wrapper.zoomConfig = zoomConfig;
+                wrapper.zoomConfig = _zoomConfig;
                 wrapper.handController = this;
-                wrapper.eventsConfig = eventsConfig;
+                wrapper.eventsConfig = _eventsConfig;
+                wrapper.animationConfig = _animationConfig;
             }
         }
 
@@ -134,7 +140,7 @@ namespace UI
         {
             for (int i = 0; i < _cards.Count; i++)
             {
-                _cards[i].uiLayer = zoomConfig.defaultSortOrder + i;
+                _cards[i].uiLayer = _zoomConfig.defaultSortOrder + i;
             }
         }
 
@@ -143,7 +149,7 @@ namespace UI
             var cardsTotalWidth = _cards.Sum(card => card.Width * card.transform.lossyScale.x);
             // Szerokość kontenera (hand)
             var containerWidth = _rectTransform.rect.width * transform.lossyScale.x;
-            if (forceFitContainer && cardsTotalWidth > containerWidth) {
+            if (_forceFitContainer && cardsTotalWidth > containerWidth) {
                 DistributeChildrenToFitContainer(cardsTotalWidth);
             }
             else {
@@ -187,6 +193,12 @@ namespace UI
                 default:
                     return 0;
             }
+        }
+
+        public void DestroyCard(Wrapper card)
+        {
+            _cards.Remove(card);
+            _eventsConfig.cardDestroy?.Invoke(new CardDestroy(card));
         }
 
         public Vector2 getPlaceHolderPosition()

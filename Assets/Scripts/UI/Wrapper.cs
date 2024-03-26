@@ -14,16 +14,17 @@ namespace UI
         public Vector2 targetPosition;
         public float targetVerticalDisplacement;
 
-        public ZoomConfig zoomConfig;
         public int uiLayer;
         public HandController handController;
-    
+
         private RectTransform _rectTransform;
         private Canvas _canvas;
         private bool _isPressed;
         private bool _isHovered;
-    
+
+        public ZoomConfig zoomConfig;
         public EventsConfig eventsConfig;
+        public AnimationConfig animationConfig;
 
         public static Wrapper cardInUse;
     
@@ -59,12 +60,13 @@ namespace UI
                 }
 
                 var distance = Vector2.Distance(_rectTransform.position, target);
-                _rectTransform.position = Vector2.Lerp(_rectTransform.position, target, 1000);
+                _rectTransform.position = Vector2.Lerp(_rectTransform.position, target, animationConfig.positionChangeSpeed / distance * Time.deltaTime);
             }
             else
             {
                 var inUsePosition = handController.getPlaceHolderPosition();
-                _rectTransform.position = new Vector2(inUsePosition.x, inUsePosition.y);
+                var distance = Vector2.Distance(_rectTransform.position, inUsePosition);
+                _rectTransform.position = Vector2.Lerp(_rectTransform.position, inUsePosition, animationConfig.positionChangeSpeed / distance * Time.deltaTime);
             }
         }
 
@@ -72,7 +74,7 @@ namespace UI
         {
             var targetZoom = (_isPressed || _isHovered) && zoomConfig.zoomOnHover ? zoomConfig.multiplier : 1;
             var delta = Mathf.Abs(_rectTransform.localScale.x - targetZoom);
-            var newZoom = Mathf.Lerp(_rectTransform.localScale.x, targetZoom, 1);
+            var newZoom = Mathf.Lerp(_rectTransform.localScale.x, targetZoom, animationConfig.zoomSpeed / delta * Time.deltaTime);
             _rectTransform.localScale = new Vector3(newZoom, newZoom, 1);
         }
 
@@ -126,10 +128,11 @@ namespace UI
                 if (PlaceHolder.isTaken)
                 {
                     cardInUse._isPressed = false;
-                    // _reader.ReadCard(_display);
+                    cardInUse._isHovered = false;
                 }
                 _isPressed = true;
                 cardInUse = this;
+                _isHovered = false;
                 eventsConfig?.cardUnHover?.Invoke(new CardUnhover(this));
                 PlaceHolder.isTaken = true;
             }
