@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Publiczny schemat pozwalajacy na latwe stworzenie Scriptable object w UNITY.
+ * Objekt ten przechowuje jedynie dane w zmiennych, ktore pozniej mozna przypisac
+ * do prefabu karty.
+ */
+
 [CreateAssetMenu(fileName ="New Card",menuName ="Scriptable Objects/Card")]
 public class CardsSO : ScriptableObject
 {

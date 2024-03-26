@@ -4,9 +4,12 @@ using UnityEngine;
 using static UnityEditor.Progress;
 
 /**
- * Class purpose is to store information about the equipment put in item slots, and about cards 
- * assigned to your deck.
- * There can be only one instance of this class in a scene.
+ * Publiczna klasa przechowujaca informacje na temat przypisanego do postaci
+ * ekwipunku oraz pozyskanych z niego kart.
+ * Kazdy element ekwipunku przypisywany jest do zmiennej odpowiadajacej jego polozeniu.
+ * Karty przypisane sa odpowiednio do listy publicznej listy cards, do kturej dostep
+ * mozna uzyskac poprzez uzycie polecenia "Equipment.Instance.cards"
+ * W scenie powinna znajdowac sie tylko jedna instancja tej klasy.
  */
 
 public class Equipment : MonoBehaviour
@@ -20,7 +23,7 @@ public class Equipment : MonoBehaviour
         if (Instance != null)
         {
             Debug.LogWarning("More than one instance of Equipment found!");
-            //return;
+            return;
         }
         Instance = this;
     }

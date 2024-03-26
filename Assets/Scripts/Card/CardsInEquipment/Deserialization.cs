@@ -4,9 +4,7 @@ using UnityEditor;
 using UnityEngine;
 
 /**
- * The class is used for converting data in JSON files to Scriptable Objects.
- * The data types are divided into attack cards, defense cards, movement cards, items.
- * The subsequent objects are created and saved.
+ * Publiczna klasa pozwalajaca na deserializacje plikow zawierajaca zapisane karty w formacie Json
  */
 
 public struct JsonItems
@@ -227,7 +225,7 @@ public class Deserialization : MonoBehaviour
             AssetDatabase.CreateAsset(s, itemsPath + s.itemName + ".asset");
             AssetDatabase.SaveAssets();
             
-            // not needed. Left just in case
+            // not needed. Left just in case. I might use it later
             //Inventory.Instance.items.Add(AssetDatabase.LoadAssetAtPath<Item>(itemsPath + s.itemName + ".asset"));
         }
         //GameObject.Find("ItemsPanel").GetComponent<ListAllAvailable>().ListAllItemsInInv();

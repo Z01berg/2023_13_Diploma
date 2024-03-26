@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /**
- * This class keeps the object it was assigned to alive while switching scenes.
- * For it to work properly the game object needs to have a unique tag, otherwise
- * it will delete all but one of the objects of the same tag.
+ * Publiczna klasa zapobiegajaca zniszczeniu objektu do kturego zostala ona przypisana
+ * przy przechodzeniu miedzy scenami.
+ * Objekt ten musi mieæ unikatowy w scenie tag, w innym przypadku inne objekty posiadajaca ten sam
+ * tag zostana zniszczone przy wejsciu do sceny.
  */
 
 public class DontDestroy : MonoBehaviour

@@ -1,17 +1,22 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 /**
- * The class keeps track of item slots and gives a player default cards if a certain
- * part of equipment has not been assigned, or takes them away when if it has been assigned.
+ * Klasa publiczna monitorujaca pola ekwipunku i dodajaca karty podstawowe do reki gracza 
+ * w razie gdyby nie wybral nic w koryms z pol ekwipunku.
  * 
- * It contains public classes:
- *  DisplayCards() - displayes default cards assigned to a slot
- *  HideCards() - hides default cards assigned to a slot
- *  AssignCard() - adds card to a list of all cards contained by slot
- *  ClearList() - clears a list of all cards of a slot
+ * Klasa zawiera pola:
+ * - _cards: zawierajace karty utworzone dla danego okna
+ * - _cardPrefab: do ktorego przypisany jest prefab karty
+ * - _cardsPanel: przypisany jest do niego panel kart w oknie ekwipunku
+ * - _cardsList: lista kart podstawowych danego slotu w postaci ScriptableObject
+ * - _defaultAdded: wartosc wskazujaca na to czy karty podstatwowe zostaly dodane czy nie
+ * 
+ * Klasa zawiera funkcje:
+ * - DisplayCards(): tworzy i dodaje karty do ekwipunku
+ * - HideCards(): usuwa karty z ekwipunku
+ * - AssignCard(): pozwala na przypisanie nowej karty podstawowej do slotu
+ * - ClearList(): usowa karty z listy _cardsList
  */
 
 public class DefaultCards : MonoBehaviour

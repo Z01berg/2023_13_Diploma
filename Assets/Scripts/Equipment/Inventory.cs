@@ -3,13 +3,10 @@ using UnityEditor;
 using UnityEngine;
 
 /**
- * A class containing a list of all items currently existing in the game.
- * There should only be one instance of this class in a scene.
- * 
- * The items are stored in the public items list variable.
- * 
- * The Awake() function check if there is only one class of this type in a scene and assignes
- * all the items to the items list.
+ * Publiczna klasa przechowuja ca i dajaca latwy dostep do wszystkich itemow
+ * istniejacych w grze. Przy rozpoczeciu gry klasa znajduje i pobiera wszystkie ScriptableObjects typu Item 
+ * ktore istnieja a nastepnie dodaje je do listy items do ktorej dostep mozna otrzymac z poza tej klasy
+ * poprzez uzycie instrukcji "Inventory.Instance.items"
  */
 
 public class Inventory : MonoBehaviour

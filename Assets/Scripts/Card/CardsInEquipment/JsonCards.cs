@@ -1,24 +1,14 @@
 using System.Collections.Generic;
 
 /**
- * Class used as a middle man between importing from JSON and creating scriptable object of a card.
- * The classes must mirror the card JSON file scheme.
+ * Klasa posrednia przechowujaca dane w formacie deserializowanego pliku Json, z ktorych
+ * pozniej tworzone sa karty w grze.
  */
 
 [System.Serializable]
 public struct JsonCards
 {
     public List<Card> attackCardsList;
-    //public int id;
-    //public bool isActive;
-    //public int cardQuality;
-    //public string title;
-    //public string description;
-    //public int cost;
-    //public int damage;
-    //public int move;
-    //public string backgroundPath;
-    //public string spritePath;
 }
 
 [System.Serializable]

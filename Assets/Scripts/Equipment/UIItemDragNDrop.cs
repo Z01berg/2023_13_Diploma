@@ -1,8 +1,17 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+
+/**
+ * Publiczna klasa pozwalajaca na przeciaganie przedmiotow w ekwipunku z okna inventory do okna equipmenr i odwrotnie.
+ * 
+ * Funkcja OnBeginDrag() uruchamiana jest w momencie rozpoczecia przez gracza przeciagania przedmiotu, i przykleja ona 
+ * owy przedmiot do polozenia aktualnego myszki.
+ * 
+ * Funkcja OnDrag() pilnuje by przeciagany przedmiot znajdowal sie w tym samym miejscu co myszka.
+ * 
+ * Funkcja OnEndDrag() 
+ */
 
 public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
 {
@@ -57,8 +66,6 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
             rectTransform.position = originParentTransform.position;
             rectTransform.SetParent(originParentTransform);
             RemoveCardsFromDeck();
-            
-            
         }
         else
         {

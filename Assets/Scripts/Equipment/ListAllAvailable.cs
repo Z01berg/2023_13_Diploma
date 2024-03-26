@@ -3,6 +3,11 @@ using UnityEngine;
 /**
  * Publiczna klasa listujaca wszystkie itemy z listy inventory i dodajaca je do okna inventory w UI
  *  parent - okno inventory w UI
+ *  slotPrefab - prefab okna na item
+ *  itemUIPrefab - prefab itemu
+ *  
+ *  Funkcja ListAllItemsInInv() odpowiada za stworzenie slotu oraz przedmiotu, usuniecie i dodanie potrzebnych komponentow
+ *  i dodanie ich do okna inventory w UI poprzez dodanie parenta.
  */
 
 public class ListAllAvailable : MonoBehaviour

@@ -2,9 +2,11 @@ using UnityEditor;
 using UnityEngine;
 
 /**
- * A class used for creating a card, reformating it into JSON and 
- * putting it into the right JSON file.
- * The whole JSON file is overwritten and the new card is added at the end.
+ * Publiczna klasa s³uzaca do twozenia kart i zapisywania w odpowiednim pliku JSON.
+ * Klasa posiada zmienne odpowiadaj¹ce atrybutom kart.
+ * Po wpisaniu odpowiednich danych i przyciœniêciu "Export" w inspektorze objektu JsonCardCreator
+ * uruchamiana jest publiczna funkcja CreateCard() serializuj¹ca dane w formacie Json i zapisuj¹ca do odpowiedniego pliku.
+ * Funkcja tworzy równierz Scriptable object aby nie trzeba by³o importowaæ ponownie wszystkich kart.
  */
 
 public enum CardType

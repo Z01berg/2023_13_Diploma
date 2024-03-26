@@ -1,8 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
+/**
+ * Publiczna klasa w ktorej zapisane sa dane pobrane z przypisanej do karty ScriptableObject
+ * Dane te sa nastepnie wyswietlane w odpowiednim dla nich miejscu w momencie powstania karty.
+ * 
+ * Zmienne zawarte w klasie odpowiadaja danym w kazdej z kart.
+ */
 
 public class CardDisplay : MonoBehaviour
 {

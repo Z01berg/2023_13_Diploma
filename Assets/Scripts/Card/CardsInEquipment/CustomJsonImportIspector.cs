@@ -4,7 +4,13 @@ using UnityEditor;
 using UnityEngine;
 
 /**
- * A class that lets you visualize imported, or exported cards in UNITY inspector.
+ * Klasy publiczne zmieniaj¹ce wyglad inspektora unity objektu JsonCardsLoader.
+ * 
+ * CustomJsonImportInspector - dodaje przycisk po ktorego nacisnieciu odpala sie 
+ * funkcja importujaca karty.
+ * 
+ * CustomJsonExportInspector - dodaje przycisk po nacisnieciu ktorego odpalana jest funkcja
+ * zapisujaca utworzona karte do pliku Json
  */
 
 [CustomEditor(typeof(Deserialization))]
