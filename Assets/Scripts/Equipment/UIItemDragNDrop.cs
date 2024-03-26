@@ -10,7 +10,14 @@ using UnityEngine.EventSystems;
  * 
  * Funkcja OnDrag() pilnuje by przeciagany przedmiot znajdowal sie w tym samym miejscu co myszka.
  * 
- * Funkcja OnEndDrag() 
+ * Funkcja OnEndDrag() w momencie zakonczenia przeciagania jesli przedmiot znajduje sie 
+ * w miejscu w kturym rownierz znajduje sie odpowiedni slot, przypisuje ten slot jako rodzica
+ * przedmiotu oraz uruchamia funkcje dodajaca karty do okna kart. Jesli przeciaganie zostanie zakonczone
+ * w miejscu poza poprawnym slotem przedmiot powroci na odpowiednie miejsce w oknie inventory.
+ * 
+ * Funkcja AddCardsToDeck() dodaje karty zawarte w przedmiocie dodanym do ekwipunku do okna kart
+ * 
+ * Funkcja RemoveCardsFromDeck() usuwa karty przypisane do danego przedmiotu jesli zostal on usuniety z ekwipunku
  */
 
 public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
