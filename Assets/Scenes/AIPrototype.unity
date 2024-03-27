@@ -184,10 +184,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7350fa39d952cc444b06f573339eae70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactiveTilemap: {fileID: 2003713187}
-  hoverTile: {fileID: 11400000, guid: aaad7d242a2c5ba4fa9232cb7c283236, type: 2}
-  moveRangeTile: {fileID: 11400000, guid: 4d3de76dcea84f74ab0dd8e99bb0c238, type: 2}
-  skillRangeTile: {fileID: 11400000, guid: f334d17372268a043b8929fb6d21109a, type: 2}
+  _interactiveTilemap: {fileID: 2003713187}
+  _hoverTile: {fileID: 11400000, guid: 57e5456550cfe2d4eb2992791f324abf, type: 2}
+  _moveRangeTile: {fileID: 11400000, guid: 2943610360e196444b4ff67be0a0aacf, type: 2}
+  _skillRangeTile: {fileID: 11400000, guid: 1af3a78ac575de241b3628cd0ef9684a, type: 2}
 --- !u!1 &376728205
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,6 +198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 376728207}
   - component: {fileID: 376728206}
+  - component: {fileID: 376728208}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -260,52 +261,22 @@ Transform:
   - {fileID: 824031280}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &391523334
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 391523336}
-  - component: {fileID: 391523335}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &391523335
+--- !u!114 &376728208
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 391523334}
+  m_GameObject: {fileID: 376728205}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4dfe7b7af525a3d4ca1df3c91702aa1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   virtualCamera: {fileID: 376728206}
-  sensitivity: 10
---- !u!4 &391523336
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 391523334}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.70356643, y: -1.2266972, z: 0.026636448}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  zoomSpeed: 2
+  minZoom: 2
+  maxZoom: 10
 --- !u!1 &563386425
 GameObject:
   m_ObjectHideFlags: 0
@@ -44967,9 +44938,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6ce7ef6fc5c2346850afc592605ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _visionRangeInTiles: 5
+  _visionRangeInTiles: 7
   _tileSize: 1
   _healthPoints: 0
+  _moveSpeed: 3
 --- !u!114 &2018087423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44982,6 +44954,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c16a119a99f40cb4a93dd35dbeb1b9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grid: {fileID: 181211724}
+  groundTilemap: {fileID: 2011107004}
+  topTilemap: {fileID: 2097581884}
 --- !u!1 &2097581878
 GameObject:
   m_ObjectHideFlags: 0
@@ -99354,4 +99329,3 @@ SceneRoots:
   - {fileID: 1593484816}
   - {fileID: 376728207}
   - {fileID: 2018087421}
-  - {fileID: 391523336}
