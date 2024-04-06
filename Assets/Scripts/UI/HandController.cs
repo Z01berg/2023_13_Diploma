@@ -104,7 +104,7 @@ namespace UI
         private void UpdateCards()
         {
             if (transform.childCount != _cards.Count)
-            {
+            {  
                 InitCards();
             }
 
