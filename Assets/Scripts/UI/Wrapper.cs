@@ -139,8 +139,8 @@ namespace UI
                 }
 
                 _isPressed = true;
-                cardInUse = this;
                 _isHovered = false;
+                cardInUse = this;
                 eventsConfig?.cardUnHover?.Invoke(new CardUnhover(this));
                 PlaceHolder.isTaken = true;
             }
@@ -151,6 +151,7 @@ namespace UI
                 {
                     _isPressed = false;
                     PlaceHolder.isTaken = false;
+                    cardInUse = null;
                 }
             }
         }

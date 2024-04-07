@@ -25,8 +25,11 @@ namespace UI
 
         [SerializeField] private ZoomConfig _zoomConfig;
 
-        [FormerlySerializedAs("forceFitContainer")] [Header("Constraints")] [SerializeField]
+        [Header("Constraints")] [SerializeField]
         private bool _forceFitContainer; //Decyduje czy karty się na siebie nakładają lub nie
+        public static int cardLimit = 5;
+
+        public static int currentCardNumber;
 
         [Header("Alignment")] [SerializeField] private AnimationConfig _animationConfig;
 
@@ -195,10 +198,22 @@ namespace UI
             }
         }
 
-        public void DestroyCard(Wrapper card)
+        public void DestroyCard()
         {
-            _cards.Remove(card);
-            _eventsConfig.cardDestroy?.Invoke(new CardDestroy(card));
+            var card = Wrapper.cardInUse;
+            if (card == Wrapper.cardInUse && PlaceHolder.isTaken)
+            {
+                _cards.Remove(card);
+                _eventsConfig.cardDestroy?.Invoke(new CardDestroy(card));
+                PlaceHolder.isTaken = false;
+                currentCardNumber--;
+                Destroy(card.gameObject);    
+            }
+            else
+            {
+                Debug.Log("Wybierz kartę zanim jej użyjesz");
+            }
+            
         }
 
         public Vector2 getPlaceHolderPosition()

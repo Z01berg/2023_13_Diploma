@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using Random = System.Random;
@@ -13,7 +14,7 @@ namespace UI
         private HandController _handController;
         private Equipment _equipment;
 
-        public bool create = false;
+        public bool canCreate = true;
         
         [SerializeField] GameObject _hand;
         [SerializeField] private GameObject _inventory;
@@ -30,21 +31,17 @@ namespace UI
 
         private void Update()
         {
-            if (create)
-            {
-                CreateDeck();
-            }
             
         }
 
         public void CreateDeck()
         {
-            if (create)
+            if (canCreate)
             {
                 _cards = _equipment.cards;
                 Shuffle();
                 CreateCards();
-                create = false;
+                canCreate = false;
             }
         }
         
@@ -92,8 +89,27 @@ namespace UI
                 Debug.Log("Brak kart");
                 return;
             }
-            var card = _deck.Pop();
-            card.transform.SetParent(_hand.transform);
+
+            // for (int i = 0; i < HandController.cardLimit; i++)
+            // {
+            //     if (HandController.currentCardNumber == HandController.cardLimit)
+            //     {
+            //         Debug.Log("Przekroczono limit kart");
+            //         return;
+            //     }
+            //
+            //    
+            //     
+            // }
+            
+            while (HandController.currentCardNumber < HandController.cardLimit)
+            {
+                var card = _deck.Pop();
+                card.transform.SetParent(_hand.transform);
+                HandController.currentCardNumber++;
+            }
+            
+            
         }
     }
 }
