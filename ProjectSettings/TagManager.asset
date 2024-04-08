@@ -56,11 +56,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
-    uniqueID: 144045155
-    locked: 0
   - name: Ground
     uniqueID: 1142449295
+    locked: 0
+  - name: Player
+    uniqueID: 144045155
     locked: 0
   - name: Collision
     uniqueID: 2053827435
