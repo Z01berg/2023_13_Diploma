@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2580072363687753268}
   - component: {fileID: 9219481704451611622}
   m_Layer: 0
-  m_Name: Ground_Top
+  m_Name: Ground_Top_example
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

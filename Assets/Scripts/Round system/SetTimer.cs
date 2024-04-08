@@ -15,14 +15,6 @@ using UnityEngine;
  * Na podstawie typu postaci, SetTimer określa tekst do wyświetlenia oraz przekazuje go do czasomierza.
  */
 
-public enum CharacterType
-{
-    Player,
-    Enemy,
-    Item,
-    Boss,
-    None
-}
 
 public class SetTimer : MonoBehaviour
 {
