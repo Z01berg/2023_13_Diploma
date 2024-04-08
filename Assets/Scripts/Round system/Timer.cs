@@ -97,11 +97,6 @@ public class Timer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             _counting = true;
-            
-            if (_timers[_activeTimerIndex].Tag == "Player")
-            {
-                EventSystem.PlayerMove.Invoke(false);
-            }
         }
     }
 

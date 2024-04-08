@@ -6,6 +6,7 @@ using UnityEngine.Events;
  * 
  * Żeby rozdzielić eventy wykorzystujemy regiony z opisem Nazwa: Od Kogo -> Do Kogo
  */
+
 public static class EventSystem
 {
     #region PlayerMove: Timer.cs -> PlayerController.cs

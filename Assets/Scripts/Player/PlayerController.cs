@@ -18,7 +18,7 @@ namespace Player
         private void Start()
         {
             _movePoint.parent = null;
-            //GetComponent<PlayerController>().enabled = !GetComponent<PlayerController>().enabled;// TODO uncomment this after AI tests
+            GetComponent<PlayerController>().enabled = !GetComponent<PlayerController>().enabled;// TODO uncomment this after AI tests
             EventSystem.PlayerMove.AddListener(ToogleScrypt);
         }
     
@@ -29,62 +29,55 @@ namespace Player
                 _movePoint.position, 
                 _moveSpeed * Time.deltaTime
                 );
-
-            CalculatePlayerMove(_turnOff);
+            
+            if (_turnOff)
+            {
+                CalculatePlayerMove();
+                _turnOff = false;
+                this.enabled = false;
+            }
+            else
+            {
+                CalculatePlayerMove();  
+            }
         }
 
-        private void CalculatePlayerMove(bool lastMove) // TODO optimaze this
+        private void CalculatePlayerMove()
         {
             if (Vector3.Distance(transform.position, _movePoint.position) <= .05f)
             {
-                if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
+                float horizontal = Input.GetAxisRaw("Horizontal");
+                float vertical = Input.GetAxisRaw("Vertical");
+
+                if (Mathf.Abs(horizontal) == 1f)
                 {
-                    if (!Physics2D.OverlapCircle(
-                            _movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f),
-                            .2f,
-                            _whatStopsMovement))
+                    if (!Physics2D.OverlapCircle(_movePoint.position + new Vector3(horizontal, 0f, 0f), .2f, _whatStopsMovement))
                     {
-                        _movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
-                    }
-                } else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
-                {
-                    if (!Physics2D.OverlapCircle(
-                            _movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f),
-                            .2f,
-                            _whatStopsMovement))
-                    {
-                        _movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
+                        _movePoint.position += new Vector3(horizontal, 0f, 0f);
                     }
                 }
-            }
-            else if (Vector3.Distance(transform.position, _movePoint.position) <= .05f && lastMove)
-            {
-                if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
+                else if (Mathf.Abs(vertical) == 1f)
                 {
-                    if (!Physics2D.OverlapCircle(
-                            _movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f),
-                            .2f,
-                            _whatStopsMovement))
+                    if (!Physics2D.OverlapCircle(_movePoint.position + new Vector3(0f, vertical, 0f), .2f, _whatStopsMovement))
                     {
-                        _movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
-                    }
-                } else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f)
-                {
-                    if (!Physics2D.OverlapCircle(
-                            _movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f),
-                            .2f,
-                            _whatStopsMovement))
-                    {
-                        _movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
+                        _movePoint.position += new Vector3(0f, vertical, 0f);
                     }
                 }
-                this.enabled = _turnOff;
             }
         }
 
         private void ToogleScrypt(bool isThis)
         {
-            _turnOff = true;
+            if (this.enabled && !isThis)
+            {
+                _turnOff = true;
+            }
+            else
+            {
+                this.enabled = !this.enabled;
+            }
+
+            
         }
         
         public int ActionPoints => _actionPoints;
