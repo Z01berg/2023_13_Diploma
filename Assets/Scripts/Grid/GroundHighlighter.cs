@@ -55,6 +55,7 @@ namespace Grid
                 _currentHighlightMode = HighlightMode.SkillRange;
             }
 
+            /*
             if (_enemyController.IsCombatStarted)
             {
                 if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -69,6 +70,7 @@ namespace Grid
             {
                 _currentHighlightMode = HighlightMode.SingleTile;
             }
+            */
             
             if (_currentHighlightMode == HighlightMode.SkillRange || _currentHighlightMode == HighlightMode.SingleTile)
             {
