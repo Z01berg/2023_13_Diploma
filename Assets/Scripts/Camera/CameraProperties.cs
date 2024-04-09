@@ -1,37 +1,26 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using Cinemachine;
+using UnityEngine;
 
 public class CameraProperties : MonoBehaviour
 {
-    [SerializeField] CinemachineVirtualCamera virtualCamera;
-    CinemachineFramingTransposer transposer;
-    [SerializeField] float sensitivity = 10f;
+    public CinemachineVirtualCamera virtualCamera;
+    public float zoomSpeed = 2f;
+    public float minZoom = 2f;
+    public float maxZoom = 10f;
 
-    private void Start()
+    void Update()
     {
-        if (virtualCamera != null)
-        {
-            transposer = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
-        }
-        else
-        {
-            Debug.LogError("Virtual camera not assigned!");
-        }
+        float zoomInput = Input.GetAxis("Mouse ScrollWheel");
+        ZoomCamera(zoomInput);
     }
 
-    private void Update()
+    void ZoomCamera(float increment)
     {
-        if (transposer == null)
-            return;
-
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
-        if (Mathf.Abs(scroll) > 0)
-        {
-            float newDistance = transposer.m_CameraDistance - scroll * sensitivity;
-            transposer.m_CameraDistance = Mathf.Max(transposer.m_MinimumDistance, Mathf.Min(transposer.m_MaximumDistance, newDistance));
-        }
+        float currentZoom = virtualCamera.m_Lens.OrthographicSize;
+        float newZoom = Mathf.Clamp(currentZoom - increment * zoomSpeed, minZoom, maxZoom);
+        virtualCamera.m_Lens.OrthographicSize = newZoom;
     }
 }
