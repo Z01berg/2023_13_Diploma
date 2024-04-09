@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UI;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -22,10 +23,14 @@ public class UIInventory : MonoBehaviour
     [SerializeField] private GameObject _cardsPanel;
     [SerializeField] private GameObject _itemsPanel;
     [SerializeField] private GameObject _equipmentPanel;
+    [SerializeField] private GameObject _deck;
+
+    private DeckController _deckController;
 
     private void Start()
     {
         gameObject.SetActive(false);
+        _deckController = _deck.GetComponent<DeckController>();
     }
 
     public void SaveState()
@@ -37,6 +42,8 @@ public class UIInventory : MonoBehaviour
             Equipment.Instance.cards.Add(card.GetComponent<CardDisplay>().cardSO);
         }
 
+        _deckController.CreateDeck();
+        
         GameObject slot = _equipmentPanel.gameObject.transform.Find("HeadSlot").gameObject;
         if(slot.GetComponentInChildren<UIItemDragNDrop>() != null)
             Equipment.Instance.head = slot.GetComponentInChildren<UIItemDragNDrop>().item;
@@ -108,6 +115,8 @@ public class UIInventory : MonoBehaviour
             Equipment.Instance.item6 = slot.GetComponentInChildren<UIItemDragNDrop>().item;
         else
             Equipment.Instance.item6 = null;
+        
+        
 
         //SceneManager.LoadScene("Z01berg"); moze byc potrzebne w razie zmiany scen
     }

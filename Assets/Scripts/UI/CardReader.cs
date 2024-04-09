@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace UI
 {
+    /**
+     * Publiczna klasa CardReader, która odpowiada za sczytywanie informacji a ktualnie wybranej karty
+     */
     public class CardReader : MonoBehaviour
     {
         private int _id;
@@ -25,6 +28,14 @@ namespace UI
                 _card = Wrapper.cardInUse;
                 ReadCard(_card.GetComponent<CardDisplay>());
             }
+            else
+            {
+                _text.text = "ID:\n" +
+                             "Cost:\n" +
+                             "Attack:\n" +
+                             "Move:\n" +
+                             "Range:";
+            }
         }
 
         private void ReadCard(CardDisplay display)
@@ -32,8 +43,8 @@ namespace UI
             _text.text = $"ID: {display.id.ToString()}\n" +
                          $"Cost: {display.cost.text}\n" +
                          $"Attack: {display.attack.text}\n" +
-                         $"Move: {display.move.text}";
+                         $"Move: {display.move.text}\n" +
+                         $"Range: {display.range.ToString()}";
         }
     }
-    
 }
