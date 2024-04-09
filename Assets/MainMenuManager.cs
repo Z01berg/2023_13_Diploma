@@ -68,4 +68,14 @@ public class MainMenuManager : MonoBehaviour
     {
         //SceneManager.LoadScene(1);
     }
+
+    public void OpenOptions()
+    {
+        _optionsView.transform.SetAsLastSibling();
+    }
+
+    public void OpenKeys()
+    {
+        _keysView.transform.SetAsLastSibling();
+    }
 }
