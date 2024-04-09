@@ -1,155 +1,126 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-/**
- * Klasa EnemyController odpowiedzialna jest za opisywanie zachowania
- * testowego modelu przeciwnika. Znajduje się w nim logika
- * odpowiedzialna za wykrywanie postaci gracza i inicjowanie
- * walki poprzez generowanie widoku siatki. Jest to wstępny
- * prototyp na bazie którego zostaną wykreowane lepsze
- * rozwiązania.
- */
+public class EnemyController : MonoBehaviour
+{
+    [SerializeField] private float _moveSpeed = 5f;
+    [SerializeField] private Transform _enemyCenterPoint;
 
-    public class EnemyController : MonoBehaviour
+    private Transform _player;
+    private Tilemap _gridOverlayTilemap;
+    private Pathfinding _pathfinding;
+    private List<Vector3> _currentPath;
+    private int _currentWaypointIndex;
+    private bool _isChasing = false;
+
+    void Start()
     {
+        _player = GameObject.FindGameObjectWithTag("Player").transform;
         
-        /*
-         * Zmienne _visionRangeInTiles i _tileSize
-         * związane są z kalkulacją systemu wykrycia
-         * gracza przez przeciwnika. Jeśli potrzebne będą
-         * zmiany w układzie używanych tilemap,
-         * można będzie dostosować poniższe wartości
-         * z poziomu edytora Unity. Pomocna w tym będzie metoda
-         * OnDrawGizmos().
-         */
-        
-        //określa zasięg wykrycia gracza przez przeciwnika co X tileów
-        [SerializeField] private int _visionRangeInTiles = 5;
-        //defaultowo 1f, ale można zmienić w zależności od potrzeb
-        [SerializeField] private float _tileSize = 1f;
-        [SerializeField] private int _healthPoints;
-        [SerializeField] private float _moveSpeed = 5f;
-
-        private Transform _player;
-        private Tilemap _gridOverlayTilemap;
-        private bool _isCombatStarted;
-        private Pathfinding _pathfinding;
-
-        void Start()
+        _pathfinding = GetComponent<Pathfinding>();
+        if (_pathfinding == null)
         {
-            _player = GameObject.FindGameObjectWithTag("Player").transform;
-
-            _pathfinding = GetComponent<Pathfinding>();
-            if (_pathfinding == null)
-            {
-                Debug.LogError("Pathfinding cript not found on the Enemy object");
-            }
-
-            GameObject gridOverlayObject = GameObject.FindWithTag("GridOverlayTag");
-            if (gridOverlayObject != null)
-            {
-                _gridOverlayTilemap = gridOverlayObject.GetComponent<Tilemap>();
-            }
-            else
-            {
-                Debug.LogError("GridOverlay object not found with the specified tag!");
-            }
+            Debug.LogError("Pathfinding script not found on the Enemy object");
         }
 
-        void Update()
+        GameObject gridOverlayObject = GameObject.FindWithTag("GridOverlayTag");
+        if (gridOverlayObject != null)
         {
-            int tileDistanceToPlayer = CalculateTileDistanceToPlayer();
-
-            if (tileDistanceToPlayer <= _visionRangeInTiles)
-            {
-                EnterCombat();
-            }
-            else
-            {
-                ExitCombat();
-            }
+            _gridOverlayTilemap = gridOverlayObject.GetComponent<Tilemap>();
         }
-        
-        int CalculateTileDistanceToPlayer()
+        else
         {
-            Vector3 playerPosition = _player.position;
-            Vector3 enemyPosition = transform.position;
-
-            int tileDistanceX = Mathf.RoundToInt(Mathf.Abs(playerPosition.x - enemyPosition.x) / _tileSize);
-            int tileDistanceY = Mathf.RoundToInt(Mathf.Abs(playerPosition.y - enemyPosition.y) / _tileSize);
-
-            return Mathf.Max(tileDistanceX, tileDistanceY);
+            Debug.LogError("GridOverlay object not found with the specified tag!");
         }
-
-        bool EnterCombat()
-        {
-                _gridOverlayTilemap.GetComponent<Renderer>().enabled = true;
-                _isCombatStarted = true;
-                ChasePlayer();
-                return _isCombatStarted;
-        }
-
-        bool ExitCombat()
-        {
-                _gridOverlayTilemap.GetComponent<Renderer>().enabled = false;
-                return _isCombatStarted = false;
-        }
-        
-        void ChasePlayer()
-        {
-            Vector3 startPosition = transform.position;
-            Vector3 targetPosition = _player.position;
-
-            List<Vector3> path = _pathfinding.FindPath(startPosition, targetPosition);
-
-            if (path != null && path.Count > 0)
-            {
-                Vector3 nextWaypoint = path[0];
-                Vector3 currentPosition = new Vector3(
-                    Mathf.Round(transform.position.x),
-                    Mathf.Round(transform.position.y),
-                    0f);
-                Vector3 targetTileCenter = new Vector3(
-                    Mathf.Round(nextWaypoint.x) + 0.5f,
-                    Mathf.Round(nextWaypoint.y) + 0.5f,
-                    0f);
-
-                if (currentPosition == targetTileCenter)
-                {
-                    path.RemoveAt(0);
-                    if (path.Count > 0)
-                    {
-                        nextWaypoint = path[0];
-                        targetTileCenter = new Vector3(
-                            Mathf.Round(nextWaypoint.x) + 0.5f,
-                            Mathf.Round(nextWaypoint.y) + 0.5f,
-                            0f);
-                    }
-                }
-                
-                float step = _moveSpeed * Time.deltaTime;
-                transform.position = Vector3.MoveTowards(transform.position, targetTileCenter, step);
-            }
-        }
-
-        public bool IsCombatStarted => _isCombatStarted;
-
-        public int HealthPoints
-        {
-            get => _healthPoints;
-            set => _healthPoints = value;
-        }
-        
-        
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(transform.position, new Vector3(_visionRangeInTiles * _tileSize * 2, _visionRangeInTiles * _tileSize * 2, 0));
-        }
-        
-        
-        
     }
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3Int clickedTilePosition = GetClickedTilePosition();
+
+            if (_gridOverlayTilemap != null && _gridOverlayTilemap.HasTile(clickedTilePosition))
+            {
+                Vector3 targetPosition = _gridOverlayTilemap.CellToWorld(clickedTilePosition);
+                ChaseTarget(targetPosition);
+            }
+        }
+        
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            ChaseTarget(_player.position);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            if (!_isChasing)
+            {
+                ChaseTarget(_player.position);
+                _isChasing = true;
+            }
+            else
+            {
+                _isChasing = false;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            _moveSpeed += 1f;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            _moveSpeed -= 1f;
+        }
+    }
+
+    Vector3Int GetClickedTilePosition()
+    {
+        Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        return _gridOverlayTilemap.WorldToCell(clickPosition);
+    }
+
+    void ChaseTarget(Vector3 targetPosition)
+    {
+        Vector3 startPosition = _enemyCenterPoint.position;
+
+        _currentPath = _pathfinding.FindPath(startPosition, targetPosition);
+        _currentWaypointIndex = 0;
+    }
+
+    void LateUpdate()
+    {
+        if (_isChasing)
+        {
+            ChaseTarget(_player.position);
+        }
+
+        if (_currentPath != null && _currentPath.Count > 0)
+        {
+            Vector3 nextWaypoint = _currentPath[_currentWaypointIndex];
+            Vector3 currentPosition = _enemyCenterPoint.position;
+
+            if (Vector3.Distance(currentPosition, nextWaypoint) < 0.001f)
+            {
+                if (_currentWaypointIndex < _currentPath.Count - 1)
+                {
+                    _currentWaypointIndex++;
+                    nextWaypoint = _currentPath[_currentWaypointIndex];
+                }
+            }
+
+            float step = _moveSpeed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(currentPosition, nextWaypoint, step);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, new Vector3(1, 1, 0));
+    }
+}
 
