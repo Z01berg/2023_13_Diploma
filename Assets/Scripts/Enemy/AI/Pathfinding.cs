@@ -23,12 +23,8 @@ public class Pathfinding : MonoBehaviour
 
         foreach (var pos in groundTilemap.cellBounds.allPositionsWithin)
         {
-            var worldPos = groundTilemap.CellToWorld(pos);
-            if (!groundTilemap.HasTile(pos) || topTilemap.HasTile(pos))
-            {
-                _nodes[pos] = null;
-            }
-            else
+            var worldPos = groundTilemap.GetCellCenterWorld(pos);
+            if (groundTilemap.HasTile(pos) && !topTilemap.HasTile(pos))
             {
                 _nodes[pos] = new Node(worldPos, pos);
             }
@@ -137,7 +133,7 @@ public class Pathfinding : MonoBehaviour
     private float GetDistance(Node nodeA, Node nodeB)
     {
         var distanceX = Mathf.Abs(nodeA.gridPosition.x - nodeB.gridPosition.x);
-        var distanceY = Mathf.Abs(nodeB.gridPosition.y - nodeB.gridPosition.y);
+        var distanceY = Mathf.Abs(nodeA.gridPosition.y - nodeB.gridPosition.y);
 
         return distanceX + distanceY;
     }
@@ -159,4 +155,18 @@ public class Pathfinding : MonoBehaviour
         }
     }
     
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+
+        foreach (var node in _nodes.Values)
+        {
+            if (node != null)
+            {
+                Gizmos.DrawWireSphere(node.worldPosition, 0.1f);
+            }
+        }
+    }
 }
+
+
