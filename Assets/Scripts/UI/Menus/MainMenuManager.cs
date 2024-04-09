@@ -69,6 +69,11 @@ public class MainMenuManager : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void StartGame2()
+    {
+        SceneManager.LoadScene(2);
+    }
+
     public void OpenOptions()
     {
         _optionsView.transform.SetAsLastSibling();
