@@ -10,6 +10,12 @@ public class CreditsAutoScroll : MonoBehaviour
     private Scrollbar _scrollbar;
     private Coroutine _coroutine;
 
+    private void Awake()
+    {
+        _scrollbar = GetComponent<Scrollbar>();
+        _scrollbar.value = 1;
+    }
+
     private void Start()
     {
         _scrollbar = GetComponent<Scrollbar>();
