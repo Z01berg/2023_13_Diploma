@@ -1,11 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
 using TMPro;
 using UnityEngine;
-using Object = System.Object;
 
 /**
  * Publiczna clasa TimerData ma za zadanie {get; set} 3 rzeczy:
