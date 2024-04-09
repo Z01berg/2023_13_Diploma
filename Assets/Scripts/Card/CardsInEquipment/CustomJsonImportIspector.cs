@@ -1,3 +1,4 @@
+/*
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -12,7 +13,7 @@ using UnityEngine;
  * CustomJsonExportInspector - dodaje przycisk po nacisnieciu ktorego odpalana jest funkcja
  * zapisujaca utworzona karte do pliku Json
  */
-
+/*
 [CustomEditor(typeof(Deserialization))]
 public class CustomJsonImportIspector : Editor
 {
@@ -46,3 +47,4 @@ public class CustomJsonCardExportInspector : Editor
     }
     
 }
+*/

@@ -1,12 +1,8 @@
-using System.Collections.Generic;
-using System.IO;
-using UnityEditor;
-using UnityEngine;
 
 /**
  * Publiczna klasa pozwalajaca na deserializacje plikow zawierajaca zapisane karty w formacie Json
  */
-
+/*
 public struct JsonItems
 {
     public List<JItem> itemsList;
@@ -232,3 +228,4 @@ public class Deserialization : MonoBehaviour
     }
 
 }
+*/

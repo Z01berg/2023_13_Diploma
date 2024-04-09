@@ -24,8 +24,8 @@ using UnityEngine;
     - pobranie obrażeń umiejętności gracza
  */
 
-namespace Player
-{
+
+
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private float _moveSpeed = 5f;
@@ -41,7 +41,7 @@ namespace Player
         private void Start()
         {
             _movePoint.parent = null;
-            GetComponent<PlayerController>().enabled = !GetComponent<PlayerController>().enabled;// TODO uncomment this after AI tests
+            //GetComponent<PlayerController>().enabled = !GetComponent<PlayerController>().enabled;// TODO uncomment this after AI tests
             EventSystem.PlayerMove.AddListener(ToogleScrypt);
         }
 
@@ -107,4 +107,3 @@ namespace Player
         public int SkillRange => _skillRange;
         public int SkillDamage => _skillDamage;
     }
-}

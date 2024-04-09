@@ -1,5 +1,3 @@
-using UnityEditor;
-using UnityEngine;
 
 /**
  * Publiczna klasa s³uzaca do twozenia kart i zapisywania w odpowiednim pliku JSON.
@@ -8,7 +6,7 @@ using UnityEngine;
  * uruchamiana jest publiczna funkcja CreateCard() serializuj¹ca dane w formacie Json i zapisuj¹ca do odpowiedniego pliku.
  * Funkcja tworzy równierz Scriptable object aby nie trzeba by³o importowaæ ponownie wszystkich kart.
  */
-
+/*
 public enum CardType
 {
     attack,movement,curse
@@ -61,3 +59,5 @@ public class CardCreator : MonoBehaviour
         System.IO.File.WriteAllText(AssetDatabase.GetAssetPath(jsonFile), json);
     }
 }
+
+*/

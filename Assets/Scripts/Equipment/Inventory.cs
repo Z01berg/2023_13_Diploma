@@ -23,7 +23,7 @@ public class Inventory : MonoBehaviour
             return;
         }
         Instance = this;
-
+        /*
         string[] fileEntries = System.IO.Directory.GetFiles("Assets/ScriptableObjectAssets/Items/");
         foreach (string fileEntry in fileEntries)
         {
@@ -31,6 +31,7 @@ public class Inventory : MonoBehaviour
                 items.Add(AssetDatabase.LoadAssetAtPath<Item>(fileEntry));
         }
         GameObject.Find("ItemsPanel").GetComponent<ListAllAvailable>().ListAllItemsInInv();
+        */
     }
 
     #endregion
