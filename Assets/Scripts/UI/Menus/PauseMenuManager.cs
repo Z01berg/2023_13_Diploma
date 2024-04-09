@@ -2,20 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class PauseMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject _pauseView;
+    [SerializeField] private GameObject _gameOverView;
     private bool _menuOpen = false;
+    private bool _gameOver = false;
 
     void Start()
     {
         _pauseView.SetActive(false);
+        _gameOverView.SetActive(false);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !_gameOver)
         {
             _menuOpen = !_menuOpen;
             _pauseView.SetActive(_menuOpen);
@@ -49,5 +53,11 @@ public class PauseMenuManager : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
         Application.Quit();
+    }
+
+    public void GameOver()
+    {
+        _gameOver = true;
+        _gameOverView.SetActive(true);
     }
 }
