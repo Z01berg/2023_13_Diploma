@@ -76,20 +76,20 @@ public class Timer : MonoBehaviour
     
     void HandleTimerInput()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow) && _cheat)
+        if (Input.GetKeyDown(KeyCode.Comma) && _cheat)
         {
             ChangeActiveTimer(1);
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) && _cheat)
+        else if (Input.GetKeyDown(KeyCode.Period) && _cheat)
         {
             ChangeActiveTimer(-1);
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && _cheat)
+        if (Input.GetKeyDown(KeyCode.Quote) && _cheat)
         {
             ChangeActiveTimerValue(1);
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && _cheat)
+        else if (Input.GetKeyDown(KeyCode.Slash) && _cheat)
         {
             ChangeActiveTimerValue(-1);
         }
