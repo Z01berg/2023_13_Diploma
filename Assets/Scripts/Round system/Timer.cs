@@ -20,6 +20,7 @@ using UnityEngine;
  * - Aktualizacji tekstów zegarów.
  * - Uruchamiania odliczania zegarów.
  * - Obliczania priorytetu dla aktywnego zegara.
+ * - Ma ograniczenia dla Timer Value (0 - 99)
  */
 
 public class Timer : MonoBehaviour
@@ -33,7 +34,7 @@ public class Timer : MonoBehaviour
     private int _activeTimerIndex = 0; //czyja runda
     private bool _counting = false; // po wciśnięciu enter
     
-    private float _timeToPause = 1f; //do animacji timerów
+    private float _timeToPause = 0.5f; //do animacji timerów
     
     private bool _cheat = false; // włączenie na "R CTRL" zmieniania znaczenia timerów
 
@@ -72,6 +73,8 @@ public class Timer : MonoBehaviour
         {
             StartCountdown();
         }
+
+        KeepTimerInsideBreakets();
     }
     
     void HandleTimerInput()
@@ -135,7 +138,7 @@ public class Timer : MonoBehaviour
                 }
                 
                 _turn.text = "Turn: " + _timers[_activeTimerIndex].Tag;
-                _timeToPause = 1f;
+                _timeToPause = 0.5f;
             }
         }
 
@@ -157,13 +160,13 @@ public class Timer : MonoBehaviour
 
     IEnumerator AnimationPauseCoroutine()
     {
-        if (_timeToPause > 0.1)
+        if (_timeToPause > 0.01)
         {
-            _timeToPause -= 0.5f;
+            _timeToPause -= 0.05f;
         }
         else
         {
-            _timeToPause = 0.1f;
+            _timeToPause = 0.01f;
         }
 
         yield return new WaitForSeconds(_timeToPause);
@@ -182,7 +185,25 @@ public class Timer : MonoBehaviour
         }
         UpdateTexts();
     }
-    
+
+    void KeepTimerInsideBreakets()
+    {
+        for (int i = 0; i < _timers.Count; i++)
+        {
+            if (i == _activeTimerIndex && !_counting)
+            {
+                if (_timers[i].Value > 99)
+                {
+                    _timers[i].Value = 99;
+                }
+                else if (_timers[i].Value < 0)
+                {
+                    _timers[i].Value = 0;
+                }
+            }
+        }
+    }
+
     void ChangeActiveTimer(int change)
     {
         _activeTimerIndex += change;
