@@ -20,6 +20,7 @@ using UnityEngine;
  * - Aktualizacji tekstów zegarów.
  * - Uruchamiania odliczania zegarów.
  * - Obliczania priorytetu dla aktywnego zegara.
+ * - Ma ograniczenia dla Timer Value (0 - 99)
  */
 
 public class Timer : MonoBehaviour
@@ -72,6 +73,8 @@ public class Timer : MonoBehaviour
         {
             StartCountdown();
         }
+
+        KeepTimerInsideBreakets();
     }
     
     void HandleTimerInput()
@@ -178,26 +181,29 @@ public class Timer : MonoBehaviour
             if (i == _activeTimerIndex)
             {
                 _timers[i].Value += change;
-                KeepTimerInsideBreakets(_timers[i].Value);
             }
         }
         UpdateTexts();
     }
-    
-    int KeepTimerInsideBreakets(int timerValue)
+
+    void KeepTimerInsideBreakets()
     {
-        if (timerValue > 99)
+        for (int i = 0; i < _timers.Count; i++)
         {
-            timerValue = 99;
+            if (i == _activeTimerIndex && !_counting)
+            {
+                if (_timers[i].Value > 99)
+                {
+                    _timers[i].Value = 99;
+                }
+                else if (_timers[i].Value < 0)
+                {
+                    _timers[i].Value = 0;
+                }
+            }
         }
-        else if (timerValue < 0)
-        {
-            timerValue = 0;
-        }
-        
-        return timerValue;
     }
-    
+
     void ChangeActiveTimer(int change)
     {
         _activeTimerIndex += change;
