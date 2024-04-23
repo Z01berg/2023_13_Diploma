@@ -5,13 +5,6 @@ using TMPro;
 using UnityEngine;
 
 /**
- * Publiczna clasa TimerData ma za zadanie {get; set} 3 rzeczy:
- * - Value (znaczenie zegarka)
- * - Tag (Tag z enuma "boss"; "player")
- * - HP (znaczenie HP)
- */
-
-/**
  * Publiczna klasa Timer ma za zadanie zarządzać funkcjonalnością zegarów oraz nimi samymi.
  *
  * Ma możliwość:
@@ -57,6 +50,8 @@ public class Timer : MonoBehaviour
             int value = int.Parse(_texts[i].text);
             _timers.Add(new TimerData { Value = value, Tag = _id[i], HP = _hpAdres[i]});
         }
+        
+        EventSystem.DeleteReference.AddListener(DeleteTimer);
     }
     
     void Update()
@@ -283,13 +278,30 @@ public class Timer : MonoBehaviour
 
     void PlayedAttackCard()
     {
-        EventSystem.WhatHP.Invoke(_timers[_activeTimerIndex].HP);
+        EventSystem.WhatHP.Invoke(_timers[_activeTimerIndex].HP, _activeTimerIndex);
+    }
+
+    void DeleteTimer(int timerToDelete)
+    {
+        if (timerToDelete >= 0 && timerToDelete < _timers.Count)
+        {
+            _timers.RemoveAt(timerToDelete);
+
+            if (timerToDelete == _activeTimerIndex)
+            {
+                if (_timers.Count > 0)
+                {
+                    _activeTimerIndex = Mathf.Clamp(_activeTimerIndex, 0, _timers.Count - 1);
+                }
+            }
+
+            UpdateTexts();
+        }
+        else
+        {
+            Debug.LogError("Timer index out of range: " + timerToDelete);
+        }
     }
 }
 
-public class TimerData
-{
-    public int Value { get; set; }
-    public string Tag { get; set; }
-    public GameObject HP { get; set; }
-}
+

@@ -33,6 +33,7 @@ public class HealthBar : MonoBehaviour
 
     private bool _switch = false;
     private bool _currentObject = false;
+    private int _timerNumbToDelete;
     
     private void Start()
     {
@@ -89,10 +90,11 @@ public class HealthBar : MonoBehaviour
         {
             Destroy(_gameObject);
             Destroy(_body);
+            EventSystem.DeleteReference.Invoke(_timerNumbToDelete);
         }
     }
 
-    private void HandleWhatHP(GameObject recieved)
+    private void HandleWhatHP(GameObject recieved, int timerNumber)
     {
         if (recieved == _gameObject)
         {
@@ -100,5 +102,6 @@ public class HealthBar : MonoBehaviour
         }
         
         _switch = true;
+        _timerNumbToDelete = timerNumber;
     }
 }

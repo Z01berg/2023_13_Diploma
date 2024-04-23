@@ -22,9 +22,15 @@ public static class EventSystem
     
     #endregion
     
+    #region Delete Reference: HealthBar.cs -> TimerData.cs
+
+    public static UnityEvent<int> DeleteReference = new UnityEvent<int>();
+    
+    #endregion
+    
     #region WhatHP: Timer.cs -> HealthBar.cs
 
-        public static UnityEvent<GameObject> WhatHP = new UnityEvent<GameObject>();
+        public static UnityEvent<GameObject, int> WhatHP = new UnityEvent<GameObject, int>();
     
     #endregion
     
