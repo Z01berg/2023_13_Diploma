@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,7 +17,7 @@ using UnityEngine.UI;
  *
  * Jeżeli _currentObject to można
  * - zmienić health public ChangeHealth
- * - zabić przeciwnika Kill() jeżeli health<0
+ * - zabić przeciwnika Kill() jeżeli health < 0
  */
 
 public class HealthBar : MonoBehaviour
@@ -33,7 +30,8 @@ public class HealthBar : MonoBehaviour
     private string[] _parts;
     private int _maxValue = 0;
     private int _value = 0;
-    
+
+    private bool _switch = false;
     private bool _currentObject = false;
     
     private void Start()
@@ -49,10 +47,13 @@ public class HealthBar : MonoBehaviour
     {
         Kill();
 
-        if (Input.GetKeyDown(KeyCode.P) && _currentObject)
+        if (_switch && _currentObject)
         {
             ChangeHealth(-1);
             UpdateHealthText();
+            
+            _currentObject = !_currentObject;
+            _switch = false;
         }
     }
 
@@ -84,7 +85,7 @@ public class HealthBar : MonoBehaviour
 
     private void Kill()
     {
-        if (_value <= 0 && _currentObject)
+        if (_value == 0 && _currentObject)
         {
             Destroy(_gameObject);
             Destroy(_body);
@@ -93,9 +94,11 @@ public class HealthBar : MonoBehaviour
 
     private void HandleWhatHP(GameObject recieved)
     {
-        if (recieved != _gameObject)
+        if (recieved == _gameObject)
         {
-            _currentObject = !_currentObject;
+            _currentObject = true;
         }
+        
+        _switch = true;
     }
 }

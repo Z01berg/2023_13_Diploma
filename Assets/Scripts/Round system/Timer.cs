@@ -32,9 +32,10 @@ public class Timer : MonoBehaviour
     private List<TimerData> _timers = new List<TimerData>();
     
     private int _activeTimerIndex = 0; //czyja runda
+    
     private bool _counting = false; // po wciśnięciu enter
     
-    private float _timeToPause = 0.5f; //do animacji timerów
+    private float _timeToPause = 0.4f; //do animacji timerów
     
     private bool _cheat = false; // włączenie na "R CTRL" zmieniania znaczenia timerów
 
@@ -79,11 +80,11 @@ public class Timer : MonoBehaviour
     
     void HandleTimerInput()
     {
-        if (Input.GetKeyDown(KeyCode.Comma) && _cheat)
+        if (Input.GetKeyDown(KeyCode.Comma))
         {
             ChangeActiveTimer(1);
         }
-        else if (Input.GetKeyDown(KeyCode.Period) && _cheat)
+        else if (Input.GetKeyDown(KeyCode.Period))
         {
             ChangeActiveTimer(-1);
         }
@@ -101,6 +102,11 @@ public class Timer : MonoBehaviour
         {
             _counting = true;
         }
+        
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            PlayedAttackCard();
+        }
     }
 
     void StartCountdown()
@@ -114,8 +120,6 @@ public class Timer : MonoBehaviour
                 anyTimerReachedZero = true;
                 _counting = false;
                 CalculatePriority();
-                
-                EventSystem.WhatHP.Invoke(_timers[_activeTimerIndex].HP);
                 
                 if (_timers[_activeTimerIndex].Tag == "Player")
                 {
@@ -138,7 +142,7 @@ public class Timer : MonoBehaviour
                 }
                 
                 _turn.text = "Turn: " + _timers[_activeTimerIndex].Tag;
-                _timeToPause = 0.5f;
+                _timeToPause = 0.4f;
             }
         }
 
@@ -275,6 +279,11 @@ public class Timer : MonoBehaviour
             _activeTimerIndex = _timers.FindIndex(timer => timer.Tag == "N/A");
             UpdateTexts();
         }
+    }
+
+    void PlayedAttackCard()
+    {
+        EventSystem.WhatHP.Invoke(_timers[_activeTimerIndex].HP);
     }
 }
 
