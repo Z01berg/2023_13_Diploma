@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class RebindUI : MonoBehaviour
 {
     [SerializeField] private InputActionReference _inputActionReference;
-    [SerializeField] private bool _excludeMouse = true;
     [Range(0f, 10f)][SerializeField] private int _selectedBinding;
     [SerializeField] private InputBinding.DisplayStringOptions _displayStringOptions;
     [Header("Binding Info")]
@@ -21,7 +20,6 @@ public class RebindUI : MonoBehaviour
     [SerializeField] private Button _rebindButton;
     [SerializeField] private TMP_Text _rebindText;
     [SerializeField] private Button _resetButton;
-    [SerializeField] private Button _saveButton;
 
     private void OnEnable()
     {
@@ -30,6 +28,7 @@ public class RebindUI : MonoBehaviour
 
         if(_inputActionReference != null)
         {
+            InputManager.LoadBindingOverride(_actionName);
             GetBindingInfo();
             UpdateUI();
         }
@@ -94,6 +93,7 @@ public class RebindUI : MonoBehaviour
     }
     private void ResetBinding()
     {
-        
+        InputManager.ResetBindings(_actionName, _bindingIndex);
+        UpdateUI();
     }
 }
