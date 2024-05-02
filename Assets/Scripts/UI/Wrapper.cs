@@ -155,5 +155,10 @@ namespace UI
                 }
             }
         }
+
+        public static CardsSO GetCardCurrentCardInfo()
+        {
+            return cardInUse._display.cardSO;
+        }
     }
 }

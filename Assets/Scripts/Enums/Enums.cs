@@ -21,3 +21,10 @@ public enum CharacterType
    Boss,
    None
 }
+
+public enum CardType
+{
+    Attack,
+    Defence,
+    Movement
+}

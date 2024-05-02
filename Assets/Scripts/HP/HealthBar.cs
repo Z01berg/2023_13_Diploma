@@ -96,12 +96,23 @@ public class HealthBar : MonoBehaviour
 
     private void HandleWhatHP(GameObject recieved, int timerNumber)
     {
+        Debug.Log(recieved == _gameObject);
         if (recieved == _gameObject)
         {
             _currentObject = true;
         }
-        
+
         _switch = true;
         _timerNumbToDelete = timerNumber;
+    }
+
+    public int getHealth()
+    {
+        return _value;
+    }
+
+    public GameObject getGameObject()
+    {
+        return _gameObject;
     }
 }
