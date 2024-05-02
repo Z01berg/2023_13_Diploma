@@ -60,7 +60,12 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     private void PlayDungeonLevel(int dungeonLevelListIndex)
     {
-        throw new System.NotImplementedException();
+        bool dungeonBuiltSucessfully = DungeonBuilder.Instance.GenerateDungeon(dungeonLevelList[dungeonLevelListIndex]);
+
+        if (!dungeonBuiltSucessfully)
+        {
+         Debug.LogError("Couldn't build dungeon from specified rooms and more graphs");   
+        }
     }
 
     #region Validation
