@@ -21,3 +21,19 @@ public enum CharacterType
    Boss,
    None
 }
+
+//TODO: Przebudować to bardziej orientowaną do naszego produktu
+public enum GameState
+{
+    gameStarted,
+    playingLevel,
+    engagingEnemies,
+    bossStage,
+    engagingBoss,
+    levelCompleted,
+    gameWon,
+    gameLost,
+    gamePaused,
+    dngeonOverviewMap,
+    restartGame
+}
