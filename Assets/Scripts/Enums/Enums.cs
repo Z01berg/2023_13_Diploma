@@ -21,10 +21,18 @@ public enum CharacterType
    Boss,
    None
 }
-
-public enum CardType
+//TODO: Przebudować to bardziej orientowaną do naszego produktu
+public enum GameState
 {
-    Attack,
-    Defence,
-    Movement
+    gameStarted,
+    playingLevel,
+    engagingEnemies,
+    bossStage,
+    engagingBoss,
+    levelCompleted,
+    gameWon,
+    gameLost,
+    gamePaused,
+    dngeonOverviewMap,
+    restartGame
 }

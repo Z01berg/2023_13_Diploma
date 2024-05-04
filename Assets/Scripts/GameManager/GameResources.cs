@@ -39,4 +39,18 @@ public class GameResources : MonoBehaviour
 
    #endregion
    public RoomNodeTypeListSO roomNodeTypeList;
+
+   //TODO: Jeżeli będziemy używać materiałów to trzeba zostawić
+   #region Header MATERIALS
+
+   [Space(10)]
+   [Header("MATERIALS")]
+
+   #endregion Header MATERIALS
+   #region Tooltip
+
+   [Tooltip("Dimed MAterial")]
+
+   #endregion Tooltip
+   public Material dimedMaterial;
 }
