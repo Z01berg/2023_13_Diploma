@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 222449962}
   - component: {fileID: 222449961}
   m_Layer: 5
-  m_Name: Button (Legacy)
+  m_Name: Draw Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -433,7 +433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canCreate: 1
   _hand: {fileID: 1231627122}
-  _inventory: {fileID: 718689933}
+  _inventory: {fileID: 2111301667}
   _cardPrefab: {fileID: 8950692613614814383, guid: 3c834bab3541a2e4fb9f837fa487ec80, type: 3}
   _overlay: 2
 --- !u!222 &335284089
@@ -532,11 +532,6 @@ GameObject:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6627854087421189198, guid: d72295dd790f15e4da5c19a94e87b5bd, type: 3}
   m_PrefabInstance: {fileID: 1889627922353892175}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &718689933 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3824786901535378577, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
-  m_PrefabInstance: {fileID: 140124239}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &726706721
 GameObject:
@@ -1543,6 +1538,11 @@ MonoBehaviour:
   cardPrefab: {fileID: 8950692613614814383, guid: 3c834bab3541a2e4fb9f837fa487ec80, type: 3}
   cardsPanel: {fileID: 605086479}
   _cardsList: []
+--- !u!1 &2111301667 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8309435111330915493, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+  m_PrefabInstance: {fileID: 140124239}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &2127698798 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 972584717410738727, guid: 49cd4b14141ee1b429aeda5b72289cb8, type: 3}

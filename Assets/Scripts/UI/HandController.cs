@@ -27,6 +27,7 @@ namespace UI
 
         [Header("Constraints")] [SerializeField]
         private bool _forceFitContainer; //Decyduje czy karty się na siebie nakładają lub nie
+
         public static int cardLimit = 5;
 
         public static int currentCardNumber;
@@ -107,7 +108,7 @@ namespace UI
         private void UpdateCards()
         {
             if (transform.childCount != _cards.Count)
-            {  
+            {
                 InitCards();
             }
 
@@ -170,9 +171,7 @@ namespace UI
             }
         }
 
-        private void
-            DistributeChildrenToFitContainer(
-                float cardsTotalWidth) // Karty są rozkładane żeby zmiesciły sie w kontenerze (przez to się na siebie nakładaja)
+        private void DistributeChildrenToFitContainer(float cardsTotalWidth) // Karty są rozkładane żeby zmiesciły sie w kontenerze (przez to się na siebie nakładaja)
         {
             var width = _rectTransform.rect.width * transform.lossyScale.x;
             var distanceBetweenCards = (width - cardsTotalWidth) / (_cards.Count - 1);
@@ -207,13 +206,12 @@ namespace UI
                 _eventsConfig.cardDestroy?.Invoke(new CardDestroy(card));
                 PlaceHolder.isTaken = false;
                 currentCardNumber--;
-                Destroy(card.gameObject);    
+                Destroy(card.gameObject);
             }
             else
             {
                 Debug.Log("Wybierz kartę zanim jej użyjesz");
             }
-            
         }
 
         public Vector2 getPlaceHolderPosition()

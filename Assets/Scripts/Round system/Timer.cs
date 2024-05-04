@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UI;
 using UnityEngine;
 
 /**
@@ -19,6 +20,7 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private TMP_Text _turn;
+    [SerializeField] private GameObject _deck;
     [SerializeField] private List<TMP_Text> _texts = new List<TMP_Text>();
     [SerializeField] private List<String> _id = new List<String>();
     [SerializeField] private List<GameObject> _hpAdres = new List<GameObject>();
@@ -33,6 +35,7 @@ public class Timer : MonoBehaviour
     private bool _cheat = false; // włączenie na "R CTRL" zmieniania znaczenia timerów
 
     private Animator _animator;
+    private DeckController _deckController;
     
     public void AddTextFromSetTimer(TMP_Text newText, String text, GameObject HP)
     {
@@ -52,6 +55,7 @@ public class Timer : MonoBehaviour
         }
         
         EventSystem.DeleteReference.AddListener(DeleteTimer);
+        _deckController = _deck.GetComponent<DeckController>();
     }
     
     void Update()
@@ -95,8 +99,16 @@ public class Timer : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            _counting = true;
+            if (_deckController.IsDeckCreated())
+            {
+                _counting = true;
+            }
+            else
+            {
+                Debug.Log("Stworz talie kart");
+            }
         }
+        
         
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -120,6 +132,7 @@ public class Timer : MonoBehaviour
                 {
                     _animator.SetBool("K_turn", true);
                     EventSystem.PlayerMove.Invoke(true);
+                    _deckController.DrawACard();
                 }
                 else
                 {
@@ -173,7 +186,7 @@ public class Timer : MonoBehaviour
         StartCountdown();
     }
 
-    void ChangeActiveTimerValue(int change)
+    public void ChangeActiveTimerValue(int change)
     {
         for (int i = 0; i < _timers.Count; i++)
         {

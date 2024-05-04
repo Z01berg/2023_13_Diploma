@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 /**
@@ -37,6 +38,7 @@ namespace Player
         [SerializeField] private int _skillDamage;
 
         private bool _turnOff = false;
+        private static bool _isPlayerTurn;
 
         private void Start()
         {
@@ -52,7 +54,6 @@ namespace Player
                 _movePoint.position,
                 _moveSpeed * Time.deltaTime
             );
-
             CalculatePlayerMove();
         }
 
@@ -93,14 +94,20 @@ namespace Player
 
         private void ToogleScrypt(bool isThis)
         {
+            _isPlayerTurn = isThis;
             if (this.enabled && !isThis)
             {
                 _turnOff = true;
             }
             else
             {
+                
                 this.enabled = isThis;
             }
+        }
+        public static bool getPlayerTurn()
+        {
+            return _isPlayerTurn;
         }
 
         public int ActionPoints => _actionPoints;

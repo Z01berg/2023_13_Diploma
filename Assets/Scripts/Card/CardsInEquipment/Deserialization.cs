@@ -60,6 +60,7 @@ public class Deserialization : MonoBehaviour
             var s = ScriptableObject.CreateInstance<CardsSO>();
 
             s.id = obj.id;
+            s.type = CardType.Attack;
             s.isActive = obj.isActive;
             s.cardQuality = obj.cardQuality;
             s.title = obj.title;

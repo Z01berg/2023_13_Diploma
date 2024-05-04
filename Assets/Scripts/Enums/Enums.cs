@@ -36,3 +36,10 @@ public enum GameState
     dngeonOverviewMap,
     restartGame
 }
+
+public enum CardType
+{
+    Attack,
+    Defense,
+    Movement
+}

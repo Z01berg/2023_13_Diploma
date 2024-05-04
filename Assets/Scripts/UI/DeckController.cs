@@ -29,11 +29,6 @@ namespace UI
             _equipment = _inventory.GetComponent<Equipment>();
         }
 
-        private void Update()
-        {
-            
-        }
-
         public void CreateDeck()
         {
             if (canCreate)
@@ -89,18 +84,6 @@ namespace UI
                 Debug.Log("Brak kart");
                 return;
             }
-
-            // for (int i = 0; i < HandController.cardLimit; i++)
-            // {
-            //     if (HandController.currentCardNumber == HandController.cardLimit)
-            //     {
-            //         Debug.Log("Przekroczono limit kart");
-            //         return;
-            //     }
-            //
-            //    
-            //     
-            // }
             
             while (HandController.currentCardNumber < HandController.cardLimit)
             {
@@ -110,6 +93,11 @@ namespace UI
             }
             
             
+        }
+
+        public bool IsDeckCreated()
+        {
+            return !canCreate;
         }
     }
 }
