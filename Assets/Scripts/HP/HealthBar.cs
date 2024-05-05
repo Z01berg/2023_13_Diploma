@@ -78,6 +78,7 @@ public class HealthBar : MonoBehaviour
     {
         _value += health;
         UpdateHealthText();
+        
     }
 
     private void UpdateHealthText()
