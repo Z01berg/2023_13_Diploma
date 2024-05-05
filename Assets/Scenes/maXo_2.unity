@@ -1852,7 +1852,7 @@ Transform:
   m_GameObject: {fileID: 225050738}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.014506, y: 16.9323, z: -11.484716}
+  m_LocalPosition: {x: -3.7129993, y: -0.9679985, z: -11.484716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6916,7 +6916,7 @@ Transform:
   m_GameObject: {fileID: 1063164646}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.59249425, y: 1.6497005, z: 1.484716}
+  m_LocalPosition: {x: 16.32, y: 19.55, z: 1.484716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6924,23 +6924,6 @@ Transform:
   - {fileID: 225050739}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1169476801 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7528885111401678192, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
-  m_PrefabInstance: {fileID: 1528480181}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1169476804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1169476801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d47208de5d624d229a894385ae2a346f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1305213003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41951,10 +41934,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 1115995846797643908, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 35f33fdcaa055264495977e1add94cfd, type: 2}
     - target: {fileID: 3175473839444849471, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -42003,29 +41982,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3971339169402520909, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -22.958
-      objectReference: {fileID: 0}
-    - target: {fileID: 3971339169402520909, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -8.403
-      objectReference: {fileID: 0}
-    - target: {fileID: 4836170963515254659, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
-      propertyPath: m_Name
-      value: Icon_
-      objectReference: {fileID: 0}
-    - target: {fileID: 9065565575364962654, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
-      propertyPath: m_SortingOrder
-      value: -1
-      objectReference: {fileID: 0}
+    - target: {fileID: 6839262925599601899, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
+      propertyPath: popUpPrefab
+      value: 
+      objectReference: {fileID: 467837565738204250, guid: 76ee967cebe21914aab9b16f2c3ddd77, type: 3}
+    - target: {fileID: 6839262925599601899, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
+      propertyPath: gameObjectTimer
+      value: 
+      objectReference: {fileID: 1349859160}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2311194676742583287, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1628391623}
     - targetCorrespondingSourceObject: {fileID: 1338398116951672564, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -42062,7 +42030,7 @@ Transform:
   m_GameObject: {fileID: 1395015165}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.014506, y: 16.9323, z: -11.484716}
+  m_LocalPosition: {x: -3.7129993, y: -0.9679985, z: -11.484716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42307,14 +42275,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 451154395936591152, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 931036830296573056, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
-      propertyPath: m_Name
-      value: Draw Cards
-      objectReference: {fileID: 0}
     - target: {fileID: 5815713673599809441, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_Name
       value: UI
@@ -42406,10 +42366,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7528885111401678192, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1169476804}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
 --- !u!1001 &1564570444
 PrefabInstance:
@@ -44401,24 +44358,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1220835084138148249, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
   m_PrefabInstance: {fileID: 1320534461}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1628391617 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2311194676742583287, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
-  m_PrefabInstance: {fileID: 1374218726}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1628391623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1628391617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c0a454f4398447687287755c2d72502, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObjectTimer: {fileID: 1349859160}
 --- !u!114 &1862172335 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8691482289399493911, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
