@@ -33,5 +33,11 @@ public static class EventSystem
         public static UnityEvent<GameObject, int> WhatHP = new UnityEvent<GameObject, int>();
     
     #endregion
-    
+
+    #region DestroyCard: ReceiveAttack.cs -> HandController
+
+    public static UnityEvent DestroyCard = new UnityEvent();
+
+    #endregion
+
 }

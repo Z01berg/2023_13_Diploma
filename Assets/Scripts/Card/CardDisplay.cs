@@ -18,7 +18,7 @@ public class CardDisplay : MonoBehaviour
     public TMP_Text cost;
     public TMP_Text attack;
     public TMP_Text move;
-    public int range;
+    public TMP_Text range;
     public Image BG;
     public Image banner;
 
@@ -31,7 +31,7 @@ public class CardDisplay : MonoBehaviour
         cost.text = cardSO.cost.ToString();
         attack.text = cardSO.damage.ToString();
         move.text = cardSO.move.ToString();
-        range = cardSO.range;
+        range.text = cardSO.range.ToString();
 
         BG.sprite = Resources.Load<Sprite>(cardSO.backgroundPath);
         banner.sprite = Resources.Load<Sprite>(cardSO.spritePath);

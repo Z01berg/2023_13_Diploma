@@ -46,6 +46,8 @@ namespace UI
             _rectTransform = GetComponent<RectTransform>();
             _placeHolderPosition = _placeHolder.GetComponent<RectTransform>();
             InitCards();
+            EventSystem.DestroyCard.AddListener(DestroyCard);
+
         }
 
         private void InitCards()

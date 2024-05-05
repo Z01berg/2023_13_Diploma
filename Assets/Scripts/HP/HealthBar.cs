@@ -87,7 +87,7 @@ public class HealthBar : MonoBehaviour
 
     private void Kill()
     {
-        if (_value == 0)
+        if (_value <= 0)
         {
             Destroy(_gameObject);
             Destroy(_body);
