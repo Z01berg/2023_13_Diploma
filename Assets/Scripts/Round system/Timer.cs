@@ -24,6 +24,7 @@ public class Timer : MonoBehaviour
     [SerializeField] private List<TMP_Text> _texts = new List<TMP_Text>();
     [SerializeField] private List<String> _id = new List<String>();
     [SerializeField] private List<GameObject> _hpAdres = new List<GameObject>();
+    
     private List<TimerData> _timers = new List<TimerData>();
     
     private int _activeTimerIndex = 0; //czyja runda
@@ -76,6 +77,7 @@ public class Timer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightControl))
         {
             _cheat = !_cheat;
+            EventSystem.ShowCheatEngine.Invoke();
         }
         
         if (Input.GetKeyDown(KeyCode.Comma))
@@ -107,7 +109,6 @@ public class Timer : MonoBehaviour
                 Debug.Log("Stworz talie kart");
             }
         }
-        
         
         if (Input.GetKeyDown(KeyCode.P))
         {
