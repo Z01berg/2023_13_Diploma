@@ -110,7 +110,6 @@ public class Timer : MonoBehaviour
             }
         }
         
-        
         if (Input.GetKeyDown(KeyCode.P))
         {
             PlayedAttackCard();

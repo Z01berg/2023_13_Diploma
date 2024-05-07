@@ -21,11 +21,13 @@ public class PauseMenuManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !_gameOver)
         {
+            EventSystem.DisableHand?.Invoke();
             _menuOpen = !_menuOpen;
             _pauseView.SetActive(_menuOpen);
             if(_menuOpen )
             {
                 Time.timeScale = 0;
+                
             }
             else
             {
@@ -36,6 +38,7 @@ public class PauseMenuManager : MonoBehaviour
 
     public void ClosePause()
     {
+        EventSystem.DisableHand?.Invoke();
         _menuOpen = false;
         _pauseView.SetActive(_menuOpen);
         Time.timeScale = 1;

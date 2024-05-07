@@ -46,4 +46,10 @@ public static class EventSystem
 
     #endregion
 
+    #region DisableHand: PauseMenuManager.cs -> HandController.cs
+
+    public static UnityEvent DisableHand = new UnityEvent();
+
+    #endregion
+
 }

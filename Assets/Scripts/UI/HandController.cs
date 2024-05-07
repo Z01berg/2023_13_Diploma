@@ -47,8 +47,10 @@ namespace UI
             _placeHolderPosition = _placeHolder.GetComponent<RectTransform>();
             InitCards();
             EventSystem.DestroyCard.AddListener(DestroyCard);
+            EventSystem.DisableHand.AddListener(DisableHand);
 
         }
+        
 
         private void InitCards()
         {
@@ -219,6 +221,11 @@ namespace UI
         public Vector2 getPlaceHolderPosition()
         {
             return _placeHolderPosition.transform.position;
+        }
+        
+        private void DisableHand()
+        {
+            gameObject.SetActive(!gameObject.activeSelf);
         }
     }
 }
