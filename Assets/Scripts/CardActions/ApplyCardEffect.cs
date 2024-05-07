@@ -41,7 +41,6 @@ namespace CardActions
             _timer.ChangeActiveTimerValue(cost);
             ShowPopUpDamage(-damage);
             
-            
             EventSystem.DestroyCard?.Invoke();
                 
             Debug.Log("Damage: " + damage);

@@ -12,7 +12,6 @@ public class OnOffInfo : MonoBehaviour
 
     private void SwitchObject()
     {
-        Debug.Log("Fuck you");
         Text.SetActive(!Text.activeSelf);
     }
 }

@@ -1671,6 +1671,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 4205339106594048853, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: items.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4205339106594048853, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: items.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: d7cdb6b89ebb21545b83d455e701476f, type: 2}
+    - target: {fileID: 4205339106594048853, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: items.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 14b9ec58d496c8b438d10087012c971a, type: 2}
+    - target: {fileID: 4205339106594048853, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: items.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: adc90b42b7bca7948b74c398813be756, type: 2}
+    - target: {fileID: 4205339106594048853, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: items.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8977e9030758b3847ae1b3e63f99b553, type: 2}
+    - target: {fileID: 4205339106594048853, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: items.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: ab0ef7a1d52874b4b9572faf95d72bd4, type: 2}
+    - target: {fileID: 4205339106594048853, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: items.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: e1439beda51776142bb608d87192555c, type: 2}
+    - target: {fileID: 4205339106594048853, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: items.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5880995e0bdf9e948bd7cb409ed2e4e3, type: 2}
     - target: {fileID: 8942189511849550689, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
       propertyPath: items.Array.size
       value: 7
