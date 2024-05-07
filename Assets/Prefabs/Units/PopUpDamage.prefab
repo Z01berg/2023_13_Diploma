@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4751672250663720202}
   - component: {fileID: 629644556869825933}
   - component: {fileID: 864582646132072103}
-  m_Layer: 25
+  m_Layer: 24
   m_Name: PopUpDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 898068862534832947}
   - component: {fileID: 5957472971374070045}
   - component: {fileID: 4744184425332918875}
-  m_Layer: 25
+  m_Layer: 24
   m_Name: Damage Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 4110036578722651617}
   - component: {fileID: 977919899521644575}
   - component: {fileID: 5942674398630104666}
-  m_Layer: 25
+  m_Layer: 24
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

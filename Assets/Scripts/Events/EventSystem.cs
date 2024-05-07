@@ -40,4 +40,10 @@ public static class EventSystem
 
     #endregion
 
+    #region ShowCheatEngine: Timer.cs -> UIScrypt
+
+    public static UnityEvent ShowCheatEngine = new UnityEvent();
+
+    #endregion
+
 }
