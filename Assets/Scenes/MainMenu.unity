@@ -3268,11 +3268,15 @@ PrefabInstance:
       objectReference: {fileID: 1156290844}
     - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
       propertyPath: _selectedBinding
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
       propertyPath: _inputBinding.m_Id
-      value: 54a4db5b-ee25-4323-9cb9-08dc1f48303d
+      value: 0a6639f2-c911-4bcd-9716-1bee3f381f62
+      objectReference: {fileID: 0}
+    - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
+      propertyPath: _inputBinding.m_Name
+      value: right
       objectReference: {fileID: 0}
     - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
       propertyPath: _inputBinding.m_Path
@@ -3286,6 +3290,10 @@ PrefabInstance:
       propertyPath: _inputActionReference
       value: 
       objectReference: {fileID: 6251713233552465740, guid: 278f2898e3f83464eb86eaa8337659a0, type: 3}
+    - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
+      propertyPath: _inputBinding.m_Flags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
       propertyPath: _inputBinding.m_Action
       value: Move
@@ -4408,11 +4416,15 @@ PrefabInstance:
       objectReference: {fileID: 1863603963}
     - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
       propertyPath: _selectedBinding
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
       propertyPath: _inputBinding.m_Id
-      value: 6220bc05-2b46-40d2-8900-3a7a7ed10353
+      value: 4300ba57-dd77-4938-b058-0e334609ac0e
+      objectReference: {fileID: 0}
+    - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
+      propertyPath: _inputBinding.m_Name
+      value: down
       objectReference: {fileID: 0}
     - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
       propertyPath: _inputBinding.m_Path
@@ -4426,6 +4438,10 @@ PrefabInstance:
       propertyPath: _inputActionReference
       value: 
       objectReference: {fileID: 6251713233552465740, guid: 278f2898e3f83464eb86eaa8337659a0, type: 3}
+    - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
+      propertyPath: _inputBinding.m_Flags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
       propertyPath: _inputBinding.m_Action
       value: Move
@@ -6103,11 +6119,15 @@ PrefabInstance:
       objectReference: {fileID: 1922250139}
     - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
       propertyPath: _selectedBinding
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
       propertyPath: _inputBinding.m_Id
-      value: decc064c-699f-4043-b7f6-b363319e20be
+      value: 6f6512f2-1473-42a0-becf-242aa791ba19
+      objectReference: {fileID: 0}
+    - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
+      propertyPath: _inputBinding.m_Name
+      value: up
       objectReference: {fileID: 0}
     - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
       propertyPath: _inputBinding.m_Path
@@ -6121,6 +6141,10 @@ PrefabInstance:
       propertyPath: _inputActionReference
       value: 
       objectReference: {fileID: 6251713233552465740, guid: 278f2898e3f83464eb86eaa8337659a0, type: 3}
+    - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
+      propertyPath: _inputBinding.m_Flags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
       propertyPath: _inputBinding.m_Action
       value: Move
@@ -6953,11 +6977,15 @@ PrefabInstance:
       objectReference: {fileID: 8675597183190627155}
     - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
       propertyPath: _selectedBinding
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
       propertyPath: _inputBinding.m_Id
-      value: 25196d38-db8e-42f5-acd0-4865d84bcbaa
+      value: f2583cc1-f603-42a0-9cb3-6c1e308076e0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
+      propertyPath: _inputBinding.m_Name
+      value: left
       objectReference: {fileID: 0}
     - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
       propertyPath: _inputBinding.m_Path
@@ -6971,6 +6999,10 @@ PrefabInstance:
       propertyPath: _inputActionReference
       value: 
       objectReference: {fileID: 6251713233552465740, guid: 278f2898e3f83464eb86eaa8337659a0, type: 3}
+    - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
+      propertyPath: _inputBinding.m_Flags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -1493179547615397124, guid: 6a29ef30ce197d5459c513a047a7ff9c, type: 3}
       propertyPath: _inputBinding.m_Action
       value: Move
