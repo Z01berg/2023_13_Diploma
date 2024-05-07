@@ -21,7 +21,6 @@ public enum CharacterType
    Boss,
    None
 }
-
 //TODO: Przebudować to bardziej orientowaną do naszego produktu
 public enum GameState
 {
@@ -36,4 +35,11 @@ public enum GameState
     gamePaused,
     dngeonOverviewMap,
     restartGame
+}
+
+public enum CardType
+{
+    Attack,
+    Defense,
+    Movement
 }

@@ -77,31 +77,38 @@ public class HealthBar : MonoBehaviour
     public void ChangeHealth(int health)
     {
         _value += health;
+        UpdateHealthText();
+        
     }
 
     private void UpdateHealthText()
     {
-        _data.text = _value.ToString() + " / " + _maxValue.ToString();
+        _data.text = _value + " / " + _maxValue;
     }
 
     private void Kill()
     {
-        if (_value == 0 && _currentObject)
+        if (_value <= 0)
         {
             Destroy(_gameObject);
             Destroy(_body);
             EventSystem.DeleteReference.Invoke(_timerNumbToDelete);
         }
     }
-
+    //TODO: Sprawdzic czy ktos z tego korzysta
     private void HandleWhatHP(GameObject recieved, int timerNumber)
     {
         if (recieved == _gameObject)
         {
             _currentObject = true;
         }
-        
+
         _switch = true;
         _timerNumbToDelete = timerNumber;
+    }
+
+    public int getHealth()
+    {
+        return _value;
     }
 }

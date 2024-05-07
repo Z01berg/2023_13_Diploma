@@ -26,7 +26,7 @@ using UnityEngine;
 
 
 
-    public class PlayerController : MonoBehaviour
+    public class PlayerController2 : MonoBehaviour
     {
         [SerializeField] private float _moveSpeed = 5f;
         [SerializeField] private Transform _movePoint;
@@ -52,7 +52,6 @@ using UnityEngine;
                 _movePoint.position,
                 _moveSpeed * Time.deltaTime
             );
-
             CalculatePlayerMove();
         }
 
@@ -102,6 +101,8 @@ using UnityEngine;
                 this.enabled = isThis;
             }
         }
+
+        
 
         public int ActionPoints => _actionPoints;
         public int SkillRange => _skillRange;
