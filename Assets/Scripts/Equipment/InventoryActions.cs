@@ -21,28 +21,28 @@ public class InventoryActions : MonoBehaviour
 
     private bool locked = false;
 
+    private void Awake()
+    {
+        EventSystem.OpenCloseInventory.AddListener(ChangeInventoryState);
+    }
+
     private void Start()
     {
         _active = _inv.activeSelf;
     }
 
-    void Update()
+    private void ChangeInventoryState()
     {
-        if (Input.GetKeyDown(KeyCode.E) && !locked)
+        if (_active)
         {
-            if(_active)
-            {
-                EventSystem.DisableHand?.Invoke();
-                _inv.gameObject.SetActive(false);
-                _active = false;
-                _inv.GetComponent<UIInventory>().SaveState();
-            }
-            else
-            {
-                EventSystem.DisableHand?.Invoke();
-                _inv.gameObject.SetActive(true);
-                _active=true;
-            }
+            _inv.gameObject.SetActive(false);
+            _active = false;
+            _inv.GetComponent<UIInventory>().SaveState();
+        }
+        else
+        {
+            _inv.gameObject.SetActive(true);
+            _active = true;
         }
     }
 

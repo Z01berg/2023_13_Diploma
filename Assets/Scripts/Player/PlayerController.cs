@@ -50,8 +50,7 @@ namespace Player
         {
             _movePoint.parent = null;
             GetComponent<PlayerController>().enabled = !GetComponent<PlayerController>().enabled;// TODO uncomment this after AI tests
-            //EventSystem.PlayerMove.AddListener(ToogleScrypt);
-            
+            EventSystem.PlayerMove.AddListener(ToogleScrypt);
         }
 
         private void Update()
@@ -111,12 +110,16 @@ namespace Player
         {
             PrepareInputs();
             _controls.DefaultMausenKeys.Move.performed += OnMove;
+            _controls.DefaultMausenKeys.Equipment.performed += OnEquipment;
+            _controls.DefaultMausenKeys.Menu.performed += OnMenu;
         }
 
         private void OnDisable()
         {
             _controls.Disable();
             _controls.DefaultMausenKeys.Move.performed -= OnMove;
+            _controls.DefaultMausenKeys.Equipment.performed -= OnEquipment;
+            _controls.DefaultMausenKeys.Menu.performed -= OnMenu;
         }
 
         private void PrepareInputs()
@@ -132,17 +135,19 @@ namespace Player
 
         public void OnMenu(InputAction.CallbackContext context)
         {
-            Debug.Log("menu");
+            EventSystem.OpenClosePauseMenu?.Invoke();
         }
 
         public void OnEquipment(InputAction.CallbackContext context)
         {
-            
+            EventSystem.OpenCloseInventory?.Invoke();
         }
 
         public void OnInteract(InputAction.CallbackContext context)
         {
+#if UNITY_EDITOR
             Debug.Log("interact");
+#endif
         }
 
         public int ActionPoints => _actionPoints;

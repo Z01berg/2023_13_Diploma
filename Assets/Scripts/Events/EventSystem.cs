@@ -52,4 +52,15 @@ public static class EventSystem
 
     #endregion
 
+    #region Open/CloseInventory: PlayerController.cs -> InventoryActions
+
+    public static UnityEvent OpenCloseInventory = new UnityEvent();
+
+    #endregion
+
+    #region Open/ClosePauseMenu: PlayerController.cs -> PauseMenuManager
+
+    public static UnityEvent OpenClosePauseMenu = new UnityEvent();
+
+    #endregion
 }
