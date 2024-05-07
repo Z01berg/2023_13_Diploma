@@ -25,14 +25,13 @@ public class PauseMenuManager : MonoBehaviour
         {
             return;
         }
-        
-        EventSystem.DisableHand?.Invoke();
+
+        EventSystem.HideHand?.Invoke();
         _menuOpen = !_menuOpen;
         _pauseView.SetActive(_menuOpen);
         if (_menuOpen)
         {
             Time.timeScale = 0;
-
         }
         else
         {
@@ -42,7 +41,7 @@ public class PauseMenuManager : MonoBehaviour
 
     public void ClosePause()
     {
-        EventSystem.DisableHand?.Invoke();
+        EventSystem.HideHand?.Invoke();
         _menuOpen = false;
         _pauseView.SetActive(_menuOpen);
         Time.timeScale = 1;

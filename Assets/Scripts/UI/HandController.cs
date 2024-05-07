@@ -47,7 +47,7 @@ namespace UI
             _placeHolderPosition = _placeHolder.GetComponent<RectTransform>();
             InitCards();
             EventSystem.DestroyCard.AddListener(DestroyCard);
-            EventSystem.DisableHand.AddListener(DisableHand);
+            EventSystem.HideHand.AddListener(DisableHand);
 
         }
         
