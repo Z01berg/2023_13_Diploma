@@ -30,7 +30,7 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 namespace Player
 {
-    public class PlayerController : MonoBehaviour, IDefaultMausenKeysActions
+    public class PlayerController : MonoBehaviour
     {
         [SerializeField] private float _moveSpeed = 5f;
         [SerializeField] private Transform _movePoint;
@@ -43,7 +43,6 @@ namespace Player
         private bool _turnOff = false;
         private static bool _isPlayerTurn;
 
-        private DefaultInputs _controls;
         private Vector2 _moveVector = Vector2.zero;
 
         private void Start()
@@ -51,6 +50,7 @@ namespace Player
             _movePoint.parent = null;
             GetComponent<PlayerController>().enabled = !GetComponent<PlayerController>().enabled;// TODO uncomment this after AI tests
             EventSystem.PlayerMove.AddListener(ToogleScrypt);
+            EventSystem.MovePlayer.AddListener(SetMoveVector);
         }
 
         private void Update()
@@ -106,48 +106,9 @@ namespace Player
             return _isPlayerTurn;
         }
 
-        private void OnEnable()
+        private void SetMoveVector(Vector2 vector)
         {
-            PrepareInputs();
-            _controls.DefaultMausenKeys.Move.performed += OnMove;
-            _controls.DefaultMausenKeys.Equipment.performed += OnEquipment;
-            _controls.DefaultMausenKeys.Menu.performed += OnMenu;
-        }
-
-        private void OnDisable()
-        {
-            _controls.Disable();
-            _controls.DefaultMausenKeys.Move.performed -= OnMove;
-            _controls.DefaultMausenKeys.Equipment.performed -= OnEquipment;
-            _controls.DefaultMausenKeys.Menu.performed -= OnMenu;
-        }
-
-        private void PrepareInputs()
-        {
-            _controls = new DefaultInputs();
-            _controls.DefaultMausenKeys.Enable();
-        }
-
-        public void OnMove(InputAction.CallbackContext context)
-        {
-            _moveVector = context.ReadValue<Vector2>();
-        }
-
-        public void OnMenu(InputAction.CallbackContext context)
-        {
-            EventSystem.OpenClosePauseMenu?.Invoke();
-        }
-
-        public void OnEquipment(InputAction.CallbackContext context)
-        {
-            EventSystem.OpenCloseInventory?.Invoke();
-        }
-
-        public void OnInteract(InputAction.CallbackContext context)
-        {
-#if UNITY_EDITOR
-            Debug.Log("Watcha got there. Not implemented action. Would be a shame if someone implemented it.");
-#endif
+            _moveVector = vector;
         }
 
         public int ActionPoints => _actionPoints;
