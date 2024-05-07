@@ -41983,10 +41983,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6839262925599601899, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
-      propertyPath: popUpPrefab
-      value: 
-      objectReference: {fileID: 467837565738204250, guid: 76ee967cebe21914aab9b16f2c3ddd77, type: 3}
-    - target: {fileID: 6839262925599601899, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
       propertyPath: gameObjectTimer
       value: 
       objectReference: {fileID: 1349859160}
