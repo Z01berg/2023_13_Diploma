@@ -56,11 +56,6 @@ public class Timer : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightControl))
-        {
-            _cheat = !_cheat;
-        }
-        
         HandleTimerInput();
         
         UpdateTexts();
@@ -70,11 +65,15 @@ public class Timer : MonoBehaviour
             StartCountdown();
         }
 
-        KeepTimerInsideBreakets();
     }
     
     void HandleTimerInput()
     {
+        if (Input.GetKeyDown(KeyCode.RightControl))
+        {
+            _cheat = !_cheat;
+        }
+        
         if (Input.GetKeyDown(KeyCode.Comma))
         {
             ChangeActiveTimer(1);
@@ -184,24 +183,7 @@ public class Timer : MonoBehaviour
         }
         UpdateTexts();
     }
-
-    void KeepTimerInsideBreakets()
-    {
-        for (int i = 0; i < _timers.Count; i++)
-        {
-            if (i == _activeTimerIndex && !_counting)
-            {
-                if (_timers[i].Value > 99)
-                {
-                    _timers[i].Value = 99;
-                }
-                else if (_timers[i].Value < 0)
-                {
-                    _timers[i].Value = 0;
-                }
-            }
-        }
-    }
+    
 
     void ChangeActiveTimer(int change)
     {
@@ -222,6 +204,15 @@ public class Timer : MonoBehaviour
         {
             if (i == _activeTimerIndex && !_counting)
             {
+                if (_timers[i].Value > 99)
+                {
+                    _timers[i].Value = 99;
+                }
+                else if (_timers[i].Value < 0)
+                {
+                    _timers[i].Value = 0;
+                }
+                
                 _texts[i].color = Color.red;
             }
             else
