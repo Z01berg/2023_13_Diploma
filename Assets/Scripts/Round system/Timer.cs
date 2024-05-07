@@ -77,10 +77,7 @@ public class Timer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightControl))
         {
             _cheat = !_cheat;
-            
-            if (_cheat)
-                EventSystem.ShowCheatEngine.Invoke();
-            
+            EventSystem.ShowCheatEngine.Invoke();
         }
         
         if (Input.GetKeyDown(KeyCode.Comma))

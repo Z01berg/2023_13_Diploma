@@ -41938,6 +41938,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Icon_
       objectReference: {fileID: 0}
+    - target: {fileID: 6839262925599601899, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
+      propertyPath: gameObjectTimer
+      value: 
+      objectReference: {fileID: 2047716790}
     - target: {fileID: 9065565575364962654, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
       propertyPath: m_SortingOrder
       value: -1
@@ -44316,6 +44320,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2047716790 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3505373189155625271, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+  m_PrefabInstance: {fileID: 156889026}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2120818892 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5962204038406186658, guid: 040bbee305923724180e928b719b62de, type: 3}

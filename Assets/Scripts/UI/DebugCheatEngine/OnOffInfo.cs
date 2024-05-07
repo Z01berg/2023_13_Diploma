@@ -10,15 +10,9 @@ public class OnOffInfo : MonoBehaviour
         EventSystem.ShowCheatEngine.AddListener(SwitchObject);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void SwitchObject()
     {
         Debug.Log("Fuck you");
-        //this.Text. = !this.Text.active;
+        Text.SetActive(!Text.activeSelf);
     }
 }
