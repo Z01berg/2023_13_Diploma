@@ -1660,6 +1660,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1215020377644578965, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: _deck
+      value: 
+      objectReference: {fileID: 1179546156}
+    - target: {fileID: 1215020377644578965, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
       propertyPath: _turn
       value: 
       objectReference: {fileID: 1862172335}
@@ -6888,6 +6892,11 @@ Transform:
   - {fileID: 225050739}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1179546156 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8834555375927229591, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+  m_PrefabInstance: {fileID: 1528480181}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1305213003
 PrefabInstance:
   m_ObjectHideFlags: 0
