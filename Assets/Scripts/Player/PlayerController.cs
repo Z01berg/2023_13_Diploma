@@ -146,7 +146,7 @@ namespace Player
         public void OnInteract(InputAction.CallbackContext context)
         {
 #if UNITY_EDITOR
-            Debug.Log("interact");
+            Debug.Log("Watcha got there. Not implemented action. Would be a shame if someone implemented it.");
 #endif
         }
 
