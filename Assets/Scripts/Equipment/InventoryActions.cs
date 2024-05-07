@@ -32,12 +32,14 @@ public class InventoryActions : MonoBehaviour
         {
             if(_active)
             {
+                EventSystem.DisableHand?.Invoke();
                 _inv.gameObject.SetActive(false);
                 _active = false;
                 _inv.GetComponent<UIInventory>().SaveState();
             }
             else
             {
+                EventSystem.DisableHand?.Invoke();
                 _inv.gameObject.SetActive(true);
                 _active=true;
             }
