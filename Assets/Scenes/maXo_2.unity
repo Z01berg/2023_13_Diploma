@@ -42275,9 +42275,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 10995975252704229, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_Layer
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401784500209393618, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_Layer
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4439674212728318308, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_Layer
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4975385616181711649, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_Layer
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5815713673599809441, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6473327982583643074, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_Layer
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241740215658297110, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_Layer
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8084776943904088862, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: _inventory
@@ -42363,6 +42387,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 8698678697703375264, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_Layer
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841180991824573179, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_text
+      value: CREATE YOUR DECK(I)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841180991824573179, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_margin.x
+      value: -41.053864
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

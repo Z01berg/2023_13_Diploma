@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1425058769133648005}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ArtworkMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1012,7 +1012,7 @@ GameObject:
   - component: {fileID: 3698410666432188328}
   - component: {fileID: 3159039673619610324}
   - component: {fileID: 6428182241996985840}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Card 1
   m_TagString: Card
   m_Icon: {fileID: 0}

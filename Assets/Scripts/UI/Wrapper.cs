@@ -56,6 +56,11 @@ namespace UI
 
         private void UpdatePosition()
         {
+
+            if (Time.deltaTime == 0)
+            {
+               return; 
+            }
             if (!_isPressed)
             {
                 var target = new Vector2(targetPosition.x, targetPosition.y + targetVerticalDisplacement);
@@ -79,6 +84,11 @@ namespace UI
 
         private void UpdateScale()
         {
+            if (Time.deltaTime == 0)
+            {
+                return;
+            }
+            
             var targetZoom = (_isPressed || _isHovered) && zoomConfig.zoomOnHover ? zoomConfig.multiplier : 1;
             var delta = Mathf.Abs(_rectTransform.localScale.x - targetZoom);
             var newZoom = Mathf.Lerp(_rectTransform.localScale.x, targetZoom,

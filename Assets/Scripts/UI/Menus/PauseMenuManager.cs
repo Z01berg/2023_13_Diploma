@@ -31,14 +31,35 @@ public class PauseMenuManager : MonoBehaviour
             {
                 Time.timeScale = 1;
             }
+            return;
+        }
+
+        
+        if (_menuOpen)
+        {
+            ClosePause();
+            //Time.timeScale = 0;
+        }
+        else
+        {
+            OpenPause();
+            //Time.timeScale = 1;
         }
     }
 
+    private void OpenPause()
+    {
+        EventSystem.HideHand?.Invoke();
+        _menuOpen = true;
+        _pauseView.SetActive(_menuOpen);
+        Time.timeScale = 0;
+    }
     public void ClosePause()
     {
         _menuOpen = false;
         _pauseView.SetActive(_menuOpen);
         Time.timeScale = 1;
+        EventSystem.HideHand?.Invoke();
     }
 
     public void LeaveToMainMenu()
