@@ -24,6 +24,7 @@ public class Timer : MonoBehaviour
     [SerializeField] private List<TMP_Text> _texts = new List<TMP_Text>();
     [SerializeField] private List<String> _id = new List<String>();
     [SerializeField] private List<GameObject> _hpAdres = new List<GameObject>();
+    
     private List<TimerData> _timers = new List<TimerData>();
     
     private int _activeTimerIndex = 0; //czyja runda
@@ -60,11 +61,6 @@ public class Timer : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightControl))
-        {
-            _cheat = !_cheat;
-        }
-        
         HandleTimerInput();
         
         UpdateTexts();
@@ -74,11 +70,16 @@ public class Timer : MonoBehaviour
             StartCountdown();
         }
 
-        KeepTimerInsideBreakets();
     }
     
     void HandleTimerInput()
     {
+        if (Input.GetKeyDown(KeyCode.RightControl))
+        {
+            _cheat = !_cheat;
+            EventSystem.ShowCheatEngine.Invoke();
+        }
+        
         if (Input.GetKeyDown(KeyCode.Comma))
         {
             ChangeActiveTimer(1);
@@ -108,7 +109,6 @@ public class Timer : MonoBehaviour
                 Debug.Log("Stworz talie kart");
             }
         }
-        
         
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -197,24 +197,7 @@ public class Timer : MonoBehaviour
         }
         UpdateTexts();
     }
-
-    void KeepTimerInsideBreakets()
-    {
-        for (int i = 0; i < _timers.Count; i++)
-        {
-            if (i == _activeTimerIndex && !_counting)
-            {
-                if (_timers[i].Value > 99)
-                {
-                    _timers[i].Value = 99;
-                }
-                else if (_timers[i].Value < 0)
-                {
-                    _timers[i].Value = 0;
-                }
-            }
-        }
-    }
+    
 
     void ChangeActiveTimer(int change)
     {
@@ -235,6 +218,15 @@ public class Timer : MonoBehaviour
         {
             if (i == _activeTimerIndex && !_counting)
             {
+                if (_timers[i].Value > 99)
+                {
+                    _timers[i].Value = 99;
+                }
+                else if (_timers[i].Value < 0)
+                {
+                    _timers[i].Value = 0;
+                }
+                
                 _texts[i].color = Color.red;
             }
             else

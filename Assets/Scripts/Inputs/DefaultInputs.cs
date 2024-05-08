@@ -29,12 +29,12 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Move"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""0d0823ad-3ca8-47a2-952b-44a0ccc7c39c"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Menu"",
@@ -66,48 +66,59 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": """",
-                    ""id"": ""25196d38-db8e-42f5-acd0-4865d84bcbaa"",
-                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""name"": ""2D Vector"",
+                    ""id"": ""f3b563a5-e6a7-4d94-afdf-91db6c39495d"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""MousenKeys"",
+                    ""groups"": """",
                     ""action"": ""Move"",
-                    ""isComposite"": false,
+                    ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""54a4db5b-ee25-4323-9cb9-08dc1f48303d"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""MousenKeys"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""decc064c-699f-4043-b7f6-b363319e20be"",
+                    ""name"": ""up"",
+                    ""id"": ""6f6512f2-1473-42a0-becf-242aa791ba19"",
                     ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""MousenKeys"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": false
+                    ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""6220bc05-2b46-40d2-8900-3a7a7ed10353"",
+                    ""name"": ""down"",
+                    ""id"": ""4300ba57-dd77-4938-b058-0e334609ac0e"",
                     ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""MousenKeys"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": false
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""f2583cc1-f603-42a0-9cb3-6c1e308076e0"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MousenKeys"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""0a6639f2-c911-4bcd-9716-1bee3f381f62"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MousenKeys"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",

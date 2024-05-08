@@ -13,14 +13,15 @@ namespace CardActions
         private Timer _timer;
         private CardsEffectsManager _cardsEffectsManager;
         [SerializeField] private GameObject popUpPrefab;
+
         private void Start()
         {
             _enemy = transform.parent.gameObject;
             _healthBar = gameObject.GetComponentInParent<HealthBar>();
             _timer = gameObjectTimer.GetComponent<Timer>();
         }
-        
-        
+
+
         private void OnMouseDown()
         {
             if (Input.GetMouseButtonDown(0) && PlayerController.getPlayerTurn())
@@ -40,20 +41,19 @@ namespace CardActions
             _healthBar.ChangeHealth(-damage);
             _timer.ChangeActiveTimerValue(cost);
             ShowPopUpDamage(-damage);
-            
-            
+
+
             EventSystem.DestroyCard?.Invoke();
-                
+
             Debug.Log("Damage: " + damage);
             Debug.Log(_healthBar.getHealth());
         }
 
         private void ShowPopUpDamage(int damage)
         {
-            var popUpPosition = new Vector2(transform.position.x, transform.position.y+1);
+            var popUpPosition = new Vector2(transform.position.x, transform.position.y + 1);
             GameObject popUp = Instantiate(popUpPrefab, popUpPosition, Quaternion.identity);
             popUp.GetComponentInChildren<TMP_Text>().text = damage.ToString();
-            
         }
     }
 }

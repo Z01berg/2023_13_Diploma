@@ -6992,6 +6992,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6806788873676577553, guid: c11479f7becb268449a79365b8166218, type: 3}
+      propertyPath: m_Layer
+      value: 24
+      objectReference: {fileID: 0}
     - target: {fileID: 7140521877871017969, guid: c11479f7becb268449a79365b8166218, type: 3}
       propertyPath: m_Tiles.Array.size
       value: 404
@@ -41983,10 +41987,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6839262925599601899, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
-      propertyPath: popUpPrefab
-      value: 
-      objectReference: {fileID: 467837565738204250, guid: 76ee967cebe21914aab9b16f2c3ddd77, type: 3}
-    - target: {fileID: 6839262925599601899, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
       propertyPath: gameObjectTimer
       value: 
       objectReference: {fileID: 1349859160}
@@ -42275,33 +42275,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 10995975252704229, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
-      propertyPath: m_Layer
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 2401784500209393618, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
-      propertyPath: m_Layer
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 4439674212728318308, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
-      propertyPath: m_Layer
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 4975385616181711649, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
-      propertyPath: m_Layer
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 5815713673599809441, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_Name
       value: UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 6473327982583643074, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
-      propertyPath: m_Layer
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 7241740215658297110, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
-      propertyPath: m_Layer
-      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8084776943904088862, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: _inventory
@@ -42387,21 +42363,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-<<<<<<< Updated upstream
-=======
-    - target: {fileID: 8698678697703375264, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
-      propertyPath: m_Layer
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 8841180991824573179, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_text
-      value: CREATE YOUR DECK(I)
+      value: CREATE YOUR DECK(E)
       objectReference: {fileID: 0}
     - target: {fileID: 8841180991824573179, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_margin.x
       value: -41.053864
       objectReference: {fileID: 0}
->>>>>>> Stashed changes
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

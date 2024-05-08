@@ -669,6 +669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameObjectTimer: {fileID: 0}
+  popUpPrefab: {fileID: 467837565738204250, guid: 76ee967cebe21914aab9b16f2c3ddd77, type: 3}
 --- !u!1 &4161966778136955142
 GameObject:
   m_ObjectHideFlags: 0
