@@ -1,4 +1,8 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using static DefaultInputs;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 /**
  * Public class PlayerController jest skryptem kontrolera gracza, który zarządza ruchem gracza w grze.
@@ -37,12 +41,16 @@ namespace Player
         [SerializeField] private int _skillDamage;
 
         private bool _turnOff = false;
+        private static bool _isPlayerTurn;
+
+        private Vector2 _moveVector = Vector2.zero;
 
         private void Start()
         {
             _movePoint.parent = null;
             GetComponent<PlayerController>().enabled = !GetComponent<PlayerController>().enabled;// TODO uncomment this after AI tests
             EventSystem.PlayerMove.AddListener(ToogleScrypt);
+            EventSystem.MovePlayer.AddListener(SetMoveVector);
         }
 
         private void Update()
@@ -52,7 +60,6 @@ namespace Player
                 _movePoint.position,
                 _moveSpeed * Time.deltaTime
             );
-
             CalculatePlayerMove();
         }
 
@@ -69,38 +76,39 @@ namespace Player
         {
             if (Vector3.Distance(transform.position, _movePoint.position) <= .05f)
             {
-                float horizontal = Input.GetAxisRaw("Horizontal");
-                float vertical = Input.GetAxisRaw("Vertical");
-
-                if (Mathf.Abs(horizontal) == 1f)
+                if (Mathf.Abs(_moveVector.x) == 1f || Mathf.Abs(_moveVector.y) == 1f)
                 {
-                    if (!Physics2D.OverlapCircle(_movePoint.position + new Vector3(horizontal, 0f, 0f), .2f,
+                    if (!Physics2D.OverlapCircle(_movePoint.position + new Vector3(_moveVector.x, _moveVector.y, 0), .2f,
                             _whatStopsMovement))
                     {
-                        _movePoint.position += new Vector3(horizontal, 0f, 0f);
+                        _movePoint.position += new Vector3(_moveVector.x, _moveVector.y, 0);
                     }
-                }
-                else if (Mathf.Abs(vertical) == 1f)
-                {
-                    if (!Physics2D.OverlapCircle(_movePoint.position + new Vector3(0f, vertical, 0f), .2f,
-                            _whatStopsMovement))
-                    {
-                        _movePoint.position += new Vector3(0f, vertical, 0f);
-                    }
+                    _moveVector = Vector3.zero;
                 }
             }
         }
 
         private void ToogleScrypt(bool isThis)
         {
+            _isPlayerTurn = isThis;
             if (this.enabled && !isThis)
             {
                 _turnOff = true;
             }
             else
             {
+                
                 this.enabled = isThis;
             }
+        }
+        public static bool getPlayerTurn()
+        {
+            return _isPlayerTurn;
+        }
+
+        private void SetMoveVector(Vector2 vector)
+        {
+            _moveVector = vector;
         }
 
         public int ActionPoints => _actionPoints;

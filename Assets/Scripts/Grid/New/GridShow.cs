@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class GridShow : MonoBehaviour
 {
-    private bool _isVisible = false;
+    private bool _isVisible = true;
     private Transform[] _children;
 
     void Start()

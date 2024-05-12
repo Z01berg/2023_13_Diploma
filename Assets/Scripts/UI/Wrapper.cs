@@ -29,7 +29,7 @@ namespace UI
 
         public static Wrapper cardInUse;
 
-        private CardDisplay _display;
+        public CardDisplay display;
 
         public float Width
         {
@@ -39,7 +39,7 @@ namespace UI
         private void Awake()
         {
             _rectTransform = GetComponent<RectTransform>();
-            _display = GetComponent<CardDisplay>();
+            display = GetComponent<CardDisplay>();
         }
 
         private void Start()
@@ -154,6 +154,11 @@ namespace UI
                     cardInUse = null;
                 }
             }
+        }
+
+        public static Wrapper GetCardCurrentCardInfo()
+        {
+            return cardInUse;
         }
     }
 }

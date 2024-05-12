@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UI;
 using UnityEngine;
 
 /**
@@ -19,9 +20,11 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private TMP_Text _turn;
+    [SerializeField] private GameObject _deck;
     [SerializeField] private List<TMP_Text> _texts = new List<TMP_Text>();
     [SerializeField] private List<String> _id = new List<String>();
     [SerializeField] private List<GameObject> _hpAdres = new List<GameObject>();
+    
     private List<TimerData> _timers = new List<TimerData>();
     
     private int _activeTimerIndex = 0; //czyja runda
@@ -33,6 +36,7 @@ public class Timer : MonoBehaviour
     private bool _cheat = false; // włączenie na "R CTRL" zmieniania znaczenia timerów
 
     private Animator _animator;
+    private DeckController _deckController;
     
     public void AddTextFromSetTimer(TMP_Text newText, String text, GameObject HP)
     {
@@ -52,15 +56,11 @@ public class Timer : MonoBehaviour
         }
         
         EventSystem.DeleteReference.AddListener(DeleteTimer);
+        _deckController = _deck.GetComponent<DeckController>();
     }
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightControl))
-        {
-            _cheat = !_cheat;
-        }
-        
         HandleTimerInput();
         
         UpdateTexts();
@@ -70,11 +70,16 @@ public class Timer : MonoBehaviour
             StartCountdown();
         }
 
-        KeepTimerInsideBreakets();
     }
     
     void HandleTimerInput()
     {
+        if (Input.GetKeyDown(KeyCode.RightControl))
+        {
+            _cheat = !_cheat;
+            EventSystem.ShowCheatEngine.Invoke();
+        }
+        
         if (Input.GetKeyDown(KeyCode.Comma))
         {
             ChangeActiveTimer(1);
@@ -95,7 +100,14 @@ public class Timer : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            _counting = true;
+            if (_deckController.IsDeckCreated())
+            {
+                _counting = true;
+            }
+            else
+            {
+                Debug.Log("Stworz talie kart");
+            }
         }
         
         if (Input.GetKeyDown(KeyCode.P))
@@ -120,6 +132,7 @@ public class Timer : MonoBehaviour
                 {
                     _animator.SetBool("K_turn", true);
                     EventSystem.PlayerMove.Invoke(true);
+                    _deckController.DrawACard();
                 }
                 else
                 {
@@ -173,7 +186,7 @@ public class Timer : MonoBehaviour
         StartCountdown();
     }
 
-    void ChangeActiveTimerValue(int change)
+    public void ChangeActiveTimerValue(int change)
     {
         for (int i = 0; i < _timers.Count; i++)
         {
@@ -184,24 +197,7 @@ public class Timer : MonoBehaviour
         }
         UpdateTexts();
     }
-
-    void KeepTimerInsideBreakets()
-    {
-        for (int i = 0; i < _timers.Count; i++)
-        {
-            if (i == _activeTimerIndex && !_counting)
-            {
-                if (_timers[i].Value > 99)
-                {
-                    _timers[i].Value = 99;
-                }
-                else if (_timers[i].Value < 0)
-                {
-                    _timers[i].Value = 0;
-                }
-            }
-        }
-    }
+    
 
     void ChangeActiveTimer(int change)
     {
@@ -222,6 +218,15 @@ public class Timer : MonoBehaviour
         {
             if (i == _activeTimerIndex && !_counting)
             {
+                if (_timers[i].Value > 99)
+                {
+                    _timers[i].Value = 99;
+                }
+                else if (_timers[i].Value < 0)
+                {
+                    _timers[i].Value = 0;
+                }
+                
                 _texts[i].color = Color.red;
             }
             else
@@ -286,6 +291,9 @@ public class Timer : MonoBehaviour
         if (timerToDelete >= 0 && timerToDelete < _timers.Count)
         {
             _timers.RemoveAt(timerToDelete);
+            _id.RemoveAt(timerToDelete);
+            _texts.RemoveAt(timerToDelete);
+            _hpAdres.RemoveAt(timerToDelete);
 
             if (timerToDelete == _activeTimerIndex)
             {

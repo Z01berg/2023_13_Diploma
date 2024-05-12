@@ -44,7 +44,7 @@ namespace UI
                          $"Cost: {display.cost.text}\n" +
                          $"Attack: {display.attack.text}\n" +
                          $"Move: {display.move.text}\n" +
-                         $"Range: {display.range.ToString()}";
+                         $"Range: {display.range.text}";
         }
     }
 }

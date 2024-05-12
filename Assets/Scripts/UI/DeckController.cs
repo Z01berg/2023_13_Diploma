@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using TMPro;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using Random = System.Random;
@@ -13,13 +14,16 @@ namespace UI
         private Stack<GameObject> _deck = new Stack<GameObject>();
         private HandController _handController;
         private Equipment _equipment;
+        
 
         public bool canCreate = true;
-        
+
+        [SerializeField] private TMP_Text _createDeckText;
         [SerializeField] GameObject _hand;
         [SerializeField] private GameObject _inventory;
         [SerializeField] private GameObject _cardPrefab;
         [SerializeField] private int _overlay = 50;
+        
 
         private Random _rng = new Random();
 
@@ -27,11 +31,6 @@ namespace UI
         {
             _handController = _hand.GetComponent<HandController>();
             _equipment = _inventory.GetComponent<Equipment>();
-        }
-
-        private void Update()
-        {
-            
         }
 
         public void CreateDeck()
@@ -58,6 +57,7 @@ namespace UI
                 _overlay += diff;
             }
 
+            Destroy(_createDeckText);
             _overlay = diff;
         }
 
@@ -89,18 +89,6 @@ namespace UI
                 Debug.Log("Brak kart");
                 return;
             }
-
-            // for (int i = 0; i < HandController.cardLimit; i++)
-            // {
-            //     if (HandController.currentCardNumber == HandController.cardLimit)
-            //     {
-            //         Debug.Log("Przekroczono limit kart");
-            //         return;
-            //     }
-            //
-            //    
-            //     
-            // }
             
             while (HandController.currentCardNumber < HandController.cardLimit)
             {
@@ -110,6 +98,11 @@ namespace UI
             }
             
             
+        }
+
+        public bool IsDeckCreated()
+        {
+            return !canCreate;
         }
     }
 }

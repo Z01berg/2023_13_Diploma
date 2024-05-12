@@ -20,7 +20,7 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
       LoadRoomNodeTypeList();
       
       // Set dimed material to fully visible
-      GameResources.Instance.dimedMaterial.SetFloat("Alpha_Slider", 1f);//TODO check if use material
+    //  GameResources.Instance.dimedMaterial.SetFloat("Alpha_Slider", 1f);//TODO check if use material
    }
 
    private void LoadRoomNodeTypeList()

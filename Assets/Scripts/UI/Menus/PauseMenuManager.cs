@@ -13,29 +13,35 @@ public class PauseMenuManager : MonoBehaviour
 
     void Start()
     {
+        EventSystem.OpenClosePauseMenu.AddListener(ChangePauseMenuState);
         _pauseView.SetActive(false);
         _gameOverView.SetActive(false);
+
     }
 
-    void Update()
+    private void ChangePauseMenuState()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !_gameOver)
+        if (_gameOver)
         {
-            _menuOpen = !_menuOpen;
-            _pauseView.SetActive(_menuOpen);
-            if(_menuOpen )
-            {
-                Time.timeScale = 0;
-            }
-            else
-            {
-                Time.timeScale = 1;
-            }
+            return;
+        }
+
+        EventSystem.HideHand?.Invoke();
+        _menuOpen = !_menuOpen;
+        _pauseView.SetActive(_menuOpen);
+        if (_menuOpen)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
         }
     }
 
     public void ClosePause()
     {
+        EventSystem.HideHand?.Invoke();
         _menuOpen = false;
         _pauseView.SetActive(_menuOpen);
         Time.timeScale = 1;

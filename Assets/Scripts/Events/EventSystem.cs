@@ -33,5 +33,40 @@ public static class EventSystem
         public static UnityEvent<GameObject, int> WhatHP = new UnityEvent<GameObject, int>();
     
     #endregion
-    
+
+    #region DestroyCard: ReceiveAttack.cs -> HandController
+
+    public static UnityEvent DestroyCard = new UnityEvent();
+
+    #endregion
+
+    #region ShowCheatEngine: Timer.cs -> UIScrypt
+
+    public static UnityEvent ShowCheatEngine = new UnityEvent();
+
+    #endregion
+
+    #region DisableHand: PauseMenuManager.cs -> HandController.cs
+
+    public static UnityEvent HideHand = new UnityEvent();
+
+    #endregion
+
+    #region Open/CloseInventory: PlayerInputController.cs -> InventoryActions
+
+    public static UnityEvent OpenCloseInventory = new UnityEvent();
+
+    #endregion
+
+    #region Open/ClosePauseMenu: PlayerInputsController.cs -> PauseMenuManager
+
+    public static UnityEvent OpenClosePauseMenu = new UnityEvent();
+
+    #endregion
+
+    #region MovePlayer: PlayerInputsController.cs -> PlayerController
+
+    public static UnityEvent<Vector2> MovePlayer = new UnityEvent<Vector2>();
+
+    #endregion
 }
