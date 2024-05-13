@@ -3008,7 +3008,7 @@ GameObject:
   - component: {fileID: 7635784714976433722}
   - component: {fileID: 1265800696107554073}
   - component: {fileID: 1784304446976617620}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: MiniMap
   m_TagString: minimapTilemap
   m_Icon: {fileID: 0}
