@@ -736,7 +736,7 @@ GameObject:
   - component: {fileID: 7722609202986555151}
   m_Layer: 0
   m_Name: Decorative
-  m_TagString: groundTilemap
+  m_TagString: decoration1Tilemap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2956,6 +2956,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5962204038406186658}
   - component: {fileID: 8868824532219496495}
+  - component: {fileID: -8277275975391966345}
   m_Layer: 23
   m_Name: CorridorWE_1
   m_TagString: Untagged
@@ -3025,3 +3026,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 9, y: 6}
   m_EdgeRadius: 0
+--- !u!114 &-8277275975391966345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9064546249621993553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be46ff32493ced419e7659cc18db20f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grid: {fileID: 0}
+  ground: {fileID: 0}
+  decorative: {fileID: 0}
+  collision: {fileID: 0}
+  miniMap: {fileID: 0}
+  roomColliderBounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
