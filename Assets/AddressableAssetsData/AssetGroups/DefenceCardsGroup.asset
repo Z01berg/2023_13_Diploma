@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: DefenceCardsGroup
+  m_EditorClassIdentifier: 
+  m_GroupName: DefenceCardsGroup
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 4915dafd58dce6643a866f641a8a5d20
+  m_SerializeEntries:
+  - m_GUID: 3b2c9efab3893d54aa4a3f45d9d20a10
+    m_Address: Assets/ScriptableObjectAssets/Card/Defence/DefaultDefenceCard.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5125fa6c7605d564fa3dc065c06a8965
+    m_Address: Assets/ScriptableObjectAssets/Card/Defence/ExampleDefenceCard1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4f4cedcce626fe048bb27e881b8e3dc8
+    m_Address: Assets/ScriptableObjectAssets/Card/Defence/ExampleDefenceCard2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: f505d56935b80a94cb01aefad73250da, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 3d74035440c7c5c46972e40047c8fce0, type: 2}
+    - {fileID: 11400000, guid: 143b7a4c92ccc624ab18f40dd82645ef, type: 2}

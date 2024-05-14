@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 /**
@@ -23,6 +22,9 @@ public class Inventory : MonoBehaviour
             return;
         }
         Instance = this;
+
+
+
         /*
         string[] fileEntries = System.IO.Directory.GetFiles("Assets/ScriptableObjectAssets/Items/");
         foreach (string fileEntry in fileEntries)

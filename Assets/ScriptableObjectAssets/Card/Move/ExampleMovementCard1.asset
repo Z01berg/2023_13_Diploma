@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ExampleMovementCard1
   m_EditorClassIdentifier: 
   id: 1
+  type: 2
   range: 0
   isActive: 1
   cardQuality: 1

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: DefaultDefenceCard
   m_EditorClassIdentifier: 
   id: 0
+  type: 1
   range: 0
   isActive: 1
   cardQuality: 0
