@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 [DisallowMultipleComponent]
 public class GameManager : SingletonMonobehaviour<GameManager>
 {
-    [SerializeField] private GameObject _player;
+    [SerializeField] private Transform _player;
     
     #region Header DUNGEON LEVELS
 
@@ -31,18 +31,6 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     private Room currentRoom;
     private Room previousRoom;
     //PlayerDeatailSO
-
-    protected override void Awake()
-    {
-        base.Awake();
-
-        InstantiatePlayer();
-    }
-
-    private void InstantiatePlayer()
-    {
-        GameObject playerGameObject = Instantiate(_player);
-    }
 
     [HideInInspector] public GameState GameState;
     
@@ -85,12 +73,12 @@ public class GameManager : SingletonMonobehaviour<GameManager>
          Debug.LogError("Couldn't build dungeon from specified rooms and more graphs");   
         }
 
-        _player.gameObject.transform.position =
+        _player.transform.position =
             new Vector3((currentRoom.LowerBounds.x + currentRoom.UpperBounds.x) / 2f,
                 (currentRoom.LowerBounds.y + currentRoom.UpperBounds.y) / 2f, 0f);
 
-        _player.gameObject.transform.position =
-            HelperUtilities.GetSpawnPositionNearestToPlayer(_player.gameObject.transform.position);
+        _player.transform.position =
+            HelperUtilities.GetSpawnPositionNearestToPlayer(_player.transform.position);
     }
 
     #region Validation
