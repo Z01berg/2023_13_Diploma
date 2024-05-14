@@ -15,7 +15,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 public class Inventory : MonoBehaviour
 {
 
-    AsyncOperationHandle<IList<Item>> loadHandle;
+    private AsyncOperationHandle<IList<Item>> _loadHandle;
 
     #region Singleton
 
@@ -30,20 +30,10 @@ public class Inventory : MonoBehaviour
         Instance = this;
         
         LoadItems();
-        loadHandle.WaitForCompletion();
+        _loadHandle.WaitForCompletion();
         
         GameObject.Find("ItemsPanel").GetComponent<ListAllAvailable>().ListAllItemsInInv();
         
-        /*
-        string[] fileEntries = System.IO.Directory.GetFiles("Assets/ScriptableObjectAssets/Items/");
-        foreach (string fileEntry in fileEntries)
-        {
-            if(fileEntry.EndsWith(".asset"))
-                items.Add(AssetDatabase.LoadAssetAtPath<Item>(fileEntry));
-        }
-*/
-
-
     }
 
     #endregion
@@ -54,9 +44,9 @@ public class Inventory : MonoBehaviour
     private void LoadItems()
     {
         List<string> _keys = new List<string>() { "items" };
-        
+        items.Clear();
 
-        loadHandle = Addressables.LoadAssetsAsync<Item>(
+        _loadHandle = Addressables.LoadAssetsAsync<Item>(
             _keys,
             addressable =>
             {
