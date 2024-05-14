@@ -105,7 +105,9 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
             Destroy(card.GetComponent<CardZoom>());
             Destroy(card.GetComponent<CardUse>());
             card.transform.SetParent(cardsPanel.transform);
+            Debug.Log(card.transform.localScale.x);
             cardsList.Add(card);
+            card.transform.localScale = new Vector3(1, 1, 1);
 
             cardsSpawned = true;
         }

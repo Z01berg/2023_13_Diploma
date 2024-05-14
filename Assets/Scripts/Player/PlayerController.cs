@@ -1,8 +1,4 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using static DefaultInputs;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 /**
  * Public class PlayerController jest skryptem kontrolera gracza, który zarządza ruchem gracza w grze.

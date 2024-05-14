@@ -16,7 +16,7 @@ namespace CardActions
 
         private void Start()
         {
-            _enemy = transform.parent.gameObject;
+            // _enemy = transform.parent.gameObject;
             _healthBar = gameObject.GetComponentInParent<HealthBar>();
             _timer = gameObjectTimer.GetComponent<Timer>();
         }

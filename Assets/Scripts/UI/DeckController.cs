@@ -52,7 +52,8 @@ namespace UI
             {
                 var newCard = Instantiate(_cardPrefab, transform, true);
                 newCard.GetComponent<CardDisplay>().cardSO = card;
-                newCard.transform.position = new Vector2(transform.position.x - _overlay, transform.position.y);
+                newCard.transform.position = new Vector2(transform.position.x, transform.position.y);
+                newCard.transform.localScale = new Vector3(1, 1, 1);
                 _deck.Push(newCard);
                 _overlay += diff;
             }
@@ -92,6 +93,10 @@ namespace UI
             
             while (HandController.currentCardNumber < HandController.cardLimit)
             {
+                if (_deck.Count == 0)
+                {
+                    return;
+                }
                 var card = _deck.Pop();
                 card.transform.SetParent(_hand.transform);
                 HandController.currentCardNumber++;

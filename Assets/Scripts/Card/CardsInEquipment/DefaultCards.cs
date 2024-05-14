@@ -59,6 +59,7 @@ public class DefaultCards : MonoBehaviour
             Destroy(card.GetComponent<CardZoom>());
             Destroy(card.GetComponent<CardUse>());
             card.transform.SetParent(cardsPanel.transform);
+            card.transform.localScale = new Vector3(1, 1, 1);
             _cardsList.Add(card);
         }
     }
