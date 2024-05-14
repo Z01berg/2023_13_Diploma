@@ -16,7 +16,7 @@ using UnityEngine;
 
 public class InventoryActions : MonoBehaviour
 {
-    private bool _active;
+    private static bool _active;
     [SerializeField] private GameObject _inv;
 
     private bool locked = false;
@@ -35,23 +35,28 @@ public class InventoryActions : MonoBehaviour
     {
         if (_active)
         {
-            EventSystem.HideHand?.Invoke();
             _inv.gameObject.SetActive(false);
             _active = false;
             _inv.GetComponent<UIInventory>().SaveState();
+            EventSystem.HideHand?.Invoke(false);
         }
         else
         {
-            EventSystem.HideHand?.Invoke();
             _inv.gameObject.SetActive(true);
             _active = true;
+            EventSystem.HideHand?.Invoke(true);
         }
     }
-
+    
     public void LockInventory()
     {
         locked = !locked;
         _active = false;
         _inv.gameObject.SetActive(false);
+    }
+    
+    public static bool getActive()
+    {
+        return _active;
     }
 }

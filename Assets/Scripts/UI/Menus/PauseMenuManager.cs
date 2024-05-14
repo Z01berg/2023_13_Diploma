@@ -8,7 +8,7 @@ public class PauseMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject _pauseView;
     [SerializeField] private GameObject _gameOverView;
-    private bool _menuOpen = false;
+    private static bool _menuOpen = false;
     private bool _gameOver = false;
 
     void Start()
@@ -26,9 +26,9 @@ public class PauseMenuManager : MonoBehaviour
             return;
         }
 
-        EventSystem.HideHand?.Invoke();
         _menuOpen = !_menuOpen;
         _pauseView.SetActive(_menuOpen);
+        EventSystem.HideHand?.Invoke(_menuOpen);
         if (_menuOpen)
         {
             Time.timeScale = 0;
@@ -41,7 +41,7 @@ public class PauseMenuManager : MonoBehaviour
 
     public void ClosePause()
     {
-        EventSystem.HideHand?.Invoke();
+        EventSystem.HideHand?.Invoke(false);
         _menuOpen = false;
         _pauseView.SetActive(_menuOpen);
         Time.timeScale = 1;
@@ -65,5 +65,10 @@ public class PauseMenuManager : MonoBehaviour
     {
         _gameOver = true;
         _gameOverView.SetActive(true);
+    }
+
+    public static bool getMenuOpen()
+    {
+        return _menuOpen;
     }
 }

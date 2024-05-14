@@ -223,9 +223,19 @@ namespace UI
             return _placeHolderPosition.transform.position;
         }
         
-        private void DisableHand()
+        private void DisableHand(bool isDisabled)
         {
-            gameObject.SetActive(!gameObject.activeSelf);
+            var isPauseOpen = PauseMenuManager.getMenuOpen();
+            var isInventoryOpen = InventoryActions.getActive();
+            Debug.Log("Pause: " + isPauseOpen);
+            Debug.Log("Inventory: " + isInventoryOpen);
+            Debug.Log("isDisabled: " + isDisabled);
+            if ((isInventoryOpen == true && isPauseOpen == false|| isInventoryOpen == false && isPauseOpen == true) && isDisabled == false)
+            {
+                return;
+            }
+            gameObject.SetActive(!isDisabled);
+            
         }
     }
 }
