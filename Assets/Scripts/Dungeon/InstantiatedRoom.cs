@@ -47,11 +47,6 @@ public class InstantiatedRoom : MonoBehaviour
                 BlockADoorwayOnTilemapLayer(collision, doorway);
             }
 
-            if (miniMap != null)
-            {
-                BlockADoorwayOnTilemapLayer(miniMap, doorway);
-            }
-
             if (ground != null)
             {
                 BlockADoorwayOnTilemapLayer(ground, doorway);
@@ -62,6 +57,10 @@ public class InstantiatedRoom : MonoBehaviour
                 BlockADoorwayOnTilemapLayer(decorative, doorway);
             }
             
+            if (miniMap != null)
+            {
+                BlockADoorwayOnTilemapLayer(miniMap, doorway);
+            }
         }
     }
 
