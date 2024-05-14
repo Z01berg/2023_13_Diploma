@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class GameManager : SingletonMonobehaviour<GameManager>
 {
     [SerializeField] private Transform _player;
+    [SerializeField] private Transform _playerToMove; //TODO: DELETE and fix this shit
     
     #region Header DUNGEON LEVELS
 
@@ -43,7 +44,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     {
         HandleGameStates();
 
-        // For testing
+        //TODO: For testing
         if (Input.GetKeyDown(KeyCode.R))
         {
             GameState = GameState.gameStarted;
@@ -79,6 +80,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
         _player.transform.position =
             HelperUtilities.GetSpawnPositionNearestToPlayer(_player.transform.position);
+        _playerToMove.transform.position = _player.transform.position;
     }
 
     #region Validation

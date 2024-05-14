@@ -81,7 +81,9 @@ public static class HelperUtilities
             }
         }
 
-        return nearestSpawnPosition;
+        Vector3 finalPosition = new Vector3(nearestSpawnPosition.x + 0.5f, nearestSpawnPosition.y + 0.5f, 0f);
+        
+        return finalPosition;
     }
 
 }
