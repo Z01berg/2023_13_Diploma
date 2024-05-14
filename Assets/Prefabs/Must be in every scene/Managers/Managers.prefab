@@ -160,6 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _turn: {fileID: 0}
+  _deck: {fileID: 0}
   _texts: []
   _id: []
   _hpAdres: []
