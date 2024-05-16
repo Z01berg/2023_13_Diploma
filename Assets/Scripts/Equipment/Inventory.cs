@@ -1,6 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 /**
  * Publiczna klasa przechowuja ca i dajaca latwy dostep do wszystkich itemow
@@ -11,6 +14,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+
+    private AsyncOperationHandle<IList<Item>> _loadHandle;
 
     #region Singleton
 
@@ -23,19 +28,30 @@ public class Inventory : MonoBehaviour
             return;
         }
         Instance = this;
-        /*
-        string[] fileEntries = System.IO.Directory.GetFiles("Assets/ScriptableObjectAssets/Items/");
-        foreach (string fileEntry in fileEntries)
-        {
-            if(fileEntry.EndsWith(".asset"))
-                items.Add(AssetDatabase.LoadAssetAtPath<Item>(fileEntry));
-        }
-*/
+        
+        LoadItems();
+        _loadHandle.WaitForCompletion();
+        
         GameObject.Find("ItemsPanel").GetComponent<ListAllAvailable>().ListAllItemsInInv();
         
     }
 
     #endregion
 
+
     public List<Item> items = new List<Item>();
+
+    private void LoadItems()
+    {
+        List<string> _keys = new List<string>() { "items" };
+        items.Clear();
+
+        _loadHandle = Addressables.LoadAssetsAsync<Item>(
+            _keys,
+            addressable =>
+            {
+               items.Add(addressable);
+            }, Addressables.MergeMode.Union,
+            false);
+    }
 }

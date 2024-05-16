@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 [DisallowMultipleComponent]
 public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
@@ -20,7 +21,7 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
       LoadRoomNodeTypeList();
       
       // Set dimed material to fully visible
-      GameResources.Instance.dimedMaterial.SetFloat("Alpha_Slider", 1f);//TODO check if use material
+    //  GameResources.Instance.dimedMaterial.SetFloat("Alpha_Slider", 1f);//TODO check if use material
    }
 
    private void LoadRoomNodeTypeList()
@@ -70,8 +71,25 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
       return _dungeonBuildSuccessful;
    }
 
-   private void InstantiatedRoomGameobjects()//TODO: FInish this
+   // init prefabs
+   private void InstantiatedRoomGameobjects()
    {
+      foreach (KeyValuePair<string, Room> keyValuePair in DungeonBuilderRoomDictionary)
+      {
+         Room room = keyValuePair.Value;
+
+         Vector3 roomPosition = new Vector3(room.LowerBounds.x - room.TemplateLowerBounds.x,
+            room.LowerBounds.y - room.TemplateLowerBounds.y, 0f);
+
+         GameObject roomGameObject = Instantiate(room.Prefab, roomPosition, Quaternion.identity, transform);
+
+         InstantiatedRoom instantiatedRoom = roomGameObject.GetComponentInChildren<InstantiatedRoom>();
+
+         instantiatedRoom.room = room;
+         instantiatedRoom.Initialise(roomGameObject);
+
+         room.InstantiatedRoom = instantiatedRoom;
+      }
    }
 
    private bool AttemptToBuiltRandomDungeon(RoomNodeGraphSO roomNodeGraph)
@@ -412,6 +430,8 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
       {
          room.ParentRoomId = "";
          room.IsPreviousVisited = true;
+         
+         GameManager.Instance.SetCurrentRoom(room);
       }
       else
       {

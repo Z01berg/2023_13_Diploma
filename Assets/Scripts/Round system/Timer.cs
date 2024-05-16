@@ -291,6 +291,9 @@ public class Timer : MonoBehaviour
         if (timerToDelete >= 0 && timerToDelete < _timers.Count)
         {
             _timers.RemoveAt(timerToDelete);
+            _id.RemoveAt(timerToDelete);
+            _texts.RemoveAt(timerToDelete);
+            _hpAdres.RemoveAt(timerToDelete);
 
             if (timerToDelete == _activeTimerIndex)
             {

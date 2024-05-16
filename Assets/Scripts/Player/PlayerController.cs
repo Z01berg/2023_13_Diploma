@@ -30,6 +30,7 @@ namespace Player
     {
         [SerializeField] private float _moveSpeed = 5f;
         [SerializeField] private Transform _movePoint;
+        [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private LayerMask _whatStopsMovement;
 
         [SerializeField] private int _actionPoints;
@@ -78,6 +79,7 @@ namespace Player
                             _whatStopsMovement))
                     {
                         _movePoint.position += new Vector3(_moveVector.x, _moveVector.y, 0);
+                        RotateSprite(new Vector3(_moveVector.x, _moveVector.y, 0));
                     }
                     _moveVector = Vector3.zero;
                 }
@@ -110,5 +112,18 @@ namespace Player
         public int ActionPoints => _actionPoints;
         public int SkillRange => _skillRange;
         public int SkillDamage => _skillDamage;
+        
+        private void RotateSprite(Vector3 direction)
+        {
+            if (direction == new Vector3(-1, 0, 0))
+            {
+                _spriteRenderer.flipX = true;
+            }
+            else if (direction == new Vector3(1, 0, 0))
+            {
+                _spriteRenderer.flipX = false;
+            }
+        }
+        
     }
 }

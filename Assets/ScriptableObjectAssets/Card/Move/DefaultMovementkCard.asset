@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: DefaultMovementkCard
   m_EditorClassIdentifier: 
   id: 0
+  type: 2
   range: 0
   isActive: 1
   cardQuality: 0

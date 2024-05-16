@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Items
+  m_EditorClassIdentifier: 
+  m_GroupName: Items
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 7aa462fe4d6f21e4a91c291e90d524a9
+  m_SerializeEntries:
+  - m_GUID: 14b9ec58d496c8b438d10087012c971a
+    m_Address: Assets/ScriptableObjectAssets/Items/basic shield.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - items
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d7cdb6b89ebb21545b83d455e701476f
+    m_Address: Assets/ScriptableObjectAssets/Items/basic shield 1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - items
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8977e9030758b3847ae1b3e63f99b553
+    m_Address: Assets/ScriptableObjectAssets/Items/basic sword.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - items
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: adc90b42b7bca7948b74c398813be756
+    m_Address: Assets/ScriptableObjectAssets/Items/basic sword but better.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - items
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ab0ef7a1d52874b4b9572faf95d72bd4
+    m_Address: Assets/ScriptableObjectAssets/Items/chest armor.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - items
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e1439beda51776142bb608d87192555c
+    m_Address: Assets/ScriptableObjectAssets/Items/helmet.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - items
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5880995e0bdf9e948bd7cb409ed2e4e3
+    m_Address: Assets/ScriptableObjectAssets/Items/lek armor.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - items
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: f505d56935b80a94cb01aefad73250da, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 84237c3381f03b9499e0ba72d62461e5, type: 2}
+    - {fileID: 11400000, guid: 98d7765137832464495b97610440a056, type: 2}

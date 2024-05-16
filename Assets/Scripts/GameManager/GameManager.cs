@@ -6,6 +6,9 @@ using UnityEngine.UIElements;
 [DisallowMultipleComponent]
 public class GameManager : SingletonMonobehaviour<GameManager>
 {
+    [SerializeField] private Transform _player;
+    [SerializeField] private Transform _playerToMove; //TODO: DELETE and fix this shit
+    
     #region Header DUNGEON LEVELS
 
     [Space(10)]
@@ -26,6 +29,10 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     #endregion Tooltip
     [SerializeField] private int currenDungeonLevelListIndex = 0;
 
+    private Room currentRoom;
+    private Room previousRoom;
+    //PlayerDeatailSO
+
     [HideInInspector] public GameState GameState;
     
     private void Start()
@@ -37,7 +44,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     {
         HandleGameStates();
 
-        // For testing
+        //TODO: For testing
         if (Input.GetKeyDown(KeyCode.R))
         {
             GameState = GameState.gameStarted;
@@ -66,6 +73,14 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         {
          Debug.LogError("Couldn't build dungeon from specified rooms and more graphs");   
         }
+
+        _player.transform.position =
+            new Vector3((currentRoom.LowerBounds.x + currentRoom.UpperBounds.x) / 2f,
+                (currentRoom.LowerBounds.y + currentRoom.UpperBounds.y) / 2f, 0f);
+
+        _player.transform.position =
+            HelperUtilities.GetSpawnPositionNearestToPlayer(_player.transform.position);
+        _playerToMove.transform.position = _player.transform.position;
     }
 
     #region Validation
@@ -77,4 +92,15 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         }
     #endif
     #endregion Validation
+
+    public Room GetCurrentRoom()
+    {
+        return currentRoom;
+    }
+
+    public void SetCurrentRoom(Room room)
+    {
+        previousRoom = currentRoom;
+        currentRoom = room;
+    }
 }

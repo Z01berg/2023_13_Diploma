@@ -88,9 +88,31 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""up"",
+                    ""id"": ""0f79bf3c-0b24-41d2-b523-b935368c5fd8"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MousenKeys"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": ""down"",
                     ""id"": ""4300ba57-dd77-4938-b058-0e334609ac0e"",
                     ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MousenKeys"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""9add5eaa-c290-4b2f-8d32-0b816e544c2b"",
+                    ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""MousenKeys"",
@@ -110,9 +132,31 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""left"",
+                    ""id"": ""0589e761-1fdb-4f77-b858-be14b0e0ec35"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MousenKeys"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": ""right"",
                     ""id"": ""0a6639f2-c911-4bcd-9716-1bee3f381f62"",
                     ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MousenKeys"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""ade99896-cd18-4f16-8b71-9ce5d2e9db09"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""MousenKeys"",
@@ -134,7 +178,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a1ea8e7b-b86e-4315-b9ba-5ea4102c0644"",
-                    ""path"": ""<Keyboard>/i"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""MousenKeys"",
@@ -145,7 +189,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e8de7ca8-7b37-4160-aeac-bbaefc1a8917"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""MousenKeys"",
