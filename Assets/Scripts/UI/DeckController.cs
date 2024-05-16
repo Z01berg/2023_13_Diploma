@@ -23,6 +23,7 @@ namespace UI
         [SerializeField] private GameObject _inventory;
         [SerializeField] private GameObject _cardPrefab;
         [SerializeField] private int _overlay = 50;
+        private CoverPosition _coverPosition;
         
 
         private Random _rng = new Random();
@@ -31,6 +32,7 @@ namespace UI
         {
             _handController = _hand.GetComponent<HandController>();
             _equipment = _inventory.GetComponent<Equipment>();
+            _coverPosition = GameObject.Find("Cover").GetComponent<CoverPosition>();
         }
 
         public void CreateDeck()
@@ -52,10 +54,11 @@ namespace UI
             {
                 var newCard = Instantiate(_cardPrefab, transform, true);
                 newCard.GetComponent<CardDisplay>().cardSO = card;
-                newCard.transform.position = new Vector2(transform.position.x, transform.position.y);
+                newCard.transform.position = new Vector2(transform.position.x - _overlay, transform.position.y);
                 newCard.transform.localScale = new Vector3(1, 1, 1);
                 _deck.Push(newCard);
                 _overlay += diff;
+                _coverPosition.UpdatePosition(newCard.transform);
             }
 
             Destroy(_createDeckText);
@@ -98,6 +101,7 @@ namespace UI
                     return;
                 }
                 var card = _deck.Pop();
+                _coverPosition.UpdatePosition(_deck.Peek().transform);
                 card.transform.SetParent(_hand.transform);
                 HandController.currentCardNumber++;
             }

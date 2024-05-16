@@ -227,9 +227,9 @@ namespace UI
         {
             var isPauseOpen = PauseMenuManager.getMenuOpen();
             var isInventoryOpen = InventoryActions.getActive();
-            Debug.Log("Pause: " + isPauseOpen);
-            Debug.Log("Inventory: " + isInventoryOpen);
-            Debug.Log("isDisabled: " + isDisabled);
+            // Debug.Log("Pause: " + isPauseOpen);
+            // Debug.Log("Inventory: " + isInventoryOpen);
+            // Debug.Log("isDisabled: " + isDisabled);
             if ((isInventoryOpen == true && isPauseOpen == false|| isInventoryOpen == false && isPauseOpen == true) && isDisabled == false)
             {
                 return;
