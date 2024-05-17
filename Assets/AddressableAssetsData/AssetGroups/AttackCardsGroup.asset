@@ -17,26 +17,26 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 274ee20f7eb1cfd46885daaf83f9e71a
   m_SerializeEntries:
-  - m_GUID: 50d8c15d635a12f42bc5dfbdbc5e4573
-    m_Address: Assets/ScriptableObjectAssets/Card/Attack/BowAttack.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - AttackCard
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ff55c3f8a3a263f43aa2886763c1c3f4
     m_Address: Assets/ScriptableObjectAssets/Card/Attack/DefoultAttackCard.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - AttackCard
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ceaacde49ece90f458da52c537f71053
-    m_Address: Assets/ScriptableObjectAssets/Card/Attack/ExampleAttackCard1.asset
+  - m_GUID: 50d8c15d635a12f42bc5dfbdbc5e4573
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/BowAttack.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - AttackCard
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d302ca7a6f77bfb41a74e1fa41b3e300
     m_Address: Assets/ScriptableObjectAssets/Card/Attack/ExampleAttackCard2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ceaacde49ece90f458da52c537f71053
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/ExampleAttackCard1.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - AttackCard

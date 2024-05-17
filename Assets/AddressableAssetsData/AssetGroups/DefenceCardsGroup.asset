@@ -17,6 +17,12 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 4915dafd58dce6643a866f641a8a5d20
   m_SerializeEntries:
+  - m_GUID: 4f4cedcce626fe048bb27e881b8e3dc8
+    m_Address: Assets/ScriptableObjectAssets/Card/Defence/ExampleDefenceCard2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - DefenceCard
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3b2c9efab3893d54aa4a3f45d9d20a10
     m_Address: Assets/ScriptableObjectAssets/Card/Defence/DefaultDefenceCard.asset
     m_ReadOnly: 0
@@ -25,12 +31,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5125fa6c7605d564fa3dc065c06a8965
     m_Address: Assets/ScriptableObjectAssets/Card/Defence/ExampleDefenceCard1.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - DefenceCard
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4f4cedcce626fe048bb27e881b8e3dc8
-    m_Address: Assets/ScriptableObjectAssets/Card/Defence/ExampleDefenceCard2.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - DefenceCard

@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 274ee20f7eb1cfd46885daaf83f9e71a
   m_currentHash:
     serializedVersion: 2
-    Hash: e4149d312c6c0f4f751b39edda9b4fee
+    Hash: 00000000000000000000000000000000
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -91,13 +91,13 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
-    - items
     - AttackCardsFile
     - DefenceCardsFile
     - MovementCardsFile
     - MovementCard
     - AttackCard
     - DefenceCard
+    - Item
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 6fcadee536366bf458755ef213e4bdc3, type: 2}

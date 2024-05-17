@@ -1,8 +1,13 @@
+using System.Collections.Generic;
+using System.IO;
+using UnityEditor;
+using UnityEditor.AddressableAssets;
+using UnityEditor.AddressableAssets.Settings;
+using UnityEngine;
 
 /**
  * Publiczna klasa pozwalajaca na deserializacje plikow zawierajaca zapisane karty w formacie Json
  */
-/*
 public struct JsonItems
 {
     public List<JItem> itemsList;
@@ -51,8 +56,6 @@ public class Deserialization : MonoBehaviour
 
     public void Import()
     {
-        //Inventory.Instance.items = new List<Item>();
-        
         objects = JsonUtility.FromJson<JsonCards>(AttackFile.text);
 
         foreach (var obj in objects.attackCardsList)
@@ -88,6 +91,7 @@ public class Deserialization : MonoBehaviour
                     rScript.AssignCard(s);
                 }
             }
+            AssignAsAddressable(s, "AttackCardsGroup", "AttackCard");
         }
 
         dObjects = JsonUtility.FromJson<JsonCards>(DefenceFile.text);
@@ -98,6 +102,7 @@ public class Deserialization : MonoBehaviour
 
             s.id = obj.id;
             s.isActive = obj.isActive;
+            s.type = CardType.Defense;
             s.cardQuality = obj.cardQuality;
             s.title = obj.title;
             s.description = obj.description;
@@ -124,7 +129,7 @@ public class Deserialization : MonoBehaviour
                     chestScript.AssignCard(s);
                 }
             }
-
+            AssignAsAddressable(s, "DefenceCardsGroup", "DefenceCard");
         }
 
         mObjects = JsonUtility.FromJson<JsonCards>(MovementFile.text);
@@ -135,6 +140,7 @@ public class Deserialization : MonoBehaviour
 
             s.id = obj.id;
             s.isActive = obj.isActive;
+            s.type = CardType.Movement;
             s.cardQuality = obj.cardQuality;
             s.title = obj.title;
             s.description = obj.description;
@@ -158,6 +164,8 @@ public class Deserialization : MonoBehaviour
                     legsScript.AssignCard(s);
                 }
             }
+
+            AssignAsAddressable(s, "MovementCardsGroup", "MovementCard");
         }
 
         itemsObjects = JsonUtility.FromJson<JsonItems>(jsonItemsFile.text);
@@ -193,7 +201,6 @@ public class Deserialization : MonoBehaviour
                     s.itemType = ItemType.additional;
                     break;
                 case "any":
-
                     s.itemType = ItemType.any;
                     break;
             }
@@ -220,13 +227,21 @@ public class Deserialization : MonoBehaviour
             s.icon = Resources.Load<Sprite>(obj.icon);
 
             AssetDatabase.CreateAsset(s, itemsPath + s.itemName + ".asset");
+            AssignAsAddressable(s, "Items", "Item");
             AssetDatabase.SaveAssets();
+
             
-            // not needed. Left just in case. I might use it later
-            //Inventory.Instance.items.Add(AssetDatabase.LoadAssetAtPath<Item>(itemsPath + s.itemName + ".asset"));
         }
-        //GameObject.Find("ItemsPanel").GetComponent<ListAllAvailable>().ListAllItemsInInv();
     }
 
+    private void AssignAsAddressable(Object asset, string targetGroup, string targetLabel)
+    {
+        AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
+        string assetPath = AssetDatabase.GetAssetPath(asset);
+        string assetGUID = AssetDatabase.AssetPathToGUID(assetPath);
+        var group = settings.FindGroup(targetGroup);
+        var entry = settings.CreateOrMoveEntry(assetGUID, group);
+        
+        entry.SetLabel(targetLabel, true, true, true);
+    }
 }
-*/

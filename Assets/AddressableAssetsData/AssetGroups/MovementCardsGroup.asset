@@ -17,14 +17,14 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 91fd337ef45d6cd47b1577a4b51ebf6d
   m_SerializeEntries:
-  - m_GUID: 573b3301ea0f16043b6de96e17cdd139
-    m_Address: Assets/ScriptableObjectAssets/Card/Move/DefaultMovementkCard.asset
+  - m_GUID: 719f7de8f1afbda4baf7af54d34928b1
+    m_Address: Assets/ScriptableObjectAssets/Card/Move/ExampleMovementCard1.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - MovementCard
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 719f7de8f1afbda4baf7af54d34928b1
-    m_Address: Assets/ScriptableObjectAssets/Card/Move/ExampleMovementCard1.asset
+  - m_GUID: 573b3301ea0f16043b6de96e17cdd139
+    m_Address: Assets/ScriptableObjectAssets/Card/Move/DefaultMovementkCard.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - MovementCard
