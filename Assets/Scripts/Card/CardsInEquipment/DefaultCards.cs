@@ -1,5 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using static UnityEditor.Progress;
 
 /**
  * Klasa publiczna monitorujaca pola ekwipunku i dodajaca karty podstawowe do reki gracza 
@@ -27,8 +30,36 @@ public class DefaultCards : MonoBehaviour
     public List<GameObject> _cardsList = new();
     private bool _defaultAdded = true;
 
+    private ItemSlot _slotScript;
+    [SerializeField] private int _defaultCardsAmmount = 3;
+
+    private AsyncOperationHandle<IList<CardsSO>> _loadHandle;
+
     private void Awake()
     {
+        _slotScript = GetComponent<ItemSlot>();
+
+        List<string> tags = new List<string>() { "DefaultCard"};
+
+        switch (_slotScript.allowedItemType)
+        {
+            case ItemType.cheast or ItemType.head:
+                tags.Add("DefenceCard");
+                break;
+            case ItemType.legs or ItemType.boots:
+                tags.Add("MovementCard");
+                break;
+            case ItemType.hand:
+                tags.Add("AttackCard");
+                break;
+            case ItemType.additional:
+                tags.Add("TrinketCard");
+                break;
+        }
+
+        LoadCards(tags);
+        _loadHandle.WaitForCompletion();
+
         if(transform.childCount < 1)
         {
             DisplayCards();
@@ -51,7 +82,7 @@ public class DefaultCards : MonoBehaviour
 
     private void DisplayCards()
     {
-        _cardsList = new();
+        _cardsList.Clear();
         foreach (var c in _cards)
         {
             var card = Instantiate(cardPrefab);
@@ -69,15 +100,23 @@ public class DefaultCards : MonoBehaviour
         {
             Destroy(c);
         }
+        _cardsList.Clear();
     }
 
-    public void AssignCard(CardsSO card)
+    private void LoadCards(List<string> keys)
     {
-        _cards.Add(card);
-    }
+        _cards.Clear();
 
-    public void ClearList()
-    {
-        _cards = new();
+        _loadHandle = Addressables.LoadAssetsAsync<CardsSO>(
+            keys,
+            addressable =>
+            {
+                for (int i = 0; i < _defaultCardsAmmount; i++) 
+                {
+                    _cards.Add(addressable);
+                }
+                Debug.Log(_cards.Count);
+            }, Addressables.MergeMode.Intersection,
+            false);
     }
 }

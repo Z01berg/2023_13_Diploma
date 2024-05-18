@@ -43,5 +43,4 @@ public class Equipment : MonoBehaviour
     public Item item6;
 
     public List<CardsSO> cards = new List<CardsSO>();
-
 }

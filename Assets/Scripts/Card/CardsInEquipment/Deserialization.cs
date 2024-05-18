@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings;
@@ -78,20 +79,7 @@ public class Deserialization : MonoBehaviour
             AssetDatabase.CreateAsset(s, cPath + s.title + ".asset");
             AssetDatabase.SaveAssets();
 
-            if (s.name.Contains("Defoult"))
-            {
-                var lScript = _leftHand.GetComponent<DefaultCards>();
-                var rScript = _rightHand.GetComponent<DefaultCards>();
-                lScript.ClearList();
-                rScript.ClearList();
-
-                for (int i = 0; i < 3; i++)
-                {
-                    lScript.AssignCard(s);
-                    rScript.AssignCard(s);
-                }
-            }
-            AssignAsAddressable(s, "AttackCardsGroup", "AttackCard");
+            AssignAsAddressable(s, "AttackCardsGroup", "AttackCard", s.name.Contains("Defoult"));
         }
 
         dObjects = JsonUtility.FromJson<JsonCards>(DefenceFile.text);
@@ -116,20 +104,7 @@ public class Deserialization : MonoBehaviour
             AssetDatabase.CreateAsset(s, dPath + s.title + ".asset");
             AssetDatabase.SaveAssets();
 
-            if (s.name.Contains("Default"))
-            {
-                var headScript = _head.GetComponent<DefaultCards>();
-                var chestScript = _chest.GetComponent<DefaultCards>();
-                headScript.ClearList();
-                chestScript.ClearList();
-
-                for (int i = 0; i < 3; i++)
-                {
-                    headScript.AssignCard(s);
-                    chestScript.AssignCard(s);
-                }
-            }
-            AssignAsAddressable(s, "DefenceCardsGroup", "DefenceCard");
+            AssignAsAddressable(s, "DefenceCardsGroup", "DefenceCard", s.name.Contains("Default"));
         }
 
         mObjects = JsonUtility.FromJson<JsonCards>(MovementFile.text);
@@ -154,18 +129,7 @@ public class Deserialization : MonoBehaviour
             AssetDatabase.CreateAsset(s, mPath + s.title + ".asset");
             AssetDatabase.SaveAssets();
 
-            if (s.name.Contains("Default"))
-            {
-                var legsScript = _legs.GetComponent<DefaultCards>();
-                legsScript.ClearList();
-                
-                for (int i = 0; i < 3; i++)
-                {
-                    legsScript.AssignCard(s);
-                }
-            }
-
-            AssignAsAddressable(s, "MovementCardsGroup", "MovementCard");
+            AssignAsAddressable(s, "MovementCardsGroup", "MovementCard", s.name.Contains("Default"));
         }
 
         itemsObjects = JsonUtility.FromJson<JsonItems>(jsonItemsFile.text);
@@ -227,14 +191,14 @@ public class Deserialization : MonoBehaviour
             s.icon = Resources.Load<Sprite>(obj.icon);
 
             AssetDatabase.CreateAsset(s, itemsPath + s.itemName + ".asset");
-            AssignAsAddressable(s, "Items", "Item");
+            AssignAsAddressable(s, "Items", "Item", false);
             AssetDatabase.SaveAssets();
 
             
         }
     }
 
-    private void AssignAsAddressable(Object asset, string targetGroup, string targetLabel)
+    private void AssignAsAddressable(Object asset, string targetGroup, string targetLabel, bool isDefault)
     {
         AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
         string assetPath = AssetDatabase.GetAssetPath(asset);
@@ -243,5 +207,9 @@ public class Deserialization : MonoBehaviour
         var entry = settings.CreateOrMoveEntry(assetGUID, group);
         
         entry.SetLabel(targetLabel, true, true, true);
+        if (isDefault)
+        {
+            entry.SetLabel("DefaultCard", true, true, true);
+        }
     }
 }

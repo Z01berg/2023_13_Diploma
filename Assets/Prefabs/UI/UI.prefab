@@ -1844,13 +1844,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f3cb16628614ca4ca7f857b8cedbfb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cards:
-  - {fileID: 11400000, guid: 573b3301ea0f16043b6de96e17cdd139, type: 2}
-  - {fileID: 11400000, guid: 573b3301ea0f16043b6de96e17cdd139, type: 2}
-  - {fileID: 11400000, guid: 573b3301ea0f16043b6de96e17cdd139, type: 2}
+  _cards: []
   cardPrefab: {fileID: 8950692613614814383, guid: 3c834bab3541a2e4fb9f837fa487ec80, type: 3}
   cardsPanel: {fileID: 1600063600790863850}
   _cardsList: []
+  _defaultCardsAmmount: 3
 --- !u!1 &1600063600790863850 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3951512401617387929, guid: 75f02039eeef9de499e86b12d7b914d4, type: 3}
@@ -1873,13 +1871,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f3cb16628614ca4ca7f857b8cedbfb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cards:
-  - {fileID: 11400000, guid: ff55c3f8a3a263f43aa2886763c1c3f4, type: 2}
-  - {fileID: 11400000, guid: ff55c3f8a3a263f43aa2886763c1c3f4, type: 2}
-  - {fileID: 11400000, guid: ff55c3f8a3a263f43aa2886763c1c3f4, type: 2}
+  _cards: []
   cardPrefab: {fileID: 8950692613614814383, guid: 3c834bab3541a2e4fb9f837fa487ec80, type: 3}
   cardsPanel: {fileID: 1600063600790863850}
   _cardsList: []
+  _defaultCardsAmmount: 3
 --- !u!1 &2442758224761705246 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 73303753361108333, guid: 75f02039eeef9de499e86b12d7b914d4, type: 3}
@@ -1906,6 +1902,7 @@ MonoBehaviour:
   cardPrefab: {fileID: 8950692613614814383, guid: 3c834bab3541a2e4fb9f837fa487ec80, type: 3}
   cardsPanel: {fileID: 1600063600790863850}
   _cardsList: []
+  _defaultCardsAmmount: 3
 --- !u!1 &4165439496385418390 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1813996200113744613, guid: 75f02039eeef9de499e86b12d7b914d4, type: 3}
@@ -1928,13 +1925,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f3cb16628614ca4ca7f857b8cedbfb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cards:
-  - {fileID: 11400000, guid: ff55c3f8a3a263f43aa2886763c1c3f4, type: 2}
-  - {fileID: 11400000, guid: ff55c3f8a3a263f43aa2886763c1c3f4, type: 2}
-  - {fileID: 11400000, guid: ff55c3f8a3a263f43aa2886763c1c3f4, type: 2}
+  _cards: []
   cardPrefab: {fileID: 8950692613614814383, guid: 3c834bab3541a2e4fb9f837fa487ec80, type: 3}
   cardsPanel: {fileID: 1600063600790863850}
   _cardsList: []
+  _defaultCardsAmmount: 3
 --- !u!1 &4547481102377847425 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2304122487238554866, guid: 75f02039eeef9de499e86b12d7b914d4, type: 3}
@@ -1956,6 +1951,7 @@ MonoBehaviour:
   cardPrefab: {fileID: 8950692613614814383, guid: 3c834bab3541a2e4fb9f837fa487ec80, type: 3}
   cardsPanel: {fileID: 1600063600790863850}
   _cardsList: []
+  _defaultCardsAmmount: 3
 --- !u!1 &6860539632425157874 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9211988499823049345, guid: 75f02039eeef9de499e86b12d7b914d4, type: 3}
@@ -1977,6 +1973,7 @@ MonoBehaviour:
   cardPrefab: {fileID: 8950692613614814383, guid: 3c834bab3541a2e4fb9f837fa487ec80, type: 3}
   cardsPanel: {fileID: 1600063600790863850}
   _cardsList: []
+  _defaultCardsAmmount: 3
 --- !u!1 &7031387290250826058 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4717106872271220537, guid: 75f02039eeef9de499e86b12d7b914d4, type: 3}
@@ -1998,6 +1995,7 @@ MonoBehaviour:
   cardPrefab: {fileID: 8950692613614814383, guid: 3c834bab3541a2e4fb9f837fa487ec80, type: 3}
   cardsPanel: {fileID: 1600063600790863850}
   _cardsList: []
+  _defaultCardsAmmount: 3
 --- !u!1 &7114449657300885502 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4781024609422991757, guid: 75f02039eeef9de499e86b12d7b914d4, type: 3}
@@ -2015,13 +2013,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f3cb16628614ca4ca7f857b8cedbfb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cards:
-  - {fileID: 11400000, guid: 3b2c9efab3893d54aa4a3f45d9d20a10, type: 2}
-  - {fileID: 11400000, guid: 3b2c9efab3893d54aa4a3f45d9d20a10, type: 2}
-  - {fileID: 11400000, guid: 3b2c9efab3893d54aa4a3f45d9d20a10, type: 2}
+  _cards: []
   cardPrefab: {fileID: 8950692613614814383, guid: 3c834bab3541a2e4fb9f837fa487ec80, type: 3}
   cardsPanel: {fileID: 1600063600790863850}
   _cardsList: []
+  _defaultCardsAmmount: 3
 --- !u!1 &7186669305998701210 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4854365147967130857, guid: 75f02039eeef9de499e86b12d7b914d4, type: 3}
@@ -2043,6 +2039,7 @@ MonoBehaviour:
   cardPrefab: {fileID: 8950692613614814383, guid: 3c834bab3541a2e4fb9f837fa487ec80, type: 3}
   cardsPanel: {fileID: 1600063600790863850}
   _cardsList: []
+  _defaultCardsAmmount: 3
 --- !u!1 &7827888292146125981 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5494453274038788846, guid: 75f02039eeef9de499e86b12d7b914d4, type: 3}
@@ -2060,13 +2057,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f3cb16628614ca4ca7f857b8cedbfb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cards:
-  - {fileID: 11400000, guid: 3b2c9efab3893d54aa4a3f45d9d20a10, type: 2}
-  - {fileID: 11400000, guid: 3b2c9efab3893d54aa4a3f45d9d20a10, type: 2}
-  - {fileID: 11400000, guid: 3b2c9efab3893d54aa4a3f45d9d20a10, type: 2}
+  _cards: []
   cardPrefab: {fileID: 8950692613614814383, guid: 3c834bab3541a2e4fb9f837fa487ec80, type: 3}
   cardsPanel: {fileID: 1600063600790863850}
   _cardsList: []
+  _defaultCardsAmmount: 3
 --- !u!1 &8660671256880294968 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6400429082325439051, guid: 75f02039eeef9de499e86b12d7b914d4, type: 3}
@@ -2088,6 +2083,7 @@ MonoBehaviour:
   cardPrefab: {fileID: 8950692613614814383, guid: 3c834bab3541a2e4fb9f837fa487ec80, type: 3}
   cardsPanel: {fileID: 1600063600790863850}
   _cardsList: []
+  _defaultCardsAmmount: 3
 --- !u!1 &8704000286153613096 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6352561389546692955, guid: 75f02039eeef9de499e86b12d7b914d4, type: 3}
@@ -2114,6 +2110,7 @@ MonoBehaviour:
   cardPrefab: {fileID: 8950692613614814383, guid: 3c834bab3541a2e4fb9f837fa487ec80, type: 3}
   cardsPanel: {fileID: 1600063600790863850}
   _cardsList: []
+  _defaultCardsAmmount: 3
 --- !u!1001 &2601106622461269476
 PrefabInstance:
   m_ObjectHideFlags: 0

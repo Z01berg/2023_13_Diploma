@@ -28,6 +28,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - MovementCard
+    - DefaultCard
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d98188f8d7f02a9409f00e7d116d9389
     m_Address: Assets/ScriptableObjectAssets/Card/Move/ExampleMovementCard2.asset

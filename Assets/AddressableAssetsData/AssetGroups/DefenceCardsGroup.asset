@@ -28,6 +28,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - DefenceCard
+    - DefaultCard
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5125fa6c7605d564fa3dc065c06a8965
     m_Address: Assets/ScriptableObjectAssets/Card/Defence/ExampleDefenceCard1.asset

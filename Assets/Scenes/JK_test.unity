@@ -622,6 +622,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 607071015837921245, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: _cards.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: ff55c3f8a3a263f43aa2886763c1c3f4, type: 2}
     - target: {fileID: 1326990034549130593, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -634,6 +638,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2688691185168075252, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: _cards.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 573b3301ea0f16043b6de96e17cdd139, type: 2}
     - target: {fileID: 4196200150603180632, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -642,10 +650,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 7452498659168038968, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: _cards.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b2c9efab3893d54aa4a3f45d9d20a10, type: 2}
     - target: {fileID: 8084776943904088862, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: _inventory
       value: 
       objectReference: {fileID: 1778242902}
+    - target: {fileID: 8135570532661643466, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: _cards.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: ff55c3f8a3a263f43aa2886763c1c3f4, type: 2}
     - target: {fileID: 8262816936440441009, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -726,6 +742,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8633078160106493491, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: _cards.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b2c9efab3893d54aa4a3f45d9d20a10, type: 2}
     m_RemovedComponents:
     - {fileID: 6660698886399490871, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
     m_RemovedGameObjects:
