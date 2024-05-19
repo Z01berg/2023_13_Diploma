@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,7 +33,49 @@ public class InstantiatedRoom : MonoBehaviour
 
         BlockOffUnusedDoorWays();
 
+        AddDoorsToRooms();
+
         DisableCollisionTilemapRenderer();
+    }
+
+    private void AddDoorsToRooms()
+    {
+        if (room.RoomNodeType.isCorridorEW || room.RoomNodeType.isCorridorNS) return;
+
+        foreach (Doorway doorway in room.DoorWayList)
+        {
+            if (doorway.DoorPrefab != null && doorway.IsConnected)
+            {
+                float tileDistance = Settings.TILE_SIZE_PIXEL / Settings.PIXEL_PER_UNIT;
+
+                GameObject door = null;
+
+                if (doorway.Orientation == Orientation.north)
+                {
+                    door = Instantiate(doorway.DoorPrefab, gameObject.transform);
+                    door.transform.localPosition = new Vector3(doorway.Position.x + tileDistance / 2f,
+                        doorway.Position.y + tileDistance, 0f);
+                }
+                else if (doorway.Orientation == Orientation.south)
+                {
+                    door = Instantiate(doorway.DoorPrefab, gameObject.transform);
+                    door.transform.localPosition =
+                        new Vector3(doorway.Position.x + tileDistance / 2f, doorway.Position.y, 0f);
+                }
+                else if (doorway.Orientation == Orientation.east)
+                {
+                    door = Instantiate(doorway.DoorPrefab, gameObject.transform);
+                    door.transform.localPosition = new Vector3(doorway.Position.x + tileDistance,
+                        doorway.Position.y + tileDistance, 0f);
+                }
+                else if (doorway.Orientation == Orientation.west)
+                {
+                    door = Instantiate(doorway.DoorPrefab, gameObject.transform);
+                    door.transform.localPosition =
+                        new Vector3(doorway.Position.x, doorway.Position.y + tileDistance, 0f);
+                }
+            }
+        }
     }
 
     private void BlockOffUnusedDoorWays()
