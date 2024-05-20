@@ -1667,6 +1667,10 @@ PrefabInstance:
       propertyPath: _turn
       value: 
       objectReference: {fileID: 1862172335}
+    - target: {fileID: 1401179863076509352, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1897776090475512930, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
       propertyPath: m_Name
       value: Managers
@@ -1703,6 +1707,10 @@ PrefabInstance:
       propertyPath: items.Array.data[6]
       value: 
       objectReference: {fileID: 11400000, guid: 5880995e0bdf9e948bd7cb409ed2e4e3, type: 2}
+    - target: {fileID: 7476517547119940548, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8942189511849550689, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
       propertyPath: items.Array.size
       value: 7
