@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BowAttack
   m_EditorClassIdentifier: 
   id: 3
+  type: 0
   range: 3
   isActive: 1
   cardQuality: 1

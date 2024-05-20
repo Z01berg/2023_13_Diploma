@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ExampleAttackCard1
   m_EditorClassIdentifier: 
   id: 1
+  type: 0
   range: 1
   isActive: 1
   cardQuality: 1

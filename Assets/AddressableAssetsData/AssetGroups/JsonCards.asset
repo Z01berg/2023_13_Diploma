@@ -10,35 +10,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: DefenceCardsGroup
+  m_Name: JsonCards
   m_EditorClassIdentifier: 
-  m_GroupName: DefenceCardsGroup
+  m_GroupName: JsonCards
   m_Data:
     m_SerializedData: []
-  m_GUID: 4915dafd58dce6643a866f641a8a5d20
+  m_GUID: d06d17434d6ea47458e902a24b84ba3b
   m_SerializeEntries:
-  - m_GUID: 4f4cedcce626fe048bb27e881b8e3dc8
-    m_Address: Assets/ScriptableObjectAssets/Card/Defence/ExampleDefenceCard2.asset
+  - m_GUID: 60994e482724f00498b798b61e4e7146
+    m_Address: Assets/Data/Cards/AttackCards.json
     m_ReadOnly: 0
     m_SerializedLabels:
-    - DefenceCard
+    - AttackCardsFile
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3b2c9efab3893d54aa4a3f45d9d20a10
-    m_Address: Assets/ScriptableObjectAssets/Card/Defence/DefaultDefenceCard.asset
+  - m_GUID: 15a15f3833f38364d9a09b35a41856c4
+    m_Address: Assets/Data/Cards/DefenceCards.json
     m_ReadOnly: 0
     m_SerializedLabels:
-    - DefenceCard
-    - DefaultCard
+    - DefenceCardsFile
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5125fa6c7605d564fa3dc065c06a8965
-    m_Address: Assets/ScriptableObjectAssets/Card/Defence/ExampleDefenceCard1.asset
+  - m_GUID: 5103268aae1324341ab8731fd1f30a92
+    m_Address: Assets/Data/Cards/MovementCards.json
     m_ReadOnly: 0
     m_SerializedLabels:
-    - DefenceCard
+    - MovementCardsFile
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f505d56935b80a94cb01aefad73250da, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 3d74035440c7c5c46972e40047c8fce0, type: 2}
-    - {fileID: 11400000, guid: 143b7a4c92ccc624ab18f40dd82645ef, type: 2}
+    - {fileID: 11400000, guid: f927f5b808970204da4db1f27f888b82, type: 2}
+    - {fileID: 11400000, guid: a5bbf937c23f6b449991302c22bb233b, type: 2}

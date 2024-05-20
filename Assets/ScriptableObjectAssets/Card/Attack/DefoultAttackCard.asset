@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: DefoultAttackCard
   m_EditorClassIdentifier: 
   id: 0
+  type: 0
   range: 1
   isActive: 1
   cardQuality: 0

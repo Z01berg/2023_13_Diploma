@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -43,7 +41,7 @@ public class Inventory : MonoBehaviour
 
     private void LoadItems()
     {
-        List<string> _keys = new List<string>() { "items" };
+        List<string> _keys = new List<string>() { "Item" };
         items.Clear();
 
         _loadHandle = Addressables.LoadAssetsAsync<Item>(
