@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using Player;
 using TMPro;
 using UI;
@@ -7,12 +8,12 @@ namespace CardActions
 {
     public class ApplyCardEffect : MonoBehaviour
     {
+        [SerializeField] private GameObject popUpPrefab;
+        [Header("Timer from Managers")][SerializeField] private GameObject gameObjectTimer;
         private GameObject _enemy;
         private HealthBar _healthBar;
-        public GameObject gameObjectTimer;
         private Timer _timer;
         private CardsEffectsManager _cardsEffectsManager;
-        [SerializeField] private GameObject popUpPrefab;
 
         private void Start()
         {
@@ -29,31 +30,53 @@ namespace CardActions
                 if (PlaceHolder.isTaken)
                 {
                     var cardInfo = Wrapper.GetCardCurrentCardInfo();
-                    SendDamage(cardInfo);
+                    SendHpModification(cardInfo);
                 }
             }
         }
 
-        private void SendDamage(Wrapper cardInfo)
+        private void SendHpModification(Wrapper cardInfo)
         {
-            var damage = cardInfo.display.cardSO.damage;
-            var cost = cardInfo.display.cardSO.cost;
-            _healthBar.ChangeHealth(-damage);
+            var card = cardInfo.display.cardSO;
+            var cost = card.cost;
+            var hpChange = card.damage;
+            switch (card.type)
+            {
+                case CardType.Attack:
+                    hpChange = hpChange * -1;
+                    break;
+                case CardType.Defense:
+                    
+                    break;
+            }
+
+            _healthBar.ChangeHealth(hpChange);
             _timer.ChangeActiveTimerValue(cost);
-            ShowPopUpDamage(-damage);
-
-
+            ShowPopUpDamage(hpChange);
             EventSystem.DestroyCard?.Invoke();
 
-            Debug.Log("Damage: " + damage);
+            Debug.Log("Change: " + hpChange);
             Debug.Log(_healthBar.getHealth());
         }
 
-        private void ShowPopUpDamage(int damage)
+        private void ShowPopUpDamage(int hpChange)
         {
             var popUpPosition = new Vector2(transform.position.x, transform.position.y + 1);
             GameObject popUp = Instantiate(popUpPrefab, popUpPosition, Quaternion.identity);
-            popUp.GetComponentInChildren<TMP_Text>().text = damage.ToString();
+            var text = popUp.GetComponentInChildren<TMP_Text>();
+            string popUpText;
+            if (hpChange > 0)
+            {
+                popUpText = "+" + hpChange;
+                text.color = Color.green;
+            }
+            else
+            {
+                popUpText = hpChange.ToString();
+                text.color = Color.red;
+            }
+
+            text.text = popUpText;
         }
     }
 }

@@ -76,6 +76,10 @@ public class HealthBar : MonoBehaviour
 
     public void ChangeHealth(int health)
     {
+        if (_value + health > _maxValue)
+        {
+            return;
+        }
         _value += health;
         UpdateHealthText();
         
