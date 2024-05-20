@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -53,8 +54,7 @@ public class DefaultCards : MonoBehaviour
                 tags.Add("AttackCard");
                 break;
             case ItemType.additional:
-                tags.Add("TrinketCard");
-                break;
+                return;
         }
 
         LoadCards(tags);
@@ -106,17 +106,16 @@ public class DefaultCards : MonoBehaviour
     private void LoadCards(List<string> keys)
     {
         _cards.Clear();
-
+        
         _loadHandle = Addressables.LoadAssetsAsync<CardsSO>(
-            keys,
-            addressable =>
+        keys,
+        addressable =>
+        {
+            for (int i = 0; i < _defaultCardsAmmount; i++) 
             {
-                for (int i = 0; i < _defaultCardsAmmount; i++) 
-                {
-                    _cards.Add(addressable);
-                }
-                Debug.Log(_cards.Count);
-            }, Addressables.MergeMode.Intersection,
-            false);
+                _cards.Add(addressable);
+            }
+        }, Addressables.MergeMode.Intersection,
+        false);
     }
 }
