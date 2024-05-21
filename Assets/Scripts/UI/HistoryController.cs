@@ -50,9 +50,9 @@ namespace UI
         {
             if (_tilesCounter > maxTilesInContainer)
             {
-                var sizeDelta = _containerSize.sizeDelta;
-                sizeDelta = new Vector2(sizeDelta.x, sizeDelta.y + _tileHeight + 5);
-                _containerSize.sizeDelta = sizeDelta;
+                var offsetMin = _containerSize.offsetMin;
+                offsetMin = new Vector2(offsetMin.x, offsetMin.y - (_tileHeight + 5));
+                _containerSize.offsetMin = offsetMin;
             }
         }
     }
