@@ -69,4 +69,10 @@ public static class EventSystem
     public static UnityEvent<Vector2> MovePlayer = new UnityEvent<Vector2>();
 
     #endregion
+    
+    #region MovePlayer: PlayerInputsController.cs -> HistoryConroller.cs
+
+    public static UnityEvent<CardsSO> LogAction = new UnityEvent<CardsSO>();
+
+    #endregion
 }
