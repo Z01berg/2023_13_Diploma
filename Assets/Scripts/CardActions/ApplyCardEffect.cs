@@ -10,16 +10,14 @@ namespace CardActions
     {
         [SerializeField] private GameObject popUpPrefab;
         [Header("Timer from Managers")][SerializeField] private GameObject gameObjectTimer;
-        private GameObject _enemy;
         private HealthBar _healthBar;
         private Timer _timer;
         private CardsEffectsManager _cardsEffectsManager;
 
         private void Start()
         {
-            // _enemy = transform.parent.gameObject;
-            _healthBar = gameObject.GetComponentInParent<HealthBar>();
             _timer = gameObjectTimer.GetComponent<Timer>();
+            _healthBar = gameObject.GetComponentInParent<HealthBar>();
         }
 
 
@@ -49,7 +47,7 @@ namespace CardActions
                     
                     break;
             }
-
+            
             _healthBar.ChangeHealth(hpChange);
             _timer.ChangeActiveTimerValue(cost);
             ShowPopUpDamage(hpChange);

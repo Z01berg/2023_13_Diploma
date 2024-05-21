@@ -146,22 +146,25 @@ namespace UI
                 {
                     cardInUse._isPressed = false;
                     cardInUse._isHovered = false;
+                    eventsConfig?.cardUnHover?.Invoke(new CardUnhover(this));
                 }
-
+                eventsConfig?.cardHover?.Invoke(new CardHover(this));
                 _isPressed = true;
-                _isHovered = false;
+                _isHovered = true;
                 cardInUse = this;
-                eventsConfig?.cardUnHover?.Invoke(new CardUnhover(this));
                 PlaceHolder.isTaken = true;
+                
             }
 
             if (Input.GetMouseButtonDown(1))
             {
                 if (_isPressed)
                 {
+                    eventsConfig?.cardUnHover?.Invoke(new CardUnhover(this));
                     _isPressed = false;
-                    PlaceHolder.isTaken = false;
+                    _isHovered = false;
                     cardInUse = null;
+                    PlaceHolder.isTaken = false;
                 }
             }
         }
