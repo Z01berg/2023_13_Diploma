@@ -3,6 +3,7 @@ using Player;
 using TMPro;
 using UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CardActions
 {
@@ -13,11 +14,13 @@ namespace CardActions
         private HealthBar _healthBar;
         private Timer _timer;
         private CardsEffectsManager _cardsEffectsManager;
+        private Image _image; 
 
         private void Start()
         {
             _timer = gameObjectTimer.GetComponent<Timer>();
             _healthBar = gameObject.GetComponentInParent<HealthBar>();
+            // _image = gameObject.GetComponent<SpriteRenderer>()
         }
 
 

@@ -78,11 +78,13 @@ public class HealthBar : MonoBehaviour
     {
         if (_value + health > _maxValue)
         {
-            return;
+            _value = _maxValue;
         }
-        _value += health;
+        else
+        {
+            _value += health;
+        }
         UpdateHealthText();
-        
     }
 
     private void UpdateHealthText()

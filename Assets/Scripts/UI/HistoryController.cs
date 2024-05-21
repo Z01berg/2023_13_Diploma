@@ -8,6 +8,7 @@ namespace UI
     public class HistoryController : MonoBehaviour
     {
         [SerializeField] private GameObject historyTile;
+        [SerializeField] private GameObject actionDetail;
         [SerializeField] private int maxTilesInContainer = 6;
         private int _tilesCounter = 0;
         private float _tileHeight;
@@ -21,29 +22,30 @@ namespace UI
             EventSystem.LogAction.AddListener(CreateLog);
         }
 
-        private void CreateLog(CardsSO card)
+        private void CreateLog(CardsSO cardInfo)
         {
             var newTile = Instantiate(historyTile, transform, true);
             var tileText = newTile.GetComponentInChildren<TMP_Text>();
 
-            if (card.type == CardType.Attack)
+            if (cardInfo.type == CardType.Attack)
             {
                 tileText.color = Color.red;
-                tileText.text = "-" + card.damage;
+                tileText.text = "-" + cardInfo.damage;
             }
-            else if (card.type == CardType.Defense)
+            else if (cardInfo.type == CardType.Defense)
             {
                 tileText.color = Color.green;
-                tileText.text = "+" + card.damage;
+                tileText.text = "+" + cardInfo.damage;
             }
             else
             {
                 tileText.color = Color.white;
-                tileText.text = card.damage.ToString();
+                tileText.text = cardInfo.damage.ToString();
             }
 
             _tilesCounter++;
             UpdateSize();
+            // CreateDetail(cardInfo, newTile);
         }
 
         private void UpdateSize()
@@ -55,5 +57,13 @@ namespace UI
                 _containerSize.offsetMin = offsetMin;
             }
         }
+
+        public void CreateDetail(CardsSO cardInfo, GameObject tile)
+        {
+            actionDetail = Instantiate(actionDetail, transform.parent.transform.parent);
+            ActionDetail detail = actionDetail.GetComponent<ActionDetail>();
+            detail.Create(cardInfo, tile);
+        }
+        
     }
 }
