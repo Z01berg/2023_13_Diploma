@@ -10,6 +10,13 @@ using UnityEngine;
 
 public static class Settings
 {
+    #region Units
+
+    public const float PIXEL_PER_UNIT = 16f;
+    public const float TILE_SIZE_PIXEL = 16f;
+
+    #endregion
+    
     #region DUNGEON BUILD SETTINGS
         public const int MAX_DUNGEON_REBUILD_ATTEMPTS_FOR_ROOM_GRAPH = 1000;
         public const int MAX_DUNGEON_BUILD_ATTEMPTS = 10;

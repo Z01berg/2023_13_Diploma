@@ -103,4 +103,5 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         previousRoom = currentRoom;
         currentRoom = room;
     }
+    
 }
