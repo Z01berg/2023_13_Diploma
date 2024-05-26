@@ -18,6 +18,7 @@ public class InventoryActions : MonoBehaviour
 {
     private static bool _active;
     [SerializeField] private GameObject _inv;
+    [SerializeField] private GameObject _minimap;
 
     private bool locked = false;
 
@@ -39,12 +40,14 @@ public class InventoryActions : MonoBehaviour
             _active = false;
             _inv.GetComponent<UIInventory>().SaveState();
             EventSystem.HideHand?.Invoke(false);
+            _minimap.gameObject.SetActive(true);
         }
         else
         {
             _inv.gameObject.SetActive(true);
             _active = true;
             EventSystem.HideHand?.Invoke(true);
+            _minimap.gameObject.SetActive(false);
         }
     }
     

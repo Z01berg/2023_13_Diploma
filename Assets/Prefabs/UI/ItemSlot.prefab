@@ -90,4 +90,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowedItemType: 0
   itemUIPrefab: {fileID: 7288296044172928481, guid: 1ed3f4528b76b0540b25eb640515f683, type: 3}
-  itemSlot: {fileID: 6549335557892417539}
+  _mouseOverColor: {r: 0.1745283, g: 0.6981132, b: 0.1745283, a: 1}
