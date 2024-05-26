@@ -95,6 +95,38 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
                     slot.LightDown();
                 }
             }
+            if (transform.childCount == 0)
+            {
+                foreach(var card in GetComponent<DefaultCards>()._cardsList)
+                {
+                    if (command == "lightup")
+                    {
+                        card.transform.Find("ArtworkMask").transform.Find("BG").GetComponent<Image>().color = _mouseOverColor;
+                        card.transform.SetAsFirstSibling();
+                    }
+                    else
+                    {
+                        card.transform.Find("ArtworkMask").transform.Find("BG").GetComponent<Image>().color = Color.white;
+                    }
+                }
+            }
+            else
+            {
+                var child = GetComponentInChildren<UIItemDragNDrop>();
+                foreach (var card in child.cardsList)
+                {
+                    if (command == "lightup")
+                    {
+                        card.transform.Find("ArtworkMask").transform.Find("BG").GetComponent<Image>().color = _mouseOverColor;
+                        card.transform.SetAsFirstSibling();
+                    }
+                    else
+                    {
+                        card.transform.Find("ArtworkMask").transform.Find("BG").GetComponent<Image>().color = Color.white;
+                    }
+                }
+            }
+            
         }
     }
 

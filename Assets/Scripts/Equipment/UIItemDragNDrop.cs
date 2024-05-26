@@ -30,7 +30,7 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     private Canvas canvas;
     private CanvasGroup canvasGroup;
     private GameObject cardsPanel;
-    private List<GameObject> cardsList = new List<GameObject>();
+    public List<GameObject> cardsList = new List<GameObject>();
     [SerializeField] private GameObject cardSlotPF;
     private GameObject itemsPanel;
     public GameObject itemSlotPF;
