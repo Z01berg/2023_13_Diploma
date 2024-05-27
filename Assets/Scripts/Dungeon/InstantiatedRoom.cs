@@ -53,26 +53,26 @@ public class InstantiatedRoom : MonoBehaviour
                 if (doorway.Orientation == Orientation.north)
                 {
                     door = Instantiate(doorway.DoorPrefab, gameObject.transform);
-                    door.transform.localPosition = new Vector3(doorway.Position.x + tileDistance / 2f,
-                        doorway.Position.y + tileDistance, 0f);
+                    door.transform.localPosition = new Vector3(doorway.Position.x + tileDistance / 2f + 10,
+                        doorway.Position.y + tileDistance - 9.45f, 0f);
                 }
                 else if (doorway.Orientation == Orientation.south)
                 {
                     door = Instantiate(doorway.DoorPrefab, gameObject.transform);
                     door.transform.localPosition =
-                        new Vector3(doorway.Position.x + tileDistance / 2f, doorway.Position.y, 0f);
+                        new Vector3(doorway.Position.x + tileDistance / 2f + 10, doorway.Position.y - 9.45f, 0f);
                 }
                 else if (doorway.Orientation == Orientation.east)
                 {
                     door = Instantiate(doorway.DoorPrefab, gameObject.transform);
-                    door.transform.localPosition = new Vector3(doorway.Position.x + tileDistance,
-                        doorway.Position.y + tileDistance, 0f);
+                    door.transform.localPosition = new Vector3(doorway.Position.x + tileDistance + 10,
+                        doorway.Position.y + tileDistance - 9.45f, 0f);
                 }
                 else if (doorway.Orientation == Orientation.west)
                 {
                     door = Instantiate(doorway.DoorPrefab, gameObject.transform);
                     door.transform.localPosition =
-                        new Vector3(doorway.Position.x, doorway.Position.y + tileDistance, 0f);
+                        new Vector3(doorway.Position.x + 10, doorway.Position.y + tileDistance - 9.45f, 0f);
                 }
             }
         }
