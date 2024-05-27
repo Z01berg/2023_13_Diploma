@@ -313,11 +313,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7186669305998701210, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
   m_PrefabInstance: {fileID: 905818553543000679}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1654422165 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4780907633037799669, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
-  m_PrefabInstance: {fileID: 905818553543000679}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1732243338 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8660671256880294968, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
@@ -664,10 +659,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 6777337580728668956, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
-      propertyPath: _minimap
-      value: 
-      objectReference: {fileID: 1654422165}
     - target: {fileID: 7452498659168038968, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: _cards.Array.data[3]
       value: 
