@@ -231,4 +231,3 @@ public class InstantiatedRoom : MonoBehaviour
     }
     
 }
-}
