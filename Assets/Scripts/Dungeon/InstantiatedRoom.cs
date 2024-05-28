@@ -226,7 +226,7 @@ public class InstantiatedRoom : MonoBehaviour
         foreach (var position in positions)
         {
             enemy = Instantiate(enemy, transform.Find("Grid"));
-            enemy.transform.localPosition = new Vector3(position.x, position.y);
+            enemy.transform.localPosition = new Vector3(position.x, position.y, -6f);
         }
     }
     
