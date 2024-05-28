@@ -71,7 +71,6 @@ public class InstantiatedRoom : MonoBehaviour
 
                 GameObject door = null;
 
-                Debug.Log($"{gameObject.name} x:({roomTransform.transform.position.x}), y:({roomTransform.transform.position.x})");
                 if (doorway.Orientation == Orientation.north)
                 {
                     door = Instantiate(doorway.DoorPrefab, gameObject.transform);

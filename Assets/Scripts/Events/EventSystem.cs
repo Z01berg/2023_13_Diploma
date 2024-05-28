@@ -58,6 +58,12 @@ public static class EventSystem
     public static UnityEvent ShowCheatEngine = new UnityEvent();
 
     #endregion
+    
+    #region ShowCheatEngine: Timer.cs -> UIScrypt
+
+    public static UnityEvent ShowHelpSheet = new UnityEvent();
+
+    #endregion
 
     #region DisableHand: PauseMenuManager.cs -> HandController.cs
 

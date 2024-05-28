@@ -60,6 +60,8 @@ namespace Player
 
             // Oblicz odległość między nimi
             float distance = Vector3.Distance(position1, position2);
+            Debug.Log($"{gameObject.name} Distance:" + distance);
+            Debug.Log($"t1:{transform1.name}, t2: {transform2.name}");
             
             // Sprawdź czy odległość jest mniejsza lub równa 2f
             if (distance <= 2f)
