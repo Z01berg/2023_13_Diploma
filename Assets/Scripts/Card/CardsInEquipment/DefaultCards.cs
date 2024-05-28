@@ -1,9 +1,7 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using static UnityEditor.Progress;
 
 /**
  * Klasa publiczna monitorujaca pola ekwipunku i dodajaca karty podstawowe do reki gracza 

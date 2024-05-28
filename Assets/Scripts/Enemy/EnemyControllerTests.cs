@@ -5,7 +5,7 @@ namespace Player
 {
     public class EnemyControllerTests : MonoBehaviour
     {
-        [SerializeField] private float _moveSpeed = 1f;
+        [SerializeField] private float _moveSpeed = .1f;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private LayerMask _whatStopsMovement;
         private Vector3 _playerPosition;
@@ -19,6 +19,8 @@ namespace Player
         private Vector2 _moveVector = Vector2.zero;
         //private Random _random;
 
+        private bool _endedMove = true;
+
         private void Start()
         {
             var srPos = _spriteRenderer.transform.position;
@@ -31,7 +33,7 @@ namespace Player
         {
             if (_isEnemyTurn)
             {
-                if (_movement > 0)
+                if (_movement > 0 && _endedMove)
                 {
                     Move();
                 }
@@ -39,13 +41,12 @@ namespace Player
                 {
                     if (CheckDistance(this.transform,_playerPosition))
                     {
-                        Debug.Log("wpier");
-                        EventSystem.FinishEnemyTurn.Invoke(30);
+                        EventSystem.FinishEnemyTurn.Invoke(Random.Range(7, 15));
                         Attack();
                     }
                     else
                     {
-                        EventSystem.FinishEnemyTurn.Invoke(20);
+                        EventSystem.FinishEnemyTurn.Invoke(Random.Range(5, 8));
                     }
                     _turnOff = false;
                     _isEnemyTurn = false;
@@ -87,7 +88,7 @@ namespace Player
 
         private void Move()
         {
-            
+            _endedMove = false;
             var value = new Vector3(Random.Range(-2,2), Random.Range(-2, 2));
             if (Mathf.Abs(value.x) == 1f || Mathf.Abs(value.y) == 1f)//TODO: może Debug.Break
             {
@@ -114,11 +115,12 @@ namespace Player
                         targetPosition,
                         _moveSpeed * Time.deltaTime/4
             );
-                    transform.position += new Vector3(value.x * 1f, value.y * 1f, 0);
+                    transform.position += new Vector3(value.x * 1f, value.y * 1f, -6);
                     
                 }
                 _movement--;
             }
+            _endedMove = true;
         }
 
         private void ToggleScript(bool isThis, Vector3 plpos)

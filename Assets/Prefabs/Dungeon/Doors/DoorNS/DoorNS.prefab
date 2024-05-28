@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 6294092922133860500}
   m_Layer: 24
   m_Name: DoorNS
-  m_TagString: Untagged
+  m_TagString: collisionTilemap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -329,4 +329,3 @@ MonoBehaviour:
   _trigger: {fileID: 484696819638064950}
   _collision: {fileID: 8730838947633707781}
   _animator: {fileID: -1856131807024621167}
-  room: {fileID: 0}

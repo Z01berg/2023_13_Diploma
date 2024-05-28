@@ -82,20 +82,20 @@ public class InstantiatedRoom : MonoBehaviour
                     door = Instantiate(doorway.DoorPrefab, gameObject.transform);
                     door.transform.rotation = new Quaternion(180f, 0f, 0f, 0f);
                     door.transform.localPosition =
-                        new Vector3(doorway.Position.x + tileDistance / 2f + 10.04f, doorway.Position.y- 9.45f, 0f);
+                        new Vector3(doorway.Position.x + tileDistance / 2f + 10.04f, doorway.Position.y - 9.45f, 0f);
                 }
                 else if (doorway.Orientation == Orientation.east)
                 {
                     door = Instantiate(doorway.DoorPrefab, gameObject.transform);
                     door.transform.rotation = new Quaternion(0f, 180f, 0f, 0f);
-                    door.transform.localPosition = new Vector3(doorway.Position.x + tileDistance / 2f + 10,
+                    door.transform.localPosition = new Vector3(doorway.Position.x + tileDistance / 2f + 11,
                         doorway.Position.y + tileDistance- 9.415f, 0f);
                 }
                 else if (doorway.Orientation == Orientation.west)
                 {
                     door = Instantiate(doorway.DoorPrefab, gameObject.transform);
                     door.transform.localPosition =
-                        new Vector3(doorway.Position.x / 2f + 10, doorway.Position.y + tileDistance- 9.415f, 0f);
+                        new Vector3(doorway.Position.x / 2f + 7, doorway.Position.y + tileDistance - 9.415f, 0f);
                 }
                 doorsList.Add(door);
             }

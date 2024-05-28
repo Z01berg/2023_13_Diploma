@@ -1007,7 +1007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inv: {fileID: 2442758224761705246}
-  _minimap: {fileID: 0}
+  _minimap: {fileID: 4780907633037799669}
 --- !u!114 &6861351791200050413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2423,6 +2423,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ade17ae2732d9541822270d4ede3420, type: 3}
+--- !u!1 &4780907633037799669 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8790195556572176386, guid: 0ade17ae2732d9541822270d4ede3420, type: 3}
+  m_PrefabInstance: {fileID: 4297628527338475767}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8949369018935771351 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5158510348777934880, guid: 0ade17ae2732d9541822270d4ede3420, type: 3}

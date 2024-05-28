@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 /**
  * Publiczna klasa SetTimer jest odpowiedzialna za ustawienie czasomierza oraz wyświetlenie tekstu na podstawie typu postaci.
@@ -32,7 +33,17 @@ public class SetTimer : MonoBehaviour
 
         if (timer != null)
         {
-            timer.AddTextFromSetTimer(_text, person, _hp);
+            if (_characterType == CharacterType.Enemy)
+            {
+                int ran = Random.Range(5, 10);
+                _text.text = ran.ToString();
+                timer.AddTextFromSetTimer(_text, person, _hp);
+            }
+            else
+            {
+                timer.AddTextFromSetTimer(_text, person, _hp);
+            }
+            
         }
         else
         {

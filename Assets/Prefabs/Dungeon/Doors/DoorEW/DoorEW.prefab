@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1988510119648780697}
   m_Layer: 24
   m_Name: DoorEW
-  m_TagString: Untagged
+  m_TagString: collisionTilemap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,7 +169,6 @@ MonoBehaviour:
   _trigger: {fileID: 4681450142002583315}
   _collision: {fileID: 6388211927830960191}
   _animator: {fileID: 9186750208436337445}
-  room: {fileID: 0}
 --- !u!1 &3833439954127378893
 GameObject:
   m_ObjectHideFlags: 0
