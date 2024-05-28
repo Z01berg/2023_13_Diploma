@@ -11,7 +11,9 @@ public class InstantiatedRoom : MonoBehaviour
 {
     [HideInInspector] public Room room;
     [HideInInspector] public UnityEngine.Grid grid;
+
     [HideInInspector] public Tilemap ground;
+
     //[HideInInspector] public Tilemap wall;//TODO: GRID??
     [HideInInspector] public Tilemap decorative;
     [HideInInspector] public Tilemap collision;
@@ -23,7 +25,7 @@ public class InstantiatedRoom : MonoBehaviour
     private void Awake()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
-        
+
         //Save room collider bounds
         roomColliderBounds = boxCollider2D.bounds;
     }
@@ -33,15 +35,17 @@ public class InstantiatedRoom : MonoBehaviour
         PopulateTilemapMemeberVariables(roomGameObject);
 
         BlockOffUnusedDoorWays();
-
-        AddDoorsToRooms();
-
+        
         DisableCollisionTilemapRenderer();
 
         PopulateRoomWithEnemies();
+        
+        AddDoorsToRooms(roomGameObject.transform);
     }
 
-    private void AddDoorsToRooms()
+    
+
+    private void AddDoorsToRooms(Transform roomTransform)
     {
         if (room.RoomNodeType.isCorridorEW || room.RoomNodeType.isCorridorNS) return;
 
@@ -53,30 +57,32 @@ public class InstantiatedRoom : MonoBehaviour
 
                 GameObject door = null;
 
+                Debug.Log($"{gameObject.name} x:({roomTransform.transform.position.x}), y:({roomTransform.transform.position.x})");
                 if (doorway.Orientation == Orientation.north)
                 {
                     door = Instantiate(doorway.DoorPrefab, gameObject.transform);
-                    door.transform.localPosition = new Vector3(doorway.Position.x + tileDistance / 2f,
-                        doorway.Position.y + tileDistance, 0f);
+                    door.transform.localPosition = new Vector3(doorway.Position.x + tileDistance / 2f + 10.04f,
+                        doorway.Position.y + tileDistance - 9.45f, 0f);
                 }
                 else if (doorway.Orientation == Orientation.south)
                 {
                     door = Instantiate(doorway.DoorPrefab, gameObject.transform);
                     door.transform.localPosition =
-                        new Vector3(doorway.Position.x + tileDistance / 2f, doorway.Position.y, 0f);
+                        new Vector3(doorway.Position.x + tileDistance / 2f + 10.04f, doorway.Position.y- 9.45f, 0f);
                 }
                 else if (doorway.Orientation == Orientation.east)
                 {
                     door = Instantiate(doorway.DoorPrefab, gameObject.transform);
-                    door.transform.localPosition = new Vector3(doorway.Position.x + tileDistance,
-                        doorway.Position.y + tileDistance, 0f);
+                    door.transform.localPosition = new Vector3(doorway.Position.x + tileDistance / 2f + 10,
+                        doorway.Position.y + tileDistance- 9.415f, 0f);
                 }
                 else if (doorway.Orientation == Orientation.west)
                 {
                     door = Instantiate(doorway.DoorPrefab, gameObject.transform);
                     door.transform.localPosition =
-                        new Vector3(doorway.Position.x, doorway.Position.y + tileDistance, 0f);
+                        new Vector3(doorway.Position.x / 2f + 10, doorway.Position.y + tileDistance- 9.415f, 0f);
                 }
+                
             }
         }
     }
@@ -102,7 +108,7 @@ public class InstantiatedRoom : MonoBehaviour
             {
                 BlockADoorwayOnTilemapLayer(decorative, doorway);
             }
-            
+
             if (miniMap != null)
             {
                 BlockADoorwayOnTilemapLayer(miniMap, doorway);
@@ -140,12 +146,13 @@ public class InstantiatedRoom : MonoBehaviour
                 //get rotation
                 Matrix4x4 transformMatrix =
                     tilemap.GetTransformMatrix(new Vector3Int(startPosition.x + xPos, startPosition.y - yPos, 0));
-                
+
                 //copy
-                tilemap.SetTile(new Vector3Int(startPosition.x + xPos, startPosition.y - 1 - yPos, 0), 
+                tilemap.SetTile(new Vector3Int(startPosition.x + xPos, startPosition.y - 1 - yPos, 0),
                     tilemap.GetTile(new Vector3Int(startPosition.x + xPos, startPosition.y - yPos, 0)));
                 //set rotation
-                tilemap.SetTransformMatrix(new Vector3Int(startPosition.x + xPos, startPosition.y - 1 - yPos, 0), transformMatrix);
+                tilemap.SetTransformMatrix(new Vector3Int(startPosition.x + xPos, startPosition.y - 1 - yPos, 0),
+                    transformMatrix);
             }
         }
     }
@@ -161,13 +168,14 @@ public class InstantiatedRoom : MonoBehaviour
                 //get rotation
                 Matrix4x4 transformMatrix =
                     tilemap.GetTransformMatrix(new Vector3Int(startPosition.x + xPos, startPosition.y - yPos, 0));
-                
+
                 //copy
-                tilemap.SetTile(new Vector3Int(startPosition.x + 1 + xPos, startPosition.y - yPos, 0), 
+                tilemap.SetTile(new Vector3Int(startPosition.x + 1 + xPos, startPosition.y - yPos, 0),
                     tilemap.GetTile(new Vector3Int(startPosition.x + xPos, startPosition.y - yPos, 0)));
-                
+
                 //set rotation
-                tilemap.SetTransformMatrix(new Vector3Int(startPosition.x + 1 + xPos, startPosition.y - yPos, 0), transformMatrix);
+                tilemap.SetTransformMatrix(new Vector3Int(startPosition.x + 1 + xPos, startPosition.y - yPos, 0),
+                    transformMatrix);
             }
         }
     }
@@ -180,7 +188,7 @@ public class InstantiatedRoom : MonoBehaviour
     private void PopulateTilemapMemeberVariables(GameObject roomGameobject)
     {
         grid = roomGameobject.GetComponentInChildren<UnityEngine.Grid>();
-        
+
         Tilemap[] tilemaps = roomGameobject.GetComponentsInChildren<Tilemap>();
 
         foreach (Tilemap tilemap in tilemaps)
@@ -222,4 +230,5 @@ public class InstantiatedRoom : MonoBehaviour
         }
     }
     
+}
 }

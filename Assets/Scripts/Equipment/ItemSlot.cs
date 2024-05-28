@@ -183,7 +183,5 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
                 break;
             }
         }
-
-        
     }
 }

@@ -82,6 +82,7 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
             room.LowerBounds.y - room.TemplateLowerBounds.y, 0f);
 
          GameObject roomGameObject = Instantiate(room.Prefab, roomPosition, Quaternion.identity, transform);
+         Debug.Log($"room position {roomPosition.x}, { roomPosition.y}");
 
          InstantiatedRoom instantiatedRoom = roomGameObject.GetComponentInChildren<InstantiatedRoom>();
 
