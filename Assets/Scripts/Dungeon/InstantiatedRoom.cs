@@ -28,6 +28,7 @@ public class InstantiatedRoom : MonoBehaviour
     public List<GameObject> doorsList = new();
 
     private static bool _baseEnemyMoved = false;
+    private bool _cleared = false;
 
     private BoxCollider2D boxCollider2D;
 
@@ -257,6 +258,7 @@ public class InstantiatedRoom : MonoBehaviour
     
     public void OpenAllDoors()
     {
+        //_cleared = true;
         foreach(var door in doorsList)
         {
             door.GetComponent<DoorLogic>().RoomCleared();

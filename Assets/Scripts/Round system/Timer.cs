@@ -1,8 +1,10 @@
+using Player;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UI;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /**
@@ -50,7 +52,14 @@ public class Timer : MonoBehaviour
         _animator = GetComponent<Animator>();
         EventSystem.InstatiatedRoom.AddListener(AddToTimer);
         EventSystem.DeleteReference.AddListener(DeleteTimer);
+        EventSystem.FinishEnemyTurn.AddListener(FinishTurn);
         _deckController = _deck.GetComponent<DeckController>();
+    }
+
+    private void FinishTurn(int arg0)
+    {
+        _timers[_activeTimerIndex].Value = arg0;
+        StartCountdown();
     }
 
     void AddToTimer()
@@ -147,11 +156,11 @@ public class Timer : MonoBehaviour
                 if (_timers[_activeTimerIndex].Tag == "Enemy" )
                 {
                     _animator.SetBool("K_turn", true);
-                    EventSystem.EnemyMove.Invoke(true);
+                    EventSystem.EnemyMove.Invoke(true,this.transform);
                 }
                 else
                 {
-                    EventSystem.EnemyMove.Invoke(false);
+                    EventSystem.EnemyMove.Invoke(false, this.transform);
                 }
                 
                 _turn.text = "Turn: " + _timers[_activeTimerIndex].Tag;

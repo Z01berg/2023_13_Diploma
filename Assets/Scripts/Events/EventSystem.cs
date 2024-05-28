@@ -1,3 +1,4 @@
+using Player;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,7 +19,7 @@ public static class EventSystem
     //TODO Find if somebody use this
     #region EnemyMove: Timer.cs -> EnemyControllerTests.cs
 
-        public static UnityEvent<bool> EnemyMove = new UnityEvent<bool>();
+        public static UnityEvent<bool,Transform> EnemyMove = new UnityEvent<bool,Transform>();
     
     #endregion
     
@@ -30,7 +31,7 @@ public static class EventSystem
     
     #region MovePlayer: EnemyCotrollerTests.cs -> Timer.cs
 
-    public static UnityEvent FinishEnemyTurn = new UnityEvent();
+    public static UnityEvent<int> FinishEnemyTurn = new UnityEvent<int>();
 
     #endregion
     

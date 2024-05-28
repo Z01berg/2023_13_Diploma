@@ -1,39 +1,14 @@
-using System;
 using UnityEngine;
-using Random = Unity.Mathematics.Random;
-
-/**
- * Public class PlayerController jest skryptem kontrolera gracza, który zarządza ruchem gracza w grze.
-
-    Zawiera informacje o:
-    - prędkości poruszania się gracza
-    -  punkcie ruchu gracza
-    - warstwie zatrzymującej ruch gracza
-    - punktach akcji gracza
-    - zasięgu umiejętności gracza
-    - obrażeniach umiejętności gracza
-    - włączaniu/wyłączaniu skryptu
-
-    Działa w trybie gry:
-    - przemieszcza gracza w kierunku punktu ruchu
-    - wykrywa przeszkody, które zatrzymują ruch gracza
-    - oblicza ruch gracza na podstawie wejścia gracza
-    - wyłącza skrypt gracza po zakończeniu ruchu
-
-    Możliwe akcje:
-    - pobranie punktów akcji gracza
-    - pobranie zasięgu umiejętności gracza
-    - pobranie obrażeń umiejętności gracza
- */
+using Random = UnityEngine.Random;
 
 namespace Player
 {
     public class EnemyControllerTests : MonoBehaviour
     {
-        [SerializeField] private float _moveSpeed = 5f;
-        [SerializeField] private Transform _movePoint;
+        [SerializeField] private float _moveSpeed = 1f;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private LayerMask _whatStopsMovement;
+        private Transform _playerPosition;
 
         private int _movement = 4;
         private int _attack = 1;
@@ -42,41 +17,63 @@ namespace Player
         private static bool _isEnemyTurn = false;
 
         private Vector2 _moveVector = Vector2.zero;
+        //private Random _random;
 
         private void Start()
         {
             var srPos = _spriteRenderer.transform.position;
-            _movePoint.position = srPos;
-            GetComponent<EnemyControllerTests>().enabled = !GetComponent<EnemyControllerTests>().enabled;// TODO uncomment this after AI tests
-            EventSystem.EnemyMove.AddListener(ToogleScrypt);
-            // EventSystem.MoveEnemy.AddListener(CalculateEnemyMove);
+            //_random = new Random(); // Inicjalizacja generatora liczb losowych
+            //GetComponent<EnemyControllerTests>().enabled = !GetComponent<EnemyControllerTests>().enabled;
+            EventSystem.EnemyMove.AddListener(ToggleScript);
         }
 
         private void Update()
         {
-            transform.position = Vector3.MoveTowards(
-                transform.position,
-                _movePoint.position,
-                _moveSpeed * Time.deltaTime
-            );
-            
-
-
-        }
-
-        public void actions()
-        {
-            if (_movement > 0)
+            if (_isEnemyTurn)
             {
-                // SetMoveVector();   
-                // CalculateEnemyMove();
-                _movement--;
+                if (_movement > 0)
+                {
+                    Move();
+                }
+                else
+                {
+                    if (CheckDistance(this.transform,_playerPosition))
+                    {
+                        Debug.Log("wpier");
+                        EventSystem.FinishEnemyTurn.Invoke(30);
+                        Attack();
+                    }
+                    else
+                    {
+                        EventSystem.FinishEnemyTurn.Invoke(20);
+                    }
+                    _turnOff = false;
+                    _isEnemyTurn = false;
+                }
+            }
+        }
+        public bool CheckDistance(Transform transform1, Transform transform2)
+        {
+            // Pobierz pozycje obiektów transformacji
+            Vector3 position1 = transform1.position;
+            Vector3 position2 = transform2.position;
+
+            // Oblicz odległość między nimi
+            float distance = Vector3.Distance(position1, position2);
+            
+            // Sprawdź czy odległość jest mniejsza lub równa 2f
+            if (distance <= 2f)
+            {
+                return true;
             }
             else
             {
-                // _movement = 4;
-                EventSystem.FinishEnemyTurn.Invoke();
+                return false;
             }
+        }
+        private void Attack()
+        {
+            _playerPosition.GetComponent<HealthBar>().ChangeHealth(-1);
         }
 
         private void LateUpdate()
@@ -88,58 +85,45 @@ namespace Player
             }
         }
 
-        private void CalculateEnemyMove()
+        private void Move()
         {
-            if (Vector3.Distance(transform.position, _movePoint.position) <= .05f && _isEnemyTurn)
+            
+            var value = new Vector3(Random.Range(-2,2), Random.Range(-2, 2));
+            if (Mathf.Abs(value.x) == 1f || Mathf.Abs(value.y) == 1f)//TODO: może Debug.Break
             {
-                if (Mathf.Abs(_moveVector.x) == 1f || Mathf.Abs(_moveVector.y) == 1f)
+
+                Vector3 targetPosition = transform.position + new Vector3(value.x * 0.5f, value.y * 0.5f, 0);
+
+                Collider2D[] colliders = Physics2D.OverlapBoxAll(targetPosition, new Vector2(0.5f, 0.5f), 0);
+
+                bool canMove = true;
+
+                foreach (Collider2D collider in colliders)
                 {
-                    if (!Physics2D.OverlapCircle(_movePoint.position + new Vector3(_moveVector.x, _moveVector.y, 0), .2f,
-                            _whatStopsMovement))
+                    if (collider.CompareTag("collisionTilemap"))
                     {
-                        Random random = new Random();
-                        var val = random.NextInt(1, 5);
-                        switch (val)
-                        {
-                            case 1: _moveVector = new Vector3(transform.position.x + 1, transform.position.y, -6);
-                                break;
-                            case 2: _moveVector = new Vector3(transform.position.x - 1, transform.position.y, -6);
-                                break;
-                            case 3: _moveVector = new Vector3(transform.position.x , transform.position.y + 1, -6);
-                                break;
-                            case 4: _moveVector = new Vector3(transform.position.x, transform.position.y - 1, -6);
-                                break;
-                        }
-                        _movement--;
-                        _movePoint.position += new Vector3(_moveVector.x, _moveVector.y, 0);
-                        RotateSprite(new Vector3(_moveVector.x, _moveVector.y, 0));
+                        canMove = false;
+                        break;
                     }
+
                 }
+                if (canMove)
+                {
+                    transform.position = Vector3.MoveTowards(
+                        transform.position,
+                        targetPosition,
+                        _moveSpeed * Time.deltaTime/4
+            );
+                    transform.position += new Vector3(value.x * 1f, value.y * 1f, 0);
+                    
+                }
+                _movement--;
             }
         }
 
-        private void SetMoveVector()
+        private void ToggleScript(bool isThis,Transform plpos)
         {
-            Random random = new Random();
-            Vector2 moveVector = new Vector2();
-            var val = 1;
-            switch (val)
-            {
-                case 1: moveVector = new Vector3(transform.position.x + 1, transform.position.y, -6);
-                    break;
-                case 2: moveVector = new Vector3(transform.position.x - 1, transform.position.y, -6);
-                    break;
-                case 3: moveVector = new Vector3(transform.position.x , transform.position.y + 1, -6);
-                    break;
-                case 4: moveVector = new Vector3(transform.position.x, transform.position.y - 1, -6);
-                    break;
-            }
-            // _moveVector = moveVector;
-            // _movePoint.position = moveVector;
-        }
-
-        private void ToogleScrypt(bool isThis)
-        {
+            _playerPosition = plpos;
             _isEnemyTurn = isThis;
             if (this.enabled && !isThis)
             {
@@ -147,16 +131,9 @@ namespace Player
             }
             else
             {
-                
                 this.enabled = isThis;
             }
         }
-
-        public static bool getPlayerTurn()
-        {
-            return _isEnemyTurn;
-        }
-
 
         private void RotateSprite(Vector3 direction)
         {
@@ -169,6 +146,5 @@ namespace Player
                 _spriteRenderer.flipX = false;
             }
         }
-        
     }
 }
