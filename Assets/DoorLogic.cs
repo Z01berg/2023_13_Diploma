@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,9 +17,14 @@ public class DoorLogic : MonoBehaviour
         _collision.enabled = false;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void Update()
     {
-        if (other == _trigger)
+        OnTriggerEnter2D();
+    }
+
+    void OnTriggerEnter2D()
+    {
+        if (_trigger.CompareTag("Player"))
         {
             _collision.enabled = true;
 
