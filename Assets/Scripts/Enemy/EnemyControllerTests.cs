@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = Unity.Mathematics.Random;
 
 /**
  * Public class PlayerController jest skryptem kontrolera gracza, który zarządza ruchem gracza w grze.
@@ -37,16 +39,17 @@ namespace Player
         private int _attack = 1;
 
         private bool _turnOff = false;
-        private static bool _isEnemyTurn;
+        private static bool _isEnemyTurn = false;
 
         private Vector2 _moveVector = Vector2.zero;
 
         private void Start()
         {
-            _movePoint.parent = null;
-            GetComponent<PlayerController>().enabled = !GetComponent<PlayerController>().enabled;// TODO uncomment this after AI tests
+            var srPos = _spriteRenderer.transform.position;
+            _movePoint.position = srPos;
+            GetComponent<EnemyControllerTests>().enabled = !GetComponent<EnemyControllerTests>().enabled;// TODO uncomment this after AI tests
             EventSystem.EnemyMove.AddListener(ToogleScrypt);
-            EventSystem.MoveEnemy.AddListener(SetMoveVector);
+            // EventSystem.MoveEnemy.AddListener(CalculateEnemyMove);
         }
 
         private void Update()
@@ -56,7 +59,24 @@ namespace Player
                 _movePoint.position,
                 _moveSpeed * Time.deltaTime
             );
-            CalculateEnemyMove();
+            
+
+
+        }
+
+        public void actions()
+        {
+            if (_movement > 0)
+            {
+                // SetMoveVector();   
+                // CalculateEnemyMove();
+                _movement--;
+            }
+            else
+            {
+                // _movement = 4;
+                EventSystem.FinishEnemyTurn.Invoke();
+            }
         }
 
         private void LateUpdate()
@@ -70,18 +90,52 @@ namespace Player
 
         private void CalculateEnemyMove()
         {
-            if (Vector3.Distance(transform.position, _movePoint.position) <= .05f)
+            if (Vector3.Distance(transform.position, _movePoint.position) <= .05f && _isEnemyTurn)
             {
                 if (Mathf.Abs(_moveVector.x) == 1f || Mathf.Abs(_moveVector.y) == 1f)
                 {
                     if (!Physics2D.OverlapCircle(_movePoint.position + new Vector3(_moveVector.x, _moveVector.y, 0), .2f,
                             _whatStopsMovement))
                     {
+                        Random random = new Random();
+                        var val = random.NextInt(1, 5);
+                        switch (val)
+                        {
+                            case 1: _moveVector = new Vector3(transform.position.x + 1, transform.position.y, -6);
+                                break;
+                            case 2: _moveVector = new Vector3(transform.position.x - 1, transform.position.y, -6);
+                                break;
+                            case 3: _moveVector = new Vector3(transform.position.x , transform.position.y + 1, -6);
+                                break;
+                            case 4: _moveVector = new Vector3(transform.position.x, transform.position.y - 1, -6);
+                                break;
+                        }
+                        _movement--;
                         _movePoint.position += new Vector3(_moveVector.x, _moveVector.y, 0);
                         RotateSprite(new Vector3(_moveVector.x, _moveVector.y, 0));
                     }
                 }
             }
+        }
+
+        private void SetMoveVector()
+        {
+            Random random = new Random();
+            Vector2 moveVector = new Vector2();
+            var val = 1;
+            switch (val)
+            {
+                case 1: moveVector = new Vector3(transform.position.x + 1, transform.position.y, -6);
+                    break;
+                case 2: moveVector = new Vector3(transform.position.x - 1, transform.position.y, -6);
+                    break;
+                case 3: moveVector = new Vector3(transform.position.x , transform.position.y + 1, -6);
+                    break;
+                case 4: moveVector = new Vector3(transform.position.x, transform.position.y - 1, -6);
+                    break;
+            }
+            // _moveVector = moveVector;
+            // _movePoint.position = moveVector;
         }
 
         private void ToogleScrypt(bool isThis)
@@ -97,17 +151,13 @@ namespace Player
                 this.enabled = isThis;
             }
         }
+
         public static bool getPlayerTurn()
         {
             return _isEnemyTurn;
         }
 
-        private void SetMoveVector(Vector2 vector)
-        {
-            _moveVector = vector;
-        }
-        
-        
+
         private void RotateSprite(Vector3 direction)
         {
             if (direction == new Vector3(-1, 0, 0))

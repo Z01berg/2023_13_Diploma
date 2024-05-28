@@ -24,7 +24,13 @@ public static class EventSystem
     
     #region MovePlayer: PlayerInputsController.cs -> EnemyCotrollerTests.cs
 
-    public static UnityEvent<Vector2> MoveEnemy = new UnityEvent<Vector2>();
+    public static UnityEvent MoveEnemy = new UnityEvent();
+
+    #endregion
+    
+    #region MovePlayer: EnemyCotrollerTests.cs -> Timer.cs
+
+    public static UnityEvent FinishEnemyTurn = new UnityEvent();
 
     #endregion
     
