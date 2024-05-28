@@ -94,11 +94,11 @@ public class Timer : MonoBehaviour
             EventSystem.ShowCheatEngine.Invoke();
         }
         
-        if (Input.GetKeyDown(KeyCode.Comma))
+        if (Input.GetKeyDown(KeyCode.Comma) && _cheat)
         {
             ChangeActiveTimer(1);
         }
-        else if (Input.GetKeyDown(KeyCode.Period))
+        else if (Input.GetKeyDown(KeyCode.Period) && _cheat)
         {
             ChangeActiveTimer(-1);
         }
