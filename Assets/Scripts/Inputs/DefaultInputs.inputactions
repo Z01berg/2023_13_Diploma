@@ -11,7 +11,7 @@
                     "id": "0d0823ad-3ca8-47a2-952b-44a0ccc7c39c",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold(duration=1.401298E-45,pressPoint=0.5)",
                     "initialStateCheck": true
                 },
                 {
@@ -36,6 +36,15 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "0eccb1c9-30bd-41dc-bb29-d26182543941",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DoubleClick",
+                    "type": "Button",
+                    "id": "14970462-a73e-4e2c-a72c-62bc215257f1",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -172,6 +181,17 @@
                     "processors": "",
                     "groups": "MousenKeys",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f94f0c0e-919b-499e-b1db-e928e3c4ac5d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "MultiTap",
+                    "processors": "",
+                    "groups": "MousenKeys",
+                    "action": "DoubleClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

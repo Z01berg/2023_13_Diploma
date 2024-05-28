@@ -23,11 +23,13 @@ public class ListAllAvailable : MonoBehaviour
         {
             var slot = Instantiate(slotPrefab);
             slot.transform.SetParent(parent);
+            slot.transform.localScale = Vector3.one;
 
             slot.GetComponent<ItemSlot>().allowedItemType = ItemType.any;
 
             var item = Instantiate(itemUIPrefab);
             item.transform.SetParent(slot.transform);
+            item.transform.localScale = Vector3.one;
             item.GetComponent<UnityEngine.UI.Image>().sprite = x.icon;
             var d = item.GetComponent<UIItemDragNDrop>();
             d.item = x;

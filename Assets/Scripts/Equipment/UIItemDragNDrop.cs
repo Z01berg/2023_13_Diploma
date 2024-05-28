@@ -54,33 +54,12 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        transform.position = Input.mousePosition;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        canvasGroup.alpha = 1f;
-        canvasGroup.blocksRaycasts = true;
-        if(transform.parent.transform == parentTransform)
-        {
-
-            if(originParentTransform == null)
-            {
-                var sl = Instantiate(itemSlotPF);
-                sl.transform.SetParent(itemsPanel.transform);
-                originParentTransform = sl.transform;
-            }
-            rectTransform.position = originParentTransform.position;
-            rectTransform.SetParent(originParentTransform);
-            RemoveCardsFromDeck();
-        }
-        else
-        {
-            AddCardsToDeck();
-            
-        }
-        parentTransform = transform.parent.transform;
-
+        OnItemChangePlace();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -123,7 +102,30 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
                 Destroy(c);
                 cardsSpawned = false;
             }
-        
+        cardsList.Clear();
     }
+    public void OnItemChangePlace()
+    {
+        canvasGroup.alpha = 1f;
+        canvasGroup.blocksRaycasts = true;
+        if (transform.parent.transform == parentTransform)
+        {
 
+            if (originParentTransform == null)
+            {
+                var sl = Instantiate(itemSlotPF);
+                sl.transform.SetParent(itemsPanel.transform);
+                originParentTransform = sl.transform;
+            }
+            rectTransform.position = originParentTransform.position;
+            rectTransform.SetParent(originParentTransform);
+            RemoveCardsFromDeck();
+        }
+        else
+        {
+            AddCardsToDeck();
+
+        }
+        parentTransform = transform.parent.transform;
+    }
 }

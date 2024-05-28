@@ -33,7 +33,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""id"": ""0d0823ad-3ca8-47a2-952b-44a0ccc7c39c"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold(duration=1.401298E-45,pressPoint=0.5)"",
                     ""initialStateCheck"": true
                 },
                 {
@@ -58,6 +58,15 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""0eccb1c9-30bd-41dc-bb29-d26182543941"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DoubleClick"",
+                    ""type"": ""Button"",
+                    ""id"": ""14970462-a73e-4e2c-a72c-62bc215257f1"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -196,6 +205,17 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f94f0c0e-919b-499e-b1db-e928e3c4ac5d"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""MultiTap"",
+                    ""processors"": """",
+                    ""groups"": ""MousenKeys"",
+                    ""action"": ""DoubleClick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -236,6 +256,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
         m_DefaultMausenKeys_Menu = m_DefaultMausenKeys.FindAction("Menu", throwIfNotFound: true);
         m_DefaultMausenKeys_Equipment = m_DefaultMausenKeys.FindAction("Equipment", throwIfNotFound: true);
         m_DefaultMausenKeys_Interact = m_DefaultMausenKeys.FindAction("Interact", throwIfNotFound: true);
+        m_DefaultMausenKeys_DoubleClick = m_DefaultMausenKeys.FindAction("DoubleClick", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -301,6 +322,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_DefaultMausenKeys_Menu;
     private readonly InputAction m_DefaultMausenKeys_Equipment;
     private readonly InputAction m_DefaultMausenKeys_Interact;
+    private readonly InputAction m_DefaultMausenKeys_DoubleClick;
     public struct DefaultMausenKeysActions
     {
         private @DefaultInputs m_Wrapper;
@@ -309,6 +331,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
         public InputAction @Menu => m_Wrapper.m_DefaultMausenKeys_Menu;
         public InputAction @Equipment => m_Wrapper.m_DefaultMausenKeys_Equipment;
         public InputAction @Interact => m_Wrapper.m_DefaultMausenKeys_Interact;
+        public InputAction @DoubleClick => m_Wrapper.m_DefaultMausenKeys_DoubleClick;
         public InputActionMap Get() { return m_Wrapper.m_DefaultMausenKeys; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -330,6 +353,9 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @DoubleClick.started += instance.OnDoubleClick;
+            @DoubleClick.performed += instance.OnDoubleClick;
+            @DoubleClick.canceled += instance.OnDoubleClick;
         }
 
         private void UnregisterCallbacks(IDefaultMausenKeysActions instance)
@@ -346,6 +372,9 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @DoubleClick.started -= instance.OnDoubleClick;
+            @DoubleClick.performed -= instance.OnDoubleClick;
+            @DoubleClick.canceled -= instance.OnDoubleClick;
         }
 
         public void RemoveCallbacks(IDefaultMausenKeysActions instance)
@@ -387,5 +416,6 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
         void OnMenu(InputAction.CallbackContext context);
         void OnEquipment(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnDoubleClick(InputAction.CallbackContext context);
     }
 }
