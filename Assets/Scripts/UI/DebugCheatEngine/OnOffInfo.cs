@@ -16,3 +16,4 @@ public class OnOffInfo : MonoBehaviour
         Text.SetActive(!Text.activeSelf);
     }
 }
+  
