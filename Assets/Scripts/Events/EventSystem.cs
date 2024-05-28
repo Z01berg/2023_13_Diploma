@@ -16,10 +16,16 @@ public static class EventSystem
     #endregion
     
     //TODO Find if somebody use this
-    #region EnemyMove: Timer.cs -> .cs
+    #region EnemyMove: Timer.cs -> EnemyControllerTests.cs
 
         public static UnityEvent<bool> EnemyMove = new UnityEvent<bool>();
     
+    #endregion
+    
+    #region MovePlayer: PlayerInputsController.cs -> EnemyCotrollerTests.cs
+
+    public static UnityEvent<Vector2> MoveEnemy = new UnityEvent<Vector2>();
+
     #endregion
     
     #region Delete Reference: HealthBar.cs -> TimerData.cs
@@ -69,6 +75,10 @@ public static class EventSystem
     public static UnityEvent<Vector2> MovePlayer = new UnityEvent<Vector2>();
 
     #endregion
+    
+    
+    
+    
     
     #region MovePlayer: PlayerInputsController.cs -> HistoryConroller.cs
 
