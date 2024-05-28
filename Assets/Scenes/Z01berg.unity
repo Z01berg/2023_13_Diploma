@@ -607,10 +607,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1415177353511362292, guid: 2f91f1a77729e5e4fb5460f9b0030a64, type: 3}
-      propertyPath: m_TargetTexture
-      value: 
-      objectReference: {fileID: 8400000, guid: f79fb0efe30bea049aee9b5f6e58251b, type: 2}
     - target: {fileID: 2904537160168450049, guid: 2f91f1a77729e5e4fb5460f9b0030a64, type: 3}
       propertyPath: m_Name
       value: Minimap
@@ -654,42 +650,6 @@ PrefabInstance:
     - target: {fileID: 4980766632549909747, guid: 2f91f1a77729e5e4fb5460f9b0030a64, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5590279839024608219, guid: 2f91f1a77729e5e4fb5460f9b0030a64, type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5590279839024608219, guid: 2f91f1a77729e5e4fb5460f9b0030a64, type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[0]
-      value: 2031271367
-      objectReference: {fileID: 0}
-    - target: {fileID: 5590279839024608219, guid: 2f91f1a77729e5e4fb5460f9b0030a64, type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[1]
-      value: 1235191373
-      objectReference: {fileID: 0}
-    - target: {fileID: 5590279839024608219, guid: 2f91f1a77729e5e4fb5460f9b0030a64, type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[2]
-      value: 1142449295
-      objectReference: {fileID: 0}
-    - target: {fileID: 5590279839024608219, guid: 2f91f1a77729e5e4fb5460f9b0030a64, type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[3]
-      value: 144045155
-      objectReference: {fileID: 0}
-    - target: {fileID: 5590279839024608219, guid: 2f91f1a77729e5e4fb5460f9b0030a64, type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[4]
-      value: 2053827435
-      objectReference: {fileID: 0}
-    - target: {fileID: 5590279839024608219, guid: 2f91f1a77729e5e4fb5460f9b0030a64, type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[5]
-      value: 1798399573
-      objectReference: {fileID: 0}
-    - target: {fileID: 5590279839024608219, guid: 2f91f1a77729e5e4fb5460f9b0030a64, type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[6]
-      value: 2031271367
-      objectReference: {fileID: 0}
-    - target: {fileID: 5590279839024608219, guid: 2f91f1a77729e5e4fb5460f9b0030a64, type: 3}
-      propertyPath: m_ApplyToSortingLayers.Array.data[7]
-      value: 2110511557
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
