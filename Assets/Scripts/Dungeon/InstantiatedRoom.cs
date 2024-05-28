@@ -231,6 +231,7 @@ public class InstantiatedRoom : MonoBehaviour
             }
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (enemyInRoomList.Count == 0 && !collision.gameObject.CompareTag("Player")) return;
@@ -244,7 +245,6 @@ public class InstantiatedRoom : MonoBehaviour
 
         foreach (var position in positions)
         {
-            
             var enemy = Instantiate(enemyPrefab, transform.Find("Grid"));
             enemy.gameObject.GetComponentInChildren<ApplyCardEffect>().gameObjectTimer = timer;
             enemy.transform.localPosition = new Vector3(position.x, position.y, -6f);
@@ -263,7 +263,6 @@ public class InstantiatedRoom : MonoBehaviour
 
     public void CloseAllDoors()
     {
-        
         foreach (var door in doorsList)
         {
             door.GetComponent<DoorLogic>().CloseDoors();
