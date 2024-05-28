@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -19,6 +20,11 @@ public class InstantiatedRoom : MonoBehaviour
     [HideInInspector] public Tilemap collision;
     [HideInInspector] public Tilemap miniMap;
     [HideInInspector] public Bounds roomColliderBounds;
+
+    public List<GameObject> enemyInRoomList = new();
+    public List<GameObject> doorsList = new();
+
+    private static bool _baseEnemyMoved = false;
 
     private BoxCollider2D boxCollider2D;
 
@@ -43,7 +49,13 @@ public class InstantiatedRoom : MonoBehaviour
         AddDoorsToRooms(roomGameObject.transform);
     }
 
-    
+    private void Update()
+    {
+        if(enemyInRoomList.Count == 0)
+        {
+            OpenAllDoors();
+        }
+    }
 
     private void AddDoorsToRooms(Transform roomTransform)
     {
@@ -82,7 +94,7 @@ public class InstantiatedRoom : MonoBehaviour
                     door.transform.localPosition =
                         new Vector3(doorway.Position.x / 2f + 10, doorway.Position.y + tileDistance- 9.415f, 0f);
                 }
-                
+                doorsList.Add(door);
             }
         }
     }
@@ -216,18 +228,52 @@ public class InstantiatedRoom : MonoBehaviour
             }
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (enemyInRoomList.Count == 0 && !collision.gameObject.CompareTag("Player")) return;
+        CloseAllDoors();
+    }
 
     private void PopulateRoomWithEnemies()
     {
         var positions = room.SpawnPositionArray;
 
         var enemy = GameObject.Find("Enemy");
+
         if (positions.Count() == 1) return;
+
         foreach (var position in positions)
         {
-            enemy = Instantiate(enemy, transform.Find("Grid"));
+            if (!_baseEnemyMoved)
+            {
+                enemy.transform.SetParent(transform.Find("Grid"));
+                _baseEnemyMoved = true;
+            }
+            else
+            {
+                enemy = Instantiate(enemy, transform.Find("Grid"));
+            }
             enemy.transform.localPosition = new Vector3(position.x, position.y, -6f);
+            enemyInRoomList.Add(enemy);
+            enemy.GetComponent<HealthBar>().room = this;
+            break;
         }
     }
     
+    public void OpenAllDoors()
+    {
+        foreach(var door in doorsList)
+        {
+            door.GetComponent<DoorLogic>().RoomCleared();
+        }
+    }
+
+    public void CloseAllDoors()
+    {
+        
+        foreach (var door in doorsList)
+        {
+            door.GetComponent<DoorLogic>().CloseDoors();
+        }
+    }
 }

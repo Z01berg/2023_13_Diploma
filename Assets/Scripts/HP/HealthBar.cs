@@ -34,6 +34,8 @@ public class HealthBar : MonoBehaviour
     private bool _switch = false;
     private bool _currentObject = false;
     private int _timerNumbToDelete;
+
+    [HideInInspector] public InstantiatedRoom room;
     
     private void Start()
     {
@@ -96,9 +98,11 @@ public class HealthBar : MonoBehaviour
     {
         if (_value <= 0)
         {
+            room.enemyInRoomList.Remove(this.gameObject);
             Destroy(_gameObject);
             Destroy(_body);
             EventSystem.DeleteReference.Invoke(_timerNumbToDelete);
+
         }
     }
     //TODO: Sprawdzic czy ktos z tego korzysta

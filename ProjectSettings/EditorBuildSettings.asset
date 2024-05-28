@@ -12,10 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: d457126b8f7d0ff4b90b4166aa467912
   - enabled: 1
-    path: Assets/Scenes/Test_10_04.unity
-    guid: a5b252e9ccb4fa24da79fb33a18e7eaa
-  - enabled: 1
-    path: Assets/Scenes/AIPrototype.unity
-    guid: 84423ef3f0893b444aca1d8f95b0dac3
+    path: Assets/Scenes/Z01berg.unity
+    guid: dec3f8ac5ad28124ca350ed59620045b
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 295bd6f2d34a62d43822035c94d3b926, type: 2}

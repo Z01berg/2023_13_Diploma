@@ -85,4 +85,10 @@ public static class EventSystem
     public static UnityEvent<CardsSO> LogAction = new UnityEvent<CardsSO>();
 
     #endregion
+
+    #region OpenDoors: InstantiatedRoom.cs -> DoorLogic.cs
+
+    public static UnityEvent OpenDoors = new UnityEvent();
+
+    #endregion
 }

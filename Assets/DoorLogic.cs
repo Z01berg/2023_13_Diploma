@@ -15,35 +15,20 @@ public class DoorLogic : MonoBehaviour
     {
         _animator.SetBool("open", true);
         _collision.enabled = false;
+
     }
 
-    private void Update()
+    public void RoomCleared()
     {
-        // OnTriggerEnter2D();
+        _collision.enabled = false;
+        _animator.SetBool("open", true);
+        _isOpen = false;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    public void CloseDoors()
     {
-        if (other.CompareTag("Player"))
-        {
-            _collision.enabled = true;
-
-            _animator.SetBool("open", false);
-            _isOpen = true;
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other == _trigger)
-        {
-            _collision.enabled = false;
-
-            if (_isOpen)
-            {
-                _animator.SetBool("open", true);
-                _isOpen = false;
-            }
-        }
+        _animator.SetBool("open", false);
+        _isOpen = true;
+        _collision.enabled = true;
     }
 }
