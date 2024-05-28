@@ -198,9 +198,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6453728171809700323, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
-      propertyPath: m_text
-      value: 20
+    - target: {fileID: 6038802678259710826, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6038802678259710826, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6839262925599601899, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
       propertyPath: gameObjectTimer
@@ -451,10 +455,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 1115995846797643908, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 35f33fdcaa055264495977e1add94cfd, type: 2}
     - target: {fileID: 3175473839444849471, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -503,22 +503,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4836170963515254659, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
-      propertyPath: m_Name
-      value: Icon_
+    - target: {fileID: 6038802678259710826, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -23.01
       objectReference: {fileID: 0}
-    - target: {fileID: 6453728171809700323, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
-      propertyPath: m_text
-      value: 15
+    - target: {fileID: 6038802678259710826, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -8.47
       objectReference: {fileID: 0}
     - target: {fileID: 6839262925599601899, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
       propertyPath: gameObjectTimer
       value: 
       objectReference: {fileID: 2008930652}
-    - target: {fileID: 9065565575364962654, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
-      propertyPath: m_SortingOrder
-      value: -1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -658,6 +654,10 @@ PrefabInstance:
     - target: {fileID: 4980766632549909747, guid: 2f91f1a77729e5e4fb5460f9b0030a64, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590279839024608219, guid: 2f91f1a77729e5e4fb5460f9b0030a64, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5590279839024608219, guid: 2f91f1a77729e5e4fb5460f9b0030a64, type: 3}
       propertyPath: m_ApplyToSortingLayers.Array.size
