@@ -10,7 +10,7 @@ namespace CardActions
     public class ApplyCardEffect : MonoBehaviour
     {
         [SerializeField] private GameObject popUpPrefab;
-        [Header("Timer from Managers")][SerializeField] private GameObject gameObjectTimer;
+        [Header("Timer from Managers")][SerializeField] public GameObject gameObjectTimer;
         private HealthBar _healthBar;
         private Timer _timer;
         private CardsEffectsManager _cardsEffectsManager;

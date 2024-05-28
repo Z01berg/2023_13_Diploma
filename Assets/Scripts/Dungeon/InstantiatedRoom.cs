@@ -1,3 +1,4 @@
+using CardActions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,6 +22,8 @@ public class InstantiatedRoom : MonoBehaviour
     [HideInInspector] public Tilemap miniMap;
     [HideInInspector] public Bounds roomColliderBounds;
 
+    public GameObject enemyPrefab;
+    public GameObject timer;
     public List<GameObject> enemyInRoomList = new();
     public List<GameObject> doorsList = new();
 
@@ -237,22 +240,13 @@ public class InstantiatedRoom : MonoBehaviour
     private void PopulateRoomWithEnemies()
     {
         var positions = room.SpawnPositionArray;
-
-        var enemy = GameObject.Find("Enemy");
-
         if (positions.Count() == 1) return;
 
         foreach (var position in positions)
         {
-            if (!_baseEnemyMoved)
-            {
-                enemy.transform.SetParent(transform.Find("Grid"));
-                _baseEnemyMoved = true;
-            }
-            else
-            {
-                enemy = Instantiate(enemy, transform.Find("Grid"));
-            }
+            
+            var enemy = Instantiate(enemyPrefab, transform.Find("Grid"));
+            enemy.gameObject.GetComponentInChildren<ApplyCardEffect>().gameObjectTimer = timer;
             enemy.transform.localPosition = new Vector3(position.x, position.y, -6f);
             enemyInRoomList.Add(enemy);
             enemy.GetComponent<HealthBar>().room = this;

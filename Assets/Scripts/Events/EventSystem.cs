@@ -86,9 +86,4 @@ public static class EventSystem
 
     #endregion
 
-    #region OpenDoors: InstantiatedRoom.cs -> DoorLogic.cs
-
-    public static UnityEvent OpenDoors = new UnityEvent();
-
-    #endregion
 }
