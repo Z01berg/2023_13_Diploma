@@ -24,6 +24,7 @@ public class PlayerInputsController : MonoBehaviour, IDefaultMausenKeysActions
         _controls.DefaultMausenKeys.Equipment.performed += OnEquipment;
         _controls.DefaultMausenKeys.Menu.performed += OnMenu;
         _controls.DefaultMausenKeys.DoubleClick.performed += OnDoubleClick;
+        _controls.DefaultMausenKeys.Move.canceled += OnMoveCancelled;
     }
 
     private void OnDisable()
@@ -33,6 +34,7 @@ public class PlayerInputsController : MonoBehaviour, IDefaultMausenKeysActions
         _controls.DefaultMausenKeys.Equipment.performed -= OnEquipment;
         _controls.DefaultMausenKeys.Menu.performed -= OnMenu;
         _controls.DefaultMausenKeys.DoubleClick.performed -= OnDoubleClick;
+        _controls.DefaultMausenKeys.Move.canceled -= OnMoveCancelled;
     }
 
     private void PrepareInputs()
@@ -44,6 +46,11 @@ public class PlayerInputsController : MonoBehaviour, IDefaultMausenKeysActions
     public void OnMove(InputAction.CallbackContext context)
     {
         EventSystem.MovePlayer?.Invoke(context.ReadValue<Vector2>());
+    }
+
+    public void OnMoveCancelled(InputAction.CallbackContext context)
+    {
+        EventSystem.MovePlayer?.Invoke(Vector2.zero);
     }
 
     public void OnMenu(InputAction.CallbackContext context)

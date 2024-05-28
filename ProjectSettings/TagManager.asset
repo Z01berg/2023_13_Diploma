@@ -19,6 +19,7 @@ TagManager:
   - decoration1Tilemap
   - decoration2Tilemap
   - frontTilemap
+  - ItemSlot
   layers:
   - Default
   - TransparentFX
