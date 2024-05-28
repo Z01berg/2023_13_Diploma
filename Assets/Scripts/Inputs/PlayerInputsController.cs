@@ -25,6 +25,7 @@ public class PlayerInputsController : MonoBehaviour, IDefaultMausenKeysActions
         _controls.DefaultMausenKeys.Menu.performed += OnMenu;
         _controls.DefaultMausenKeys.DoubleClick.performed += OnDoubleClick;
         _controls.DefaultMausenKeys.Move.canceled += OnMoveCancelled;
+        _controls.DefaultMausenKeys.Help.performed += OnHelp;
     }
 
     private void OnDisable()
@@ -35,6 +36,7 @@ public class PlayerInputsController : MonoBehaviour, IDefaultMausenKeysActions
         _controls.DefaultMausenKeys.Menu.performed -= OnMenu;
         _controls.DefaultMausenKeys.DoubleClick.performed -= OnDoubleClick;
         _controls.DefaultMausenKeys.Move.canceled -= OnMoveCancelled;
+        _controls.DefaultMausenKeys.Help.performed -= OnHelp;
     }
 
     private void PrepareInputs()
@@ -84,5 +86,10 @@ public class PlayerInputsController : MonoBehaviour, IDefaultMausenKeysActions
                 break;
             }
         }
+    }
+
+    public void OnHelp(InputAction.CallbackContext context)
+    {
+        EventSystem.ShowHelpSheet?.Invoke();
     }
 }

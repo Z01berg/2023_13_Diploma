@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class OnOffHelp : MonoBehaviour
@@ -12,6 +10,6 @@ public class OnOffHelp : MonoBehaviour
 
     private void SwitchObject()
     {
-        gameObject.SetActive(!gameObject.activeSelf);
+        Text.SetActive(!Text.activeSelf);
     }
 }
