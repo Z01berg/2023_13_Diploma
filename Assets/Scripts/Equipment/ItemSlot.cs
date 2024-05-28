@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -113,10 +114,16 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
             else
             {
                 var child = GetComponentInChildren<UIItemDragNDrop>();
+                if (child.cardsList == null)
+                {
+                    return;
+                }
                 foreach (var card in child.cardsList)
                 {
+                    if (card == null) break;
                     if (command == "lightup")
                     {
+                        
                         card.transform.Find("ArtworkMask").transform.Find("BG").GetComponent<Image>().color = _mouseOverColor;
                         card.transform.SetAsFirstSibling();
                     }
@@ -148,5 +155,35 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
     public void OnPointerExit(PointerEventData eventData)
     {
         LookForSlotsOfType("lightdown");
+    }
+
+    public void DoubleClicked()
+    {
+        foreach (ItemSlot itemSlot in allItemSlots)
+        {
+            itemSlot.LightDown();
+        }
+        if (allowedItemType != ItemType.any)
+        {
+            if (transform.childCount == 1)
+            {
+                transform.GetChild(0).GetComponent<UIItemDragNDrop>().OnItemChangePlace();
+            }
+        }
+        if (transform.childCount == 0) return;
+
+        foreach (ItemSlot itemSlot in allItemSlots)
+        {
+            if ( transform.GetChild(0).GetComponent<UIItemDragNDrop>().item.itemType == itemSlot.allowedItemType && itemSlot.transform.childCount == 0)
+            {
+                var item = transform.GetChild(0);
+                item.transform.SetParent(itemSlot.transform, false);
+                item.GetComponent<RectTransform>().position = itemSlot.transform.GetComponent<RectTransform>().position;
+                item.GetComponent<UIItemDragNDrop>().OnItemChangePlace();
+                break;
+            }
+        }
+
+        
     }
 }
