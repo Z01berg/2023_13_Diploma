@@ -1,10 +1,8 @@
-using Player;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UI;
-using Unity.VisualScripting;
 using UnityEngine;
 
 /**
@@ -26,20 +24,21 @@ public class Timer : MonoBehaviour
     [SerializeField] private List<TMP_Text> _texts = new List<TMP_Text>();
     [SerializeField] private List<String> _id = new List<String>();
     [SerializeField] private List<GameObject> _hpAdres = new List<GameObject>();
-    
+    [SerializeField] private GameObject _player;
+
     private List<TimerData> _timers = new List<TimerData>();
-    
+
     private int _activeTimerIndex = 0; //czyja runda
-    
+
     private bool _counting = false; // po wciśnięciu enter
-    
+
     private float _timeToPause = 0.4f; //do animacji timerów
-    
+
     private bool _cheat = false; // włączenie na "R CTRL" zmieniania znaczenia timerów
 
     private Animator _animator;
     private DeckController _deckController;
-    
+
     public void AddTextFromSetTimer(TMP_Text newText, String text, GameObject HP)
     {
         _texts.Add(newText);
@@ -59,33 +58,33 @@ public class Timer : MonoBehaviour
     private void FinishTurn(int arg0)
     {
         _timers[_activeTimerIndex].Value = arg0;
-        StartCountdown();
+        _counting = true;
     }
 
     void AddToTimer()
     {
         _timers.Clear();
-        
+
         for (int i = 0; i < _texts.Count; i++)
         {
             int value = int.Parse(_texts[i].text);
-            _timers.Add(new TimerData { Value = value, Tag = _id[i], HP = _hpAdres[i]});
+            _timers.Add(new TimerData { Value = value, Tag = _id[i], HP = _hpAdres[i] });
         }
     }
-    
+
     void Update()
     {
         HandleTimerInput();
-        
+
         UpdateTexts();
-        
+
         if (_counting)
         {
             StartCountdown();
         }
 
     }
-    
+
     void HandleTimerInput()
     {
         if (Input.GetKeyDown(KeyCode.RightControl))
@@ -93,12 +92,7 @@ public class Timer : MonoBehaviour
             _cheat = !_cheat;
             EventSystem.ShowCheatEngine.Invoke();
         }
-        
-        if (Input.GetKeyDown(KeyCode.H) || Input.GetKeyDown(KeyCode.Space))
-        {
-            EventSystem.ShowHelpSheet.Invoke();
-        }
-        
+
         if (Input.GetKeyDown(KeyCode.Comma) && _cheat)
         {
             ChangeActiveTimer(1);
@@ -128,7 +122,7 @@ public class Timer : MonoBehaviour
                 Debug.Log("Stworz talie kart");
             }
         }
-        
+
         if (Input.GetKeyDown(KeyCode.P))
         {
             PlayedAttackCard();
@@ -146,7 +140,7 @@ public class Timer : MonoBehaviour
                 anyTimerReachedZero = true;
                 _counting = false;
                 CalculatePriority();
-                
+
                 if (_timers[_activeTimerIndex].Tag == "Player")
                 {
                     _animator.SetBool("K_turn", true);
@@ -158,16 +152,16 @@ public class Timer : MonoBehaviour
                     EventSystem.PlayerMove.Invoke(false);
                 }
 
-                if (_timers[_activeTimerIndex].Tag == "Enemy" )
+                if (_timers[_activeTimerIndex].Tag == "Enemy")
                 {
                     _animator.SetBool("K_turn", true);
-                    EventSystem.EnemyMove.Invoke(true,this.transform);
+                    EventSystem.EnemyMove.Invoke(true, new Vector3(_player.transform.position.x, _player.transform.position.y, -6) );
                 }
                 else
                 {
-                    EventSystem.EnemyMove.Invoke(false, this.transform);
+                    EventSystem.EnemyMove.Invoke(false, new Vector3(_player.transform.position.x, _player.transform.position.y, -6) );
                 }
-                
+
                 _turn.text = "Turn: " + _timers[_activeTimerIndex].Tag;
                 _timeToPause = 0.4f;
             }
@@ -183,7 +177,7 @@ public class Timer : MonoBehaviour
                     _timers[i].Value--;
                 }
             }
-        
+
             UpdateTexts();
             StartCoroutine(AnimationPauseCoroutine());
         }
@@ -216,7 +210,7 @@ public class Timer : MonoBehaviour
         }
         UpdateTexts();
     }
-    
+
 
     void ChangeActiveTimer(int change)
     {
@@ -245,7 +239,7 @@ public class Timer : MonoBehaviour
                 {
                     _timers[i].Value = 0;
                 }
-                
+
                 _texts[i].color = Color.red;
             }
             else
@@ -261,7 +255,7 @@ public class Timer : MonoBehaviour
     {
         Dictionary<string, int> tagPriority = new Dictionary<string, int>
         {
-            { "Item", 3 },    
+            { "Item", 3 },
             { "Player", 2 },
             { "Boss", 1 },
             { "Enemy", 0 },
@@ -279,7 +273,7 @@ public class Timer : MonoBehaviour
             if (tagPriority.ContainsKey(currentTag))
             {
                 int currentPriority = tagPriority[currentTag];
-        
+
                 if (currentPriority > highestPriority && currentValue == 0)
                 {
                     highestPriority = currentPriority;
@@ -294,7 +288,7 @@ public class Timer : MonoBehaviour
             UpdateTexts();
         }
         else
-        { 
+        {
             _activeTimerIndex = _timers.FindIndex(timer => timer.Tag == "N/A");
             UpdateTexts();
         }

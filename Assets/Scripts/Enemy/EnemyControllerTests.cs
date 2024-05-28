@@ -8,7 +8,7 @@ namespace Player
         [SerializeField] private float _moveSpeed = 1f;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private LayerMask _whatStopsMovement;
-        private Transform _playerPosition;
+        private Vector3 _playerPosition;
 
         private int _movement = 4;
         private int _attack = 1;
@@ -49,19 +49,17 @@ namespace Player
                     }
                     _turnOff = false;
                     _isEnemyTurn = false;
+                    _movement = 4;
                 }
             }
         }
-        public bool CheckDistance(Transform transform1, Transform transform2)
+        public bool CheckDistance(Transform transform1, Vector3 transform2)
         {
             // Pobierz pozycje obiektów transformacji
-            Vector3 position1 = transform1.position;
-            Vector3 position2 = transform2.position;
-
+            Vector2 position1 = transform1.position;
+            Vector2 position2 = transform2;
             // Oblicz odległość między nimi
-            float distance = Vector3.Distance(position1, position2);
-            Debug.Log($"{gameObject.name} Distance:" + distance);
-            Debug.Log($"t1:{transform1.name}, t2: {transform2.name}");
+            float distance = Vector2.Distance(position1, position2);
             
             // Sprawdź czy odległość jest mniejsza lub równa 2f
             if (distance <= 2f)
@@ -75,7 +73,7 @@ namespace Player
         }
         private void Attack()
         {
-            _playerPosition.GetComponent<HealthBar>().ChangeHealth(-1);
+            EventSystem.ChangeHealthPlayer.Invoke(-2);
         }
 
         private void LateUpdate()
@@ -123,7 +121,7 @@ namespace Player
             }
         }
 
-        private void ToggleScript(bool isThis,Transform plpos)
+        private void ToggleScript(bool isThis, Vector3 plpos)
         {
             _playerPosition = plpos;
             _isEnemyTurn = isThis;
