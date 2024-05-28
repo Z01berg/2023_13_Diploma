@@ -73,7 +73,7 @@ namespace Player
         }
         private void Attack()
         {
-            _playerPosition.GetComponent<HealthBar>().ChangeHealth(-1);
+            EventSystem.ChangeHealthPlayer.Invoke(-2);
         }
 
         private void LateUpdate()

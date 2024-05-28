@@ -90,6 +90,11 @@ public static class EventSystem
 
     #endregion
     
+    #region ChangeHealthPlayer: EnemyController.cs -> PlayerController.cs
+
+    public static UnityEvent<int> ChangeHealthPlayer = new UnityEvent<int>();
+
+    #endregion
     
     #region MovePlayer: PlayerInputsController.cs -> HistoryConroller.cs
 
