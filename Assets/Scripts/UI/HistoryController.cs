@@ -25,6 +25,7 @@ namespace UI
         private void CreateLog(CardsSO cardInfo)
         {
             var newTile = Instantiate(historyTile, transform, true);
+            newTile.transform.localScale = new Vector3(1, 1, 1);
             var tileText = newTile.GetComponentInChildren<TMP_Text>();
 
             if (cardInfo.type == CardType.Attack)
