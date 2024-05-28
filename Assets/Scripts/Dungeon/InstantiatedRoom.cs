@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -36,6 +37,8 @@ public class InstantiatedRoom : MonoBehaviour
         BlockOffUnusedDoorWays();
         
         DisableCollisionTilemapRenderer();
+
+        PopulateRoomWithEnemies();
         
         AddDoorsToRooms(roomGameObject.transform);
     }
@@ -213,4 +216,18 @@ public class InstantiatedRoom : MonoBehaviour
             }
         }
     }
+
+    private void PopulateRoomWithEnemies()
+    {
+        var positions = room.SpawnPositionArray;
+
+        var enemy = GameObject.Find("Enemy");
+        if (positions.Count() == 1) return;
+        foreach (var position in positions)
+        {
+            enemy = Instantiate(enemy, transform.Find("Grid"));
+            enemy.transform.localPosition = new Vector3(position.x, position.y, -6f);
+        }
+    }
+    
 }
