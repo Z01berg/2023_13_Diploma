@@ -256,7 +256,6 @@ public class InstantiatedRoom : MonoBehaviour
             enemy.transform.localPosition = new Vector3(position.x, position.y, -6f);
             enemyInRoomList.Add(enemy);
             enemy.GetComponent<HealthBar>().room = this;
-            break;
         }
     }
     
