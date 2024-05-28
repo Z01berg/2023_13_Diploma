@@ -48,15 +48,20 @@ public class Timer : MonoBehaviour
     void Start()
     {
         _animator = GetComponent<Animator>();
+        EventSystem.InstatiatedRoom.AddListener(AddToTimer);
+        EventSystem.DeleteReference.AddListener(DeleteTimer);
+        _deckController = _deck.GetComponent<DeckController>();
+    }
+
+    void AddToTimer()
+    {
+        _timers.Clear();
         
         for (int i = 0; i < _texts.Count; i++)
         {
             int value = int.Parse(_texts[i].text);
             _timers.Add(new TimerData { Value = value, Tag = _id[i], HP = _hpAdres[i]});
         }
-        
-        EventSystem.DeleteReference.AddListener(DeleteTimer);
-        _deckController = _deck.GetComponent<DeckController>();
     }
     
     void Update()

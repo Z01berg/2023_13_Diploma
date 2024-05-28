@@ -77,7 +77,11 @@ public static class EventSystem
     #endregion
     
     
-    
+    #region InstatiatedRoom: InstatiatedRoom.cs -> Timer.cs
+
+    public static UnityEvent InstatiatedRoom = new UnityEvent();
+
+    #endregion
     
     
     #region MovePlayer: PlayerInputsController.cs -> HistoryConroller.cs

@@ -46,8 +46,6 @@ public class InstantiatedRoom : MonoBehaviour
         BlockOffUnusedDoorWays();
         
         DisableCollisionTilemapRenderer();
-
-        PopulateRoomWithEnemies();
         
         AddDoorsToRooms(roomGameObject.transform);
     }
@@ -240,6 +238,7 @@ public class InstantiatedRoom : MonoBehaviour
         CloseAllDoors();
     }
 
+    /*
     private void PopulateRoomWithEnemies()
     {
         var positions = room.SpawnPositionArray;
@@ -254,6 +253,7 @@ public class InstantiatedRoom : MonoBehaviour
             enemy.GetComponent<HealthBar>().room = this;
         }
     }
+    */
     
     public void OpenAllDoors()
     {
@@ -261,13 +261,27 @@ public class InstantiatedRoom : MonoBehaviour
         {
             door.GetComponent<DoorLogic>().RoomCleared();
         }
+        EventSystem.InstatiatedRoom.Invoke();
     }
 
     public void CloseAllDoors()
     {
+        var positions = room.SpawnPositionArray;
+        if (positions.Count() == 1) return;
+
+        foreach (var position in positions)
+        {
+            var enemy = Instantiate(enemyPrefab, transform.Find("Grid"));
+            enemy.gameObject.GetComponentInChildren<ApplyCardEffect>().gameObjectTimer = timer;
+            enemy.transform.localPosition = new Vector3(position.x, position.y, -6f);
+            enemyInRoomList.Add(enemy);
+            enemy.GetComponent<HealthBar>().room = this;
+        }
+        
         foreach (var door in doorsList)
         {
             door.GetComponent<DoorLogic>().CloseDoors();
         }
+        EventSystem.InstatiatedRoom.Invoke();
     }
 }
