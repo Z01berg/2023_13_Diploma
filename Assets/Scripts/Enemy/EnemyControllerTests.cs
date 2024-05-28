@@ -49,6 +49,7 @@ namespace Player
                     }
                     _turnOff = false;
                     _isEnemyTurn = false;
+                    _movement = 4;
                 }
             }
         }

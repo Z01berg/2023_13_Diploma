@@ -268,6 +268,8 @@ public class InstantiatedRoom : MonoBehaviour
 
     public void CloseAllDoors()
     {
+        if (_cleared) return;
+        _cleared = true;
         var positions = room.SpawnPositionArray;
         if (positions.Count() == 1) return;
 
