@@ -81,7 +81,6 @@ namespace Player
                         _movePoint.position += new Vector3(_moveVector.x, _moveVector.y, 0);
                         RotateSprite(new Vector3(_moveVector.x, _moveVector.y, 0));
                     }
-                    _moveVector = Vector3.zero;
                 }
             }
         }
