@@ -325,6 +325,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a75f3a20cf221d44b824242e3890c3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 9778427497311827, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
+  timer: {fileID: 3505373189155625271}
 --- !u!1001 &2763345840770419380
 PrefabInstance:
   m_ObjectHideFlags: 0
