@@ -631,7 +631,7 @@ GameObject:
   - component: {fileID: 5124372952555467009}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -818,8 +818,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.51035, y: 0.06463352, z: 0}
-    m_Extent: {x: 1.02005, y: 0.5726335, z: 0}
+    m_Center: {x: 0.5104445, y: 0.06915, z: 0}
+    m_Extent: {x: 1.0145445, y: 0.57165, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.5829965

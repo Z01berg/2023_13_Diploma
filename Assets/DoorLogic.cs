@@ -19,12 +19,12 @@ public class DoorLogic : MonoBehaviour
 
     private void Update()
     {
-        OnTriggerEnter2D();
+        // OnTriggerEnter2D();
     }
 
-    void OnTriggerEnter2D()
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (_trigger.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             _collision.enabled = true;
 
