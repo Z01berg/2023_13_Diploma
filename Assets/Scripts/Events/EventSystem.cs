@@ -108,4 +108,10 @@ public static class EventSystem
 
     #endregion
 
+    #region MovePlayer: PlayerInputsController.cs -> HistoryConroller.cs
+
+    public static UnityEvent<int> AssignTimerIndex = new UnityEvent<int>();
+
+    #endregion
+
 }

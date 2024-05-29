@@ -69,6 +69,7 @@ public class Timer : MonoBehaviour
         {
             int value = int.Parse(_texts[i].text);
             _timers.Add(new TimerData { Value = value, Tag = _id[i], HP = _hpAdres[i] });
+            EventSystem.AssignTimerIndex.Invoke(i);
         }
     }
 
@@ -317,6 +318,7 @@ public class Timer : MonoBehaviour
             }
 
             UpdateTexts();
+            AddToTimer();
         }
         else
         {

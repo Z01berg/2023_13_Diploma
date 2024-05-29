@@ -31,6 +31,7 @@ public class InstantiatedRoom : MonoBehaviour
     private bool _cleared = false;
 
     private BoxCollider2D boxCollider2D;
+    public int counter = 1;
 
     private void Awake()
     {

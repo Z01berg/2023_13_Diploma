@@ -35,6 +35,8 @@ public class HealthBar : MonoBehaviour
     private bool _currentObject = false;
     private int _timerNumbToDelete;
 
+    public int myTimerIndex = -2;
+
     [HideInInspector] public InstantiatedRoom room;
     
     private void Start()
@@ -42,11 +44,11 @@ public class HealthBar : MonoBehaviour
         Split();
         SetData();
         UpdateHealthText();
-        
+        EventSystem.AssignTimerIndex.AddListener(SetTimerIndex);
         EventSystem.WhatHP.AddListener(HandleWhatHP);
     }
 
-    private void Update()
+    void Update()
     {
         Kill();
 
@@ -99,10 +101,10 @@ public class HealthBar : MonoBehaviour
         if (_value <= 0)
         {
             room.enemyInRoomList.Remove(this.gameObject);
+            EventSystem.DeleteReference.Invoke(myTimerIndex);
             Destroy(_gameObject);
             Destroy(_body);
-            EventSystem.DeleteReference.Invoke(_timerNumbToDelete);
-
+            Debug.Log("killed: " +myTimerIndex);
         }
     }
     //TODO: Sprawdzic czy ktos z tego korzysta
@@ -120,5 +122,14 @@ public class HealthBar : MonoBehaviour
     public int getHealth()
     {
         return _value;
+    }
+
+    private void SetTimerIndex(int value)
+    {
+        if (myTimerIndex != -2)
+        {
+            myTimerIndex = value;
+        }
+        
     }
 }
