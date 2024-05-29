@@ -93,9 +93,9 @@ namespace Player
             if (Mathf.Abs(value.x) == 1f || Mathf.Abs(value.y) == 1f)//TODO: może Debug.Break
             {
 
-                Vector3 targetPosition = transform.position + new Vector3(value.x * 0.5f, value.y * 0.5f, 0);
+                Vector3 targetPosition = transform.position + new Vector3(value.x * 0.5f, value.y * 0.5f, -6);
 
-                Collider2D[] colliders = Physics2D.OverlapBoxAll(targetPosition, new Vector2(0.5f, 0.5f), 0);
+                Collider2D[] colliders = Physics2D.OverlapBoxAll(targetPosition, new Vector2(0.5f, 0.5f), -6);
 
                 bool canMove = true;
 
@@ -115,7 +115,7 @@ namespace Player
                         targetPosition,
                         _moveSpeed * Time.deltaTime/4
             );
-                    transform.position += new Vector3(value.x * 1f, value.y * 1f, -6);
+                    transform.position += new Vector3(value.x * 1f, value.y * 1f, 0);
                     
                 }
                 _movement--;
