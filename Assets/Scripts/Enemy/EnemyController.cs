@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -5,14 +6,13 @@ using UnityEngine.Tilemaps;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 5f;
-    [SerializeField] private Transform _enemyCenterPoint;
 
     private Transform _player;
     private Tilemap _gridOverlayTilemap;
     private Pathfinding _pathfinding;
     private List<Vector3> _currentPath;
     private int _currentWaypointIndex;
-    private bool _isChasing = false;
+    private bool _isChasing;
 
     void Start()
     {
@@ -23,8 +23,8 @@ public class EnemyController : MonoBehaviour
         {
             Debug.LogError("Pathfinding script not found on the Enemy object");
         }
-
-        GameObject gridOverlayObject = GameObject.FindWithTag("GridOverlayTag");
+        
+        GameObject gridOverlayObject = GameObject.FindWithTag(/*"GridOverlayTag"*/ "groundTilemap");
         if (gridOverlayObject != null)
         {
             _gridOverlayTilemap = gridOverlayObject.GetComponent<Tilemap>();
@@ -33,6 +33,34 @@ public class EnemyController : MonoBehaviour
         {
             Debug.LogError("GridOverlay object not found with the specified tag!");
         }
+        
+        Transform gridTransform = transform.parent;
+        Transform walkableTilemapTransform = gridTransform.Find("Ground");
+        Transform collisionTilemapTransform = gridTransform.Find("CollisionTOP");
+
+        _pathfinding.groundTilemap = walkableTilemapTransform.GetComponent<Tilemap>();
+        _pathfinding.topTilemap = collisionTilemapTransform.GetComponent<Tilemap>();
+
+        if (walkableTilemapTransform != null)
+        {
+            Debug.Log("Walkable tilemap accessed successfully.");
+        }
+        else
+        {
+            Debug.LogError("Failed to access walkable tilemap.");
+
+        }
+        
+        if (collisionTilemapTransform != null)
+        {
+            Debug.Log("Collision tilemap accessed successfully.");
+        }
+        else
+        {
+            Debug.LogError("Failed to access collision tilemap.");
+
+        }
+        
     }
 
     void Update()
@@ -85,7 +113,7 @@ public class EnemyController : MonoBehaviour
 
     void ChaseTarget(Vector3 targetPosition)
     {
-        Vector3 startPosition = _enemyCenterPoint.position;
+        Vector3 startPosition = transform.position;
 
         _currentPath = _pathfinding.FindPath(startPosition, targetPosition);
         _currentWaypointIndex = 0;
@@ -101,7 +129,7 @@ public class EnemyController : MonoBehaviour
         if (_currentPath != null && _currentPath.Count > 0)
         {
             Vector3 nextWaypoint = _currentPath[_currentWaypointIndex];
-            Vector3 currentPosition = _enemyCenterPoint.position;
+            Vector3 currentPosition = transform.position;
 
             if (Vector3.Distance(currentPosition, nextWaypoint) < 0.001f)
             {
