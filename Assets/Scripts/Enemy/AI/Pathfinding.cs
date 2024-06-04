@@ -1,20 +1,21 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class Pathfinding : MonoBehaviour
 {
-    public Tilemap groundTilemap;
-    public Tilemap topTilemap;
+    [HideInInspector] public Tilemap groundTilemap;
+    [HideInInspector] public Tilemap topTilemap;
 
     private Dictionary<Vector3Int, Node> _nodes = new Dictionary<Vector3Int, Node>();
 
-    private void Awake()
+    private void Start()
     {
         CreateNodes();
     }
 
-    private void CreateNodes()
+    public void CreateNodes()
     {
         _nodes.Clear();
 
@@ -26,10 +27,18 @@ public class Pathfinding : MonoBehaviour
                 _nodes[pos] = new Node(worldPos, pos);
             }
         }
+        Debug.Log($"Created {_nodes.Count} nodes");
     }
 
     public List<Vector3> FindPath(Vector3 startPosition, Vector3 targetPosition)
     {
+        
+        if (groundTilemap == null || topTilemap == null)
+        {
+            Debug.LogWarning("Ground or top tilemap not set.");
+            return null;
+        }
+        
         var startCell = groundTilemap.WorldToCell(startPosition);
         var targetCell = groundTilemap.WorldToCell(targetPosition);
 
