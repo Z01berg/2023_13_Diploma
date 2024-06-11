@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 4772301317793902476}
   - component: {fileID: 5220638113784284899}
   - component: {fileID: 8747931835173625541}
-  - component: {fileID: 387801861040945062}
+  - component: {fileID: 2234614580466985181}
+  - component: {fileID: 411639774008011573}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -104,7 +105,7 @@ MonoBehaviour:
   _slider: {fileID: 5715775629161368082}
   _data: {fileID: 4071996917017221321}
   room: {fileID: 0}
---- !u!114 &387801861040945062
+--- !u!114 &2234614580466985181
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,14 +114,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 9778427497311827}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 178eb8a714214f5d9724e492d61c01d0, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d6ce7ef6fc5c2346850afc592605ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 5
-  _spriteRenderer: {fileID: 4784107877538549556}
-  _whatStopsMovement:
-    serializedVersion: 2
-    m_Bits: 64
+--- !u!114 &411639774008011573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9778427497311827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c16a119a99f40cb4a93dd35dbeb1b9f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundTilemap: {fileID: 0}
+  topTilemap: {fileID: 0}
 --- !u!1 &1043278491967500237
 GameObject:
   m_ObjectHideFlags: 0
@@ -1117,8 +1128,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.51860154, y: 0.17089999, z: 0}
-    m_Extent: {x: 1.0186015, y: 0.6717, z: 0}
+    m_Center: {x: 0.5187, y: 0.16515696, z: 0}
+    m_Extent: {x: 1.0198, y: 0.66895694, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.5829965
