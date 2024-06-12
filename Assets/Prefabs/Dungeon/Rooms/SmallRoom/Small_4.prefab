@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3067958506582732957}
   - component: {fileID: 148227824742336378}
   - component: {fileID: 7033833255179694626}
-  m_Layer: 24
+  m_Layer: 26
   m_Name: CollisionTOP
   m_TagString: collisionTilemap
   m_Icon: {fileID: 0}
@@ -7079,3 +7079,4 @@ MonoBehaviour:
   timer: {fileID: 0}
   enemyInRoomList: []
   doorsList: []
+  counter: 1
