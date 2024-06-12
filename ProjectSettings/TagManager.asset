@@ -46,8 +46,8 @@ TagManager:
   - MiniMap
   - Room
   - Wall
-  - 
-  - 
+  - Door
+  - Collision
   - 
   - 
   - 
