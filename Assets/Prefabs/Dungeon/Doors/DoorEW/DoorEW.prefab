@@ -179,7 +179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7512464249803056804}
   - component: {fileID: 6388211927830960191}
-  m_Layer: 24
+  m_Layer: 26
   m_Name: DoorCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1, y: -0.5}
+  m_Offset: {x: 0.187, y: -0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -245,7 +245,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 3}
+  m_Size: {x: 0.38, y: 2}
   m_EdgeRadius: 0
 --- !u!1 &5023748037744507461
 GameObject:
