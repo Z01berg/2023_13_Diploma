@@ -146,11 +146,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 178eb8a714214f5d9724e492d61c01d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 0.1
-  _spriteRenderer: {fileID: 0}
+  _moveSpeed: 5
+  _spriteRenderer: {fileID: 4784107877538549556}
   _whatStopsMovement:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!1 &1043278491967500237
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,8 +1147,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.5187, y: 0.16515696, z: 0}
-    m_Extent: {x: 1.0198, y: 0.66895694, z: 0}
+    m_Center: {x: 0.51905, y: 0.16430694, z: 0}
+    m_Extent: {x: 1.02435, y: 0.66980696, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.5829965
