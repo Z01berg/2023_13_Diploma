@@ -42,7 +42,7 @@ public class UIInventory : MonoBehaviour
             Equipment.Instance.cards.Add(card.GetComponent<CardDisplay>().cardSO);
         }
 
-        _deckController.CreateDeck();
+        _deckController.ManageDeck();
         
         GameObject slot = _equipmentPanel.gameObject.transform.Find("HeadSlot").gameObject;
         if(slot.GetComponentInChildren<UIItemDragNDrop>() != null)

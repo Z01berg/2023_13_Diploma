@@ -113,5 +113,11 @@ public static class EventSystem
     public static UnityEvent<int> AssignTimerIndex = new UnityEvent<int>();
 
     #endregion
+    
+    #region DrawACard: InstanciateRoom.cs,  -> deckController.cs
+
+    public static UnityEvent DrawACard = new UnityEvent();
+
+    #endregion
 
 }

@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Threading;
+using Dungeon;
 using TMPro;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using Random = System.Random;
 
 namespace UI
@@ -14,9 +13,9 @@ namespace UI
         private Stack<GameObject> _deck = new Stack<GameObject>();
         private HandController _handController;
         private Equipment _equipment;
-        
 
-        public bool canCreate = true;
+
+        [NonSerialized] private bool _deckExists = false;
 
         [SerializeField] private TMP_Text _createDeckText;
         [SerializeField] GameObject _hand;
@@ -24,7 +23,7 @@ namespace UI
         [SerializeField] private GameObject _cardPrefab;
         [SerializeField] private int _overlay = 50;
         private CoverPosition _coverPosition;
-        
+
 
         private Random _rng = new Random();
 
@@ -33,21 +32,41 @@ namespace UI
             _handController = _hand.GetComponent<HandController>();
             _equipment = _inventory.GetComponent<Equipment>();
             _coverPosition = GameObject.Find("Cover").GetComponent<CoverPosition>();
+            EventSystem.DrawACard.AddListener(DrawACard);
         }
 
-        public void CreateDeck()
+        private void Update()
         {
-            if (canCreate)
+            if (_deck.Count == 0 && _deckExists)
             {
-                _cards = _equipment.cards;
-                Shuffle();
-                CreateCards();
-                canCreate = false;
+                CreateDeck();
             }
         }
-        
 
-        private void CreateCards()
+        public void ManageDeck()
+        {
+            UpdateCards();
+            Debug.Log(CombatMode.isPlayerInCombat);
+            if (_deck.Count != 0 && !CombatMode.GetIsPlayerInCombat())
+            {
+                UpdateDeck();
+            }
+
+            if (!CombatMode.GetIsPlayerInCombat())
+            {
+                CreateDeck();
+            }
+            
+        }
+
+        private void UpdateDeck()
+        {
+            _deck.Clear();
+            DestroyCreatedCards();
+        }
+
+
+        private void CreateDeck()
         {
             var diff = _overlay;
             foreach (var card in _cards)
@@ -61,17 +80,22 @@ namespace UI
                 _coverPosition.UpdatePosition(newCard.transform);
             }
 
+            _deckExists = true;
             Destroy(_createDeckText);
             _overlay = diff;
         }
 
-        private void UpdateDeck()
+        private void UpdateCards()
         {
-            if (_cards.Count != _equipment.cards.Count)
+            _cards = _equipment.cards;
+            Shuffle();
+        }
+
+        private void DestroyCreatedCards()
+        {
+            for (int i = transform.childCount - 1; i >= 0; i--)
             {
-                _deck.Clear();
-                _cards = _equipment.cards;
-                Shuffle();
+                Destroy(transform.GetChild(i).gameObject);
             }
         }
 
@@ -93,25 +117,24 @@ namespace UI
                 Debug.Log("Brak kart");
                 return;
             }
-            
+
             while (HandController.currentCardNumber < HandController.cardLimit)
             {
                 if (_deck.Count == 0)
                 {
                     return;
                 }
-                var card = _deck.Pop();
+
                 _coverPosition.UpdatePosition(_deck.Peek().transform);
+                var card = _deck.Pop();
                 card.transform.SetParent(_hand.transform);
                 HandController.currentCardNumber++;
             }
-            
-            
         }
 
         public bool IsDeckCreated()
         {
-            return !canCreate;
+            return _deckExists;
         }
     }
 }

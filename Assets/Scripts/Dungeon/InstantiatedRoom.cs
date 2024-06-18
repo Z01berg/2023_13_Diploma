@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Dungeon;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -33,6 +34,7 @@ public class InstantiatedRoom : MonoBehaviour
     private BoxCollider2D boxCollider2D;
     public int counter = 1;
 
+
     private void Awake()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
@@ -46,15 +48,15 @@ public class InstantiatedRoom : MonoBehaviour
         PopulateTilemapMemeberVariables(roomGameObject);
 
         BlockOffUnusedDoorWays();
-        
+
         DisableCollisionTilemapRenderer();
-        
+
         AddDoorsToRooms(roomGameObject.transform);
     }
 
     private void Update()
     {
-        if(enemyInRoomList.Count == 0)
+        if (enemyInRoomList.Count == 0)
         {
             OpenAllDoors();
         }
@@ -90,7 +92,7 @@ public class InstantiatedRoom : MonoBehaviour
                     door = Instantiate(doorway.DoorPrefab, gameObject.transform);
                     door.transform.rotation = new Quaternion(0f, 180f, 0f, 0f);
                     door.transform.localPosition = new Vector3(doorway.Position.x + tileDistance / 2f + 11,
-                        doorway.Position.y + tileDistance- 9.415f, 0f);
+                        doorway.Position.y + tileDistance - 9.415f, 0f);
                 }
                 else if (doorway.Orientation == Orientation.west)
                 {
@@ -98,6 +100,7 @@ public class InstantiatedRoom : MonoBehaviour
                     door.transform.localPosition =
                         new Vector3(doorway.Position.x / 2f + 7, doorway.Position.y + tileDistance - 9.415f, 0f);
                 }
+
                 doorsList.Add(door);
             }
         }
@@ -236,6 +239,7 @@ public class InstantiatedRoom : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (enemyInRoomList.Count == 0 && !collision.gameObject.CompareTag("Player")) return;
+
         CloseAllDoors();
     }
 
@@ -255,23 +259,29 @@ public class InstantiatedRoom : MonoBehaviour
         }
     }
     */
-    
+
     public void OpenAllDoors()
     {
-        //_cleared = true;
-        foreach(var door in doorsList)
+        // _cleared = true;
+        foreach (var door in doorsList)
         {
             door.GetComponent<DoorLogic>().RoomCleared();
         }
+
         EventSystem.InstatiatedRoom.Invoke();
     }
 
     public void CloseAllDoors()
     {
-        if (_cleared) return;
+        if (_cleared)return;
+        CombatMode.SetTrue();
         _cleared = true;
         var positions = room.SpawnPositionArray;
-        if (positions.Count() == 1) return;
+        if (positions.Count() == 1)
+        {
+            CombatMode.SetFalse();
+            return;
+        }
 
         foreach (var position in positions)
         {
@@ -280,12 +290,14 @@ public class InstantiatedRoom : MonoBehaviour
             enemy.transform.localPosition = new Vector3(position.x, position.y, -6f);
             enemyInRoomList.Add(enemy);
             enemy.GetComponent<HealthBar>().room = this;
+            CombatMode.isPlayerInCombat = true;
         }
-        
         foreach (var door in doorsList)
         {
             door.GetComponent<DoorLogic>().CloseDoors();
         }
+        
+        EventSystem.DrawACard.Invoke();
         EventSystem.InstatiatedRoom.Invoke();
     }
 }

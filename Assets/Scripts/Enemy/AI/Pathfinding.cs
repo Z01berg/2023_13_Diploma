@@ -27,7 +27,7 @@ public class Pathfinding : MonoBehaviour
                 _nodes[pos] = new Node(worldPos, pos);
             }
         }
-        Debug.Log($"Created {_nodes.Count} nodes");
+        // Debug.Log($"Created {_nodes.Count} nodes");
     }
 
     public List<Vector3> FindPath(Vector3 startPosition, Vector3 targetPosition)
@@ -35,7 +35,7 @@ public class Pathfinding : MonoBehaviour
         
         if (groundTilemap == null || topTilemap == null)
         {
-            Debug.LogWarning("Ground or top tilemap not set.");
+            // Debug.LogWarning("Ground or top tilemap not set.");
             return null;
         }
         
@@ -44,7 +44,7 @@ public class Pathfinding : MonoBehaviour
 
         if (!_nodes.ContainsKey(startCell) || !_nodes.ContainsKey(targetCell))
         {
-            Debug.LogWarning("Start or target not selected");
+            // Debug.LogWarning("Start or target not selected");
             return null;
         }
 

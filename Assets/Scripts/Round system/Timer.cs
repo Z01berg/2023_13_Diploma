@@ -146,7 +146,6 @@ public class Timer : MonoBehaviour
                 {
                     _animator.SetBool("K_turn", true);
                     EventSystem.PlayerMove.Invoke(true);
-                    _deckController.DrawACard();
                 }
                 else
                 {

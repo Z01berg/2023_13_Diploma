@@ -352,6 +352,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3505373189155625271, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
   m_PrefabInstance: {fileID: 288755213662719501}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2030025157 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2709433044352046491, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
+  m_PrefabInstance: {fileID: 1836116342}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &288755213662719501
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -408,6 +413,10 @@ PrefabInstance:
       propertyPath: _turn
       value: 
       objectReference: {fileID: 1690910534}
+    - target: {fileID: 1215020377644578965, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 2030025157}
     - target: {fileID: 1897776090475512930, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
       propertyPath: m_Name
       value: Managers
@@ -420,6 +429,10 @@ PrefabInstance:
       propertyPath: _playerToMove
       value: 
       objectReference: {fileID: 803237028}
+    - target: {fileID: 8693768392632690205, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

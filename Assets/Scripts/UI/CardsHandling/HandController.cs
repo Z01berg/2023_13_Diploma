@@ -188,9 +188,7 @@ namespace UI
             }
         }
 
-        private void
-            DistributeChildrenWithoutOverlap(
-                float cardsTotalWidth) // Karty są rozkładane nie zależnie od szerokości kontenera (nie będą się na siebie nakładać)
+        private void DistributeChildrenWithoutOverlap(float cardsTotalWidth) // Karty są rozkładane nie zależnie od szerokości kontenera (nie będą się na siebie nakładać)
         {
             var currPosition = transform.position.x - cardsTotalWidth / 2;
             foreach (Wrapper card in _cards)

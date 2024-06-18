@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Dungeon;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -13,6 +14,7 @@ public class EnemyController : MonoBehaviour
     private List<Vector3> _currentPath;
     private int _currentWaypointIndex;
     private bool _isChasing;
+    private InstantiatedRoom room;
 
     void Start()
     {
@@ -60,7 +62,8 @@ public class EnemyController : MonoBehaviour
             Debug.LogError("Failed to access collision tilemap.");
 
         }
-        
+
+        room = GetComponentInParent<InstantiatedRoom>();
     }
 
     void Update()
@@ -149,6 +152,14 @@ public class EnemyController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, new Vector3(1, 1, 0));
+    }
+
+    private void OnDestroy()
+    {
+        if (room.enemyInRoomList.Count == 0)
+        {
+            CombatMode.SetFalse();
+        }
     }
 }
 
