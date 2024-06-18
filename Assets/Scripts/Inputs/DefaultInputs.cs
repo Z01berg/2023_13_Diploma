@@ -29,11 +29,11 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Move"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""0d0823ad-3ca8-47a2-952b-44a0ccc7c39c"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
-                    ""interactions"": ""Hold(duration=1.401298E-45,pressPoint=0.5)"",
+                    ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
