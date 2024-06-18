@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UI;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /**
@@ -38,6 +39,7 @@ public class Timer : MonoBehaviour
 
     private Animator _animator;
     private DeckController _deckController;
+    private bool _canDraw = false; // TODO: Zmienić to dobieranie
 
     public void AddTextFromSetTimer(TMP_Text newText, String text, GameObject HP)
     {
@@ -146,6 +148,12 @@ public class Timer : MonoBehaviour
                 {
                     _animator.SetBool("K_turn", true);
                     EventSystem.PlayerMove.Invoke(true);
+                    if (_canDraw)
+                    {
+                        EventSystem.DrawACard.Invoke();
+                    }
+
+                    _canDraw = true;
                 }
                 else
                 {
