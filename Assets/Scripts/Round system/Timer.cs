@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Dungeon;
 using TMPro;
 using UI;
 using Unity.VisualScripting;
@@ -148,7 +149,7 @@ public class Timer : MonoBehaviour
                 {
                     _animator.SetBool("K_turn", true);
                     EventSystem.PlayerMove.Invoke(true);
-                    if (_canDraw)
+                    if (_canDraw && CombatMode.isPlayerInCombat)
                     {
                         EventSystem.DrawACard.Invoke();
                     }
