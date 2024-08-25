@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <ui:VisualElement style="flex-grow: 1; justify-content: flex-start; flex-direction: row;">
+        <ui:VisualElement style="flex-grow: 1; width: 20%;">
+            <ui:DropdownField label="Dropdown" index="-1" choices="System.Collections.Generic.List`1[System.String]" />
+            <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+            <ui:ListView focusable="true" name="ListView" style="height: 100%; width: auto; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; width: 60%; align-items: auto; align-self: flex-end; height: 100%; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+            <ui:TextField picking-mode="Ignore" label="Text Field" value="filler text" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

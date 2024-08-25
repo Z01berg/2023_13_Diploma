@@ -1,7 +1,11 @@
+using CardActions;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Button = UnityEngine.UIElements.Button;
 using Image = UnityEngine.UIElements.Image;
@@ -62,13 +66,44 @@ public class ItemAndCardsEditorWindow : EditorWindow
         var enumerator = selectedItems.GetEnumerator();
         if (enumerator.MoveNext())
         {
+            var splitViewCards = new TwoPaneSplitView(0, 250, TwoPaneSplitViewOrientation.Vertical);
+            m_RightPane.Add(splitViewCards);
+
             var spriteImage = new Image();
             spriteImage.scaleMode = ScaleMode.ScaleToFit;
             if (_selectedAdressableType == "Items")
             {
+                VisualElement upper = new VisualElement();
+                VisualElement lower = new VisualElement();
+                
+
+                splitViewCards.Add(upper);
+                splitViewCards.Add(lower);
+
                 var selectedItem = enumerator.Current as Item;
                 if (selectedItem == null) return;
+
                 spriteImage.sprite = selectedItem.icon;
+                upper.Add(spriteImage);
+
+                string name = selectedItem.name; 
+                TextField t = new TextField("name");
+                t.SetValueWithoutNotify(name);
+                upper.Add(t);
+
+                string desc = selectedItem.description;
+                TextField t2 = new TextField("description");
+                t2.multiline = true;
+                t2.SetValueWithoutNotify(desc);
+                upper.Add(t2);
+                
+                EnumField enumField = new EnumField("item type",selectedItem.itemType);
+                upper.Add(enumField);
+
+                List<CardsSO> cards = new List<CardsSO>(selectedItem.cards);
+
+
+
             }
             else if(_selectedAdressableType == "Cards")
             {
@@ -76,9 +111,11 @@ public class ItemAndCardsEditorWindow : EditorWindow
                 if (selectedItem == null) return;
                 spriteImage.sprite = Resources.Load<Sprite>(selectedItem.spritePath);
                 spriteImage.transform.scale *= 0.1f;
+                m_RightPane.Add(spriteImage);
             }
             
-            m_RightPane.Add(spriteImage);
+            
+            
         }
     }
 
