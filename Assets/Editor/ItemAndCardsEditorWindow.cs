@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditor.PackageManager.UI;
 using UnityEditor.SceneManagement;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Button = UnityEngine.UIElements.Button;
 using Image = UnityEngine.UIElements.Image;
+using Toggle = UnityEngine.UIElements.Toggle;
 
 public class ItemAndCardsEditorWindow : EditorWindow
 {
@@ -66,56 +69,43 @@ public class ItemAndCardsEditorWindow : EditorWindow
         var enumerator = selectedItems.GetEnumerator();
         if (enumerator.MoveNext())
         {
-            var splitViewCards = new TwoPaneSplitView(0, 250, TwoPaneSplitViewOrientation.Vertical);
-            m_RightPane.Add(splitViewCards);
-
+            
             var spriteImage = new Image();
             spriteImage.scaleMode = ScaleMode.ScaleToFit;
             if (_selectedAdressableType == "Items")
             {
-                VisualElement upper = new VisualElement();
+                var splitViewCards = new TwoPaneSplitView(0, 250, TwoPaneSplitViewOrientation.Vertical);
+                m_RightPane.Add(splitViewCards);
                 VisualElement lower = new VisualElement();
                 
-
-                splitViewCards.Add(upper);
-                splitViewCards.Add(lower);
-
                 var selectedItem = enumerator.Current as Item;
                 if (selectedItem == null) return;
 
                 spriteImage.sprite = selectedItem.icon;
-                upper.Add(spriteImage);
-
-                string name = selectedItem.name; 
-                TextField t = new TextField("name");
-                t.SetValueWithoutNotify(name);
-                upper.Add(t);
-
+                string name = selectedItem.name;
                 string desc = selectedItem.description;
-                TextField t2 = new TextField("description");
-                t2.multiline = true;
-                t2.SetValueWithoutNotify(desc);
-                upper.Add(t2);
                 
-                EnumField enumField = new EnumField("item type",selectedItem.itemType);
-                upper.Add(enumField);
-
                 List<CardsSO> cards = new List<CardsSO>(selectedItem.cards);
 
+                splitViewCards.Add(new ItemCreatorWindow(selectedItem ,name, desc, selectedItem.itemType, spriteImage.sprite));
+                splitViewCards.Add(lower);
 
+                foreach(var card in cards)
+                {
+                    lower.style.flexDirection = FlexDirection.Row;
+                    lower.style.justifyContent = Justify.Center;
+
+                    lower.Add(new CardCreatorWindow(card));
+                }
 
             }
             else if(_selectedAdressableType == "Cards")
             {
                 var selectedItem = enumerator.Current as CardsSO;
                 if (selectedItem == null) return;
-                spriteImage.sprite = Resources.Load<Sprite>(selectedItem.spritePath);
-                spriteImage.transform.scale *= 0.1f;
-                m_RightPane.Add(spriteImage);
+                m_RightPane.Add(new CardCreatorWindow(selectedItem));
             }
-            
-            
-            
+                        
         }
     }
 
