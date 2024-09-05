@@ -1,0 +1,79 @@
+{
+    "curseCardsList":[
+        {
+            "id": 0,
+            "isActive": true,
+            "cardQuality": 0,
+            
+            "title": "Panic",
+            "description": "Move 2 random direction",
+            "cost": 0,
+            "damage": 0,
+            "range": 0,
+            "move": 2,
+            
+            "backgroundPath": "Graphics/CardBackgrounds/DefenceCards/DefenceCardBronzeTier",
+            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+        },
+        {
+            "id": 1,
+            "isActive": true,
+            "cardQuality": 0,
+            
+            "title": "Cowardly",
+            "description": "Discard all attack cards",
+            "cost": 0,
+            "damage": 0,
+            "range": 0,
+            "move": 0,
+            
+            "backgroundPath": "Graphics/CardBackgrounds/DefenceCards/DefenceCardSilverTier",
+            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+        },
+        {
+            "id": 2,
+            "isActive": true,
+            "cardQuality": 0,
+            
+            "title": "Brain Burn",
+            "description": "Take 2 damage for every attack card in hand",
+            "cost": 0,
+            "damage": 8,
+            "range": 0,
+            "move": 0,
+            
+            "backgroundPath": "Graphics/CardBackgrounds/DefenceCards/DefenceCardGoldTier",
+            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+        },
+        {
+            "id": 3,
+            "isActive": true,
+            "cardQuality": 0,
+
+            "title": "Creature Of Night",
+            "description": "When you take damage, take 2 more damage",
+            "cost": 0,
+            "damage": 8,
+            "range": 0,
+            "move": 0,
+
+            "backgroundPath": "Graphics/CardBackgrounds/DefenceCards/DefenceCardGoldTier",
+            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+        },
+        {
+            "id": 4,
+            "isActive": true,
+            "cardQuality": 0,
+
+            "title": "Dreadfully",
+            "description": "Discard 1 card and take 2 damage",
+            "cost": 0,
+            "damage": 8,
+            "range": 0,
+            "move": 0,
+
+            "backgroundPath": "Graphics/CardBackgrounds/DefenceCards/DefenceCardGoldTier",
+            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+        }
+    ]
+}
