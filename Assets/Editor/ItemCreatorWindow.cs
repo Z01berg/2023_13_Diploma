@@ -45,6 +45,11 @@ public class ItemCreatorWindow : VisualElement
     private void CreateFields()
     {
         _spriteImage = new Image();
+        
+        _spriteImage.style.backgroundColor = Color.white;
+        _spriteImage.style.width = 100;
+        _spriteImage.style.height = 100;
+        _spriteImage.style.alignSelf = Align.Center;
         _spriteImage.scaleMode = ScaleMode.ScaleToFit;
         Add(_spriteImage);
 
@@ -57,5 +62,17 @@ public class ItemCreatorWindow : VisualElement
 
         _typeField = new EnumField("item type", ItemType.any);
         Add(_typeField);
+
+        Button saveButton = new(Save);
+        saveButton.text = "Save changes";
+        Add(saveButton);
+    }
+
+    private void Save()
+    {
+        _itemReference.itemName = _nameField.value;
+        _itemReference.description = _descriptionField.value;
+        _itemReference.icon = _spriteImage.sprite;
+        _itemReference.itemType = (ItemType)_typeField.value;
     }
 }

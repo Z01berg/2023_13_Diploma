@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEditor.PackageManager.UI;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
 public class CardCreatorWindow : ScrollView
@@ -22,6 +23,11 @@ public class CardCreatorWindow : ScrollView
     private Image _background;
     private Image _banner;
 
+    public CardCreatorWindow()
+    {
+        CreateFields();
+    }
+
     public CardCreatorWindow(CardsSO cardReference)
     {
         CreateFields();
@@ -40,6 +46,11 @@ public class CardCreatorWindow : ScrollView
         _moveField.value = cardReference.move;
         _background.sprite = Resources.Load<Sprite>(cardReference.backgroundPath);
         _banner.sprite = Resources.Load<Sprite>(cardReference.spritePath);
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        throw new System.NotImplementedException();
     }
 
     private void CreateFields()
@@ -84,6 +95,9 @@ public class CardCreatorWindow : ScrollView
         Add(_background);
 
         _banner = new Image();
+        Button editBannerButton = new(() => PixelartEditor.ShowWindow(_banner));
+        editBannerButton.text = "edit";
+        Add(editBannerButton);
         _banner.scaleMode = ScaleMode.ScaleToFit;
         _banner.style.height = 70;
         Add(_banner);

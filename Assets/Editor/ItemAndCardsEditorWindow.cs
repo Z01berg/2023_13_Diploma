@@ -1,12 +1,14 @@
 using CardActions;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.PackageManager.UI;
 using UnityEditor.SceneManagement;
 using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Button = UnityEngine.UIElements.Button;
@@ -24,7 +26,7 @@ public class ItemAndCardsEditorWindow : EditorWindow
     [SerializeField] private int m_SelectedIndex = -1;
 
     [MenuItem("Examples/ItemAndCardsEditorWindow")]
-    public static void ShowExample()
+    public static void ShowWindow()
     {
         ItemAndCardsEditorWindow wnd = GetWindow<ItemAndCardsEditorWindow>();
         wnd.titleContent = new GUIContent("ItemAndCardsEditorWindow");
@@ -57,9 +59,17 @@ public class ItemAndCardsEditorWindow : EditorWindow
         m_LeftPane.selectedIndex = m_SelectedIndex;
         m_LeftPane.selectionChanged += (items) => { m_SelectedIndex = m_LeftPane.selectedIndex; };
 
-        Button button = new Button();
-        button.text = "New item";
-        m_LeftPane.hierarchy.Add(button);
+        Button createNewButton = new(CreateNew);
+        createNewButton.text = "New";
+        m_LeftPane.hierarchy.Add(createNewButton);
+
+        Button importJsonButton = new(ImportJson);
+        importJsonButton.text = "Import json";
+        m_LeftPane.hierarchy.Add(importJsonButton);
+
+        Button exportJsonButton = new(ExportJson);
+        exportJsonButton.text = "Export json";
+        m_LeftPane.hierarchy.Add(exportJsonButton);
     }
 
     private void OnItemSelectionChange(IEnumerable<object> selectedItems)
@@ -159,4 +169,40 @@ public class ItemAndCardsEditorWindow : EditorWindow
         }
 
     }
+
+    private void CreateNew()
+    {
+        m_RightPane.Clear();
+
+        if (_selectedAdressableType == "Items")
+        {
+            var splitViewCards = new TwoPaneSplitView(0, 250, TwoPaneSplitViewOrientation.Vertical);
+            m_RightPane.Add(splitViewCards);
+            VisualElement lower = new VisualElement();
+
+            List<CardsSO> cards = new List<CardsSO>();
+
+            splitViewCards.Add(new ItemCreatorWindow());
+            splitViewCards.Add(lower);
+
+            for(int i = 0; i < 3; i++)
+            {
+                lower.style.flexDirection = FlexDirection.Row;
+                lower.style.justifyContent = Justify.Center;
+
+                lower.Add(new CardCreatorWindow());
+            }
+        }
+    }
+
+    private void ImportJson()
+    {
+
+    }
+
+    private void ExportJson()
+    {
+
+    }
+
 }
