@@ -230,6 +230,7 @@ public class ItemAndCardsEditorWindow : EditorWindow
         {
             window.Save();
         }
+
     }
 
 }
