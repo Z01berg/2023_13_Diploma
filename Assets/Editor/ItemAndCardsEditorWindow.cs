@@ -25,6 +25,8 @@ public class ItemAndCardsEditorWindow : EditorWindow
     private VisualElement m_RightPane;
     [SerializeField] private int m_SelectedIndex = -1;
 
+    private List<IModifiable> _rightPaneWindows = new List<IModifiable>();
+
     [MenuItem("Examples/ItemAndCardsEditorWindow")]
     public static void ShowWindow()
     {
@@ -63,6 +65,10 @@ public class ItemAndCardsEditorWindow : EditorWindow
         createNewButton.text = "New";
         m_LeftPane.hierarchy.Add(createNewButton);
 
+        Button saveButton = new(Save);
+        saveButton.text = "Save changes";
+        m_LeftPane.hierarchy.Add(saveButton);
+
         Button importJsonButton = new(ImportJson);
         importJsonButton.text = "Import json";
         m_LeftPane.hierarchy.Add(importJsonButton);
@@ -75,6 +81,7 @@ public class ItemAndCardsEditorWindow : EditorWindow
     private void OnItemSelectionChange(IEnumerable<object> selectedItems)
     {
         m_RightPane.Clear();
+        _rightPaneWindows.Clear();
 
         var enumerator = selectedItems.GetEnumerator();
         if (enumerator.MoveNext())
@@ -96,8 +103,10 @@ public class ItemAndCardsEditorWindow : EditorWindow
                 string desc = selectedItem.description;
                 
                 List<CardsSO> cards = new List<CardsSO>(selectedItem.cards);
+                var itemCreatorWindow = new ItemCreatorWindow(selectedItem, name, desc, selectedItem.itemType, spriteImage.sprite);
+                splitViewCards.Add(itemCreatorWindow);
+                _rightPaneWindows.Add(itemCreatorWindow);
 
-                splitViewCards.Add(new ItemCreatorWindow(selectedItem ,name, desc, selectedItem.itemType, spriteImage.sprite));
                 splitViewCards.Add(lower);
 
                 foreach(var card in cards)
@@ -105,7 +114,9 @@ public class ItemAndCardsEditorWindow : EditorWindow
                     lower.style.flexDirection = FlexDirection.Row;
                     lower.style.justifyContent = Justify.Center;
 
-                    lower.Add(new CardCreatorWindow(card));
+                    var cardCreatorWindow = new CardCreatorWindow(card);
+                    lower.Add(cardCreatorWindow);
+                    _rightPaneWindows.Add(cardCreatorWindow);
                 }
 
             }
@@ -113,7 +124,9 @@ public class ItemAndCardsEditorWindow : EditorWindow
             {
                 var selectedItem = enumerator.Current as CardsSO;
                 if (selectedItem == null) return;
-                m_RightPane.Add(new CardCreatorWindow(selectedItem));
+                var cardCreatorWindow = new CardCreatorWindow(selectedItem);
+                m_RightPane.Add(cardCreatorWindow);
+                _rightPaneWindows.Add(cardCreatorWindow);
             }
                         
         }
@@ -173,24 +186,30 @@ public class ItemAndCardsEditorWindow : EditorWindow
     private void CreateNew()
     {
         m_RightPane.Clear();
+        _rightPaneWindows.Clear();
 
         if (_selectedAdressableType == "Items")
         {
             var splitViewCards = new TwoPaneSplitView(0, 250, TwoPaneSplitViewOrientation.Vertical);
             m_RightPane.Add(splitViewCards);
+            
             VisualElement lower = new VisualElement();
 
             List<CardsSO> cards = new List<CardsSO>();
 
-            splitViewCards.Add(new ItemCreatorWindow());
+            var itemCreatorWindow = new ItemCreatorWindow();
+            splitViewCards.Add(itemCreatorWindow);
+            _rightPaneWindows.Add(itemCreatorWindow);
+
             splitViewCards.Add(lower);
 
             for(int i = 0; i < 3; i++)
             {
                 lower.style.flexDirection = FlexDirection.Row;
                 lower.style.justifyContent = Justify.Center;
-
-                lower.Add(new CardCreatorWindow());
+                var cardCreatorWindow = new CardCreatorWindow();
+                lower.Add(cardCreatorWindow);
+                _rightPaneWindows.Add(cardCreatorWindow);
             }
         }
     }
@@ -203,6 +222,14 @@ public class ItemAndCardsEditorWindow : EditorWindow
     private void ExportJson()
     {
 
+    }
+
+    private void Save()
+    {
+        foreach (IModifiable window in _rightPaneWindows)
+        {
+            window.Save();
+        }
     }
 
 }

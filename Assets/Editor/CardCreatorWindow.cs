@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
-public class CardCreatorWindow : ScrollView
+public class CardCreatorWindow : ScrollView, IModifiable
 {
     private CardsSO _cardReference;
 
@@ -48,9 +48,19 @@ public class CardCreatorWindow : ScrollView
         _banner.sprite = Resources.Load<Sprite>(cardReference.spritePath);
     }
 
+    public void Load()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         throw new System.NotImplementedException();
+    }
+
+    public void Save()
+    {
+        throw new System.NotImplementedException("Card save not implemented yet");
     }
 
     private void CreateFields()

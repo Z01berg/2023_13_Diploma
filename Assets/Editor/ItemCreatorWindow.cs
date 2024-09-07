@@ -1,6 +1,7 @@
 using CardActions;
 using Codice.Client.BaseCommands.Merge.Xml;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using Unity.VisualScripting;
@@ -15,7 +16,7 @@ using Button = UnityEngine.UIElements.Button;
 using Image = UnityEngine.UIElements.Image;
 using Toggle = UnityEngine.UIElements.Toggle;
 
-public class ItemCreatorWindow : VisualElement
+public class ItemCreatorWindow : VisualElement, IModifiable
 {
     private Item _itemReference;
 
@@ -42,6 +43,11 @@ public class ItemCreatorWindow : VisualElement
 
     }
 
+    public void Load()
+    {
+        throw new System.NotImplementedException();
+    }
+
     private void CreateFields()
     {
         _spriteImage = new Image();
@@ -53,6 +59,15 @@ public class ItemCreatorWindow : VisualElement
         _spriteImage.scaleMode = ScaleMode.ScaleToFit;
         Add(_spriteImage);
 
+        Button importGraphic = new Button(ImportGraphic);
+        importGraphic.text = "import graphic";
+        importGraphic.style.paddingBottom = 10;
+        importGraphic.style.height = 20;
+        importGraphic.style.width= 100;
+        importGraphic.style.alignSelf = Align.Center;
+        importGraphic.style.unityTextAlign = TextAnchor.MiddleCenter;
+        Add(importGraphic);
+
         _nameField = new TextField("name");
         Add(_nameField);
 
@@ -63,16 +78,34 @@ public class ItemCreatorWindow : VisualElement
         _typeField = new EnumField("item type", ItemType.any);
         Add(_typeField);
 
-        Button saveButton = new(Save);
-        saveButton.text = "Save changes";
-        Add(saveButton);
     }
 
-    private void Save()
+    void IModifiable.Save()
     {
-        _itemReference.itemName = _nameField.value;
-        _itemReference.description = _descriptionField.value;
-        _itemReference.icon = _spriteImage.sprite;
-        _itemReference.itemType = (ItemType)_typeField.value;
+        if (_itemReference != null) 
+        {
+            _itemReference.itemName = _nameField.value;
+            _itemReference.description = _descriptionField.value;
+            _itemReference.icon = _spriteImage.sprite;
+            _itemReference.itemType = (ItemType)_typeField.value;
+
+            return;
+        }
+
+
+        
+    }
+
+    void ImportGraphic()
+    {
+        var file = EditorUtility.OpenFilePanel("graphic selection","..","");
+        Debug.Log(file);
+
+        if (file == null || file == "") 
+        {
+            return;
+        }
+
+        // TODO: Copy file to item graphic directory
     }
 }
