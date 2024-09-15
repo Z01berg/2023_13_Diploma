@@ -32,7 +32,7 @@ TagManager:
   - Back Wall
   - Enemy
   - Player
-  - 
+  - Overlay
   - 
   - 
   - 
@@ -63,8 +63,17 @@ TagManager:
   - name: Ground
     uniqueID: 1142449295
     locked: 0
+  - name: Overlay
+    uniqueID: 866597617
+    locked: 0
+  - name: Pointer
+    uniqueID: 1443042739
+    locked: 0
   - name: Player
     uniqueID: 144045155
+    locked: 0
+  - name: Wall
+    uniqueID: 3611618195
     locked: 0
   - name: Collision
     uniqueID: 2053827435
