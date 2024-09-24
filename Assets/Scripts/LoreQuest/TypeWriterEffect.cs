@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
 
 [RequireComponent(typeof(TMP_Text))]
 public class TypeWriterEffect : MonoBehaviour
 {
     private TMP_Text _textBox;
+    
     
     [Header("Test String")]
     [SerializeField] private string testText;
@@ -87,11 +89,12 @@ public class TypeWriterEffect : MonoBehaviour
         {
             StopCoroutine(_typeWriterCoroutine);
         }
-        
+
         _textBox.text = text;
+        _textBox.ForceMeshUpdate();
+
         _textBox.maxVisibleCharacters = 0;
         _currentVisibleCharactersIndex = 0;
-
 
         _typeWriterCoroutine = StartCoroutine(Typewriter());
     }
@@ -100,15 +103,25 @@ public class TypeWriterEffect : MonoBehaviour
     {
         TMP_TextInfo textInfo = _textBox.textInfo;
 
-        while (_currentVisibleCharactersIndex < textInfo.characterCount + 1)
+        while (_currentVisibleCharactersIndex < textInfo.characterCount)
         {
+            if (_currentVisibleCharactersIndex >= textInfo.characterInfo.Length)
+                break;  // Safety check
+
             char charakter = textInfo.characterInfo[_currentVisibleCharactersIndex].character;
 
             _textBox.maxVisibleCharacters++;
-
+            
+            //TODO: Add special effects
+            /*
+            if (charakter == '~')
+            {
+                VoblingEffect();
+            }
+            */
             if (!CurrentlySkiping &&
                 (charakter == '.' || charakter == '!' || charakter == '?' || charakter == ',' || charakter == ':' ||
-                 charakter == ';' || charakter == '-' || charakter == '–' || charakter == '—' || charakter == '…' || 
+                 charakter == ';' || charakter == '-' || charakter == '–' || charakter == '—' || charakter == '…' ||
                  charakter == '„' || charakter == '”'))
             {
                 yield return _interpunctationDelay;
@@ -117,8 +130,9 @@ public class TypeWriterEffect : MonoBehaviour
             {
                 yield return CurrentlySkiping ? _skipDelay : _simpleDelay;
             }
-            
+
             _currentVisibleCharactersIndex++;
         }
     }
+
 }
