@@ -7,6 +7,7 @@ using Dungeon;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Random = UnityEngine.Random;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(BoxCollider2D))]
@@ -276,15 +277,46 @@ public class InstantiatedRoom : MonoBehaviour
         if (_cleared)return;
         CombatMode.SetTrue();
         _cleared = true;
-        var positions = room.SpawnPositionArray;
+        
+        var positions = room.SpawnPositionArray.ToList();
         if (positions.Count() == 1)
         {
             CombatMode.SetFalse();
             return;
         }
-
-        foreach (var position in positions)
+        
+        int numEnemiesToSpawn = Random.Range(1, positions.Count + 1);
+        
+        
+        for (int i = 0; i < positions.Count; i++)
         {
+            var temp = positions[i];
+            int randomIndex = Random.Range(i, positions.Count);
+            positions[i] = positions[randomIndex];
+            positions[randomIndex] = temp;
+        }
+        
+        var selectedPositions = positions.Take(numEnemiesToSpawn);
+
+        foreach (var position in selectedPositions)
+        {
+            bool spawnEventEnemy = Random.Range(1, 101) == 1;
+            //TODO: Add event enemy
+            /*
+            if (spawnEventEnemy)
+            {
+                
+            }
+            else
+            {
+                var enemy = Instantiate(enemyPrefab, transform.Find("Grid"));
+                enemy.gameObject.GetComponentInChildren<ApplyCardEffect>().gameObjectTimer = timer;
+                enemy.transform.localPosition = new Vector3(position.x, position.y, -6f);
+                enemyInRoomList.Add(enemy);
+                enemy.GetComponent<HealthBar>().room = this;
+                CombatMode.isPlayerInCombat = true;
+            }
+            */
             var enemy = Instantiate(enemyPrefab, transform.Find("Grid"));
             enemy.gameObject.GetComponentInChildren<ApplyCardEffect>().gameObjectTimer = timer;
             enemy.transform.localPosition = new Vector3(position.x, position.y, -6f);
@@ -292,6 +324,7 @@ public class InstantiatedRoom : MonoBehaviour
             enemy.GetComponent<HealthBar>().room = this;
             CombatMode.isPlayerInCombat = true;
         }
+        
         foreach (var door in doorsList)
         {
             door.GetComponent<DoorLogic>().CloseDoors();
