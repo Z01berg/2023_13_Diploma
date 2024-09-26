@@ -147,6 +147,7 @@ namespace UI
                     cardInUse._isPressed = false;
                     cardInUse._isHovered = false;
                     eventsConfig?.cardUnHover?.Invoke(new CardUnhover(this));
+                    
                 }
                 eventsConfig?.cardHover?.Invoke(new CardHover(this));
                 _isPressed = true;

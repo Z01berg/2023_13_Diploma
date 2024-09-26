@@ -1,3 +1,4 @@
+using Grid.New;
 using UnityEngine;
 
 /**
@@ -16,10 +17,12 @@ using UnityEngine;
  */
 public class Position : MonoBehaviour
 {
+    
     [SerializeField] private Transform _bohater; 
     [SerializeField] private Transform _timer;
     [SerializeField] private float _x = 0.5f;
     [SerializeField] private float _y = -0.2f;
+
 
     void Update()
     {

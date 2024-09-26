@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /**
@@ -10,6 +11,7 @@ public class GridShow : MonoBehaviour
 {
     private bool _isVisible = true;
     private Transform[] _children;
+    [SerializeField] private GameObject _highlight;
 
     void Start()
     {
@@ -40,5 +42,8 @@ public class GridShow : MonoBehaviour
         }
     }
 
-   
+    private void OnMouseEnter()
+    {
+        Debug.Log("Hover");
+    }
 }

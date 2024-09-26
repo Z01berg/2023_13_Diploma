@@ -1,15 +1,19 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 [DisallowMultipleComponent]
 public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
 {
     public Dictionary<string, Room> DungeonBuilderRoomDictionary = new Dictionary<string, Room>();
+    
     private Dictionary<string, RoomTemplateSO> _roomTemplateDictionary = new Dictionary<string, RoomTemplateSO>();
     private List<RoomTemplateSO> _roomTemplateList = null;
     private RoomNodeTypeListSO _roomNodeTypeList;
     private bool _dungeonBuildSuccessful;
+    private OverlayManager _overlayManager;
 
     public GameObject enemyPrefab;
     public GameObject timer;
@@ -22,6 +26,11 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
 
         // Set dimed material to fully visible
         //  GameResources.Instance.dimedMaterial.SetFloat("Alpha_Slider", 1f);//TODO check if use material
+    }
+
+    private void Start()
+    {
+        _overlayManager = GetComponent<OverlayManager>();
     }
 
     private void LoadRoomNodeTypeList()
@@ -74,6 +83,7 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
     // init prefabs
     private void InstantiatedRoomGameobjects()
     {
+        List<Tilemap> wholeTileMap = new List<Tilemap>(); 
         foreach (KeyValuePair<string, Room> keyValuePair in DungeonBuilderRoomDictionary)
         {
             Room room = keyValuePair.Value;
@@ -82,7 +92,7 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
                room.LowerBounds.y - room.TemplateLowerBounds.y, 0f);
 
             GameObject roomGameObject = Instantiate(room.Prefab, roomPosition, Quaternion.identity, transform);
-            Debug.Log($"room position {roomPosition.x}, {roomPosition.y}");
+            // Debug.Log($"room position {roomPosition.x}, {roomPosition.y}");
 
             InstantiatedRoom instantiatedRoom = roomGameObject.GetComponentInChildren<InstantiatedRoom>();
             instantiatedRoom.enemyPrefab = enemyPrefab;
@@ -92,7 +102,11 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
             instantiatedRoom.Initialise(roomGameObject);
 
             room.InstantiatedRoom = instantiatedRoom;
+
+            wholeTileMap.Add(roomGameObject.transform.GetComponentsInChildren<Tilemap>().First(x => x.GetComponent<TilemapRenderer>().sortingLayerName.Equals("Ground")));
         }
+        _overlayManager.CreateOverlaysForRoom(wholeTileMap);
+
     }
 
     private bool AttemptToBuiltRandomDungeon(RoomNodeGraphSO roomNodeGraph)
@@ -118,7 +132,7 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
         // Process open room nodes queue
         noRoomOverlaps = ProcessRoomsInOpenRoomNodeQueue(roomNodeGraph, openRoomNodeQueue, noRoomOverlaps);
 
-        // if all the room nodes have been processed and there hasn't been a room overlap then retuen true
+        // if all the room nodes have been processed and there hasn't been a room overlap then return true
         if (openRoomNodeQueue.Count == 0 && noRoomOverlaps)
         {
             return true;
@@ -543,7 +557,7 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
             {
                 _roomTemplateDictionary.Add(roomTemplate.guid, roomTemplate);
             }
-            else
+            else // TODO : Do wyjebania :)
             {
                 // Debug.Log("Duplicates Room Template Key in " + _roomTemplateList);
             }
