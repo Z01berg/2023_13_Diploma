@@ -6,8 +6,8 @@ namespace Grid.New
     public class OverlayTile : MonoBehaviour
     {
         public OverlayTile peviousTile;
-        public Vector3Int gridLocation;
-        public Vector2Int grid2DLocation => new Vector2Int(gridLocation.x, gridLocation.y);
+        public Vector3 gridLocation;
+        public Vector2 grid2DLocation => new Vector2(gridLocation.x, gridLocation.y);
         
         
         void Update()
@@ -25,7 +25,7 @@ namespace Grid.New
         
         public void ShowTile()
         {
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.7f);
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
         }
 
 

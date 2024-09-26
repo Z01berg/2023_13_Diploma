@@ -31,10 +31,8 @@ public class MouseController : MonoBehaviour
         _rangeTiles = new List<OverlayTile>();
         // _playerPosition = GetPlayerPosition();
         _playerController = playerPrefab.GetComponent<PlayerController>();
-
     }
-    
-    
+
 
     void LateUpdate()
     {
@@ -48,6 +46,7 @@ public class MouseController : MonoBehaviour
             {
                 return;
             }
+
             if (overlayTile.GetComponent<SpriteRenderer>() != null)
             {
                 cursor.transform.position = overlayTile.transform.position;
@@ -56,20 +55,22 @@ public class MouseController : MonoBehaviour
 
                 if (_rangeTiles.Contains(overlayTile))
                 {
-                 //Tu cos jeszcze bedzie      
+                    //Tu cos jeszcze bedzie      
                 }
 
-                if (Input.GetMouseButtonDown(0))// if użyta karta pobierz range i wyswietl go na gridzie else nic nie rób i schowaj pola
+                if (Input.GetMouseButtonDown(0)) // if użyta karta pobierz range i wyswietl go na gridzie else nic nie rób i schowaj pola
                 {
                     overlayTile.ShowTile();
-                    overlayTile.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+                    // overlayTile.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
                 }
+
                 if (Input.GetMouseButtonDown(1))
                 {
                     overlayTile.gameObject.GetComponent<OverlayTile>().HideTile();
-                    
                 }
             }
+            else
+                Debug.Log("Cos nie działa");
 
             // if (_playerController.standingOnTile == null)
             // {
@@ -82,7 +83,7 @@ public class MouseController : MonoBehaviour
     {
         GetRangeTiles();
     }
-    
+
     public RaycastHit2D? GetFocusedOnTile()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -97,20 +98,21 @@ public class MouseController : MonoBehaviour
 
         return null;
     }
-    
+
     private void PositionCharacterOnTile(OverlayTile tile)
     {
-        var closestTile = 
-        
-        
-        playerPrefab.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y + 0.0001f, tile.transform.position.z);
+        var closestTile =
+            playerPrefab.transform.position = new Vector3(tile.transform.position.x,
+                tile.transform.position.y + 0.0001f, tile.transform.position.z);
         playerPrefab.GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder;
         _playerController.standingOnTile = tile;
     }
-    
+
     private void GetRangeTiles()
     {
-        _rangeTiles = _rangeFinder.GetTilesInRange(new Vector2Int(_playerController.standingOnTile.gridLocation.x, _playerController.standingOnTile.gridLocation.y), _range);
+        _rangeTiles = _rangeFinder.GetTilesInRange(
+            new Vector2(_playerController.standingOnTile.gridLocation.x,
+                _playerController.standingOnTile.gridLocation.y), _range);
 
         foreach (var tile in _rangeTiles)
         {
@@ -118,9 +120,9 @@ public class MouseController : MonoBehaviour
         }
     }
 
-    public Vector2Int GetPlayerPosition()
+    public Vector2 GetPlayerPosition()
     {
         var playerPos = playerPrefab.GetComponent<PlayerController>();
-        return new Vector2Int(playerPos.standingOnTile.gridLocation.x, playerPos.standingOnTile.gridLocation.y);
+        return new Vector2(playerPos.standingOnTile.gridLocation.x, playerPos.standingOnTile.gridLocation.y);
     }
 }
