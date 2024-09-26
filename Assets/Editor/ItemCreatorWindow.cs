@@ -1,23 +1,10 @@
-using CardActions;
-using Codice.Client.BaseCommands.Merge.Xml;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
-using Unity.VisualScripting;
 using UnityEditor;
-using UnityEditor.AddressableAssets.Settings;
 using UnityEditor.AddressableAssets;
-using UnityEditor.PackageManager.UI;
-using UnityEditor.SceneManagement;
-using UnityEditor.UIElements;
+using UnityEditor.AddressableAssets.Settings;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Button = UnityEngine.UIElements.Button;
 using Image = UnityEngine.UIElements.Image;
-using Toggle = UnityEngine.UIElements.Toggle;
-using Codice.Utils;
 
 public class ItemCreatorWindow : VisualElement, IModifiable
 {
@@ -44,7 +31,6 @@ public class ItemCreatorWindow : VisualElement, IModifiable
         _nameField.value = name;
         _descriptionField.value = desc;
         _typeField.value = itemType;
-
     }
 
     public void Load()
@@ -55,7 +41,7 @@ public class ItemCreatorWindow : VisualElement, IModifiable
     private void CreateFields()
     {
         _spriteImage = new Image();
-        
+
         _spriteImage.style.backgroundColor = Color.white;
         _spriteImage.style.width = 100;
         _spriteImage.style.height = 100;
@@ -67,7 +53,7 @@ public class ItemCreatorWindow : VisualElement, IModifiable
         importGraphic.text = "import graphic";
         importGraphic.style.paddingBottom = 10;
         importGraphic.style.height = 20;
-        importGraphic.style.width= 100;
+        importGraphic.style.width = 100;
         importGraphic.style.alignSelf = Align.Center;
         importGraphic.style.unityTextAlign = TextAnchor.MiddleCenter;
         Add(importGraphic);
@@ -86,19 +72,19 @@ public class ItemCreatorWindow : VisualElement, IModifiable
 
     void IModifiable.Save()
     {
-        if(_nameField.value == "" || _nameField.value == null)
+        if (_nameField.value == "" || _nameField.value == null)
         {
             throw new System.Exception("Item name has not been given.");
         }
 
-        if (_itemReference == null) 
+        if (_itemReference == null)
         {
             _itemReference = ScriptableObject.CreateInstance<Item>();
             AssetDatabase.CreateAsset(_itemReference, itemsPath + _nameField.value + ".asset");
             AssignAsAddressable(_itemReference, "Items", "Item", false);
             AssetDatabase.SaveAssets();
         }
-        
+
         _itemReference.itemName = _nameField.value;
         _itemReference.description = _descriptionField.value;
         _itemReference.icon = _spriteImage.sprite;
@@ -107,10 +93,10 @@ public class ItemCreatorWindow : VisualElement, IModifiable
 
     void ImportGraphic()
     {
-        var file = EditorUtility.OpenFilePanel("graphic selection","..","");
+        var file = EditorUtility.OpenFilePanel("graphic selection", "..", "");
         Debug.Log(file);
 
-        if (file == null || file == "") 
+        if (file == null || file == "")
         {
             return;
         }

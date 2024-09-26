@@ -14,6 +14,7 @@ using UnityEngine.UIElements;
 using Button = UnityEngine.UIElements.Button;
 using Image = UnityEngine.UIElements.Image;
 using Toggle = UnityEngine.UIElements.Toggle;
+using UnityEngine.ResourceManagement.ResourceProviders;
 
 public class ItemAndCardsEditorWindow : EditorWindow
 {
@@ -216,7 +217,9 @@ public class ItemAndCardsEditorWindow : EditorWindow
 
     private void ImportJson()
     {
-
+        Deserialization deserialization = new Deserialization();
+        deserialization.Import();
+        
     }
 
     private void ExportJson()

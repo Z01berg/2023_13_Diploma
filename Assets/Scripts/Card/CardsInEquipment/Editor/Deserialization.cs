@@ -43,6 +43,10 @@ public class Deserialization : MonoBehaviour
     [SerializeField] private JsonCards objects;
     string cPath = "Assets/ScriptableObjectAssets/Card/Attack/";
 
+    [SerializeField] private TextAsset CurseFile;
+    [SerializeField] private JsonCards curseObjects;
+    string cursePath = "Assets/ScriptableObjectAssets/Card/Curse/";
+
     [SerializeField] private TextAsset DefenceFile;
     [SerializeField] private JsonCards dObjects;
     string dPath = "Assets/ScriptableObjectAssets/Card/Defence/";
@@ -80,6 +84,31 @@ public class Deserialization : MonoBehaviour
             AssetDatabase.SaveAssets();
 
             AssignAsAddressable(s, "AttackCardsGroup", "AttackCard", s.name.Contains("Defoult"));
+        }
+
+        objects = JsonUtility.FromJson<JsonCards>(CurseFile.text);
+
+        foreach (var obj in objects.curseCardList)
+        {
+            var s = ScriptableObject.CreateInstance<CardsSO>();
+
+            s.id = obj.id;
+            s.type = CardType.Attack;
+            s.isActive = obj.isActive;
+            s.cardQuality = obj.cardQuality;
+            s.title = obj.title;
+            s.description = obj.description;
+            s.cost = obj.cost;
+            s.damage = obj.damage;
+            s.move = obj.move;
+            s.backgroundPath = obj.backgroundPath;
+            s.spritePath = obj.spritePath;
+            s.range = obj.range;
+
+            AssetDatabase.CreateAsset(s, cPath + s.title + ".asset");
+            AssetDatabase.SaveAssets();
+
+            AssignAsAddressable(s, "CurseCardsGroup", "CurseCard", s.name.Contains("Defoult"));
         }
 
         dObjects = JsonUtility.FromJson<JsonCards>(DefenceFile.text);

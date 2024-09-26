@@ -9,6 +9,9 @@ using System.Collections.Generic;
 public struct JsonCards
 {
     public List<Card> attackCardsList;
+    public List<Card> defenceCardsList;
+    public List<Card> curseCardList;
+    public List<Card> movementCardList;
 }
 
 [System.Serializable]
