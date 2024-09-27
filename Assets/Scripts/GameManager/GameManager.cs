@@ -1,13 +1,21 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Grid.New;
+using Player;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 
 [DisallowMultipleComponent]
 public class GameManager : SingletonMonobehaviour<GameManager>
 {
-    [SerializeField] private Transform _player;
-    [SerializeField] private Transform _playerToMove; //TODO: DELETE and fix this shit
+    [SerializeField] private GameObject _player;
+    [SerializeField] private Transform _playerMovePoint; //TODO: DELETE and fix this shit
+    
+    // [SerializeField] private GameObject _dungeonBuilder; 
+    private PlayerController _playerController;
     
     #region Header DUNGEON LEVELS
 
@@ -38,9 +46,10 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     private void Start()
     {
         GameState = GameState.gameStarted;
+        _playerController = _player.GetComponent<PlayerController>();
     }
     
-    private void Update()
+    private void LateUpdate()
     {
         HandleGameStates();
 
@@ -60,12 +69,13 @@ public class GameManager : SingletonMonobehaviour<GameManager>
                 // Play first Level
                 PlayDungeonLevel(currenDungeonLevelListIndex);
                 
+                
                 GameState = GameState.playingLevel;
                 break;
         }
     }
 
-    private void PlayDungeonLevel(int dungeonLevelListIndex)
+    private async Task PlayDungeonLevel(int dungeonLevelListIndex)
     {
         bool dungeonBuiltSucessfully = DungeonBuilder.Instance.GenerateDungeon(dungeonLevelList[dungeonLevelListIndex]);
 
@@ -74,13 +84,46 @@ public class GameManager : SingletonMonobehaviour<GameManager>
          Debug.LogError("Couldn't build dungeon from specified rooms and more graphs");   
         }
 
+
+        var spawnPosition = HelperUtilities.GetSpawnPositionNearestToPlayer(_player.transform.position);
+
         _player.transform.position =
             new Vector3((currentRoom.LowerBounds.x + currentRoom.UpperBounds.x) / 2f,
                 (currentRoom.LowerBounds.y + currentRoom.UpperBounds.y) / 2f, 0f);
 
-        _player.transform.position =
-            HelperUtilities.GetSpawnPositionNearestToPlayer(_player.transform.position);
-        _playerToMove.transform.position = _player.transform.position;
+        _player.transform.position = spawnPosition;
+
+        _playerMovePoint.transform.position = _player.transform.position;
+        var spawnTile = GetSpawnOverlayTile(spawnPosition);
+        _playerController.standingOnTile = spawnTile;
+    }
+
+
+    public OverlayTile GetSpawnOverlayTile(Vector3 spawnPosition)
+    {
+        RaycastHit2D? hit = GetFocusedOnTile(spawnPosition);
+
+        if (hit.HasValue)
+        {
+            OverlayTile overlayTile = hit.Value.collider.gameObject.GetComponent<OverlayTile>();
+
+            return overlayTile;
+        }
+        return null;
+    }
+
+    public RaycastHit2D? GetFocusedOnTile(Vector3 spawnPosition)
+    {
+        Vector2 spawnPosition2d = new Vector2(spawnPosition.x, spawnPosition.y);
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(spawnPosition2d, Vector2.zero);
+
+        if (hits.Length > 0)
+        {
+            return hits.OrderByDescending(i => i.collider.transform.position.z).First();
+        }
+
+        return null;
     }
 
     #region Validation

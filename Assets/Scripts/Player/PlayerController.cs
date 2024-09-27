@@ -1,3 +1,5 @@
+using System.Linq;
+using Grid.New;
 using UnityEngine;
 
 /**
@@ -41,6 +43,9 @@ namespace Player
         private static bool _isPlayerTurn;
 
         private Vector2 _moveVector = Vector2.zero;
+        
+        public OverlayTile standingOnTile;
+
 
         private void Start()
         {
@@ -49,6 +54,7 @@ namespace Player
             EventSystem.ChangeHealthPlayer.AddListener(UpdateHealth);
             EventSystem.PlayerMove.AddListener(ToogleScrypt);
             EventSystem.MovePlayer.AddListener(SetMoveVector);
+            standingOnTile = GetCurrentTile();
         }
 
         private void UpdateHealth(int arg0)
@@ -64,6 +70,35 @@ namespace Player
                 _moveSpeed * Time.deltaTime
             );
             CalculatePlayerMove();
+            CalculatePlayerGrid();
+            standingOnTile = GetCurrentTile();
+        }
+
+        public OverlayTile GetCurrentTile()
+        {
+            RaycastHit2D? hit = GetFocusedOnTile(transform.position);
+
+            if (hit.HasValue)
+            {
+                OverlayTile overlayTile = hit.Value.collider.gameObject.GetComponent<OverlayTile>();
+
+                return overlayTile;
+            }
+            return null;
+        }
+
+        public RaycastHit2D? GetFocusedOnTile(Vector3 spawnPosition)
+        {
+            Vector2 spawnPosition2d = new Vector2(spawnPosition.x, spawnPosition.y);
+
+            RaycastHit2D[] hits = Physics2D.RaycastAll(spawnPosition2d, Vector2.zero);
+
+            if (hits.Length > 0)
+            {
+                return hits.OrderByDescending(i => i.collider.transform.position.z).First();
+            }
+
+            return null;
         }
 
         private void LateUpdate()
@@ -89,6 +124,11 @@ namespace Player
                     }
                 }
             }
+        }
+
+        private void CalculatePlayerGrid()
+        {
+                // RaycastHit2D
         }
 
         private void ToogleScrypt(bool isThis)
