@@ -10,7 +10,7 @@ using static ToastNotification;
 
 public class ShowCase : MonoBehaviour
 {
-
+    private bool skipped = false;
     private void Update()
     {
         // This is a example where you can use ToastNotification anywhere, like in a character script, item script, shop UI...
@@ -22,9 +22,16 @@ public class ShowCase : MonoBehaviour
 
         // You can setup a key/function/event/everthing to hide messages on screen. Very useful with infinite messages.
         // Example use case: "Press E to get into the car", after pressing the key, the message disappears
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            ToastNotification.Hide();
+            EventSystem.SkipText.Invoke();
+            skipped = !skipped;
+            
+            if (skipped)
+            {
+                ToastNotification.Hide();
+                //TODO: ZABIJ SIĘ
+            }
         }
     }
 

@@ -120,4 +120,10 @@ public static class EventSystem
 
     #endregion
 
+    #region EventSkip Text: ShowCase.cs -> TypeWriterEffect.cs
+    
+    public static UnityEvent SkipText = new UnityEvent();
+    
+    #endregion
+    
 }

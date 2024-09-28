@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7970438857333649574}
   - component: {fileID: 878106754662040505}
   m_Layer: 5
-  m_Name: Event in Dungeon
+  m_Name: EV_Miner_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -252,7 +252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6576614607984151415
 RectTransform:
   m_ObjectHideFlags: 0
@@ -269,7 +269,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -392.5, y: 38}
+  m_AnchoredPosition: {x: -453.74, y: 38}
   m_SizeDelta: {x: 297.9568, y: 297.9568}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3135705889974776660
@@ -402,7 +402,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7206054933059862348
 RectTransform:
   m_ObjectHideFlags: 0
@@ -512,7 +512,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5082021931908181139}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -709,8 +709,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309e5dc35f0fdfa49a2171dc417efb75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testText: "Moje umiej\u0119tno\u015Bci nie mog\u0142y uratowa\u0107 nas przed tym
-    losem. Uwa\u017Caj na rany - te stwory maj\u0105 w sobie trucizn\u0119 przesz\u0142o\u015Bci."
+  testText: "Przekle\u0144stwo nie oszcz\u0119dzi\u0142o nikogo. Teraz nasze dusze
+    s\u0105 zwi\u0105zane z tym miejscem, dop\xF3ki nie znajdzie si\u0119 kto\u015B,
+    kto zako\u0144czy ten koszmar."
   charactersPerSecond: 20
   interpunctationDelay: 0.5
   quickSkip: 0
@@ -821,7 +822,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4704467876094290266
 RectTransform:
   m_ObjectHideFlags: 0
@@ -838,7 +839,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -392.5, y: 38}
+  m_AnchoredPosition: {x: -453.74, y: 38}
   m_SizeDelta: {x: 297.9568, y: 297.9568}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6811840138738701608
@@ -856,7 +857,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8048585890297950362}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 

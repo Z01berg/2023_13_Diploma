@@ -16,7 +16,8 @@ public class ToastNotification : MonoBehaviour, IPointerEnterHandler, IPointerEx
 {
 
     // The prefab used to display messages. Please choose one prefab on root folder. You can also create your own message prefab
-    public Transform _messagePrefab;
+    public Transform _messagePrefab_1;
+    public Transform _messagePrefab_2;
 
     // Public static variables accessible throughout the project
     // Be careful when changing them at runtime, as as static variables, this will override existing settings
@@ -32,7 +33,8 @@ public class ToastNotification : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public static bool isCanvasGroup = false; // Check if has a CanvasGroup in toastNotification object
 
     // Private static variables
-    private static Transform messagePrefab; // Get the public prefab in a static variable
+    private static Transform messagePrefab_1; // Get the public prefab in a static variable
+    private static Transform messagePrefab_2;
     private static Transform toastNotification; // Get the object that this script is linked to this static variable
 
     // Default message patterns configurable in the Unity Editor
@@ -60,7 +62,8 @@ public class ToastNotification : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
 
         // Assign public variables to their static counterparts
-        messagePrefab = _messagePrefab;
+        messagePrefab_1 = _messagePrefab_1;
+        messagePrefab_2 = _messagePrefab_2;
         toastNotification = transform;
 
         minimumMessageTime = _minimumMessageTime;
@@ -161,7 +164,7 @@ public class ToastNotification : MonoBehaviour, IPointerEnterHandler, IPointerEx
             timerInSeconds = minimumMessageTime;
 
         // Instantiate message prefab and configure it
-        Transform message = Instantiate(messagePrefab, toastNotification);
+        Transform message = Instantiate(Random.Range(0, 2) == 0 ? messagePrefab_1 : messagePrefab_2, toastNotification);
         message.gameObject.SetActive(true);
         message.name = "Message"; // <- You can change the name of messages that are created here
         if ( isCanvasGroup ) toastNotification.GetComponent<CanvasGroup>().alpha = 0; // Instatiate with zero alpha (invisible)
