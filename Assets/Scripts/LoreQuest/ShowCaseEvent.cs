@@ -14,7 +14,7 @@ public class ShowCaseEvent : MonoBehaviour
     
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V) && !vpressed)
+        if (Input.GetKeyDown(KeyCode.B) && !vpressed)
         {
             vpressed = true;
             is_triggered = !is_triggered;
@@ -26,12 +26,11 @@ public class ShowCaseEvent : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && is_triggered)
         {
             EventSystem.SkipText.Invoke();
+            
             if (skipped)
             {
                 ToastNotification.Hide();
-                Kill(); 
-                skipped = !skipped;
-                is_triggered = !is_triggered;
+                Kill();
             }
             
             skipped = !skipped;
@@ -40,7 +39,7 @@ public class ShowCaseEvent : MonoBehaviour
     
     private void Kill()
     {
-        //TODO room.enemyInRoomList.Remove(this.gameObject); 
+        room.enemyInRoomList.Remove(this.gameObject); 
         Destroy(_gameObject);
         Destroy(_body);
         Debug.Log("killed EVENT BROO");

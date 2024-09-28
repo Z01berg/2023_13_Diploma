@@ -216,6 +216,7 @@ MonoBehaviour:
   _texts: []
   _id: []
   _hpAdres: []
+  _player: {fileID: 0}
 --- !u!95 &8693768392632690205
 Animator:
   serializedVersion: 5
@@ -326,6 +327,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 9778427497311827, guid: b54b4856c327eef4bbfad22117aea016, type: 3}
+  eE_Miner: {fileID: 3767121034411779091, guid: 1cd089c5363a64f4eafc81e92bd68891, type: 3}
+  eE_Wizard: {fileID: 3767121034411779091, guid: 4619bda92cae64141a6c5d39ab9b98b4, type: 3}
+  eE_Warrior: {fileID: 3767121034411779091, guid: 7cc677433fa16914a8b14fe34932fc15, type: 3}
+  eE_Skeleton: {fileID: 3767121034411779091, guid: b112d09b8b21a1c4dbd6610749af83d9, type: 3}
+  eE_Clerick: {fileID: 3767121034411779091, guid: d833ed49cd22bc94ab4a54e4feed75ca, type: 3}
+  eE_Explorer: {fileID: 3767121034411779091, guid: 25f1ef2324ce8224bbeec44cd4c4a894, type: 3}
   timer: {fileID: 3505373189155625271}
 --- !u!1001 &2763345840770419380
 PrefabInstance:

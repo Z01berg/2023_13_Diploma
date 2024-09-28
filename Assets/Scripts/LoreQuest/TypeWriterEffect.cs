@@ -49,31 +49,9 @@ public class TypeWriterEffect : MonoBehaviour
         EventSystem.SkipText.AddListener(Skip);
         SetText(testText);
     }
-/*
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Space)) //TODO: check what input we have
-        {
-            if (_textBox.maxVisibleCharacters != _textBox.textInfo.characterCount -1)
-            {
-                Skip();
-            }
-        }
-    }
-*/
+
     void Skip()
     {
-        // if (CurrentlySkiping)
-        // {
-        //     return;
-        // }
-        //
-        // if (!quickSkip)
-        // {
-        //     StartCoroutine(skipSpeedReset());
-        //     return;
-        // }
-        
         StopCoroutine(_typeWriterCoroutine);
         _textBox.maxVisibleCharacters = _textBox.textInfo.characterCount;
     }
