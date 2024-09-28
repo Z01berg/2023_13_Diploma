@@ -115,7 +115,7 @@ public class ItemAndCardsEditorWindow : EditorWindow
                     lower.style.flexDirection = FlexDirection.Row;
                     lower.style.justifyContent = Justify.Center;
 
-                    var cardCreatorWindow = new CardCreatorWindow(card);
+                    var cardCreatorWindow = new CardCreatorWindow(card,selectedItem);
                     lower.Add(cardCreatorWindow);
                     _rightPaneWindows.Add(cardCreatorWindow);
                 }

@@ -1,7 +1,5 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
@@ -9,7 +7,10 @@ using UnityEngine.UIElements;
 public class CardCreatorWindow : ScrollView, IModifiable
 {
     private CardsSO _cardReference;
+    private CardsSO _savedCardReference;
+    private Item _itemReference;
 
+    private PopupField<CardsSO> _cards;
     private IntegerField _idField;
     private EnumField _cardTypeField;
     private IntegerField _rangeField;
@@ -28,24 +29,24 @@ public class CardCreatorWindow : ScrollView, IModifiable
         CreateFields();
     }
 
-    public CardCreatorWindow(CardsSO cardReference)
+    public CardCreatorWindow(CardsSO cardReference, Item itemReference = null)
     {
+        _itemReference = itemReference;
+
         CreateFields();
 
         _cardReference = cardReference;
+        _savedCardReference = cardReference;
+        PopulateFields();
+        
+    }
 
-        _idField.value = _cardReference.id;
-        _cardTypeField.value = _cardReference.type;
-        _rangeField.value = _cardReference.range;
-        _isActiveField.value = _cardReference.isActive;
-        _cardQualityField.value = _cardReference.cardQuality;
-        _titleField.value = _cardReference.title;
-        _descriptionField.value = cardReference.description;
-        _costField.value = cardReference.cost;
-        _damageField.value = cardReference.damage;
-        _moveField.value = cardReference.move;
-        _background.sprite = Resources.Load<Sprite>(cardReference.backgroundPath);
-        _banner.sprite = Resources.Load<Sprite>(cardReference.spritePath);
+    private void CardSelectionChanged(ChangeEvent<CardsSO> evt)
+    {
+        
+        _cardReference = evt.newValue;
+        
+        PopulateFields();
     }
 
     public void Load()
@@ -60,11 +61,17 @@ public class CardCreatorWindow : ScrollView, IModifiable
 
     public void Save()
     {
-        throw new System.NotImplementedException("Card save not implemented yet");
+        _itemReference.cards.Remove(_savedCardReference);
+        _itemReference.cards.Add(_cardReference);
+        _savedCardReference = _cardReference;
     }
 
     private void CreateFields()
     {
+        _cards = new PopupField<CardsSO>();
+        _cards.RegisterValueChangedCallback(CardSelectionChanged);
+        Add(_cards);
+
         _idField = new IntegerField("id");
         _idField.isReadOnly = true;
         Add(_idField);
@@ -117,5 +124,30 @@ public class CardCreatorWindow : ScrollView, IModifiable
         style.borderRightColor = Color.white;
         style.borderLeftWidth = 1;
         style.borderLeftColor = Color.white;
+    }
+
+    private void PopulateFields()
+    {
+        var addressables = AddressablesUtilities.LoadItems(AddressablesTags.AttackCard, AddressablesTags.DefenceCard, AddressablesTags.MovementCard);
+        List<CardsSO> convCards = new();
+        foreach (var card in addressables)
+        {
+            convCards.Add(card as CardsSO);
+        }
+        _cards.choices = convCards;
+        _cards.value = _cardReference;
+
+        _idField.value = _cardReference.id;
+        _cardTypeField.value = _cardReference.type;
+        _rangeField.value = _cardReference.range;
+        _isActiveField.value = _cardReference.isActive;
+        _cardQualityField.value = _cardReference.cardQuality;
+        _titleField.value = _cardReference.title;
+        _descriptionField.value = _cardReference.description;
+        _costField.value = _cardReference.cost;
+        _damageField.value = _cardReference.damage;
+        _moveField.value = _cardReference.move;
+        _background.sprite = Resources.Load<Sprite>(_cardReference.backgroundPath);
+        _banner.sprite = Resources.Load<Sprite>(_cardReference.spritePath);
     }
 }
