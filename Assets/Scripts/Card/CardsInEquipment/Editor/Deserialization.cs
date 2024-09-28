@@ -105,7 +105,7 @@ public class Deserialization : MonoBehaviour
             s.spritePath = obj.spritePath;
             s.range = obj.range;
 
-            AssetDatabase.CreateAsset(s, cPath + s.title + ".asset");
+            AssetDatabase.CreateAsset(s, cursePath + s.title + ".asset");
             AssetDatabase.SaveAssets();
 
             AssignAsAddressable(s, "CurseCardsGroup", "CurseCard", s.name.Contains("Defoult"));
