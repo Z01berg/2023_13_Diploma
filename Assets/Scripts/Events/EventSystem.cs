@@ -119,5 +119,11 @@ public static class EventSystem
     public static UnityEvent DrawACard = new UnityEvent();
 
     #endregion
+    
+    #region DrawACard: wrapper.cs -> MouseController.cs
+
+    public static UnityEvent ShowRange = new UnityEvent();
+
+    #endregion
 
 }
