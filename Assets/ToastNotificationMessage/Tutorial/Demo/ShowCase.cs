@@ -17,7 +17,7 @@ public class ShowCase : MonoBehaviour
         // Anywhere you want, just call ToastNotification.Show :D
         if( Input.GetKeyDown( KeyCode.V ))
         {
-            ToastNotification.Show("Yeah, a simple Key can display a message. And this message doens't have a \"timer\" display render", 10);
+            ToastNotification.Show("Yeah, a simple Key can display a message. And this message doens't have a \"timer\" display render","Clerick");
         }
 
         // You can setup a key/function/event/everthing to hide messages on screen. Very useful with infinite messages.
@@ -41,6 +41,7 @@ public void ShowMessageDefault()
     }
     public void ShowMessageWithoutTimer()
     {
+        ToastNotification.messageScreenPosition = MessageScreenPosition.BottomCenter;
         ToastNotification.Show("If the timer hits zero, this message will be infinite... click to close it or press Z key", 0, "info" );
     }
 

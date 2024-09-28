@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d54dad4a1f1271e48b913d58bdd6c2ec
+guid: 7d9b087a603923a4e9300b94acea3472
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 96
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -150,8 +150,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52d9a193e34c26d4b9673e17013a67e4
-      internalID: -655175112
+      spriteID: 90733a46d532874459368a7af8e2c8e2
+      internalID: -1606720906
       vertices: []
       indices: 
       edges: []
@@ -171,8 +171,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b002dbfbcf5ccc648b5f044e009cb946
-      internalID: 1576405027
+      spriteID: b34f3c39206893e42ac4ef285ca8659c
+      internalID: 1751034490
       vertices: []
       indices: 
       edges: []
@@ -192,8 +192,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75352272b9a7169429cc1714e9c36893
-      internalID: -423275484
+      spriteID: 6a752e1981d606a43ab96446b6d0c1a2
+      internalID: 1174144338
       vertices: []
       indices: 
       edges: []
@@ -213,8 +213,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c99d46ed27b201479050a5f721bbb7b
-      internalID: 76028588
+      spriteID: e70a6e4fc017af849958dd6ca1a9369f
+      internalID: -345993691
       vertices: []
       indices: 
       edges: []
@@ -234,8 +234,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 799dcecf92d25d04cb532be4b7ac9761
-      internalID: 975667989
+      spriteID: 16d41623977d21848b0e60df50e3bb55
+      internalID: -1407418231
       vertices: []
       indices: 
       edges: []
@@ -255,8 +255,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d420e549f7fdf9b44b24fe64233de500
-      internalID: -2143663472
+      spriteID: fcc543f32b9b303468d0b43ca49aaca6
+      internalID: -517206667
       vertices: []
       indices: 
       edges: []
@@ -276,8 +276,134 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36efcb2defc97e347b399e2eea685ea6
-      internalID: -586924476
+      spriteID: 794d99d8e20d5a846913ecd6f68af40b
+      internalID: 1398053508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quest Figuresk_20
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 276
+        width: 63
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 699026481d7062e48a05bafb2ef18e42
+      internalID: -1709936307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quest Figuresk_21
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 276
+        width: 64
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35293a9ed6841f440a17147109cd897c
+      internalID: -2078101094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quest Figuresk_22
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 276
+        width: 64
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0564ebc28cfdafb4ca1110b130beb23a
+      internalID: 1822577479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quest Figuresk_23
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 276
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25c23fbb84f91a94b9267a20c0d7b5d0
+      internalID: 711784033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quest Figuresk_24
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 200
+        width: 62
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 209a184fe9636b048b305be41c187592
+      internalID: 608747101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Quest Figuresk_25
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 200
+        width: 60
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffbf3404c900b904284f3ac7bb9ec4c6
+      internalID: -519136618
       vertices: []
       indices: 
       edges: []
@@ -293,26 +419,32 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Quest Figuresk_0: -655175112
-      Quest Figuresk_1: 1242579369
-      Quest Figuresk_10: 1237418328
-      Quest Figuresk_11: 1235693188
-      Quest Figuresk_12: -1713615246
-      Quest Figuresk_13: -1080399437
-      Quest Figuresk_14: 1449811791
-      Quest Figuresk_15: -2143663472
-      Quest Figuresk_16: -1771179656
-      Quest Figuresk_17: -586924476
-      Quest Figuresk_18: 62153456
-      Quest Figuresk_19: -2090467183
-      Quest Figuresk_2: 1576405027
-      Quest Figuresk_3: 2003377820
-      Quest Figuresk_4: -423275484
-      Quest Figuresk_5: 1375810588
-      Quest Figuresk_6: 76028588
-      Quest Figuresk_7: 975667989
-      Quest Figuresk_8: 151960937
-      Quest Figuresk_9: 737579142
+      Quest Figuresk_0: -1606720906
+      Quest Figuresk_1: -2100527456
+      Quest Figuresk_10: 1178112279
+      Quest Figuresk_11: -238399566
+      Quest Figuresk_12: 501501547
+      Quest Figuresk_13: -361504809
+      Quest Figuresk_14: -1524225345
+      Quest Figuresk_15: -517206667
+      Quest Figuresk_16: 509204906
+      Quest Figuresk_17: 1398053508
+      Quest Figuresk_18: 1327978692
+      Quest Figuresk_19: -1987783258
+      Quest Figuresk_2: 1751034490
+      Quest Figuresk_20: -1709936307
+      Quest Figuresk_21: -2078101094
+      Quest Figuresk_22: 1822577479
+      Quest Figuresk_23: 711784033
+      Quest Figuresk_24: 608747101
+      Quest Figuresk_25: -519136618
+      Quest Figuresk_3: -1783332705
+      Quest Figuresk_4: 1174144338
+      Quest Figuresk_5: -2101934580
+      Quest Figuresk_6: -345993691
+      Quest Figuresk_7: -1407418231
+      Quest Figuresk_8: 469093574
+      Quest Figuresk_9: -1778274931
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
