@@ -64,6 +64,17 @@ public class CardCreatorWindow : ScrollView, IModifiable
         _itemReference.cards.Remove(_savedCardReference);
         _itemReference.cards.Add(_cardReference);
         _savedCardReference = _cardReference;
+
+        _cardReference.id = _idField.value;
+        _cardReference.type = (CardType)_cardTypeField.value;
+        _cardReference.range = _rangeField.value;
+        _cardReference.isActive = _isActiveField.value;
+        _cardReference.cardQuality = _cardQualityField.value;
+        _cardReference.title = _titleField.value;
+        _cardReference.description = _descriptionField.value;
+        _cardReference.cost = _costField.value;
+        _cardReference.damage = _damageField.value;
+        _cardReference.move = _moveField.value;
     }
 
     private void CreateFields()
