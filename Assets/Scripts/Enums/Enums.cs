@@ -36,10 +36,11 @@ public enum GameState
     dngeonOverviewMap,
     restartGame
 }
-
+// Wykorzystywane do oznaczania typu karty
 public enum CardType
 {
     Attack,
     Defense,
-    Movement
+    Movement,
+    Curse
 }

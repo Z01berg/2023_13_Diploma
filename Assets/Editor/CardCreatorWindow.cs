@@ -1,5 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
@@ -15,7 +19,7 @@ public class CardCreatorWindow : ScrollView, IModifiable
     private EnumField _cardTypeField;
     private IntegerField _rangeField;
     private Toggle _isActiveField;
-    private IntegerField _cardQualityField;
+    private SliderInt _cardQualityField;
     private TextField _titleField;
     private TextField _descriptionField;
     private IntegerField _costField;
@@ -23,6 +27,9 @@ public class CardCreatorWindow : ScrollView, IModifiable
     private IntegerField _moveField;
     private Image _background;
     private Image _banner;
+
+    private string _currentBackgroundPath;
+    private string _currentBannerPath;
 
     public CardCreatorWindow()
     {
@@ -37,15 +44,16 @@ public class CardCreatorWindow : ScrollView, IModifiable
 
         _cardReference = cardReference;
         _savedCardReference = cardReference;
+        _currentBackgroundPath = _cardReference.backgroundPath;
         PopulateFields();
-        
+
     }
 
     private void CardSelectionChanged(ChangeEvent<CardsSO> evt)
     {
-        
+
         _cardReference = evt.newValue;
-        
+
         PopulateFields();
     }
 
@@ -61,8 +69,17 @@ public class CardCreatorWindow : ScrollView, IModifiable
 
     public void Save()
     {
-        _itemReference.cards.Remove(_savedCardReference);
-        _itemReference.cards.Add(_cardReference);
+        if (_itemReference != null)
+        {
+            _itemReference.cards.Remove(_savedCardReference);
+            _itemReference.cards.Add(_cardReference);
+            foreach(var element in parent.Children())
+            {
+                element.MarkDirtyRepaint();
+            }
+        }
+        
+
         _savedCardReference = _cardReference;
 
         _cardReference.id = _idField.value;
@@ -75,6 +92,8 @@ public class CardCreatorWindow : ScrollView, IModifiable
         _cardReference.cost = _costField.value;
         _cardReference.damage = _damageField.value;
         _cardReference.move = _moveField.value;
+        _cardReference.backgroundPath = _currentBackgroundPath;
+        _cardReference.spritePath = _currentBannerPath;
     }
 
     private void CreateFields()
@@ -88,6 +107,7 @@ public class CardCreatorWindow : ScrollView, IModifiable
         Add(_idField);
 
         _cardTypeField = new("card type", CardType.Movement);
+        _cardTypeField.RegisterValueChangedCallback(CardTypeChanged);
         Add(_cardTypeField);
 
         _rangeField = new IntegerField("range");
@@ -96,7 +116,8 @@ public class CardCreatorWindow : ScrollView, IModifiable
         _isActiveField = new("is active");
         Add(_isActiveField);
 
-        _cardQualityField = new IntegerField("card quality");
+        _cardQualityField = new SliderInt("card quality", 1, 3);
+        _cardQualityField.RegisterValueChangedCallback(CardQualityChanged);
         Add(_cardQualityField);
 
         _titleField = new TextField("title");
@@ -123,9 +144,10 @@ public class CardCreatorWindow : ScrollView, IModifiable
         Add(_background);
 
         _banner = new Image();
-        Button editBannerButton = new(() => PixelartEditor.ShowWindow(_banner));
-        editBannerButton.text = "edit";
+        Button editBannerButton = new(PickCardBanner);
+        editBannerButton.text = "select banner";
         Add(editBannerButton);
+
         _banner.scaleMode = ScaleMode.ScaleToFit;
         _banner.style.height = 70;
         Add(_banner);
@@ -135,6 +157,89 @@ public class CardCreatorWindow : ScrollView, IModifiable
         style.borderRightColor = Color.white;
         style.borderLeftWidth = 1;
         style.borderLeftColor = Color.white;
+    }
+
+    private void CardQualityChanged(ChangeEvent<int> evt)
+    {
+        CardTypeChanged();
+    }
+
+
+    private void PickCardBanner()
+    {
+        var file = EditorUtility.OpenFilePanel("graphic selection", "Assets\\Resources\\Graphics\\CardSprites", "");
+        
+        if(file == null || file.Length == 0 || file == "")
+        {
+            return;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        string[] folders = file.Split("/");
+        var index = 0;
+        for (int i = 0; i < folders.Length; i++)
+        {
+            if(folders[i] == "Graphics")
+            {
+                index = i;
+                break;
+            }
+        }
+
+
+        var path = String.Join("/", folders.Skip(index));
+        path = Path.ChangeExtension(path, null);
+
+        _banner.sprite = Resources.Load<Sprite>(path);
+        _currentBannerPath = path;
+    }
+
+    private void CardTypeChanged(ChangeEvent<Enum> evt = null)
+    {
+        string[] dirs = _cardReference.backgroundPath.Split("/");
+        if(evt == null)
+        {
+            
+            dirs[dirs.Length - 1] = _cardTypeField.value.ToString() + PickCardQuality();
+        }
+        else
+        {
+            switch (evt.newValue)
+            {
+                case CardType.Attack:
+                    dirs[dirs.Length - 2] = "AttackCards";
+                    dirs[dirs.Length - 1] = "Attack" + PickCardQuality();
+                    break;
+                case CardType.Defense:
+                    dirs[dirs.Length - 2] = "DefenceCards";
+                    dirs[dirs.Length - 1] = "Defence" + PickCardQuality();
+                    break;
+                case CardType.Curse:
+                    dirs[dirs.Length - 2] = "CurseCards";
+                    dirs[dirs.Length - 1] = "Curse";
+                    break;
+                case CardType.Movement:
+                    dirs[dirs.Length - 2] = "MovementCards";
+                    dirs[dirs.Length - 1] = "Move" + PickCardQuality();
+                    break;
+            }
+        }
+        
+        _currentBackgroundPath = String.Join("/", dirs);
+        _background.sprite = Resources.Load<Sprite>(String.Join("/", dirs));
+    }
+
+
+
+    private string PickCardQuality()
+    {
+        switch (_cardQualityField.value)
+        {
+            case 1: return " I";
+            case 2: return " II";
+            case 3: return " III";
+        }
+        return "";
     }
 
     private void PopulateFields()
