@@ -481,7 +481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursor: {fileID: 5692573933346010834}
   speed: 0
-  playerPrefab: {fileID: 0}
+  playerPrefab: {fileID: 2709433044352046491, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
   _range: 3
 --- !u!1001 &2763345840770419380
 PrefabInstance:

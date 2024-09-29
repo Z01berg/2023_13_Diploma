@@ -287,7 +287,7 @@ public class InstantiatedRoom : MonoBehaviour
         
         var selectedPositions = positions.Take(numEnemiesToSpawn);
 
-        bool spawnEventEnemy = Random.Range(0, 11) == 10;
+        bool spawnEventEnemy = Random.Range(0, 2) == 1;
         bool eventEnemySpawned = false;
         
         foreach (var position in selectedPositions)

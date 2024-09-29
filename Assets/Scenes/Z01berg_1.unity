@@ -451,9 +451,9 @@ PrefabInstance:
     - target: {fileID: 1978499998629159124, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
       propertyPath: _player
       value: 
-      objectReference: {fileID: 308086432}
+      objectReference: {fileID: 1588645368}
     - target: {fileID: 1978499998629159124, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
-      propertyPath: _playerToMove
+      propertyPath: _playerMovePoint
       value: 
       objectReference: {fileID: 803237028}
     m_RemovedComponents: []
