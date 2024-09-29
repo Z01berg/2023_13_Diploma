@@ -287,12 +287,12 @@ public class InstantiatedRoom : MonoBehaviour
         
         var selectedPositions = positions.Take(numEnemiesToSpawn);
 
-        bool spawnEventEnemy = Random.Range(0, 2) == 1;
+        bool spawnEventEnemy = Random.Range(1, 6) == 5;
         bool eventEnemySpawned = false;
         
         foreach (var position in selectedPositions)
         {
-            int randomValue = Random.Range(0, 5);
+            int randomValue = Random.Range(0, 6);
 
             GameObject selectedEnemy = null;
 
