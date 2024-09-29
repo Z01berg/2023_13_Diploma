@@ -5,6 +5,9 @@ using System.Linq;
 using CardActions;
 using Grid.New;
 using Player;
+using TMPro;
+using UI;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.WSA;
 
@@ -15,7 +18,7 @@ public class MouseController : MonoBehaviour
 
     public float speed; //do pathFindingu
     public GameObject playerPrefab;
-    public int _range = 3; // TODO: będzie przypisywany kartą
+    //public int _range = 3; // TODO: będzie przypisywany kartą/
 
     private RangeFinder _rangeFinder;
     private List<OverlayTile> _rangeTiles;
@@ -23,6 +26,8 @@ public class MouseController : MonoBehaviour
 
     private Vector2 _playerPosition;
     private PlayerController _playerController;
+    private bool _canHideRange = false;
+
 
 
     private void Start()
@@ -31,8 +36,35 @@ public class MouseController : MonoBehaviour
         _rangeTiles = new List<OverlayTile>();
         // _playerPosition = GetPlayerPosition();
         _playerController = playerPrefab.GetComponent<PlayerController>();
+        EventSystem.ShowRange.AddListener(ShowRangeTiles);
     }
 
+
+    private void Update()
+    {
+        if (Wrapper.cardInUse)
+        {
+            String range = Wrapper.cardInUse.GetComponent<CardDisplay>().range.text;
+            Debug.Log(range);
+            ShowRangeTiles(int.Parse(range)); //TODO wybieranie naprawić żeby zniakało
+            _canHideRange = true;
+            if (_playerController.enabled)
+            {
+                _playerController.enabled = false;
+            }
+        }
+        else if (_canHideRange && !Wrapper.cardInUse)
+        {
+            if (!_playerController.enabled)
+            {
+                _playerController.enabled = true;foreach (var tile in _rangeTiles)
+                {
+                    tile.HideTile();
+                }
+            }
+        }
+        
+    }
 
     void LateUpdate()
     {
@@ -69,9 +101,6 @@ public class MouseController : MonoBehaviour
                     overlayTile.gameObject.GetComponent<OverlayTile>().HideTile();
                 }
             }
-            else
-                Debug.Log("Cos nie działa");
-
             // if (_playerController.standingOnTile == null)
             // {
             //     
@@ -79,9 +108,9 @@ public class MouseController : MonoBehaviour
         }
     }
 
-    public void ShowRangeTiles()
+    public void ShowRangeTiles(int range)
     {
-        GetRangeTiles();
+        GetRangeTiles(range);
     }
 
     public RaycastHit2D? GetFocusedOnTile()
@@ -108,15 +137,15 @@ public class MouseController : MonoBehaviour
         _playerController.standingOnTile = tile;
     }
 
-    private void GetRangeTiles()
+    private void GetRangeTiles(int range)
     {
         _rangeTiles = _rangeFinder.GetTilesInRange(
             new Vector2(_playerController.standingOnTile.gridLocation.x,
-                _playerController.standingOnTile.gridLocation.y), _range);
+                _playerController.standingOnTile.gridLocation.y), range);
 
         foreach (var tile in _rangeTiles)
         {
-            tile.ShowTile();
+            tile.ShowRangeTile();
         }
     }
 

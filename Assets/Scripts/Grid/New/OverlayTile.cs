@@ -21,11 +21,18 @@ namespace Grid.New
         public void HideTile()
         {
             gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+            gameObject.GetComponent<SpriteRenderer>().material.color = new Color(1, 1, 1, 1);
+
         }
         
         public void ShowTile()
         {
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.7f);
+        }
+        public void ShowRangeTile()
+        {
+            gameObject.GetComponent<SpriteRenderer>().material.color = new Color(241, 224, 92, 0.7f);
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(241, 224, 92, 0.7f);
         }
 
 

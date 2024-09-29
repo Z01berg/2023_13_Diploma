@@ -131,7 +131,7 @@ namespace Player
                 // RaycastHit2D
         }
 
-        private void ToogleScrypt(bool isThis)
+        public void ToogleScrypt(bool isThis)
         {
             _isPlayerTurn = isThis;
             if (this.enabled && !isThis)
