@@ -217,7 +217,7 @@ public class ItemAndCardsEditorWindow : EditorWindow
 
     private void ImportJson()
     {
-        Deserialization deserialization = new Deserialization();
+        Deserialization deserialization = new();
         deserialization.Import();
         
     }

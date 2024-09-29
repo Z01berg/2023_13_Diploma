@@ -10,10 +10,7 @@
             "cost": 0,
             "damage": 0,
             "range": 0,
-            "move": 2,
-            
-            "backgroundPath": "Graphics/CardBackgrounds/DefenceCards/DefenceCardBronzeTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "move": 2
         },
         {
             "id": 1,
@@ -25,10 +22,7 @@
             "cost": 0,
             "damage": 0,
             "range": 0,
-            "move": 0,
-            
-            "backgroundPath": "Graphics/CardBackgrounds/DefenceCards/DefenceCardSilverTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "move": 0
         },
         {
             "id": 2,
@@ -40,10 +34,7 @@
             "cost": 0,
             "damage": 8,
             "range": 0,
-            "move": 0,
-            
-            "backgroundPath": "Graphics/CardBackgrounds/DefenceCards/DefenceCardGoldTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "move": 0
         },
         {
             "id": 3,
@@ -55,10 +46,7 @@
             "cost": 0,
             "damage": 8,
             "range": 0,
-            "move": 0,
-
-            "backgroundPath": "Graphics/CardBackgrounds/DefenceCards/DefenceCardGoldTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "move": 0
         },
         {
             "id": 4,
@@ -70,10 +58,7 @@
             "cost": 0,
             "damage": 8,
             "range": 0,
-            "move": 0,
-
-            "backgroundPath": "Graphics/CardBackgrounds/DefenceCards/DefenceCardGoldTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "move": 0
         }
     ]
 }

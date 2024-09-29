@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51a5a1fad4f20824d8ec432780ab1840, type: 3}
+  m_Name: Consuming Spear
+  m_EditorClassIdentifier: 
+  id: 4
+  type: 0
+  range: 2
+  isActive: 1
+  cardQuality: 3
+  title: Consuming Spear
+  description: Heal the amount of damage dealt
+  cost: 3
+  damage: 6
+  move: 0
+  backgroundPath: Graphics/CardBackgrounds/AttackCards/Attack III
+  spritePath: Graphics/CardSprites/AttackCards/

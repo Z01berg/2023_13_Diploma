@@ -42,6 +42,144 @@ MonoBehaviour:
     m_SerializedLabels:
     - AttackCard
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7a75402760b341a4e8cd8d3bb7d84532
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/Punch.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9ca067d44d72e3a41bbf65116f12008c
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/Little Zap.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 89cae64bb35519d43979482e7add6a5d
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/Penetrating Zap.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 15bf0b983f289ba48a76569238285c76
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/Beast Scream.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b8df93f7678530943b7834a6d00cff25
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/Consuming Spear.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ae425c44e3093824bb7b20ffbc3de427
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/Rook Power.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9134df52b7c6cb947818dc6a59602a7a
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/Fire Spray.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7812e2fbe22425d49b2190c187dc673c
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/Flash Of Arrows.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 571e4085a64319949ad53fff4c49bb10
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/Entagle.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0ea3ac4449ca4ff43a7e304e6d482aa8
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/Devastating Shoot.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 33d3fe5b925968b44a69f7fcb441c142
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/Aim.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2e2e19ece6016643b1859f5ae18f59d
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/Suppressive Fire.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9d3385a9eb00cb740908e77a01473189
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/Flaring Torch.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2d1dfe97b034b4f40aaa7a67c396ddc2
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/Reaching Swing.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 45893b66482b18b4f8a97af74575531f
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/Impaling Stab.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4bf32239d01507b4490c7fa362e729ea
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/Za Warudo.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8893be65b25a6064a936f73d4237cf01
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/Fireball.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f30bf40bb8f482a48a438a98a29f3a58
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/Tactical Reload.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 46f608f16a7aff94bbf7d8b20ccf93f9
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/Three Arrows Problem.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6143dba8bebae114cbd250824c6829f8
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/Classic Shooter Mechanic.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 53c3255cf3911df4e9ce68e0861430f4
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/Stab.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 13b2b8e2b8326cb479a0bc9197e9b096
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/Scary Move.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6a6d619b35aa379418e0bf24c3deabab
+    m_Address: Assets/ScriptableObjectAssets/Card/Attack/Berserk.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AttackCard
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f505d56935b80a94cb01aefad73250da, type: 2}
   m_SchemaSet:

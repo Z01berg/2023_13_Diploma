@@ -36,6 +36,84 @@ MonoBehaviour:
     m_SerializedLabels:
     - MovementCard
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 84ece34187bdb98429982acd750dc701
+    m_Address: Assets/ScriptableObjectAssets/Card/Move/Shuffle.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MovementCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 641b427b50518ef44bb8976dc76e5bf8
+    m_Address: Assets/ScriptableObjectAssets/Card/Move/Walk.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MovementCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6631538008c161a4f9ea7940218798b8
+    m_Address: Assets/ScriptableObjectAssets/Card/Move/Run.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MovementCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3bf9c7f5fc4d0ee439af34ed47b76392
+    m_Address: Assets/ScriptableObjectAssets/Card/Move/Sprint.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MovementCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a1726d6c4b6131246bf5f9faec97a0c6
+    m_Address: Assets/ScriptableObjectAssets/Card/Move/Healing Dash.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MovementCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 177606eff3297584fadb22ec23b82a92
+    m_Address: Assets/ScriptableObjectAssets/Card/Move/Smashing Spin.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MovementCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1824ffe34e80cc54c92f776d8ceef47f
+    m_Address: Assets/ScriptableObjectAssets/Card/Move/Camper.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MovementCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1e3190ff415ac344094de1d583389815
+    m_Address: Assets/ScriptableObjectAssets/Card/Move/Curse Shift.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MovementCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6e3961a164e4dee47adaae01ac598527
+    m_Address: Assets/ScriptableObjectAssets/Card/Move/Mighty Charge.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MovementCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 52fc134a28dc7a942aa72ff854943fdf
+    m_Address: Assets/ScriptableObjectAssets/Card/Move/Positioning Move.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MovementCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c9c3f365f33698c47a8f4b0059d1573f
+    m_Address: Assets/ScriptableObjectAssets/Card/Move/Warp Run.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MovementCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4d87a3907af657a44ab3884dee39a090
+    m_Address: Assets/ScriptableObjectAssets/Card/Move/Violent Spin.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MovementCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6f9f9e5c60c4cc14c97576bc77eef4af
+    m_Address: Assets/ScriptableObjectAssets/Card/Move/Rocket Charge.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MovementCard
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f505d56935b80a94cb01aefad73250da, type: 2}
   m_SchemaSet:

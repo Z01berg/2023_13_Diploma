@@ -4,227 +4,157 @@
             "id": 0,
             "isActive": true,
             "cardQuality": 0,
-
-            "tag": "Mage, Warrior, Ranger",
             
             "title": "Shuffle",
             "description": "Mortal life is very miserable",
             "cost": 0,
             "damage": 0,
             "range": 0,
-            "move": 1,
-            
-            "backgroundPath": "Graphics/CardBackgrounds/MovementCards/MovementCardBronzeTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "move": 1
         },
         {
             "id": 1,
             "isActive": true,
             "cardQuality": 1,
-
-            "tag": "Mage, Warrior, Ranger",
             
             "title": "Walk",
             "description": "Mortal life is very miserable. Unless you are moving",
             "cost": 1,
             "damage": 0,
             "range": 0,
-            "move": 2,
-            
-            "backgroundPath": "Graphics/CardBackgrounds/MovementCards/MovementCardSilverTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "move": 2
         },
         {
             "id": 2,
             "isActive": true,
             "cardQuality": 1,
-
-            "tag": "Mage, Warrior, Ranger",
             
             "title": "Run",
             "description": "You wanted only to loot that chest but there was a SPIDER!!!",
             "cost": 2,
             "damage": 0,
             "range": 0,
-            "move": 3,
-            
-            "backgroundPath": "Graphics/CardBackgrounds/MovementCards/MovementCardGoldTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "move": 3
         },
         {
             "id": 3,
             "isActive": true,
             "cardQuality": 2,
 
-            "tag": "Mage, Warrior, Ranger",
-
             "title": "Sprint",
             "description": "RUN FOREST RUNNNN!!!",
             "cost": 5,
             "damage": 0,
             "range": 0,
-            "move": 6,
-
-            "backgroundPath": "Graphics/CardBackgrounds/MovementCards/MovementCardGoldTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "move": 6
         },
         {
             "id": 4,
             "isActive": true,
             "cardQuality": 2,
 
-            "tag": "Mage, Warrior",
-
             "title": "Healing Dash",
             "description": "At the end of this Move. Heal 1 for every square you are distant from your starting square",
             "cost": 5,
             "damage": 0,
             "range": 0,
-            "move": 4,
-
-            "backgroundPath": "Graphics/CardBackgrounds/MovementCards/MovementCardGoldTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "move": 4
         },
         {
             "id": 5,
             "isActive": true,
             "cardQuality": 2,
 
-            "tag": " Warrior, Ranger",
-
             "title": "Smashing Spin",
             "description": "Do 2 damage to all enemies adjacent to you at the start and end of this move",
             "cost": 3,
             "damage": 2,
             "range": 0,
-            "move": 2,
-
-            "backgroundPath": "Graphics/CardBackgrounds/MovementCards/MovementCardGoldTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "move": 2
         },
         {
             "id": 6,
             "isActive": true,
             "cardQuality": 2,
 
-            "tag": "Mage, Warrior, Ranger",
-
             "title": "Camper",
             "description": "\"Splinter students!!! They everywhere!!!\"",
             "cost": 0,
             "damage": 0,
             "range": 0,
-            "move": 3,
-
-            "backgroundPath": "Graphics/CardBackgrounds/MovementCards/MovementCardGoldTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "move": 3
         },
         {
             "id": 7,
             "isActive": true,
             "cardQuality": 2,
 
-            "tag": "Mage, Warrior, Ranger",
-
             "title": "Curse Shift",
             "description": "Teleport to any square in range \"Everything have some price\"",
             "cost": 4,
             "damage": 2,
             "range": 0,
-            "move": 6,
-
-            "backgroundPath": "Graphics/CardBackgrounds/MovementCards/MovementCardGoldTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "move": 6
         },
         {
             "id": 8,
             "isActive": true,
             "cardQuality": 3,
 
-            "tag": "Warrior",
-            "key": "Straight Line",
-
             "title": "Mighty Charge",
             "description": "Move in a straight line until you hit a wall or enemy. Do 2 damage for every square you moved",
             "cost": 6,
             "damage": 0,
             "range": 0,
-            "move": 100,
-
-            "backgroundPath": "Graphics/CardBackgrounds/MovementCards/MovementCardGoldTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "move": 100
         },
         {
             "id": 9,
             "isActive": true,
             "cardQuality": 3,
 
-            "tag": "Mage, Warrior, Ranger",
-            "key": "Draw Card, Adjecent Enemies",
-
             "title": "Positioning Move",
             "description": "Draw a card for every enemy adjecent to you at the end of this move",
             "cost": 6,
             "damage": 0,
             "range": 0,
-            "move": 5,
-
-            "backgroundPath": "Graphics/CardBackgrounds/MovementCards/MovementCardGoldTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "move": 5
         },
         {
             "id": 10,
             "isActive": true,
             "cardQuality": 3,
 
-            "tag": "Mage, Ranger",
-            "key": "+Move 3",
-
             "title": "Warp Run",
             "description": "Move 3. Next 3 moves move +1 tile",
             "cost": 4,
             "damage": 0,
             "range": 0,
-            "move": 3,
-
-            "backgroundPath": "Graphics/CardBackgrounds/MovementCards/MovementCardGoldTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "move": 3
         },
         {
             "id": 11,
             "isActive": true,
             "cardQuality": 3,
 
-            "tag": "Mage, Ranger",
-            "key": "Start of Move Damage",
-
             "title": "Violent Spin",
             "description": "Push 2 and 1 damage to all enemies adjacent to you at the start of this move",
             "cost": 4,
             "damage": 0,
             "range": 0,
-            "move": 3,
-
-            "backgroundPath": "Graphics/CardBackgrounds/MovementCards/MovementCardGoldTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "move": 3
         },
         {
             "id": 12,
             "isActive": true,
             "cardQuality": 3,
 
-            "tag": "Warrior",
-            "key": "Start of Move Damage",
-
             "title": "Rocket Charge",
             "description": "Move in a straight line only. If in next square of landing is enemy do 3 damage",
             "cost": 4,
             "damage": 3,
             "range": 0,
-            "move": 5,
-
-            "backgroundPath": "Graphics/CardBackgrounds/MovementCards/MovementCardGoldTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "move": 5
         }
     ]
 }

@@ -73,12 +73,12 @@ public class CardCreatorWindow : ScrollView, IModifiable
         {
             _itemReference.cards.Remove(_savedCardReference);
             _itemReference.cards.Add(_cardReference);
-            foreach(var element in parent.Children())
+            foreach (var element in parent.Children())
             {
                 element.MarkDirtyRepaint();
             }
         }
-        
+
 
         _savedCardReference = _cardReference;
 
@@ -94,13 +94,20 @@ public class CardCreatorWindow : ScrollView, IModifiable
         _cardReference.move = _moveField.value;
         _cardReference.backgroundPath = _currentBackgroundPath;
         _cardReference.spritePath = _currentBannerPath;
+
+        EditorUtility.SetDirty(_cardReference);
+        //EditorUtility.SetDirty(_itemReference);
+
     }
 
     private void CreateFields()
     {
-        _cards = new PopupField<CardsSO>();
-        _cards.RegisterValueChangedCallback(CardSelectionChanged);
-        Add(_cards);
+        if (_itemReference != null)
+        {
+            _cards = new PopupField<CardsSO>();
+            _cards.RegisterValueChangedCallback(CardSelectionChanged);
+            Add(_cards);
+        }
 
         _idField = new IntegerField("id");
         _idField.isReadOnly = true;
@@ -116,7 +123,7 @@ public class CardCreatorWindow : ScrollView, IModifiable
         _isActiveField = new("is active");
         Add(_isActiveField);
 
-        _cardQualityField = new SliderInt("card quality", 1, 3);
+        _cardQualityField = new SliderInt("card quality", 0, 2);
         _cardQualityField.RegisterValueChangedCallback(CardQualityChanged);
         Add(_cardQualityField);
 
@@ -168,8 +175,8 @@ public class CardCreatorWindow : ScrollView, IModifiable
     private void PickCardBanner()
     {
         var file = EditorUtility.OpenFilePanel("graphic selection", "Assets\\Resources\\Graphics\\CardSprites", "");
-        
-        if(file == null || file.Length == 0 || file == "")
+
+        if (file == null || file.Length == 0 || file == "")
         {
             return;
         }
@@ -179,7 +186,7 @@ public class CardCreatorWindow : ScrollView, IModifiable
         var index = 0;
         for (int i = 0; i < folders.Length; i++)
         {
-            if(folders[i] == "Graphics")
+            if (folders[i] == "Graphics")
             {
                 index = i;
                 break;
@@ -197,34 +204,35 @@ public class CardCreatorWindow : ScrollView, IModifiable
     private void CardTypeChanged(ChangeEvent<Enum> evt = null)
     {
         string[] dirs = _cardReference.backgroundPath.Split("/");
-        if(evt == null)
+
+
+        var type = _cardTypeField.value;
+
+        if (evt != null)
         {
-            
-            dirs[dirs.Length - 1] = _cardTypeField.value.ToString() + PickCardQuality();
+            type = evt.newValue;
         }
-        else
+
+        switch (type)
         {
-            switch (evt.newValue)
-            {
-                case CardType.Attack:
-                    dirs[dirs.Length - 2] = "AttackCards";
-                    dirs[dirs.Length - 1] = "Attack" + PickCardQuality();
-                    break;
-                case CardType.Defense:
-                    dirs[dirs.Length - 2] = "DefenceCards";
-                    dirs[dirs.Length - 1] = "Defence" + PickCardQuality();
-                    break;
-                case CardType.Curse:
-                    dirs[dirs.Length - 2] = "CurseCards";
-                    dirs[dirs.Length - 1] = "Curse";
-                    break;
-                case CardType.Movement:
-                    dirs[dirs.Length - 2] = "MovementCards";
-                    dirs[dirs.Length - 1] = "Move" + PickCardQuality();
-                    break;
-            }
+            case CardType.Attack:
+                dirs[dirs.Length - 2] = "AttackCards";
+                dirs[dirs.Length - 1] = "Attack" + PickCardQuality();
+                break;
+            case CardType.Defense:
+                dirs[dirs.Length - 2] = "DefenceCards";
+                dirs[dirs.Length - 1] = "Defence" + PickCardQuality();
+                break;
+            case CardType.Curse:
+                dirs[dirs.Length - 2] = "CurseCards";
+                dirs[dirs.Length - 1] = "Curse";
+                break;
+            case CardType.Movement:
+                dirs[dirs.Length - 2] = "MovementCards";
+                dirs[dirs.Length - 1] = "Move" + PickCardQuality();
+                break;
         }
-        
+
         _currentBackgroundPath = String.Join("/", dirs);
         _background.sprite = Resources.Load<Sprite>(String.Join("/", dirs));
     }
@@ -235,6 +243,7 @@ public class CardCreatorWindow : ScrollView, IModifiable
     {
         switch (_cardQualityField.value)
         {
+            case 0: return " I";
             case 1: return " I";
             case 2: return " II";
             case 3: return " III";
@@ -244,14 +253,18 @@ public class CardCreatorWindow : ScrollView, IModifiable
 
     private void PopulateFields()
     {
-        var addressables = AddressablesUtilities.LoadItems(AddressablesTags.AttackCard, AddressablesTags.DefenceCard, AddressablesTags.MovementCard);
-        List<CardsSO> convCards = new();
-        foreach (var card in addressables)
+        if (_itemReference != null)
         {
-            convCards.Add(card as CardsSO);
+            var addressables = AddressablesUtilities.LoadItems(AddressablesTags.AttackCard, AddressablesTags.DefenceCard, AddressablesTags.MovementCard);
+            List<CardsSO> convCards = new();
+            foreach (var card in addressables)
+            {
+                convCards.Add(card as CardsSO);
+            }
+            _cards.choices = convCards;
+            _cards.value = _cardReference;
         }
-        _cards.choices = convCards;
-        _cards.value = _cardReference;
+
 
         _idField.value = _cardReference.id;
         _cardTypeField.value = _cardReference.type;

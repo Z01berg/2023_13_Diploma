@@ -16,11 +16,11 @@ MonoBehaviour:
   type: 0
   range: 1
   isActive: 1
-  cardQuality: 0
+  cardQuality: 1
   title: DefoultAttackCard
   description: This card deals 1 dmg to one enemy. Lorem ipsum dolor.
   cost: 1
   damage: 1
   move: 0
-  backgroundPath: Graphics/CardBackgrounds/AttackCards/AttackCardBronzeTier
-  spritePath: Graphics/CardSprites/AttackCards/ExampleAttackCard1
+  backgroundPath: Graphics/CardBackgrounds/AttackCards/Attack I
+  spritePath: 

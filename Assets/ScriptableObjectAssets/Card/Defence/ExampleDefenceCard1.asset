@@ -22,5 +22,5 @@ MonoBehaviour:
   cost: 2
   damage: 3
   move: 0
-  backgroundPath: Graphics/CardBackgrounds/DefenceCards/DefenceCardSilverTier
-  spritePath: Graphics/CardSprites/AttackCards/ExampleAttackCard1
+  backgroundPath: Graphics/CardBackgrounds/DefenceCards/Defence I
+  spritePath: Graphics/CardSprites/DefenceCards/

@@ -70,7 +70,7 @@ public class ItemCreatorWindow : VisualElement, IModifiable
 
     }
 
-    void IModifiable.Save()
+    public void Save()
     {
         if (_nameField.value == "" || _nameField.value == null)
         {
@@ -89,6 +89,8 @@ public class ItemCreatorWindow : VisualElement, IModifiable
         _itemReference.description = _descriptionField.value;
         _itemReference.icon = _spriteImage.sprite;
         _itemReference.itemType = (ItemType)_typeField.value;
+
+        EditorUtility.SetDirty(_itemReference);
     }
 
     void ImportGraphic()

@@ -7,7 +7,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public enum AddressablesTags
 {
-    DefenceCard,DefaultCard,MovementCard,AttackCard,Item
+    DefenceCard,DefaultCard,MovementCard,AttackCard,Item,AttackCardsBanner
 }
 
 public class AddressablesUtilities : MonoBehaviour

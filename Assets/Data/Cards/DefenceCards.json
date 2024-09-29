@@ -1,5 +1,5 @@
 {
-    "attackCardsList":[
+    "defenceCardsList":[
         {
             "id": 0,
             "isActive": true,
@@ -10,10 +10,7 @@
             "cost": 1,
             "damage": 1,
             "range": 0,
-            "move": 0,
-            
-            "backgroundPath": "Graphics/CardBackgrounds/DefenceCards/DefenceCardBronzeTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "move": 0
         },
         {
             "id": 1,
@@ -25,10 +22,7 @@
             "cost": 2,
             "damage": 3,
             "range": 0,
-            "move": 0,
-            
-            "backgroundPath": "Graphics/CardBackgrounds/DefenceCards/DefenceCardSilverTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "move": 0
         },
         {
             "id": 2,
@@ -40,10 +34,7 @@
             "cost": 5,
             "damage": 8,
             "range": 0,
-            "move": 0,
-            
-            "backgroundPath": "Graphics/CardBackgrounds/DefenceCards/DefenceCardGoldTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "move": 0
         }
     ]
 }
