@@ -24,4 +24,4 @@ MonoBehaviour:
   damage: 0
   move: 4
   backgroundPath: Graphics/CardBackgrounds/MovementCards/Move II
-  spritePath: Graphics/CardSprites/MovementCards/
+  spritePath: Graphics/CardSprites/MovementCards/Healing Dash

@@ -204,6 +204,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 6686389334764874740, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_fontSize
+      value: 31.7
+      objectReference: {fileID: 0}
     - target: {fileID: 8084776943904088862, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: _inventory
       value: 
@@ -452,10 +456,6 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1588645368}
-    - target: {fileID: 1978499998629159124, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
-      propertyPath: _playerMovePoint
-      value: 
-      objectReference: {fileID: 803237028}
     - target: {fileID: 1978499998629159124, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
       propertyPath: _playerMovePoint
       value: 

@@ -23,4 +23,4 @@ MonoBehaviour:
   damage: 15
   move: 0
   backgroundPath: Graphics/CardBackgrounds/AttackCards/Attack III
-  spritePath: Graphics/CardSprites/AttackCards/
+  spritePath: Graphics/CardSprites/AttackCards/Rook Power

@@ -23,4 +23,4 @@ MonoBehaviour:
   damage: 8
   move: 0
   backgroundPath: Graphics/CardBackgrounds/DefenceCards/Defence II
-  spritePath: Graphics/CardSprites/DefenceCards/
+  spritePath: Graphics/CardSprites/DefenceCards/ExampleDefenceCard2

@@ -24,4 +24,4 @@ MonoBehaviour:
   damage: 0
   move: 0
   backgroundPath: Graphics/CardBackgrounds/AttackCards/Attack II
-  spritePath: Graphics/CardSprites/AttackCards/
+  spritePath: Graphics/CardSprites/AttackCards/Aim

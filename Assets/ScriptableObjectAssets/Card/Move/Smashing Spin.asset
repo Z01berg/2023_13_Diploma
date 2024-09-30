@@ -24,4 +24,4 @@ MonoBehaviour:
   damage: 2
   move: 2
   backgroundPath: Graphics/CardBackgrounds/MovementCards/Move II
-  spritePath: Graphics/CardSprites/MovementCards/
+  spritePath: Graphics/CardSprites/MovementCards/Smashing Spin

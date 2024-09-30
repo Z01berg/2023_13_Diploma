@@ -24,4 +24,4 @@ MonoBehaviour:
   damage: 2
   move: 2
   backgroundPath: Graphics/CardBackgrounds/AttackCards/Attack I
-  spritePath: Graphics/CardSprites/AttackCards/
+  spritePath: Graphics/CardSprites/AttackCards/Penetrating Zap

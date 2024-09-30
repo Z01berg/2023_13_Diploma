@@ -76,7 +76,7 @@ public class Deserialization : Editor
             s.damage = obj.damage;
             s.move = obj.move;
             s.backgroundPath = "Graphics/CardBackgrounds/AttackCards/Attack" + PickCardQuality(s.cardQuality);
-            s.spritePath = $"Graphics/CardSprites/AttackCards/{s.name}";
+            s.spritePath = $"Graphics/CardSprites/AttackCards/{s.title}";
             s.range = obj.range;
 
             AssetDatabase.CreateAsset(s, cPath + s.title + ".asset");
@@ -101,7 +101,7 @@ public class Deserialization : Editor
             s.damage = obj.damage;
             s.move = obj.move;
             s.backgroundPath = "Graphics/CardBackgrounds/CurseCards/Curse";
-            s.spritePath = $"Graphics/CardSprites/CurseCards/{s.name}";
+            s.spritePath = $"Graphics/CardSprites/CurseCards/{s.title}";
             s.range = obj.range;
 
             AssetDatabase.CreateAsset(s, cursePath + s.title + ".asset");
@@ -126,7 +126,7 @@ public class Deserialization : Editor
             s.damage = obj.damage;
             s.move = obj.move;
             s.backgroundPath = "Graphics/CardBackgrounds/DefenceCards/Defence" + PickCardQuality(s.cardQuality);
-            s.spritePath = $"Graphics/CardSprites/DefenceCards/{s.name}";
+            s.spritePath = $"Graphics/CardSprites/DefenceCards/{s.title}";
             s.range = obj.range;
 
             AssetDatabase.CreateAsset(s, dPath + s.title + ".asset");
@@ -151,7 +151,7 @@ public class Deserialization : Editor
             s.damage = obj.damage;
             s.move = obj.move;
             s.backgroundPath = "Graphics/CardBackgrounds/MovementCards/Move" + PickCardQuality(s.cardQuality);
-            s.spritePath = $"Graphics/CardSprites/MovementCards/{s.name}";
+            s.spritePath = $"Graphics/CardSprites/MovementCards/{s.title}";
             s.range = obj.range;
 
             AssetDatabase.CreateAsset(s, mPath + s.title + ".asset");

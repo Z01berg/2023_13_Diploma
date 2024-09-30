@@ -24,4 +24,4 @@ MonoBehaviour:
   damage: 3
   move: 5
   backgroundPath: Graphics/CardBackgrounds/MovementCards/Move III
-  spritePath: Graphics/CardSprites/MovementCards/
+  spritePath: Graphics/CardSprites/MovementCards/Rocket Charge

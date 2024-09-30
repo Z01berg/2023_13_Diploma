@@ -23,4 +23,4 @@ MonoBehaviour:
   damage: 0
   move: 3
   backgroundPath: Graphics/CardBackgrounds/MovementCards/Move I
-  spritePath: Graphics/CardSprites/MovementCards/
+  spritePath: Graphics/CardSprites/MovementCards/Run

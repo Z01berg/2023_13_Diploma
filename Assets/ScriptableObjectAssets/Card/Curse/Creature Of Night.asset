@@ -23,4 +23,4 @@ MonoBehaviour:
   damage: 8
   move: 0
   backgroundPath: Graphics/CardBackgrounds/CurseCards/Curse
-  spritePath: Graphics/CardSprites/CurseCards/
+  spritePath: Graphics/CardSprites/CurseCards/Creature Of Night

@@ -24,4 +24,4 @@ MonoBehaviour:
   damage: 0
   move: 3
   backgroundPath: Graphics/CardBackgrounds/MovementCards/Move III
-  spritePath: Graphics/CardSprites/MovementCards/
+  spritePath: Graphics/CardSprites/MovementCards/Violent Spin
