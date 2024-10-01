@@ -39,9 +39,10 @@ public class ShowCaseEvent : MonoBehaviour
     
     private void Kill()
     {
-        room.enemyInRoomList.Remove(this.gameObject); 
+        room.enemyInRoomList.Remove(_gameObject); 
         Destroy(_gameObject);
         Destroy(_body);
         Debug.Log("killed EVENT BROO");
+        Debug.Log(room.enemyInRoomList.Count);
     }
 }

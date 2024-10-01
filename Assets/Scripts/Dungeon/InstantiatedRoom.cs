@@ -176,6 +176,7 @@ public class InstantiatedRoom : MonoBehaviour
                 //copy
                 tilemap.SetTile(new Vector3Int(startPosition.x + xPos, startPosition.y - 1 - yPos, 0),
                     tilemap.GetTile(new Vector3Int(startPosition.x + xPos, startPosition.y - yPos, 0)));
+                
                 //set rotation
                 tilemap.SetTransformMatrix(new Vector3Int(startPosition.x + xPos, startPosition.y - 1 - yPos, 0),
                     transformMatrix);
@@ -223,11 +224,6 @@ public class InstantiatedRoom : MonoBehaviour
             {
                 ground = tilemap;
             }
-            /*
-            else if (tilemap.gameObject.CompareTag("frontTilemap"))
-            {
-                wall = tilemap;
-            }*/
             else if (tilemap.gameObject.CompareTag("decoration1Tilemap"))
             {
                 decorative = tilemap;
@@ -287,7 +283,7 @@ public class InstantiatedRoom : MonoBehaviour
         
         var selectedPositions = positions.Take(numEnemiesToSpawn);
 
-        bool spawnEventEnemy = Random.Range(1, 6) == 5;
+        bool spawnEventEnemy = Random.Range(5, 6) == 5;//TODO: Change to (1, 6)
         bool eventEnemySpawned = false;
         
         foreach (var position in selectedPositions)
@@ -323,9 +319,10 @@ public class InstantiatedRoom : MonoBehaviour
                 var eventE = Instantiate(selectedEnemy, transform.Find("Grid"));
                 eventE.transform.localPosition = new Vector3(position.x, position.y, -6f);
                 enemyInRoomList.Add(eventE);
+                eventE.GetComponentInChildren<ShowCaseEvent>().room = this;
                 eventEnemySpawned = true;
             }
-            else
+            /*else
             {
                 var enemy = Instantiate(enemyPrefab, transform.Find("Grid"));
                 enemy.gameObject.GetComponentInChildren<ApplyCardEffect>().gameObjectTimer = timer;
@@ -333,7 +330,7 @@ public class InstantiatedRoom : MonoBehaviour
                 enemyInRoomList.Add(enemy);
                 enemy.GetComponent<HealthBar>().room = this;
                 CombatMode.isPlayerInCombat = true;
-            }
+            }*/
         }
         
         foreach (var door in doorsList)
