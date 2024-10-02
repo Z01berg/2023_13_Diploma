@@ -283,7 +283,7 @@ public class InstantiatedRoom : MonoBehaviour
         
         var selectedPositions = positions.Take(numEnemiesToSpawn);
 
-        bool spawnEventEnemy = Random.Range(5, 6) == 5;//TODO: Change to (1, 6)
+        bool spawnEventEnemy = Random.Range(1, 6) == 5;
         bool eventEnemySpawned = false;
         
         foreach (var position in selectedPositions)
@@ -322,7 +322,7 @@ public class InstantiatedRoom : MonoBehaviour
                 eventE.GetComponentInChildren<ShowCaseEvent>().room = this;
                 eventEnemySpawned = true;
             }
-            /*else
+            else
             {
                 var enemy = Instantiate(enemyPrefab, transform.Find("Grid"));
                 enemy.gameObject.GetComponentInChildren<ApplyCardEffect>().gameObjectTimer = timer;
@@ -330,7 +330,7 @@ public class InstantiatedRoom : MonoBehaviour
                 enemyInRoomList.Add(enemy);
                 enemy.GetComponent<HealthBar>().room = this;
                 CombatMode.isPlayerInCombat = true;
-            }*/
+            }
         }
         
         foreach (var door in doorsList)
