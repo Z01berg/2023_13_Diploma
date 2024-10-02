@@ -111,6 +111,11 @@ public class TypeWriterEffect : MonoBehaviour
             }
 
             _currentVisibleCharactersIndex++;
+
+            if (_currentVisibleCharactersIndex == textInfo.characterCount - 1)
+            {
+                EventSystem.SkipedText.Invoke(true);
+            }
         }
     }
 

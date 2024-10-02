@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +12,17 @@ public class ShowCaseEvent : MonoBehaviour
     
     [SerializeField] private GameObject _gameObject;
     [SerializeField] private GameObject _body;
+
+    private void Start()
+    {
+        EventSystem.SkipedText.AddListener(ChangeBool);
+    }
     
+    private void ChangeBool(bool skipper)
+    {
+        skipped = skipper;
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.B) && !vpressed)
