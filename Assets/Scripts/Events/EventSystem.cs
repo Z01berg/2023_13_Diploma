@@ -137,4 +137,5 @@ public static class EventSystem
     public static UnityEvent<bool> SkipedText = new UnityEvent<bool>();
     
     #endregion
+    
 }

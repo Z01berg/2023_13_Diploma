@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 8533604885281124511}
   - component: {fileID: 4919540435111162258}
   - component: {fileID: 7037829238396197893}
-  m_Layer: 5
+  m_Layer: 27
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 144045155
-  m_SortingLayer: 3
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -517206667, guid: 7d9b087a603923a4e9300b94acea3472, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 2378195181319526630}
   - component: {fileID: 6610941464188751500}
   - component: {fileID: 7685396364959578461}
-  m_Layer: 5
+  m_Layer: 27
   m_Name: ToastNotificationMessage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,7 +349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7681715174171525282}
   - component: {fileID: 6921501678170649659}
-  m_Layer: 5
+  m_Layer: 27
   m_Name: ShowCase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -456,8 +456,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.51995, y: 0.1636, z: 0}
-    m_Extent: {x: 1.0199499, y: 0.6708, z: 0}
+    m_Center: {x: 0.51860154, y: 0.17115, z: 0}
+    m_Extent: {x: 1.0186015, y: 0.67125, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.5829965
@@ -544,7 +544,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2031271367
-  m_SortingLayer: 6
+  m_SortingLayer: 9
   m_SortingOrder: 1
   m_Sprite: {fileID: -1606720906, guid: 7d9b087a603923a4e9300b94acea3472, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -28,6 +28,7 @@ public class ShowCaseEvent : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.B) && !vpressed)
         {
             vpressed = true;
+            EventSystem.HideHand?.Invoke(vpressed);
             is_triggered = !is_triggered;
             ToastNotification.Show(
                 "Yeah, a simple Key can display a message. And this message doens't have a \"timer\" display render",
@@ -50,6 +51,8 @@ public class ShowCaseEvent : MonoBehaviour
     
     private void Kill()
     {
+        vpressed = !vpressed;
+        EventSystem.HideHand?.Invoke(vpressed);
         room.enemyInRoomList.Remove(_gameObject); 
         Destroy(_gameObject);
         Destroy(_body);
