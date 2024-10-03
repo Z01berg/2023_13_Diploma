@@ -21,7 +21,7 @@ namespace Grid.New
         public void HideTile()
         {
             gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
-            gameObject.GetComponent<SpriteRenderer>().material.color = new Color(1, 1, 1, 1);
+            gameObject.GetComponent<SpriteRenderer>().material.color = new Color(1, 1, 1, 0.5f);
 
         }
         

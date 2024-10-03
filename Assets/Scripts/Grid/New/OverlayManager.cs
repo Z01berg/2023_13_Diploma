@@ -73,7 +73,7 @@ public class OverlayManager : MonoBehaviour
     {
         var rangeTiles = new List<OverlayTile>();
         
-        Vector2 tileToCheck = new Vector2(playerOccupiedTile.x + 1, playerOccupiedTile.y); // TODO: naprawić żeby działało z wyszukiwanie zasięgu
+        Vector2 tileToCheck = new Vector2(playerOccupiedTile.x + 1, playerOccupiedTile.y);
         if (map.ContainsKey(tileToCheck))
         {
             rangeTiles.Add(map[tileToCheck]);

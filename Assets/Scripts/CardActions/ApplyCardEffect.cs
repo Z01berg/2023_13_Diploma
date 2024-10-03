@@ -1,4 +1,7 @@
+using System;
 using System.ComponentModel;
+using System.Linq;
+using Grid.New;
 using Player;
 using TMPro;
 using UI;
@@ -15,6 +18,8 @@ namespace CardActions
         private Timer _timer;
         private CardsEffectsManager _cardsEffectsManager;
         private Image _image; 
+        public OverlayTile standingOnTile;
+
 
         private void Start()
         {
@@ -23,6 +28,10 @@ namespace CardActions
             // _image = gameObject.GetComponent<SpriteRenderer>()
         }
 
+        private void Update()
+        {
+            standingOnTile = GetCurrentTile();
+        }
 
         private void OnMouseDown()
         {
@@ -80,5 +89,31 @@ namespace CardActions
 
             text.text = popUpText;
         }
+        public OverlayTile GetCurrentTile()
+        {
+            RaycastHit2D? hit = GetFocusedOnTile(transform.position);
+
+            if (hit.HasValue)
+            {
+                OverlayTile overlayTile = hit.Value.collider.gameObject.GetComponent<OverlayTile>();
+
+                return overlayTile;
+            }
+            return null;
+        }
+        public RaycastHit2D? GetFocusedOnTile(Vector3 spawnPosition)
+        {
+            Vector2 spawnPosition2d = new Vector2(spawnPosition.x, spawnPosition.y);
+
+            RaycastHit2D[] hits = Physics2D.RaycastAll(spawnPosition2d, Vector2.zero);
+
+            if (hits.Length > 0)
+            {
+                return hits.OrderByDescending(i => i.collider.transform.position.z).First();
+            }
+
+            return null;
+        }
+        
     }
 }

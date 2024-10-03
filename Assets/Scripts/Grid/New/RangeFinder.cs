@@ -7,15 +7,15 @@ namespace CardActions
 {
     public class RangeFinder
     {
-        public List<OverlayTile> GetTilesInRange(Vector2 location, int range)
+        public List<OverlayTile> GetTilesInRange(Vector2 location, int range, OverlayTile playersTile)
         {
-            var StartingTile = OverlayManager.Instance.map[location];
+            // var StartingTile = OverlayManager.Instance.map[location];
             var RangeTiles = new List<OverlayTile>();
 
             int stepCount = 0;
 
             var tilesForPreviousStep = new List<OverlayTile>();
-            tilesForPreviousStep.Add(StartingTile);
+            tilesForPreviousStep.Add(playersTile);
 
             while (stepCount < range)
             {

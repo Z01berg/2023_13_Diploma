@@ -45,9 +45,9 @@ public class MouseController : MonoBehaviour
         if (Wrapper.cardInUse)
         {
             String range = Wrapper.cardInUse.GetComponent<CardDisplay>().range.text;
-            Debug.Log(range);
             ShowRangeTiles(int.Parse(range)); //TODO wybieranie naprawić żeby zniakało
             _canHideRange = true;
+            _playerController.standingOnTile.ShowRangeTile();
             if (_playerController.enabled)
             {
                 _playerController.enabled = false;
@@ -141,7 +141,7 @@ public class MouseController : MonoBehaviour
     {
         _rangeTiles = _rangeFinder.GetTilesInRange(
             new Vector2(_playerController.standingOnTile.gridLocation.x,
-                _playerController.standingOnTile.gridLocation.y), range);
+                _playerController.standingOnTile.gridLocation.y), range, _playerController.standingOnTile);
 
         foreach (var tile in _rangeTiles)
         {

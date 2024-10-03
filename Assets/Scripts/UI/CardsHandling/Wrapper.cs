@@ -154,7 +154,7 @@ namespace UI
                 _isHovered = true;
                 cardInUse = this;
                 PlaceHolder.isTaken = true;
-                EventSystem.ShowRange.Invoke(int.Parse(cardInUse.GetComponent<CardDisplay>().range.ToString()));
+                EventSystem.ShowRange.Invoke(int.Parse(cardInUse.GetComponent<CardDisplay>().range.text));
             }
 
             if (Input.GetMouseButtonDown(1))

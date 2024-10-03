@@ -9,7 +9,7 @@
             "description": "This card gives you 1 defence point.",
             "cost": 1,
             "damage": 1,
-            "range": 0,
+            "range": 2,
             "move": 0,
             
             "backgroundPath": "Graphics/CardBackgrounds/DefenceCards/DefenceCardBronzeTier",
