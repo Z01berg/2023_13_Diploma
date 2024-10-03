@@ -360,6 +360,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2149619698750589151, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
+      propertyPath: m_Value
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2264738450791556759, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
       propertyPath: gameObjectTimer
       value: 

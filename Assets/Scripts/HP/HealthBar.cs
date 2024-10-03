@@ -70,12 +70,16 @@ public class HealthBar : MonoBehaviour
     private void SetData()
     {
         _maxValue = int.Parse(_parts[1]);
+        _slider.maxValue = _maxValue;
+        
         _value = int.Parse(_parts[0]);
+        _slider.value = _value;
     }
 
     private void UpdateHealth()
     {
         _value = int.Parse(_parts[0]);
+        _slider.value = _value;
     }
 
     public void ChangeHealth(int health)
@@ -83,17 +87,19 @@ public class HealthBar : MonoBehaviour
         if (_value + health > _maxValue)
         {
             _value = _maxValue;
+            _slider.value = _value;
         }
         else
         {
             _value += health;
+            _slider.value = _value;
         }
         UpdateHealthText();
     }
 
     private void UpdateHealthText()
     {
-        _data.text = _value + " / " + _maxValue;
+        _data.text = _value.ToString();
     }
 
     private void Kill()
