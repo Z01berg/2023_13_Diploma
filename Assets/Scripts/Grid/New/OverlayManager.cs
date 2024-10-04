@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,7 +48,7 @@ public class OverlayManager : MonoBehaviour
                     {
                         var tileLocation = new Vector3Int(x, y, z);
                         var cellWorldPosition = tm.GetCellCenterWorld(tileLocation);
-                        var tileKey = new Vector2(cellWorldPosition.x, cellWorldPosition.y);
+                        var tileKey = new Vector2((float)Math.Round(cellWorldPosition.x,3), (float)Math.Round(cellWorldPosition.y,3));
 
                         if (tm.HasTile(tileLocation - new Vector3Int(0, 0, 1)) && tm.gameObject
                                 .GetComponent<TilemapRenderer>().sortingLayerName.Equals("Ground"))
@@ -72,26 +73,33 @@ public class OverlayManager : MonoBehaviour
     public List<OverlayTile> GetRangeTiles(Vector2 playerOccupiedTile)
     {
         var rangeTiles = new List<OverlayTile>();
+
+        Vector2 playerPos = new Vector2((float)Math.Round(playerOccupiedTile.x, 3), (float)Math.Round(playerOccupiedTile.y, 3));
+
+        rangeTiles.Add(map[playerPos]);
         
-        Vector2 tileToCheck = new Vector2(playerOccupiedTile.x + 1, playerOccupiedTile.y);
+        Vector2 tileToCheck = new Vector2((float)Math.Round(playerOccupiedTile.x + 1,3), (float)Math.Round(playerOccupiedTile.y,3));
         if (map.ContainsKey(tileToCheck))
         {
             rangeTiles.Add(map[tileToCheck]);
         }  
         
-        tileToCheck = new Vector2(playerOccupiedTile.x, playerOccupiedTile.y + 1);
+        tileToCheck = new Vector2((float)Math.Round(playerOccupiedTile.x,3), (float)Math.Round(playerOccupiedTile.y + 1,3));
+
         if (map.ContainsKey(tileToCheck))
         {
             rangeTiles.Add(map[tileToCheck]);
         }  
         
-        tileToCheck = new Vector2(playerOccupiedTile.x - 1, playerOccupiedTile.y);
+        tileToCheck = new Vector2((float)Math.Round(playerOccupiedTile.x - 1,3), (float)Math.Round(playerOccupiedTile.y,3));
+
         if (map.ContainsKey(tileToCheck))
         {
             rangeTiles.Add(map[tileToCheck]);
         }  
         
-        tileToCheck = new Vector2(playerOccupiedTile.x, playerOccupiedTile.y - 1);
+        tileToCheck = new Vector2((float)Math.Round(playerOccupiedTile.x,3), (float)Math.Round(playerOccupiedTile.y - 1,3));
+
         if (map.ContainsKey(tileToCheck))
         {
             rangeTiles.Add(map[tileToCheck]);

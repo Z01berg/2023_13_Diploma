@@ -35,14 +35,12 @@ namespace CardActions
 
         private void OnMouseDown()
         {
-            if (Input.GetMouseButtonDown(0) && PlayerController.getPlayerTurn())
-            {
-                if (PlaceHolder.isTaken)
-                {
-                    var cardInfo = Wrapper.GetCardCurrentCardInfo();
-                    SendHpModification(cardInfo);
-                }
-            }
+            if (!Input.GetMouseButtonDown(0) || !PlayerController.getPlayerTurn()) return;
+            if (!MouseController._rangeTiles.Contains(standingOnTile)) return;
+            if (!PlaceHolder.isTaken) return;
+            
+            var cardInfo = Wrapper.GetCardCurrentCardInfo();
+            SendHpModification(cardInfo);
         }
 
         private void SendHpModification(Wrapper cardInfo)
@@ -56,7 +54,6 @@ namespace CardActions
                     hpChange = hpChange * -1;
                     break;
                 case CardType.Defense:
-                    
                     break;
             }
             

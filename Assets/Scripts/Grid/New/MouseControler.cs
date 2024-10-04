@@ -21,7 +21,7 @@ public class MouseController : MonoBehaviour
     //public int _range = 3; // TODO: będzie przypisywany kartą/
 
     private RangeFinder _rangeFinder;
-    private List<OverlayTile> _rangeTiles;
+    public static List<OverlayTile> _rangeTiles;
     private bool _isMoving;
 
     private Vector2 _playerPosition;
@@ -33,8 +33,7 @@ public class MouseController : MonoBehaviour
     private void Start()
     {
         _rangeFinder = new RangeFinder();
-        _rangeTiles = new List<OverlayTile>();
-        // _playerPosition = GetPlayerPosition();
+        _rangeTiles = new List<OverlayTile>(); 
         _playerController = playerPrefab.GetComponent<PlayerController>();
         EventSystem.ShowRange.AddListener(ShowRangeTiles);
     }
@@ -45,9 +44,9 @@ public class MouseController : MonoBehaviour
         if (Wrapper.cardInUse)
         {
             String range = Wrapper.cardInUse.GetComponent<CardDisplay>().range.text;
-            ShowRangeTiles(int.Parse(range)); //TODO wybieranie naprawić żeby zniakało
+            ShowRangeTiles(int.Parse(range));
             _canHideRange = true;
-            _playerController.standingOnTile.ShowRangeTile();
+            //_playerController.standingOnTile.ShowRangeTile();
             if (_playerController.enabled)
             {
                 _playerController.enabled = false;
@@ -139,6 +138,7 @@ public class MouseController : MonoBehaviour
 
     private void GetRangeTiles(int range)
     {
+        _rangeTiles.Clear();
         _rangeTiles = _rangeFinder.GetTilesInRange(
             new Vector2(_playerController.standingOnTile.gridLocation.x,
                 _playerController.standingOnTile.gridLocation.y), range, _playerController.standingOnTile);
