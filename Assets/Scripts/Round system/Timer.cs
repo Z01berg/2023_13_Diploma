@@ -249,7 +249,7 @@ public class Timer : MonoBehaviour
                     _timers[i].Value = 0;
                 }
 
-                _texts[i].color = Color.red;
+                _texts[i].color = Color.green;
             }
             else
             {
