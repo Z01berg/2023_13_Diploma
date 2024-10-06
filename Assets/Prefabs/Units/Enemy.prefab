@@ -319,8 +319,8 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 144045155
-  m_SortingLayer: 5
+  m_SortingLayerID: 2053827435
+  m_SortingLayer: 7
   m_SortingOrder: 2
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &929507247219044678
@@ -700,7 +700,7 @@ Canvas:
   m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -849,7 +849,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8294701400388198237}
   - component: {fileID: 4162466360518816000}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -909,9 +909,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 144045155
-  m_SortingLayer: 5
-  m_SortingOrder: 1
+  m_SortingLayerID: 2053827435
+  m_SortingLayer: 7
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 59a7d7f07c4fead4f9b5fd5473ed8881, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1016,7 +1016,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7531519381024861729}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: 'Timer '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1106,8 +1106,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.5205, y: 0.16310695, z: 0}
-    m_Extent: {x: 1.0234001, y: 0.6710069, z: 0}
+    m_Center: {x: 0.51860154, y: 0.1674, z: 0}
+    m_Extent: {x: 1.0186015, y: 0.6674, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.5829965
@@ -1209,7 +1209,7 @@ GameObject:
   - component: {fileID: 653838754337514097}
   - component: {fileID: 8075607367895502824}
   - component: {fileID: 4777078279497080112}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1273,8 +1273,8 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 144045155
-  m_SortingLayer: 5
+  m_SortingLayerID: 2053827435
+  m_SortingLayer: 7
   m_SortingOrder: 2
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &4777078279497080112
