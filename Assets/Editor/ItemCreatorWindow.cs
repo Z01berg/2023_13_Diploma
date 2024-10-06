@@ -89,6 +89,7 @@ public class ItemCreatorWindow : VisualElement, IModifiable
         _itemReference.description = _descriptionField.value;
         _itemReference.icon = _spriteImage.sprite;
         _itemReference.itemType = (ItemType)_typeField.value;
+        _itemReference.name = _nameField.value;
 
         EditorUtility.SetDirty(_itemReference);
     }

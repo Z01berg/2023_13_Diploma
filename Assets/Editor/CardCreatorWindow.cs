@@ -1,9 +1,12 @@
+using CardActions;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using UnityEditor;
+using UnityEditor.AddressableAssets.Settings;
+using UnityEditor.AddressableAssets;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
@@ -28,11 +31,16 @@ public class CardCreatorWindow : ScrollView, IModifiable
     private Image _background;
     private Image _banner;
 
-    private string _currentBackgroundPath;
+    private string _currentBackgroundPath = "Graphics/CardBackgrounds/AttackCards/Attack II";
     private string _currentBannerPath;
 
     public CardCreatorWindow()
     {
+        _cardReference = ScriptableObject.CreateInstance<CardsSO>();
+
+        _cardReference.backgroundPath = "Graphics/CardBackgrounds/AttackCards/Attack";
+        _cardReference.spritePath = $"Graphics/CardSprites/AttackCards/name";
+
         CreateFields();
     }
 
@@ -79,9 +87,6 @@ public class CardCreatorWindow : ScrollView, IModifiable
             }
         }
 
-
-        _savedCardReference = _cardReference;
-
         _cardReference.id = _idField.value;
         _cardReference.type = (CardType)_cardTypeField.value;
         _cardReference.range = _rangeField.value;
@@ -94,9 +99,61 @@ public class CardCreatorWindow : ScrollView, IModifiable
         _cardReference.move = _moveField.value;
         _cardReference.backgroundPath = _currentBackgroundPath;
         _cardReference.spritePath = _currentBannerPath;
+        _cardReference.name = _titleField.value;
+
+        if(_savedCardReference == null)
+        {
+            var path = "";
+            var group = "";
+            var tag = "";
+            List<object> cards = new();
+            if (_cardReference.type == CardType.Defense)
+            {
+                path = "Assets/ScriptableObjectAssets/Card/Defence/";
+                group = "DefenceCardsGroup";
+                tag = "DefenceCard";
+                cards = AddressablesUtilities.LoadItems(AddressablesTags.DefenceCard);
+            }
+            else if (_cardReference.type == CardType.Attack) 
+            {
+                path = "Assets/ScriptableObjectAssets/Card/Attack/";
+                group = "AttackCardsGroup";
+                tag = "AttackCard";
+                cards = AddressablesUtilities.LoadItems(AddressablesTags.AttackCard);
+            }
+            else if (_cardReference.type == CardType.Curse)
+            {
+                path = "Assets/ScriptableObjectAssets/Card/Curse/";
+                group = "CurseCardsGroup";
+                tag = "CurseCard";
+                cards = AddressablesUtilities.LoadItems(AddressablesTags.CurseCard);
+            }
+            else if (_cardReference.type == CardType.Movement)
+            {
+                path = "Assets/ScriptableObjectAssets/Card/Move/";
+                group = "MovementCardsGroup";
+                tag = "MovementCard";
+                cards = AddressablesUtilities.LoadItems(AddressablesTags.MovementCard);
+            }
+            AssetDatabase.CreateAsset(_cardReference, path + _cardReference.title + ".asset");
+            AssetDatabase.SaveAssets();
+
+            AssignAsAddressable(_cardReference, group, tag, _cardReference.cardQuality == 0);
+
+            List<CardsSO> convCards = new List<CardsSO>();
+            foreach (var card in cards) 
+            {
+                convCards.Add(card as CardsSO);
+            }
+
+            var maxid = convCards.Max(x => x.id);
+            _cardReference.id = (maxid + 1);
+            _idField.value = _cardReference.id;
+        }
+
+        _savedCardReference = _cardReference;
 
         EditorUtility.SetDirty(_cardReference);
-        //EditorUtility.SetDirty(_itemReference);
 
     }
 
@@ -123,11 +180,12 @@ public class CardCreatorWindow : ScrollView, IModifiable
         _isActiveField = new("is active");
         Add(_isActiveField);
 
-        _cardQualityField = new SliderInt("card quality", 0, 2);
+        _cardQualityField = new SliderInt("card quality", 0, 3);
         _cardQualityField.RegisterValueChangedCallback(CardQualityChanged);
         Add(_cardQualityField);
 
         _titleField = new TextField("title");
+        _titleField.RegisterValueChangedCallback(CardNameChanged);
         Add(_titleField);
 
         _descriptionField = new TextField("description");
@@ -166,6 +224,34 @@ public class CardCreatorWindow : ScrollView, IModifiable
         style.borderLeftColor = Color.white;
     }
 
+    private void CardNameChanged(ChangeEvent<string> evt = null)
+    {
+        var split = _cardReference.spritePath.Split("/");
+        split[split.Length - 1] = _titleField.value;
+        
+        CardType cardType = Enum.Parse<CardType>(_cardTypeField.value.ToString());
+        if (cardType == CardType.Attack)
+        {
+            split[split.Length - 2] = "AttackCards";
+        }
+        if (cardType == CardType.Defense)
+        {
+            split[split.Length - 2] = "DefenceCards";
+        }
+        if (cardType == CardType.Movement)
+        {
+            split[split.Length - 2] = "MovementCards";
+        }
+        if (cardType == CardType.Curse)
+        {
+            split[split.Length - 2] = "CurseCards";
+        }
+        
+        var path = String.Join("/",split);
+        _banner.sprite = Resources.Load<Sprite>(path);
+        _currentBannerPath = path;
+    }
+
     private void CardQualityChanged(ChangeEvent<int> evt)
     {
         CardTypeChanged();
@@ -184,6 +270,7 @@ public class CardCreatorWindow : ScrollView, IModifiable
         StringBuilder sb = new StringBuilder();
         string[] folders = file.Split("/");
         var index = 0;
+        _titleField.value = Path.ChangeExtension(folders[folders.Length - 1],null);
         for (int i = 0; i < folders.Length; i++)
         {
             if (folders[i] == "Graphics")
@@ -235,6 +322,8 @@ public class CardCreatorWindow : ScrollView, IModifiable
 
         _currentBackgroundPath = String.Join("/", dirs);
         _background.sprite = Resources.Load<Sprite>(String.Join("/", dirs));
+
+        CardNameChanged();
     }
 
 
@@ -278,5 +367,19 @@ public class CardCreatorWindow : ScrollView, IModifiable
         _moveField.value = _cardReference.move;
         _background.sprite = Resources.Load<Sprite>(_cardReference.backgroundPath);
         _banner.sprite = Resources.Load<Sprite>(_cardReference.spritePath);
+    }
+    private void AssignAsAddressable(UnityEngine.Object asset, string targetGroup, string targetLabel, bool isDefault)
+    {
+        AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
+        string assetPath = AssetDatabase.GetAssetPath(asset);
+        string assetGUID = AssetDatabase.AssetPathToGUID(assetPath);
+        var group = settings.FindGroup(targetGroup);
+        var entry = settings.CreateOrMoveEntry(assetGUID, group);
+
+        entry.SetLabel(targetLabel, true, true, true);
+        if (isDefault)
+        {
+            entry.SetLabel("DefaultCard", true, true, true);
+        }
     }
 }

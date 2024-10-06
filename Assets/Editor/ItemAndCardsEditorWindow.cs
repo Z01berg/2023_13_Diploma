@@ -100,7 +100,7 @@ public class ItemAndCardsEditorWindow : EditorWindow
                 if (selectedItem == null) return;
 
                 spriteImage.sprite = selectedItem.icon;
-                string name = selectedItem.name;
+                string name = selectedItem.itemName;
                 string desc = selectedItem.description;
                 
                 List<CardsSO> cards = new List<CardsSO>(selectedItem.cards);
@@ -212,6 +212,12 @@ public class ItemAndCardsEditorWindow : EditorWindow
                 lower.Add(cardCreatorWindow);
                 _rightPaneWindows.Add(cardCreatorWindow);
             }
+        }
+        if(_selectedAdressableType == "Cards")
+        {
+            var window = new CardCreatorWindow();
+            m_RightPane.Add(window);
+            _rightPaneWindows.Add(window);
         }
     }
 
