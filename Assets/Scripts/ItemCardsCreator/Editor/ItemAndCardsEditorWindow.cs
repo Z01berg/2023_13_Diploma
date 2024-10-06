@@ -28,7 +28,7 @@ public class ItemAndCardsEditorWindow : EditorWindow
 
     private List<IModifiable> _rightPaneWindows = new List<IModifiable>();
 
-    [MenuItem("Examples/ItemAndCardsEditorWindow")]
+    [MenuItem("Window/2023_13_Diploma/Item And Cards Editor Window")]
     public static void ShowWindow()
     {
         ItemAndCardsEditorWindow wnd = GetWindow<ItemAndCardsEditorWindow>();
