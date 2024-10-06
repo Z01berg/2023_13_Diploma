@@ -176,6 +176,7 @@ public class InstantiatedRoom : MonoBehaviour
                 //copy
                 tilemap.SetTile(new Vector3Int(startPosition.x + xPos, startPosition.y - 1 - yPos, 0),
                     tilemap.GetTile(new Vector3Int(startPosition.x + xPos, startPosition.y - yPos, 0)));
+                
                 //set rotation
                 tilemap.SetTransformMatrix(new Vector3Int(startPosition.x + xPos, startPosition.y - 1 - yPos, 0),
                     transformMatrix);
@@ -223,11 +224,6 @@ public class InstantiatedRoom : MonoBehaviour
             {
                 ground = tilemap;
             }
-            /*
-            else if (tilemap.gameObject.CompareTag("frontTilemap"))
-            {
-                wall = tilemap;
-            }*/
             else if (tilemap.gameObject.CompareTag("decoration1Tilemap"))
             {
                 decorative = tilemap;
@@ -287,12 +283,12 @@ public class InstantiatedRoom : MonoBehaviour
         
         var selectedPositions = positions.Take(numEnemiesToSpawn);
 
-        bool spawnEventEnemy = Random.Range(0, 2) == 1;
+        bool spawnEventEnemy = Random.Range(1, 6) == 5;
         bool eventEnemySpawned = false;
         
         foreach (var position in selectedPositions)
         {
-            int randomValue = Random.Range(0, 5);
+            int randomValue = Random.Range(0, 6);
 
             GameObject selectedEnemy = null;
 
@@ -323,6 +319,7 @@ public class InstantiatedRoom : MonoBehaviour
                 var eventE = Instantiate(selectedEnemy, transform.Find("Grid"));
                 eventE.transform.localPosition = new Vector3(position.x, position.y, -6f);
                 enemyInRoomList.Add(eventE);
+                eventE.GetComponentInChildren<ShowCaseEvent>().room = this;
                 eventEnemySpawned = true;
             }
             else
