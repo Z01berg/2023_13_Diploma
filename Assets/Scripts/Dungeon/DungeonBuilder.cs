@@ -15,6 +15,7 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
     private bool _dungeonBuildSuccessful;
     private OverlayManager _overlayManager;
 
+    public GameObject portal;
     public GameObject enemyPrefab;
     public GameObject eE_Miner;
     public GameObject eE_Wizard;
@@ -101,6 +102,7 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
             // Debug.Log($"room position {roomPosition.x}, {roomPosition.y}");
 
             InstantiatedRoom instantiatedRoom = roomGameObject.GetComponentInChildren<InstantiatedRoom>();
+            instantiatedRoom.portal = portal;
             instantiatedRoom.enemyPrefab = enemyPrefab;
             instantiatedRoom.eE_Miner = eE_Miner;
             instantiatedRoom.eE_Wizard = eE_Wizard;

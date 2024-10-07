@@ -47,6 +47,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     {
         GameState = GameState.gameStarted;
         _playerController = _player.GetComponent<PlayerController>();
+        EventSystem.NewLevel.AddListener(ChangeGameState_NewLevel);
     }
     
     private void LateUpdate()
@@ -66,11 +67,27 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         switch (GameState)
         {
             case GameState.gameStarted:
-                // Play first Level
                 PlayDungeonLevel(currenDungeonLevelListIndex);
                 
-                
                 GameState = GameState.playingLevel;
+                break;
+            
+            case GameState.bossStage:
+                if (currenDungeonLevelListIndex < dungeonLevelList.Count)
+                {
+                    ChangeLevel();
+                    PlayDungeonLevel(currenDungeonLevelListIndex);
+                    GameState = GameState.playingLevel;
+                }
+                
+                if (currenDungeonLevelListIndex == dungeonLevelList.Count)
+                {
+                    GameState = GameState.gameStarted;
+                }
+                break;
+            
+            case GameState.gameLost:
+                //TODO: Handle game lost Maybe Highscore
                 break;
         }
     }
@@ -98,7 +115,16 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         _playerController.standingOnTile = spawnTile;
     }
 
-
+    private void ChangeLevel()
+    {
+        currenDungeonLevelListIndex++;
+    } 
+    
+    private void ChangeGameState_NewLevel()
+    {
+        GameState = GameState.bossStage;
+    }
+    
     public OverlayTile GetSpawnOverlayTile(Vector3 spawnPosition)
     {
         RaycastHit2D? hit = GetFocusedOnTile(spawnPosition);

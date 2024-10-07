@@ -24,6 +24,8 @@ public class InstantiatedRoom : MonoBehaviour
     [HideInInspector] public Tilemap miniMap;
     [HideInInspector] public Bounds roomColliderBounds;
 
+    public GameObject portal;
+    
     public GameObject enemyPrefab;
     public GameObject eE_Miner;
     public GameObject eE_Wizard;
@@ -32,6 +34,7 @@ public class InstantiatedRoom : MonoBehaviour
     public GameObject eE_Clerick;
     public GameObject eE_Explorer;
     public GameObject timer;
+    
     public List<GameObject> enemyInRoomList = new();
     public List<GameObject> doorsList = new();
 
