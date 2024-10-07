@@ -167,8 +167,8 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 144045155
-  m_SortingLayer: 5
+  m_SortingLayerID: 2053827435
+  m_SortingLayer: 7
   m_SortingOrder: 2
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &1881339646750721677
@@ -454,7 +454,7 @@ GameObject:
   - component: {fileID: 6450128903321398398}
   - component: {fileID: 6270849145274545837}
   - component: {fileID: 168721498808235815}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,8 +518,8 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 144045155
-  m_SortingLayer: 5
+  m_SortingLayerID: 2053827435
+  m_SortingLayer: 7
   m_SortingOrder: 2
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &168721498808235815
@@ -899,8 +899,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.5113445, y: 0.06455001, z: 0}
-    m_Extent: {x: 1.0136445, y: 0.57344997, z: 0}
+    m_Center: {x: 0.5124945, y: 0.0704, z: 0}
+    m_Extent: {x: 1.0124946, y: 0.5758, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.5829965
@@ -968,7 +968,7 @@ Canvas:
   m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -1041,7 +1041,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6622016385714225401}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1225,7 +1225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7200830493508938117}
   - component: {fileID: 6996556044182838886}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1285,9 +1285,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 144045155
-  m_SortingLayer: 5
-  m_SortingOrder: 1
+  m_SortingLayerID: 2053827435
+  m_SortingLayer: 7
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 59a7d7f07c4fead4f9b5fd5473ed8881, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

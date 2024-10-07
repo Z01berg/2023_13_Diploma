@@ -17,6 +17,7 @@ public class AssigneCamera : MonoBehaviour
             
             canvas.renderMode = RenderMode.ScreenSpaceCamera;
             canvas.worldCamera = childCamera;
+            canvas.sortingLayerName = "Collision";
         }
         else
         {
