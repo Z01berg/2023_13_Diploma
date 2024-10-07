@@ -56,7 +56,8 @@ public class MouseController : MonoBehaviour
         {
             if (!_playerController.enabled)
             {
-                _playerController.enabled = true;foreach (var tile in _rangeTiles)
+                _playerController.enabled = true;
+                foreach (var tile in _rangeTiles)
                 {
                     tile.HideTile();
                 }
@@ -100,10 +101,6 @@ public class MouseController : MonoBehaviour
                     overlayTile.gameObject.GetComponent<OverlayTile>().HideTile();
                 }
             }
-            // if (_playerController.standingOnTile == null)
-            // {
-            //     
-            // }
         }
     }
 
