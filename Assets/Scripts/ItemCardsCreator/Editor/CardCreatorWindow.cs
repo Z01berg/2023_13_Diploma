@@ -10,6 +10,7 @@ using UnityEditor.AddressableAssets;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
+using UnityEditor.AddressableAssets.Build.DataBuilders;
 
 public class CardCreatorWindow : ScrollView, IModifiable
 {
@@ -149,6 +150,9 @@ public class CardCreatorWindow : ScrollView, IModifiable
             var maxid = convCards.Max(x => x.id);
             _cardReference.id = (maxid + 1);
             _idField.value = _cardReference.id;
+
+            AssetDatabase.Refresh();
+
         }
 
         _savedCardReference = _cardReference;
