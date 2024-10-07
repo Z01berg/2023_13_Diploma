@@ -484,6 +484,22 @@ PrefabInstance:
       propertyPath: _playerMovePoint
       value: 
       objectReference: {fileID: 803237028}
+    - target: {fileID: 1978499998629159124, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: dungeonLevelList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978499998629159124, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: dungeonLevelList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: af4280dc6d09855479ce6db67c58cfaa, type: 2}
+    - target: {fileID: 1978499998629159124, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: dungeonLevelList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 27ae7e2e935151248b08b273756597ab, type: 2}
+    - target: {fileID: 1978499998629159124, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: dungeonLevelList.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: e38c7ea796500dd4ebc11f1b4a1fe7de, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

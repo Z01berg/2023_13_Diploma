@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3915433133722241345}
   - component: {fileID: 4892937537118751580}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collision: {fileID: 2549892323644547154}
+  _animator: {fileID: 8631248059324099697}
 --- !u!1 &2311194676742583287
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,7 +62,7 @@ GameObject:
   - component: {fileID: 4784107877538549556}
   - component: {fileID: 3470049179118965618}
   - component: {fileID: 2549892323644547154}
-  m_Layer: 6
+  m_Layer: 23
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +149,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 144045155
   m_SortingLayer: 5
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 428272420, guid: 2cc4e79c011ec774590a33b7cca347aa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -200,7 +201,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.092065096, y: 0.092065215}
+  m_Offset: {x: -0.025842667, y: 0.017565072}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -211,7 +212,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.109507, y: 3.413699}
+  m_Size: {x: 3.0301657, y: 1.1786932}
   m_EdgeRadius: 0
 --- !u!1 &6468444177861156564
 GameObject:
@@ -240,8 +241,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.5, y: 0.5, z: 5.454874}
-  m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3915433133722241345}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -307,7 +308,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6038802678259710826}
   - component: {fileID: 3788641244790198577}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,8 +364,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.51860154, y: 0.1656, z: 0}
-    m_Extent: {x: 1.0186015, y: 0.6714, z: 0}
+    m_Center: {x: 0.5217, y: 0.16655695, z: 0}
+    m_Extent: {x: 1.0217, y: 0.66755694, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.5829965

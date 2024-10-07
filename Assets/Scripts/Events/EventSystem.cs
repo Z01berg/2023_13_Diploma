@@ -143,5 +143,4 @@ public static class EventSystem
     public static UnityEvent NewLevel = new UnityEvent();
     
     #endregion
-    
 }
