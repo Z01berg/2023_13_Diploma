@@ -47,6 +47,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     {
         GameState = GameState.gameStarted;
         _playerController = _player.GetComponent<PlayerController>();
+        EventSystem.NewLevel.AddListener(ChangeGameState_NewLevel);
     }
     
     private void LateUpdate()
@@ -56,21 +57,36 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         //TODO: For testing
         if (Input.GetKeyDown(KeyCode.R))
         {
-            GameState = GameState.gameStarted;
+            ChangeGameState_NewLevel();
         }
     }
-
-    // Handle game state
+    
     private void HandleGameStates()
     {
         switch (GameState)
         {
             case GameState.gameStarted:
-                // Play first Level
                 PlayDungeonLevel(currenDungeonLevelListIndex);
                 
-                
                 GameState = GameState.playingLevel;
+                break;
+            
+            case GameState.bossStage:
+                if (currenDungeonLevelListIndex < dungeonLevelList.Count - 1)
+                {
+                    ChangeLevel();
+                    PlayDungeonLevel(currenDungeonLevelListIndex);
+                    GameState = GameState.playingLevel;
+                }
+                
+                if (currenDungeonLevelListIndex == dungeonLevelList.Count - 1)
+                {
+                    GameState = GameState.gameStarted;
+                }
+                break;
+            
+            case GameState.gameLost:
+                //TODO: Handle game lost Maybe Highscore
                 break;
         }
     }
@@ -98,7 +114,16 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         _playerController.standingOnTile = spawnTile;
     }
 
-
+    private void ChangeLevel()
+    {
+        currenDungeonLevelListIndex++;
+    } 
+    
+    private void ChangeGameState_NewLevel()
+    {
+        GameState = GameState.bossStage;
+    }
+    
     public OverlayTile GetSpawnOverlayTile(Vector3 spawnPosition)
     {
         RaycastHit2D? hit = GetFocusedOnTile(spawnPosition);

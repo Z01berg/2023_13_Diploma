@@ -204,10 +204,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 6686389334764874740, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
-      propertyPath: m_fontSize
-      value: 31.7
-      objectReference: {fileID: 0}
     - target: {fileID: 8084776943904088862, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: _inventory
       value: 
@@ -372,6 +368,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3013903227937501779, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013903227937501779, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013903227937501779, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 8.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013903227937501779, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 6.481055
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013903227937501779, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 8.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013903227937501779, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 6.481055
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013903227937501779, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
+      propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -460,10 +484,22 @@ PrefabInstance:
       propertyPath: _playerMovePoint
       value: 
       objectReference: {fileID: 803237028}
-    - target: {fileID: 2597701751550688956, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
-      propertyPath: playerPrefab
+    - target: {fileID: 1978499998629159124, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: dungeonLevelList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978499998629159124, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: dungeonLevelList.Array.data[0]
       value: 
-      objectReference: {fileID: 1588645368}
+      objectReference: {fileID: 11400000, guid: af4280dc6d09855479ce6db67c58cfaa, type: 2}
+    - target: {fileID: 1978499998629159124, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: dungeonLevelList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 27ae7e2e935151248b08b273756597ab, type: 2}
+    - target: {fileID: 1978499998629159124, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: dungeonLevelList.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: e38c7ea796500dd4ebc11f1b4a1fe7de, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
