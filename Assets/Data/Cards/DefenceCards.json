@@ -5,36 +5,48 @@
             "isActive": true,
             "cardQuality": 0,
             
-            "title": "DefaultDefenceCard",
+            "title": "Plate Armor",
             "description": "This card gives you 1 defence point.",
             "cost": 1,
-            "damage": 1,
-            "range": 0,
-            "move": 0
+            "damage": -1,
+            "range": 1,
+            "move": 0,
         },
         {
             "id": 1,
             "isActive": true,
             "cardQuality": 1,
             
-            "title": "ExampleDefenceCard1",
-            "description": "This card gives you 3 defence point.",
+            "title": "Blood Taste I",
+            "description": "Sweet blood of your enemy heals you. Mniam",
             "cost": 2,
-            "damage": 3,
-            "range": 0,
-            "move": 0
+            "damage": -2,
+            "range": 1,
+            "move": 0,
         },
-        {
+		{
             "id": 2,
             "isActive": true,
-            "cardQuality": 2,
+            "cardQuality": 1,
             
-            "title": "ExampleDefenceCard2",
-            "description": "This card gives you 8 defence point.",
-            "cost": 5,
-            "damage": 8,
-            "range": 0,
-            "move": 0
-        }
+            "title": "Blood Taste II",
+            "description": "Sweet blood of your enemy heals you. Mniam",
+            "cost": 3,
+            "damage": -3,
+            "range": 1,
+            "move": 0,
+        },
+		{
+            "id": 3,
+            "isActive": true,
+            "cardQuality": 1,
+            
+            "title": "Blood Taste III",
+            "description": "Sweet blood of your enemy heals you. Mniam",
+            "cost": 3,
+            "damage": -4,
+            "range": 1,
+            "move": 0,
+        },
     ]
 }
