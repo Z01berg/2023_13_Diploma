@@ -53,3 +53,4 @@ MonoBehaviour:
     IsUnavailable: 0
   SpawnPositionArray:
   - {x: 16, y: 10}
+  - {x: 18, y: 13}
