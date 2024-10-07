@@ -260,20 +260,48 @@ public class InstantiatedRoom : MonoBehaviour
         EventSystem.InstatiatedRoom.Invoke();
     }
 
+    /*
+      foreach (var position in positions.Take(numEnemiesToSpawn))
+        {
+            if (room.RoomNodeType.isBossRoom)
+            {
+                var boss = Instantiate(portal, transform.Find("Grid"));
+                boss.transform.localPosition = new Vector3(position.x, position.y, -6f);
+                return;
+            }
+        }
+     */
+    
     public void CloseAllDoors()
     {
-        if (_cleared)return;
+        var positions = room.SpawnPositionArray.ToList();
+        bool _boss = false;
+        
+        int numEnemiesToSpawn = positions.Count;
+        foreach (var position in positions.Take(numEnemiesToSpawn))
+        {
+            if (room.RoomNodeType.isBossRoom)
+            {
+                _boss = !_boss;
+                var boss = Instantiate(portal, transform.Find("Grid"));
+                boss.transform.localPosition = new Vector3(position.x, position.y, -6f);
+                return;
+            }
+        }
+
+        if (!_boss)
+        {
+            if (_cleared)return;
         CombatMode.SetTrue();
         _cleared = true;
         
-        var positions = room.SpawnPositionArray.ToList();
         if (positions.Count() == 1)
         {
             CombatMode.SetFalse();
             return;
         }
         
-        int numEnemiesToSpawn = Random.Range(1, positions.Count + 1);
+        int randomNumEnemiesToSpawn = Random.Range(1, positions.Count + 1);
         
         
         for (int i = 0; i < positions.Count; i++)
@@ -284,7 +312,7 @@ public class InstantiatedRoom : MonoBehaviour
             positions[randomIndex] = temp;
         }
         
-        var selectedPositions = positions.Take(numEnemiesToSpawn);
+        var selectedPositions = positions.Take(randomNumEnemiesToSpawn);
 
         bool spawnEventEnemy = Random.Range(1, 6) == 5;
         bool eventEnemySpawned = false;
@@ -343,5 +371,7 @@ public class InstantiatedRoom : MonoBehaviour
         
         EventSystem.DrawACard.Invoke();
         EventSystem.InstatiatedRoom.Invoke();
+        }
     }
+    
 }
