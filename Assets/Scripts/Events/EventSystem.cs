@@ -126,4 +126,21 @@ public static class EventSystem
 
     #endregion
 
+    #region Event Skip Text: ShowCase.cs -> TypeWriterEffect.cs
+    
+    public static UnityEvent SkipText = new UnityEvent();
+    
+    #endregion
+    
+    #region Event Not Skipable Text : TypeWriterEffect.cs -> ShowCase.cs 
+    
+    public static UnityEvent<bool> SkipedText = new UnityEvent<bool>();
+    
+    #endregion
+    
+    #region Event Change Game state to new level : PortalLogic.cs -> GameManager.cs 
+    
+    public static UnityEvent NewLevel = new UnityEvent();
+    
+    #endregion
 }

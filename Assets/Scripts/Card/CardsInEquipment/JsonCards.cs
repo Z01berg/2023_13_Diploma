@@ -6,11 +6,25 @@ using System.Collections.Generic;
  */
 
 [System.Serializable]
-public struct JsonCards
+public struct JsonAttackCards
 {
     public List<Card> attackCardsList;
 }
-
+[System.Serializable]
+public struct JsonDefenceCards
+{
+    public List<Card> defenceCardsList;
+}
+[System.Serializable]
+public struct JsonMovementCards
+{
+    public List<Card> movementCardsList;
+}
+[System.Serializable]
+public struct JsonCurseCards
+{
+    public List<Card> curseCardsList;
+}
 [System.Serializable]
 public struct Card
 {
@@ -21,8 +35,7 @@ public struct Card
     public string description;
     public int cost;
     public int damage;
-    public int move;
-    public string backgroundPath;
-    public string spritePath;
     public int range;
+    public int move;
+
 }

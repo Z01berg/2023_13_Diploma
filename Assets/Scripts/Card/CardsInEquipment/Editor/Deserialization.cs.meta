@@ -3,7 +3,24 @@ guid: 972ccc58757e99b41aeeced13915c6eb
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _head: {instanceID: 0}
+  - _chest: {instanceID: 0}
+  - _legs: {instanceID: 0}
+  - _boots: {instanceID: 0}
+  - _rightHand: {instanceID: 0}
+  - _leftHand: {instanceID: 0}
+  - _it1: {instanceID: 0}
+  - _it2: {instanceID: 0}
+  - _it3: {instanceID: 0}
+  - _it4: {instanceID: 0}
+  - _it5: {instanceID: 0}
+  - _it6: {instanceID: 0}
+  - AttackFile: {fileID: 4900000, guid: 60994e482724f00498b798b61e4e7146, type: 3}
+  - CurseFile: {fileID: 4900000, guid: 1f683314024bc744096973af2f940c8a, type: 3}
+  - DefenceFile: {fileID: 4900000, guid: 15a15f3833f38364d9a09b35a41856c4, type: 3}
+  - MovementFile: {fileID: 4900000, guid: 5103268aae1324341ab8731fd1f30a92, type: 3}
+  - jsonItemsFile: {fileID: 4900000, guid: e72c0269f9aa8dd4db0601af25b4df9d, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

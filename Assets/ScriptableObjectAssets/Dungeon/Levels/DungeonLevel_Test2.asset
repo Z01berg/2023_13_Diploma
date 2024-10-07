@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4d736171784a445af645274899e0ba, type: 3}
+  m_Name: DungeonLevel_Test2
+  m_EditorClassIdentifier: 
+  levelName: The Hall of Heroes
+  roomTemplateList:
+  - {fileID: 11400000, guid: de1228c7ec88fcd4cb12a95840190a79, type: 2}
+  - {fileID: 11400000, guid: 6b6f67c3e36e26043a1cc15a987a2f78, type: 2}
+  - {fileID: 11400000, guid: 980e2df56bba69a468904cddde7009aa, type: 2}
+  - {fileID: 11400000, guid: 48df4f1110646894b83ee6e248544347, type: 2}
+  - {fileID: 11400000, guid: 1701cb158209c3b499babe22795ee0e6, type: 2}
+  - {fileID: 11400000, guid: 88f616b2b0ef70a44949365fb7bebc0b, type: 2}
+  - {fileID: 11400000, guid: efbb8dea30e5c3840b6c525bec42edab, type: 2}
+  - {fileID: 11400000, guid: bc181977f8fb30d4d8e316e892244737, type: 2}
+  - {fileID: 11400000, guid: 0a29a72b2f158bd46b3499dd3a3f4c08, type: 2}
+  - {fileID: 11400000, guid: 28cd2cdfe60816b4abcdd072bb50b197, type: 2}
+  - {fileID: 11400000, guid: 42a1d76d936c5a24eadbd840227a1ea9, type: 2}
+  - {fileID: 11400000, guid: db7da95e91857bb4caa70402e9e9bfce, type: 2}
+  - {fileID: 11400000, guid: 44f9e62737c5b5240aa66f4f715af90f, type: 2}
+  - {fileID: 11400000, guid: dccec3bd3ab2d19419282d3d042c357a, type: 2}
+  - {fileID: 11400000, guid: 6f583ad8a6c78244b9792b54f894d0d7, type: 2}
+  - {fileID: 11400000, guid: ab3b365cb8aef2c45a6ffabc0f88ad80, type: 2}
+  - {fileID: 11400000, guid: 90d155d5df932e84d9bc0522b2f5fad3, type: 2}
+  - {fileID: 11400000, guid: 27acbb9a100c96c439d943e2d332623e, type: 2}
+  - {fileID: 11400000, guid: a9c3c3fedff38894e8ab2a744f2a6095, type: 2}
+  roomNodeGraphList:
+  - {fileID: 11400000, guid: 0abecf9e06f30814d972ca5dbc261030, type: 2}

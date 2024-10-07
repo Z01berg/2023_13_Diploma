@@ -14,9 +14,9 @@ using UnityEngine;
  * zapisujaca utworzona karte do pliku Json
  */
 
-[CustomEditor(typeof(Deserialization))]
+//[CustomEditor(typeof(Deserialization))]
 public class CustomJsonImportIspector : Editor
-{
+{/*
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
@@ -27,7 +27,7 @@ public class CustomJsonImportIspector : Editor
         {
             ds.Import();
         }
-    }
+    }*/
 }
 /*
 [CustomEditor(typeof(CardCreator))]

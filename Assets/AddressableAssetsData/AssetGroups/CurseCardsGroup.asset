@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: CurseCardsGroup
+  m_EditorClassIdentifier: 
+  m_GroupName: CurseCardsGroup
+  m_Data:
+    m_SerializedData: []
+  m_GUID: e660ecbb984c99247acca08832323849
+  m_SerializeEntries:
+  - m_GUID: 39b68c71fc4fa9c4a885f116cb9bb714
+    m_Address: Assets/ScriptableObjectAssets/Card/Curse/Panic.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CurseCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 03486177cd381c84c99a2e5300207612
+    m_Address: Assets/ScriptableObjectAssets/Card/Curse/Cowardly.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CurseCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0a239ef89e95032469e7ac9f8a2ce45c
+    m_Address: Assets/ScriptableObjectAssets/Card/Curse/Brain Burn.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CurseCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4e2e8fe36db7399489d1dd25e43f9383
+    m_Address: Assets/ScriptableObjectAssets/Card/Curse/Creature Of Night.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CurseCard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0c34ddfe8dfa2094c8984e81cd4f8f51
+    m_Address: Assets/ScriptableObjectAssets/Card/Curse/Dreadfully.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CurseCard
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: f505d56935b80a94cb01aefad73250da, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 87f9009393e449544b3c6996a751b09d, type: 2}
+    - {fileID: 11400000, guid: 76f679ead24c5ef45b6afd0349f53e0d, type: 2}

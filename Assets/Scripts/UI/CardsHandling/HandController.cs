@@ -228,6 +228,7 @@ namespace UI
             // Debug.Log("Pause: " + isPauseOpen);
             // Debug.Log("Inventory: " + isInventoryOpen);
             // Debug.Log("isDisabled: " + isDisabled);
+            
             if ((isInventoryOpen == true && isPauseOpen == false|| isInventoryOpen == false && isPauseOpen == true) && isDisabled == false)
             {
                 return;

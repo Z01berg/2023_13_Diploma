@@ -48,7 +48,7 @@ TagManager:
   - Wall
   - Door
   - Collision
-  - 
+  - EventUI
   - 
   - 
   - Pause Menu

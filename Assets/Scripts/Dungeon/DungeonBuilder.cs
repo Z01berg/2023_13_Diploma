@@ -14,8 +14,16 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
     private RoomNodeTypeListSO _roomNodeTypeList;
     private bool _dungeonBuildSuccessful;
     private OverlayManager _overlayManager;
-
+    
+    
+    public GameObject portal;
     public GameObject enemyPrefab;
+    public GameObject eE_Miner;
+    public GameObject eE_Wizard;
+    public GameObject eE_Warrior;
+    public GameObject eE_Skeleton;
+    public GameObject eE_Clerick;
+    public GameObject eE_Explorer;
     public GameObject timer;
 
     protected override void Awake()
@@ -95,7 +103,14 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
             // Debug.Log($"room position {roomPosition.x}, {roomPosition.y}");
 
             InstantiatedRoom instantiatedRoom = roomGameObject.GetComponentInChildren<InstantiatedRoom>();
+            instantiatedRoom.portal = portal;
             instantiatedRoom.enemyPrefab = enemyPrefab;
+            instantiatedRoom.eE_Miner = eE_Miner;
+            instantiatedRoom.eE_Wizard = eE_Wizard;
+            instantiatedRoom.eE_Warrior = eE_Warrior;
+            instantiatedRoom.eE_Skeleton = eE_Skeleton;
+            instantiatedRoom.eE_Clerick = eE_Clerick;
+            instantiatedRoom.eE_Explorer = eE_Explorer;
             instantiatedRoom.timer = timer;
 
             instantiatedRoom.room = room;

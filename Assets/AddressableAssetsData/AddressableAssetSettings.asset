@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 274ee20f7eb1cfd46885daaf83f9e71a
   m_currentHash:
     serializedVersion: 2
-    Hash: 00000000000000000000000000000000
+    Hash: 8316e083895527f47ae85d12cd7a214f
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -50,6 +50,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2afc844adce8b3b4d95249a5c68ddb55, type: 2}
   - {fileID: 11400000, guid: 373ca04d32d8c5441aee7dea0ee08924, type: 2}
   - {fileID: 11400000, guid: c1b77d31d2f617b4da47cfae0b66856b, type: 2}
+  - {fileID: 11400000, guid: 534dcc36fc5368f4a8b399642836e94d, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -99,6 +100,8 @@ MonoBehaviour:
     - DefenceCard
     - Item
     - DefaultCard
+    - AttackCardsBanner
+    - CurseCard
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 6fcadee536366bf458755ef213e4bdc3, type: 2}

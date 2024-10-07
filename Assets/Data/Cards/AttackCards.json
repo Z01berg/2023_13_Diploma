@@ -5,60 +5,276 @@
             "isActive": true,
             "cardQuality": 0,
             
-            "title": "DefoultAttackCard",
-            "description": "This card deals 1 dmg to one enemy. Lorem ipsum dolor.",
+            "title": "Punch",
+            "description": "\"Old School Boxing\"",
             "cost": 1,
             "damage": 1,
             "range": 1,
-            "move": 0,
-            
-            "backgroundPath": "Graphics/CardBackgrounds/AttackCards/AttackCardBronzeTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "move": 0
         },
         {
             "id": 1,
             "isActive": true,
             "cardQuality": 1,
             
-            "title": "ExampleAttackCard1",
-            "description": "This card deals 5 dmg to one enemy. Lorem ipsum dolor.",
-            "cost": 3,
-            "damage": 5,
-            "range": 1,
-            "move": 0,
-            
-            "backgroundPath": "Graphics/CardBackgrounds/AttackCards/AttackCardSilverTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "title": "Little Zap",
+            "description": "\"Well it's better than nothing.\"",
+            "cost": 2,
+            "damage": 3,
+            "range": 2,
+            "move": 0
         },
         {
             "id": 2,
             "isActive": true,
-            "cardQuality": 2,
+            "cardQuality": 1,
             
-            "title": "ExampleAttackCard2",
-            "description": "This card deals 22 dmg to one enemy. Lorem ipsum dolor.",
-            "cost": 5,
-            "damage": 22,
-            "range": 1,
-            "move": 2,
-            
-            "backgroundPath": "Graphics/CardBackgrounds/AttackCards/AttackCardGoldTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "title": "Penetrating Zap",
+            "description": "All grids take damage. Old name \"Portirissian's Pernicious Perforating Pain Projection\"",
+            "cost": 1,
+            "damage": 2,
+            "range": 3,
+            "move": 2
         },
         {
             "id": 3,
             "isActive": true,
-            "cardQuality": 1,
+            "cardQuality": 3,
             
-            "title": "BowAttack",
-            "description": "This card deals 13 range dmg.",
+            "title": "Beast Scream",
+            "description": "All Enemies in range Discard all attack cards for 10 turns",
+            "cost": 5,
+            "damage": 0,
+            "range": 8,
+            "move": 0
+        },
+        {
+            "id": 4,
+            "isActive": true,
+            "cardQuality": 3,
+            
+            "title": "Consuming Spear",
+            "description": "Heal the amount of damage dealt",
             "cost": 3,
+            "damage": 6,
+            "range": 2,
+            "move": 0
+        },
+        {
+            "id": 5,
+            "isActive": true,
+            "cardQuality": 3,
+
+            "title": "Rook Power",
+            "description": "Only straight lines",
+            "cost": 8,
+            "damage": 15,
+            "range": 5,
+            "move": 0
+        },
+        {
+            "id": 6,
+            "isActive": true,
+            "cardQuality": 1,
+
+            "title": "Fire Spray",
+            "description": "Cone of fire 4 grids forward. \"Difference? You ask? I'm not flaming!\"",
+            "cost": 2,
+            "damage": 4,
+            "range": 2,
+            "move": 0
+        },
+        {
+            "id": 7,
+            "isActive": true,
+            "cardQuality": 2,
+
+            "title": "Flash Of Arrows",
+            "description": "Every enemy pushed 1 grid back",
+            "cost": 4,
+            "damage": 4,
+            "range": 100,
+            "move": 0
+        },
+        {
+            "id": 8,
+            "isActive": true,
+            "cardQuality": 2,
+
+            "title": "Entagle",
+            "description": "Push 1 grid back and root for 5 turns",
+            "cost": 3,
+            "damage": 3,
+            "range": 5,
+            "move": 0
+        },
+        {
+            "id": 9,
+            "isActive": true,
+            "cardQuality": 3,
+
+            "title": "Devastating Shoot",
+            "description": "For each attack card in hand, +2 damage and +2 range",
+            "cost": 8,
+            "damage": 6,
+            "range": 2,
+            "move": 0
+        },
+        {
+            "id": 10,
+            "isActive": true,
+            "cardQuality": 2,
+
+            "title": "Aim",
+            "description": "Play as first card nothing else, or drop this card. Next round: +5 damage and +2 push for 4 cards",
+            "cost": 20,
+            "damage": 0,
+            "range": 0,
+            "move": 0
+        },
+        {
+            "id": 11,
+            "isActive": true,
+            "cardQuality": 3,
+
+            "title": "Suppressive Fire",
+            "description": "...\"Shoot and run\" they say, \"It will be fun\" they say...\"",
+            "cost": 8,
+            "damage": 6,
+            "range": 4,
+            "move": 5
+        },
+        {
+            "id": 12,
+            "isActive": true,
+            "cardQuality": 2,
+
+            "title": "Flaring Torch",
+            "description": "+4 damage for next attack card",
+            "cost": 4,
+            "damage": 4,
+            "range": 1,
+            "move": 0
+        },
+        {
+            "id": 13,
+            "isActive": true,
+            "cardQuality": 2,
+
+            "title": "Reaching Swing",
+            "description": "+4 armor",
+            "cost": 4,
+            "damage": 6,
+            "range": 2,
+            "move": 0
+        },
+        {
+            "id": 14,
+            "isActive": true,
+            "cardQuality": 2,
+
+            "title": "Impaling Stab",
+            "description": "All grids take damage",
+            "cost": 4,
+            "damage": 9,
+            "range": 2,
+            "move": 0
+        },
+		{
+            "id": 15,
+            "isActive": true,
+            "cardQuality": 2,
+
+            "title": "Za Warudo",
+            "description": "-10 to your current timer",
+            "cost": 0,
+            "damage": 0,
+            "range": 0,
+            "move": 0
+        },
+		{
+            "id": 16,
+            "isActive": true,
+            "cardQuality": 2,
+
+            "title": "Fireball",
+            "description": "\"Classic meant to be Classic\"",
+            "cost": 4,
             "damage": 8,
-            "range": 3,
-            "move": 0,
-            
-            "backgroundPath": "Graphics/CardBackgrounds/AttackCards/AttackCardSilverTier",
-            "spritePath": "Graphics/CardSprites/AttackCards/ExampleAttackCard1"
+            "range": 6,
+            "move": 0
+        },
+		{
+            "id": 17,
+            "isActive": true,
+            "cardQuality": 1,
+
+            "title": "Tactical Reload",
+            "description": "Draw 2 cards",
+            "cost": 4,
+            "damage": 0,
+            "range": 0,
+            "move": 0
+        },
+		{
+            "id": 18,
+            "isActive": true,
+            "cardQuality": 1,
+
+            "title": "Three Arrows Problem",
+            "description": "Shoot up to 3 enemy's",
+            "cost": 6,
+            "damage": 3,
+            "range": 4,
+            "move": 0
+        },
+		{
+            "id": 19,
+            "isActive": true,
+            "cardQuality": 1,
+
+            "title": "Classic Shooter Mechanic",
+            "description": "\"No comments\"",
+            "cost": 1,
+            "damage": 3,
+            "range": 4,
+            "move": 0
+        },
+		{
+            "id": 20,
+            "isActive": true,
+            "cardQuality": 1,
+
+            "title": "Stab",
+            "description": "\"Kill them like Solid Snake\"",
+            "cost": 2,
+            "damage": 5,
+            "range": 1,
+            "move": 0
+        },
+		{
+            "id": 21,
+            "isActive": true,
+            "cardQuality": 1,
+
+            "title": "Scary Move",
+            "description": "Take 3 damage and deal 8 to the enemy",
+            "cost": 2,
+            "damage": 8,
+            "range": 2,
+            "move": 0
+        },
+		{
+            "id": 22,
+            "isActive": true,
+            "cardQuality": 1,
+
+            "title": "Berserk",
+            "description": "Heal for the next 2 attacks for amount damage / 2 ",
+            "cost": 4,
+            "damage": 0,
+            "range": 0,
+            "move": 0
         }
     ]
 }

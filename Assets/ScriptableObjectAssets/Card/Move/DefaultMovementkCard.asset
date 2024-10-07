@@ -16,11 +16,11 @@ MonoBehaviour:
   type: 2
   range: 3
   isActive: 1
-  cardQuality: 0
+  cardQuality: 1
   title: DefaultMovementkCard
   description: This card lets you move by 1 squares.
   cost: 1
   damage: 0
   move: 1
-  backgroundPath: Graphics/CardBackgrounds/MovementCards/MovementCardBronzeTier
-  spritePath: Graphics/CardSprites/AttackCards/ExampleAttackCard1
+  backgroundPath: Graphics/CardBackgrounds/MovementCards/Move I
+  spritePath: 

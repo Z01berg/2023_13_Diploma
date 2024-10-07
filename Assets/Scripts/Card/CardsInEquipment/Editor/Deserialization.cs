@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.IO;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings;
@@ -24,7 +23,7 @@ public struct JItem
     public string icon;
 }
 
-public class Deserialization : MonoBehaviour
+public class Deserialization : Editor
 {
     [SerializeField] private GameObject _head;
     [SerializeField] private GameObject _chest;
@@ -40,15 +39,19 @@ public class Deserialization : MonoBehaviour
     [SerializeField] private GameObject _it6;
 
     [SerializeField] private TextAsset AttackFile;
-    [SerializeField] private JsonCards objects;
+    [SerializeField] private JsonAttackCards objects;
     string cPath = "Assets/ScriptableObjectAssets/Card/Attack/";
 
+    [SerializeField] private TextAsset CurseFile;
+    [SerializeField] private JsonCurseCards curseObjects;
+    string cursePath = "Assets/ScriptableObjectAssets/Card/Curse/";
+
     [SerializeField] private TextAsset DefenceFile;
-    [SerializeField] private JsonCards dObjects;
+    [SerializeField] private JsonDefenceCards dObjects;
     string dPath = "Assets/ScriptableObjectAssets/Card/Defence/";
 
     [SerializeField] private TextAsset MovementFile;
-    [SerializeField] private JsonCards mObjects;
+    [SerializeField] private JsonMovementCards mObjects;
     string mPath = "Assets/ScriptableObjectAssets/Card/Move/";
 
     [SerializeField] private TextAsset jsonItemsFile;
@@ -57,7 +60,7 @@ public class Deserialization : MonoBehaviour
 
     public void Import()
     {
-        objects = JsonUtility.FromJson<JsonCards>(AttackFile.text);
+        objects = JsonUtility.FromJson<JsonAttackCards>(AttackFile.text);
 
         foreach (var obj in objects.attackCardsList)
         {
@@ -72,8 +75,8 @@ public class Deserialization : MonoBehaviour
             s.cost = obj.cost;
             s.damage = obj.damage;
             s.move = obj.move;
-            s.backgroundPath = obj.backgroundPath;
-            s.spritePath = obj.spritePath;
+            s.backgroundPath = "Graphics/CardBackgrounds/AttackCards/Attack" + PickCardQuality(s.cardQuality);
+            s.spritePath = $"Graphics/CardSprites/AttackCards/{s.title}";
             s.range = obj.range;
 
             AssetDatabase.CreateAsset(s, cPath + s.title + ".asset");
@@ -82,9 +85,34 @@ public class Deserialization : MonoBehaviour
             AssignAsAddressable(s, "AttackCardsGroup", "AttackCard", s.name.Contains("Defoult"));
         }
 
-        dObjects = JsonUtility.FromJson<JsonCards>(DefenceFile.text);
+        curseObjects = JsonUtility.FromJson<JsonCurseCards>(CurseFile.text);
 
-        foreach (var obj in dObjects.attackCardsList)
+        foreach (var obj in curseObjects.curseCardsList)
+        {
+            var s = ScriptableObject.CreateInstance<CardsSO>();
+
+            s.id = obj.id;
+            s.type = CardType.Curse;
+            s.isActive = obj.isActive;
+            s.cardQuality = obj.cardQuality;
+            s.title = obj.title;
+            s.description = obj.description;
+            s.cost = obj.cost;
+            s.damage = obj.damage;
+            s.move = obj.move;
+            s.backgroundPath = "Graphics/CardBackgrounds/CurseCards/Curse";
+            s.spritePath = $"Graphics/CardSprites/CurseCards/{s.title}";
+            s.range = obj.range;
+
+            AssetDatabase.CreateAsset(s, cursePath + s.title + ".asset");
+            AssetDatabase.SaveAssets();
+
+            AssignAsAddressable(s, "CurseCardsGroup", "CurseCard", s.name.Contains("Defoult"));
+        }
+        
+        dObjects = JsonUtility.FromJson<JsonDefenceCards>(DefenceFile.text);
+
+        foreach (var obj in dObjects.defenceCardsList)
         {
             var s = ScriptableObject.CreateInstance<CardsSO>();
 
@@ -97,8 +125,8 @@ public class Deserialization : MonoBehaviour
             s.cost = obj.cost;
             s.damage = obj.damage;
             s.move = obj.move;
-            s.backgroundPath = obj.backgroundPath;
-            s.spritePath = obj.spritePath;
+            s.backgroundPath = "Graphics/CardBackgrounds/DefenceCards/Defence" + PickCardQuality(s.cardQuality);
+            s.spritePath = $"Graphics/CardSprites/DefenceCards/{s.title}";
             s.range = obj.range;
 
             AssetDatabase.CreateAsset(s, dPath + s.title + ".asset");
@@ -106,10 +134,10 @@ public class Deserialization : MonoBehaviour
 
             AssignAsAddressable(s, "DefenceCardsGroup", "DefenceCard", s.name.Contains("Default"));
         }
+        
+        mObjects = JsonUtility.FromJson<JsonMovementCards>(MovementFile.text);
 
-        mObjects = JsonUtility.FromJson<JsonCards>(MovementFile.text);
-
-        foreach (var obj in mObjects.attackCardsList)
+        foreach (var obj in mObjects.movementCardsList)
         {
             var s = ScriptableObject.CreateInstance<CardsSO>();
 
@@ -122,8 +150,8 @@ public class Deserialization : MonoBehaviour
             s.cost = obj.cost;
             s.damage = obj.damage;
             s.move = obj.move;
-            s.backgroundPath = obj.backgroundPath;
-            s.spritePath = obj.spritePath;
+            s.backgroundPath = "Graphics/CardBackgrounds/MovementCards/Move" + PickCardQuality(s.cardQuality);
+            s.spritePath = $"Graphics/CardSprites/MovementCards/{s.title}";
             s.range = obj.range;
 
             AssetDatabase.CreateAsset(s, mPath + s.title + ".asset");
@@ -196,8 +224,19 @@ public class Deserialization : MonoBehaviour
 
             
         }
+        
     }
-
+    private string PickCardQuality(int value)
+    {
+        switch (value)
+        {
+            case 0: return " I";
+            case 1: return " I";
+            case 2: return " II";
+            case 3: return " III";
+        }
+        return "";
+    }
     private void AssignAsAddressable(Object asset, string targetGroup, string targetLabel, bool isDefault)
     {
         AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
@@ -205,7 +244,7 @@ public class Deserialization : MonoBehaviour
         string assetGUID = AssetDatabase.AssetPathToGUID(assetPath);
         var group = settings.FindGroup(targetGroup);
         var entry = settings.CreateOrMoveEntry(assetGUID, group);
-        
+
         entry.SetLabel(targetLabel, true, true, true);
         if (isDefault)
         {
