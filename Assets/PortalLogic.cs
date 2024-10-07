@@ -9,7 +9,12 @@ public class PortalLogic : MonoBehaviour
 
     void Update()
     {
-        if (collision.gameObject.CompareTag("Player"))
+        OnCollision();
+    }
+
+    private void OnCollision()
+    {
+        if (collision.GameObject().tag == "Player")
         {
             EventSystem.NewLevel.Invoke();
         }

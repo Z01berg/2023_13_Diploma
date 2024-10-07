@@ -57,11 +57,10 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         //TODO: For testing
         if (Input.GetKeyDown(KeyCode.R))
         {
-            GameState = GameState.gameStarted;
+            ChangeGameState_NewLevel();
         }
     }
-
-    // Handle game state
+    
     private void HandleGameStates()
     {
         switch (GameState)
@@ -73,14 +72,14 @@ public class GameManager : SingletonMonobehaviour<GameManager>
                 break;
             
             case GameState.bossStage:
-                if (currenDungeonLevelListIndex < dungeonLevelList.Count)
+                if (currenDungeonLevelListIndex < dungeonLevelList.Count - 1)
                 {
                     ChangeLevel();
                     PlayDungeonLevel(currenDungeonLevelListIndex);
                     GameState = GameState.playingLevel;
                 }
                 
-                if (currenDungeonLevelListIndex == dungeonLevelList.Count)
+                if (currenDungeonLevelListIndex == dungeonLevelList.Count - 1)
                 {
                     GameState = GameState.gameStarted;
                 }

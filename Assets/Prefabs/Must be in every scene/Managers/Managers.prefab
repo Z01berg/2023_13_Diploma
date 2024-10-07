@@ -79,7 +79,7 @@ MonoBehaviour:
   _playerMovePoint: {fileID: 0}
   dungeonLevelList:
   - {fileID: 11400000, guid: 27ae7e2e935151248b08b273756597ab, type: 2}
-  - {fileID: 11400000, guid: 27ae7e2e935151248b08b273756597ab, type: 2}
+  - {fileID: 11400000, guid: e38c7ea796500dd4ebc11f1b4a1fe7de, type: 2}
   currenDungeonLevelListIndex: 0
   GameState: 0
 --- !u!1 &1897776090475512930

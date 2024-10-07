@@ -50,7 +50,7 @@ namespace Player
         private void Start()
         {
             _movePoint.parent = null;
-            GetComponent<PlayerController>().enabled = !GetComponent<PlayerController>().enabled;// TODO uncomment this after AI tests
+            GetComponent<PlayerController>().enabled = !GetComponent<PlayerController>().enabled;
             EventSystem.ChangeHealthPlayer.AddListener(UpdateHealth);
             EventSystem.PlayerMove.AddListener(ToogleScrypt);
             EventSystem.MovePlayer.AddListener(SetMoveVector);
