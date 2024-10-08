@@ -259,18 +259,6 @@ public class InstantiatedRoom : MonoBehaviour
 
         EventSystem.InstatiatedRoom.Invoke();
     }
-
-    /*
-      foreach (var position in positions.Take(numEnemiesToSpawn))
-        {
-            if (room.RoomNodeType.isBossRoom)
-            {
-                var boss = Instantiate(portal, transform.Find("Grid"));
-                boss.transform.localPosition = new Vector3(position.x, position.y, -6f);
-                return;
-            }
-        }
-     */
     
     public void CloseAllDoors()
     {

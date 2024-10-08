@@ -28,10 +28,4 @@ public class PortalLogic : MonoBehaviour
         }
         
     }
-
-    private void OnSpawn(Vector3 ordinats)//TODO: Spawn Animation
-    {
-        this.transform.position = ordinats;
-        _animator.SetTrigger("New_Level");
-    }
 }

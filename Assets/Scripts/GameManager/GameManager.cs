@@ -93,13 +93,13 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 
     private async Task PlayDungeonLevel(int dungeonLevelListIndex)
     {
+        EventSystem.NewLevel.Invoke();
         bool dungeonBuiltSucessfully = DungeonBuilder.Instance.GenerateDungeon(dungeonLevelList[dungeonLevelListIndex]);
 
         if (!dungeonBuiltSucessfully)
         {
          Debug.LogError("Couldn't build dungeon from specified rooms and more graphs");   
         }
-
 
         var spawnPosition = HelperUtilities.GetSpawnPositionNearestToPlayer(_player.transform.position);
 

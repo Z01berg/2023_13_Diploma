@@ -368,34 +368,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3013903227937501779, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
-      propertyPath: m_SpriteTilingProperty.pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3013903227937501779, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
-      propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3013903227937501779, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
-      propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 8.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 3013903227937501779, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
-      propertyPath: m_SpriteTilingProperty.newSize.y
-      value: 6.481055
-      objectReference: {fileID: 0}
-    - target: {fileID: 3013903227937501779, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 8.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 3013903227937501779, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 6.481055
-      objectReference: {fileID: 0}
-    - target: {fileID: 3013903227937501779, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
-      propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

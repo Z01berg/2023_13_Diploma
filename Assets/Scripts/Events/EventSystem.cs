@@ -138,7 +138,7 @@ public static class EventSystem
     
     #endregion
     
-    #region Event Change Game state to new level : PortalLogic.cs -> GameManager.cs 
+    #region Event Spawn Portal over Player: GameManager.cs -> SpawnPortal.cs 
     
     public static UnityEvent NewLevel = new UnityEvent();
     
