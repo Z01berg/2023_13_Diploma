@@ -18,7 +18,6 @@ public class MouseController : MonoBehaviour
 
     public float speed; //do pathFindingu
     public GameObject playerPrefab;
-    //public int _range = 3; // TODO: będzie przypisywany kartą/
 
     private RangeFinder _rangeFinder;
     public static List<OverlayTile> _rangeTiles;
@@ -46,7 +45,6 @@ public class MouseController : MonoBehaviour
             String range = Wrapper.cardInUse.GetComponent<CardDisplay>().range.text;
             ShowRangeTiles(int.Parse(range));
             _canHideRange = true;
-            //_playerController.standingOnTile.ShowRangeTile();
             if (_playerController.enabled)
             {
                 _playerController.enabled = false;
@@ -63,7 +61,6 @@ public class MouseController : MonoBehaviour
                 }
             }
         }
-        
     }
 
     void LateUpdate()
