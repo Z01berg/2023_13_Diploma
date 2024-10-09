@@ -12,10 +12,10 @@ namespace Grid.New
         
         void Update()
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                HideTile();
-            }
+            if (Input.GetMouseButtonDown(1)){}
+            
+                // HideTile();
+            
         }
 
         public void HideTile()
@@ -27,12 +27,13 @@ namespace Grid.New
         
         public void ShowTile()
         {
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(100, 100, 100, 0.7f);
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(100, 100, 100, 1);
         }
         public void ShowRangeTile()
         {
-            //gameObject.GetComponent<SpriteRenderer>().material.color = new Color(241, 224, 92, 0.7f);
+            gameObject.GetComponent<SpriteRenderer>().material.color = new Color(241, 224, 92, 0.7f);
             gameObject.GetComponent<SpriteRenderer>().color = new Color(236, 91, 86, 80);
+            Debug.Log("should work");
         }
 
 

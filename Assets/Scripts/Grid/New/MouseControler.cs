@@ -1,22 +1,17 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using CardActions;
 using Grid.New;
 using Player;
-using TMPro;
 using UI;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.WSA;
 
 
 public class MouseController : MonoBehaviour
 {
     public GameObject cursor;
 
-    public float speed; //do pathFindingu
     public GameObject playerPrefab;
 
     private RangeFinder _rangeFinder;
@@ -32,35 +27,35 @@ public class MouseController : MonoBehaviour
     private void Start()
     {
         _rangeFinder = new RangeFinder();
-        _rangeTiles = new List<OverlayTile>(); 
+        _rangeTiles = new List<OverlayTile>();
         _playerController = playerPrefab.GetComponent<PlayerController>();
-        EventSystem.ShowRange.AddListener(ShowRangeTiles);
+        EventSystem.ShowRange.AddListener(GetRangeTiles);
     }
 
 
     private void Update()
     {
-        if (Wrapper.cardInUse)
-        {
-            String range = Wrapper.cardInUse.GetComponent<CardDisplay>().range.text;
-            ShowRangeTiles(int.Parse(range));
-            _canHideRange = true;
-            if (_playerController.enabled)
-            {
-                _playerController.enabled = false;
-            }
-        }
-        else if (_canHideRange && !Wrapper.cardInUse)
-        {
-            if (!_playerController.enabled)
-            {
-                _playerController.enabled = true;
-                foreach (var tile in _rangeTiles)
-                {
-                    tile.HideTile();
-                }
-            }
-        }
+        // if (Wrapper.cardInUse)
+        // {
+        //     String range = Wrapper.cardInUse.GetComponent<CardDisplay>().range.text;
+        //     GetRangeTiles(int.Parse(range));
+        //     _canHideRange = true;
+        //     if (_playerController.enabled)
+        //     {
+        //         _playerController.enabled = false;
+        //     }
+        // }
+        // else if (_canHideRange && !Wrapper.cardInUse)
+        // {
+        //     if (!_playerController.enabled)
+        //     {
+        //         _playerController.enabled = true;
+        //         foreach (var tile in _rangeTiles)
+        //         {
+        //             tile.HideTile();
+        //         }
+        //     }
+        // }
     }
 
     void LateUpdate()
@@ -82,15 +77,10 @@ public class MouseController : MonoBehaviour
                 cursor.GetComponent<SpriteRenderer>().sortingOrder =
                     overlayTile.GetComponent<SpriteRenderer>().sortingOrder;
 
-                if (_rangeTiles.Contains(overlayTile))
-                {
-                    //Tu cos jeszcze bedzie      
-                }
 
-                if (Input.GetMouseButtonDown(0)) // if użyta karta pobierz range i wyswietl go na gridzie else nic nie rób i schowaj pola
+                if (Input.GetMouseButtonDown(0))
                 {
                     overlayTile.ShowTile();
-                    // overlayTile.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
                 }
 
                 if (Input.GetMouseButtonDown(1))
@@ -99,11 +89,6 @@ public class MouseController : MonoBehaviour
                 }
             }
         }
-    }
-
-    public void ShowRangeTiles(int range)
-    {
-        GetRangeTiles(range);
     }
 
     public RaycastHit2D? GetFocusedOnTile()
@@ -132,11 +117,9 @@ public class MouseController : MonoBehaviour
 
     private void GetRangeTiles(int range)
     {
-        _rangeTiles.Clear();
+        // _rangeTiles.Clear();
         _rangeTiles = _rangeFinder.GetTilesInRange(
-            new Vector2(_playerController.standingOnTile.gridLocation.x,
-                _playerController.standingOnTile.gridLocation.y), range, _playerController.standingOnTile);
-
+            range, _playerController.standingOnTile);
         foreach (var tile in _rangeTiles)
         {
             tile.ShowRangeTile();

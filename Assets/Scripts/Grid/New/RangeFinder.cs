@@ -7,7 +7,7 @@ namespace CardActions
 {
     public class RangeFinder
     {
-        public List<OverlayTile> GetTilesInRange(Vector2 location, int range, OverlayTile playersTile)
+        public List<OverlayTile> GetTilesInRange(int range, OverlayTile playersTile)
         {
             // var StartingTile = OverlayManager.Instance.map[location];
             var RangeTiles = new List<OverlayTile>();

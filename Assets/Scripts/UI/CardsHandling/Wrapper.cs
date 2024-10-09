@@ -1,4 +1,5 @@
-﻿using UI.Config;
+﻿using System;
+using UI.Config;
 using UI.Events;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -154,7 +155,8 @@ namespace UI
                 _isHovered = true;
                 cardInUse = this;
                 PlaceHolder.isTaken = true;
-                EventSystem.ShowRange.Invoke(int.Parse(cardInUse.GetComponent<CardDisplay>().range.text));
+                int range = Convert.ToInt32(GetComponent<CardDisplay>().range.text);
+                EventSystem.ShowRange.Invoke(range);
             }
 
             if (Input.GetMouseButtonDown(1))
