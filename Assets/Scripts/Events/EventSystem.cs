@@ -120,9 +120,15 @@ public static class EventSystem
 
     #endregion
     
-    #region DrawACard: wrapper.cs -> MouseController.cs
+    #region ShowRange: wrapper.cs -> MouseController.cs
 
     public static UnityEvent<int> ShowRange = new UnityEvent<int>();
+
+    #endregion
+    
+    #region HideRange: wrapper.cs -> MouseController.cs
+
+    public static UnityEvent HideRange = new UnityEvent();
 
     #endregion
 

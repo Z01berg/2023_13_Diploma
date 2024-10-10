@@ -148,7 +148,7 @@ namespace UI
                     cardInUse._isPressed = false;
                     cardInUse._isHovered = false;
                     eventsConfig?.cardUnHover?.Invoke(new CardUnhover(this));
-                    
+                    EventSystem.HideRange.Invoke();
                 }
                 eventsConfig?.cardHover?.Invoke(new CardHover(this));
                 _isPressed = true;
@@ -168,8 +168,14 @@ namespace UI
                     _isHovered = false;
                     cardInUse = null;
                     PlaceHolder.isTaken = false;
+                    EventSystem.HideRange.Invoke();
                 }
             }
+        }
+
+        private void OnDestroy()
+        {
+            EventSystem.HideRange.Invoke();
         }
 
         public static Wrapper GetCardCurrentCardInfo()

@@ -7,33 +7,42 @@ namespace Grid.New
     {
         public OverlayTile peviousTile;
         public Vector3 gridLocation;
+        [NonSerialized] public bool isRangeTile;
         public Vector2 grid2DLocation => new Vector2(gridLocation.x, gridLocation.y);
         
         
         void Update()
         {
-            if (Input.GetMouseButtonDown(1)){}
-            
-                // HideTile();
-            
+            if (Input.GetMouseButtonDown(1))
+            {
+                HideTile();
+            }
         }
 
         public void HideTile()
         {
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
-            //gameObject.GetComponent<SpriteRenderer>().material.color = new Color(1, 1, 1, 0.5f);
-
+            if (!isRangeTile)
+            {
+                gameObject.GetComponent<SpriteRenderer>().color = new Color(236, 91, 86, 0);
+            }
         }
         
         public void ShowTile()
         {
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(100, 100, 100, 1);
+            if (!isRangeTile)
+            {
+                gameObject.GetComponent<SpriteRenderer>().color = new Color(236, 91, 86, 0.5f);
+            }
         }
         public void ShowRangeTile()
         {
-            gameObject.GetComponent<SpriteRenderer>().material.color = new Color(241, 224, 92, 0.7f);
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(236, 91, 86, 80);
-            Debug.Log("should work");
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(236, 91, 86, 0.5f);
+            isRangeTile = true;
+        }
+        public void HideRangeTile()
+        {
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(236, 91, 86, 0);
+            isRangeTile = false;
         }
 
 

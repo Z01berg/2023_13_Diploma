@@ -58,8 +58,8 @@ public class OverlayManager : MonoBehaviour
                                 var overlayTile = Instantiate(overlayPrefab, overlayContainer.transform);
                                 overlayTile.transform.position = new Vector3(cellWorldPosition.x, cellWorldPosition.y,
                                     cellWorldPosition.z + 1);
-                                overlayTile.GetComponent<SpriteRenderer>().sortingOrder =
-                                    tm.GetComponent<TilemapRenderer>().sortingOrder+1;
+                                // overlayTile.GetComponent<SpriteRenderer>().sortingOrder =
+                                //     tm.GetComponent<TilemapRenderer>().sortingOrder+1;
                                 overlayTile.gameObject.GetComponent<OverlayTile>().gridLocation =
                                     cellWorldPosition;
                                 map.Add(tileKey, overlayTile.gameObject.GetComponent<OverlayTile>());

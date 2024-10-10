@@ -29,7 +29,8 @@ public class MouseController : MonoBehaviour
         _rangeFinder = new RangeFinder();
         _rangeTiles = new List<OverlayTile>();
         _playerController = playerPrefab.GetComponent<PlayerController>();
-        EventSystem.ShowRange.AddListener(GetRangeTiles);
+        EventSystem.ShowRange.AddListener(ShowRangeTiles);
+        EventSystem.HideRange.AddListener(HideRangeTiles);
     }
 
 
@@ -91,7 +92,7 @@ public class MouseController : MonoBehaviour
         }
     }
 
-    public RaycastHit2D? GetFocusedOnTile()
+    private RaycastHit2D? GetFocusedOnTile()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 mousePos2d = new Vector2(mousePos.x, mousePos.y);
@@ -115,7 +116,7 @@ public class MouseController : MonoBehaviour
         _playerController.standingOnTile = tile;
     }
 
-    private void GetRangeTiles(int range)
+    private void ShowRangeTiles(int range)
     {
         // _rangeTiles.Clear();
         _rangeTiles = _rangeFinder.GetTilesInRange(
@@ -123,6 +124,26 @@ public class MouseController : MonoBehaviour
         foreach (var tile in _rangeTiles)
         {
             tile.ShowRangeTile();
+        }
+        
+        if (_playerController.enabled)
+        {
+            _playerController.enabled = false;
+        }
+    }
+
+    private void HideRangeTiles()
+    {
+        if (_rangeTiles.Count > 0)
+        {
+            foreach (var tile in _rangeTiles)
+            {
+                tile.HideRangeTile();
+            }
+        }
+        if (!_playerController.enabled)
+        {
+            _playerController.enabled = true;
         }
     }
 
