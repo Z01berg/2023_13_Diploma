@@ -118,7 +118,7 @@ public class MouseController : MonoBehaviour
 
     private void ShowRangeTiles(int range)
     {
-        // _rangeTiles.Clear();
+        _rangeTiles.Clear();
         _rangeTiles = _rangeFinder.GetTilesInRange(
             range, _playerController.standingOnTile);
         foreach (var tile in _rangeTiles)

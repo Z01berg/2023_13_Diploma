@@ -899,8 +899,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.5124945, y: 0.0704, z: 0}
-    m_Extent: {x: 1.0124946, y: 0.5758, z: 0}
+    m_Center: {x: 0.5143, y: 0.06885001, z: 0}
+    m_Extent: {x: 1.0143, y: 0.57425, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.5829965
@@ -1395,6 +1395,7 @@ GameObject:
   - component: {fileID: 7146570010130287962}
   - component: {fileID: 7505738115539394662}
   - component: {fileID: 2264738450791556759}
+  - component: {fileID: 2860806957605172280}
   m_Layer: 0
   m_Name: body
   m_TagString: Player
@@ -1528,3 +1529,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popUpPrefab: {fileID: 467837565738204250, guid: 76ee967cebe21914aab9b16f2c3ddd77, type: 3}
   gameObjectTimer: {fileID: 0}
+  standingOnTile: {fileID: 0}
+--- !u!95 &2860806957605172280
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7934358016564866798}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b1435f8126b519c4281bc1847e1cc1f4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

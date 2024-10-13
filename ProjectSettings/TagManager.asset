@@ -69,11 +69,11 @@ TagManager:
   - name: Pointer
     uniqueID: 1443042739
     locked: 0
-  - name: Player
-    uniqueID: 144045155
-    locked: 0
   - name: Wall
     uniqueID: 3611618195
+    locked: 0
+  - name: Player
+    uniqueID: 144045155
     locked: 0
   - name: Collision
     uniqueID: 2053827435

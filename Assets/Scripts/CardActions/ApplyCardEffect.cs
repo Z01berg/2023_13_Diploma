@@ -20,6 +20,8 @@ namespace CardActions
         private Image _image; 
         public OverlayTile standingOnTile;
 
+        private bool isInRange = false; // TODO przygotowanie pod animator
+
 
         private void Start()
         {
@@ -30,13 +32,25 @@ namespace CardActions
 
         private void Update()
         {
-            standingOnTile = GetCurrentTile();
+            if (standingOnTile != GetCurrentTile())
+            {
+                standingOnTile = GetCurrentTile();
+
+                if (isOnRangedTile())
+                {
+                    isInRange = true;
+                }
+                else if (isInRange)
+                {
+                    isInRange = false;
+                }
+            }
         }
 
         private void OnMouseDown()
         {
             if (!Input.GetMouseButtonDown(0) || !PlayerController.getPlayerTurn()) return;
-            if (!MouseController._rangeTiles.Contains(standingOnTile)) return;
+            if (isOnRangedTile()) return;
             if (!PlaceHolder.isTaken) return;
             
             var cardInfo = Wrapper.GetCardCurrentCardInfo();
@@ -111,6 +125,10 @@ namespace CardActions
 
             return null;
         }
-        
+
+        private bool isOnRangedTile()
+        {
+            return !MouseController._rangeTiles.Contains(standingOnTile);
+        }
     }
 }

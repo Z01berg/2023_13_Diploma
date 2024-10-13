@@ -23,7 +23,7 @@ namespace Grid.New
         {
             if (!isRangeTile)
             {
-                gameObject.GetComponent<SpriteRenderer>().color = new Color(236, 91, 86, 0);
+                gameObject.GetComponent<SpriteRenderer>().color = new Color32(236, 91, 86, 0);
             }
         }
         
@@ -31,18 +31,19 @@ namespace Grid.New
         {
             if (!isRangeTile)
             {
-                gameObject.GetComponent<SpriteRenderer>().color = new Color(236, 91, 86, 0.5f);
+                gameObject.GetComponent<SpriteRenderer>().color = new Color32(230, 233, 234, 190);
             }
         }
         public void ShowRangeTile()
         {
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(236, 91, 86, 0.5f);
+            gameObject.GetComponent<SpriteRenderer>().color = new Color32(97, 31, 92, 130);
             isRangeTile = true;
         }
         public void HideRangeTile()
         {
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(236, 91, 86, 0);
+            gameObject.GetComponent<SpriteRenderer>().color = new Color32(1, 1, 1, 0);
             isRangeTile = false;
+            
         }
 
 
