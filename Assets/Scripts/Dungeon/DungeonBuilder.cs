@@ -572,10 +572,6 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
             {
                 _roomTemplateDictionary.Add(roomTemplate.guid, roomTemplate);
             }
-            else // TODO : Do wyjebania :)
-            {
-                // Debug.Log("Duplicates Room Template Key in " + _roomTemplateList);
-            }
         }
     }
 }
