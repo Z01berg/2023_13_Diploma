@@ -17,30 +17,12 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 91fd337ef45d6cd47b1577a4b51ebf6d
   m_SerializeEntries:
-  - m_GUID: 719f7de8f1afbda4baf7af54d34928b1
-    m_Address: Assets/ScriptableObjectAssets/Card/Move/ExampleMovementCard1.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - MovementCard
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 573b3301ea0f16043b6de96e17cdd139
-    m_Address: Assets/ScriptableObjectAssets/Card/Move/DefaultMovementkCard.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - MovementCard
-    - DefaultCard
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d98188f8d7f02a9409f00e7d116d9389
-    m_Address: Assets/ScriptableObjectAssets/Card/Move/ExampleMovementCard2.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - MovementCard
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 84ece34187bdb98429982acd750dc701
     m_Address: Assets/ScriptableObjectAssets/Card/Move/Shuffle.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - MovementCard
+    - default
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 641b427b50518ef44bb8976dc76e5bf8
     m_Address: Assets/ScriptableObjectAssets/Card/Move/Walk.asset
