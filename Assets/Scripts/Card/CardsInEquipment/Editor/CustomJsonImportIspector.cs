@@ -15,7 +15,7 @@ using UnityEngine;
  */
 
 [CustomEditor(typeof(Inventory))]
-public class CustomJsonImportIspector : Editor
+public class CustomInventoryIspector : Editor
 {
     public override void OnInspectorGUI()
     {
@@ -25,7 +25,12 @@ public class CustomJsonImportIspector : Editor
 
         if (GUILayout.Button("AddItem"))
         {
-            ds.items.Add(AddressablesUtilities.GetRandomItem());
+            var item = AddressablesUtilities.GetRandomItem();
+            if (item != null) 
+            { 
+                ds.items.Add(item);
+            }
+            
         }
         if (GUILayout.Button("SaveItems"))
         {

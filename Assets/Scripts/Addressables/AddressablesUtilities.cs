@@ -103,6 +103,10 @@ public class AddressablesUtilities : MonoBehaviour
         }
 
         var index = UnityEngine.Random.Range(0,items.Count);
+        if (index < 0)
+        {
+            return null;
+        }
         var result = items[index] as Item;
 
         return result;
