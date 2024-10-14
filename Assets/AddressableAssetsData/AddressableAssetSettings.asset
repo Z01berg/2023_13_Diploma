@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 274ee20f7eb1cfd46885daaf83f9e71a
   m_currentHash:
     serializedVersion: 2
-    Hash: 8316e083895527f47ae85d12cd7a214f
+    Hash: 00000000000000000000000000000000
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -102,6 +102,8 @@ MonoBehaviour:
     - DefaultCard
     - AttackCardsBanner
     - CurseCard
+    - unlocked
+    - locked
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 6fcadee536366bf458755ef213e4bdc3, type: 2}

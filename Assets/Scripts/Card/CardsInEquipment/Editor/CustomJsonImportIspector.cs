@@ -14,37 +14,26 @@ using UnityEngine;
  * zapisujaca utworzona karte do pliku Json
  */
 
-//[CustomEditor(typeof(Deserialization))]
+[CustomEditor(typeof(Inventory))]
 public class CustomJsonImportIspector : Editor
-{/*
-    public override void OnInspectorGUI()
-    {
-        DrawDefaultInspector();
-        
-        Deserialization ds = (Deserialization)target;
-
-        if (GUILayout.Button("IMPORT"))
-        {
-            ds.Import();
-        }
-    }*/
-}
-/*
-[CustomEditor(typeof(CardCreator))]
-public class CustomJsonCardExportInspector : Editor
 {
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
-
-        CardCreator cc = (CardCreator)target;
-
-        if (GUILayout.Button("Export"))
-        {
-            cc.CreateCard();
-        }
         
+        Inventory ds = (Inventory)target;
+
+        if (GUILayout.Button("AddItem"))
+        {
+            ds.items.Add(AddressablesUtilities.GetRandomItem());
+        }
+        if (GUILayout.Button("SaveItems"))
+        {
+            AddressablesUtilities.SaveAsUnlockedItems();
+        }
+        if (GUILayout.Button("LockItems"))
+        {
+            AddressablesUtilities.LockAllItems();
+        }
     }
-    
 }
-*/

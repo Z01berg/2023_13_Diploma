@@ -15,6 +15,7 @@ using Button = UnityEngine.UIElements.Button;
 using Image = UnityEngine.UIElements.Image;
 using Toggle = UnityEngine.UIElements.Toggle;
 using UnityEngine.ResourceManagement.ResourceProviders;
+using UnityEngine.AddressableAssets;
 
 public class ItemAndCardsEditorWindow : EditorWindow
 {
@@ -150,7 +151,7 @@ public class ItemAndCardsEditorWindow : EditorWindow
         }
 
 
-        var addressables = AddressablesUtilities.LoadItems(selected.ToArray());
+        var addressables = AddressablesUtilities.LoadItems(Addressables.MergeMode.Union, selected.ToArray());
         _items.Clear();
         _cards.Clear();
 

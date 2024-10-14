@@ -41,7 +41,7 @@ public class Inventory : MonoBehaviour
 
     private void LoadItems()
     {
-        List<string> _keys = new List<string>() { "Item" };
+        List<string> _keys = new List<string>() { "Item","unlocked" };
         items.Clear();
 
         _loadHandle = Addressables.LoadAssetsAsync<Item>(
@@ -49,7 +49,7 @@ public class Inventory : MonoBehaviour
             addressable =>
             {
                items.Add(addressable);
-            }, Addressables.MergeMode.Union,
+            }, Addressables.MergeMode.Intersection,
             false);
     }
 }
