@@ -36,7 +36,7 @@ namespace Grid.New
         }
         public void ShowRangeTile()
         {
-            gameObject.GetComponent<SpriteRenderer>().color = new Color32(97, 31, 92, 130);
+            gameObject.GetComponent<SpriteRenderer>().color = new Color32(140, 35, 115, 110);
             isRangeTile = true;
         }
         public void HideRangeTile()
