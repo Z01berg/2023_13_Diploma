@@ -91,7 +91,6 @@ MonoBehaviour:
     m_ProfileVersion: 1
   m_LabelTable:
     m_LabelNames:
-    - default
     - AttackCardsFile
     - DefenceCardsFile
     - MovementCardsFile
@@ -100,7 +99,6 @@ MonoBehaviour:
     - DefenceCard
     - Item
     - DefaultCard
-    - AttackCardsBanner
     - CurseCard
     - unlocked
     - locked
