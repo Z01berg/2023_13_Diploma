@@ -82,7 +82,7 @@ public class Deserialization : Editor
             AssetDatabase.CreateAsset(s, cPath + s.title + ".asset");
             AssetDatabase.SaveAssets();
 
-            AssignAsAddressable(s, "AttackCardsGroup", "AttackCard", s.name.Contains("Defoult"));
+            AssignAsAddressable(s, "AttackCardsGroup", "AttackCard", s.cardQuality == 0);
         }
 
         curseObjects = JsonUtility.FromJson<JsonCurseCards>(CurseFile.text);
@@ -107,7 +107,7 @@ public class Deserialization : Editor
             AssetDatabase.CreateAsset(s, cursePath + s.title + ".asset");
             AssetDatabase.SaveAssets();
 
-            AssignAsAddressable(s, "CurseCardsGroup", "CurseCard", s.name.Contains("Defoult"));
+            AssignAsAddressable(s, "CurseCardsGroup", "CurseCard", s.cardQuality == 0);
         }
         
         dObjects = JsonUtility.FromJson<JsonDefenceCards>(DefenceFile.text);
@@ -132,7 +132,7 @@ public class Deserialization : Editor
             AssetDatabase.CreateAsset(s, dPath + s.title + ".asset");
             AssetDatabase.SaveAssets();
 
-            AssignAsAddressable(s, "DefenceCardsGroup", "DefenceCard", s.name.Contains("Default"));
+            AssignAsAddressable(s, "DefenceCardsGroup", "DefenceCard", s.cardQuality == 0);
         }
         
         mObjects = JsonUtility.FromJson<JsonMovementCards>(MovementFile.text);
@@ -157,7 +157,7 @@ public class Deserialization : Editor
             AssetDatabase.CreateAsset(s, mPath + s.title + ".asset");
             AssetDatabase.SaveAssets();
 
-            AssignAsAddressable(s, "MovementCardsGroup", "MovementCard", s.name.Contains("Default"));
+            AssignAsAddressable(s, "MovementCardsGroup", "MovementCard", s.cardQuality == 0);
         }
 
         itemsObjects = JsonUtility.FromJson<JsonItems>(jsonItemsFile.text);
