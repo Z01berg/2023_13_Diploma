@@ -653,7 +653,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3473978733960977, guid: f302c1296165ef84ea5489727505a305, type: 3}
       propertyPath: m_text
-      value: "\u03A9"
+      value: Card your time
       objectReference: {fileID: 0}
     - target: {fileID: 3473978733960977, guid: f302c1296165ef84ea5489727505a305, type: 3}
       propertyPath: m_fontSize
@@ -693,11 +693,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9216454532953095445, guid: f302c1296165ef84ea5489727505a305, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 573.7174
+      value: 1287.95
       objectReference: {fileID: 0}
     - target: {fileID: 9216454532953095445, guid: f302c1296165ef84ea5489727505a305, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 240.7926
+      value: 254.9
       objectReference: {fileID: 0}
     - target: {fileID: 9216454532953095445, guid: f302c1296165ef84ea5489727505a305, type: 3}
       propertyPath: m_LocalPosition.x
@@ -729,11 +729,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9216454532953095445, guid: f302c1296165ef84ea5489727505a305, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 359
+      value: 840
       objectReference: {fileID: 0}
     - target: {fileID: 9216454532953095445, guid: f302c1296165ef84ea5489727505a305, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -140
+      value: -142
       objectReference: {fileID: 0}
     - target: {fileID: 9216454532953095445, guid: f302c1296165ef84ea5489727505a305, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
