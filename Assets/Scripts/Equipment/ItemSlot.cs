@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -44,7 +42,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 
     public void OnDrop(PointerEventData eventData)
     {
-        if(eventData.pointerDrag != null && eventData.pointerDrag.GetComponent<UIItemDragNDrop>().item.itemType == allowedItemType && transform.childCount ==0) 
+        if (eventData.pointerDrag != null && eventData.pointerDrag.GetComponent<UIItemDragNDrop>().item.itemType == allowedItemType && transform.childCount == 0)
         {
             eventData.pointerDrag.transform.SetParent(transform, false);
             eventData.pointerDrag.GetComponent<RectTransform>().position = transform.GetComponent<RectTransform>().position;
@@ -72,69 +70,69 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
                     }
                 }
             }
+            return;
         }
-        else
+
+        foreach (ItemSlot slot in allItemSlots)
         {
-            foreach (ItemSlot slot in allItemSlots)
+            if (slot == this) continue;
+            if (slot.gameObject.transform.childCount > 0)
             {
-                if (slot == this) continue;
-                if (slot.gameObject.transform.childCount > 0)
+                if (slot.GetComponentInChildren<UIItemDragNDrop>().item.itemType != allowedItemType) continue;
+                if (slot.allowedItemType != ItemType.any) continue;
+                if (command == "lightup")
                 {
-                    if (slot.GetComponentInChildren<UIItemDragNDrop>().item.itemType != allowedItemType) continue;
-                    if (slot.allowedItemType != ItemType.any) continue;
-                    if (command == "lightup")
-                    {
-                        slot.LightUp();
-                    }
-                    else
-                    {
-                        slot.LightDown();
-                    }
+                    slot.LightUp();
                 }
                 else
                 {
                     slot.LightDown();
                 }
             }
-            if (transform.childCount == 0)
-            {
-                foreach(var card in GetComponent<DefaultCards>()._cardsList)
-                {
-                    if (command == "lightup")
-                    {
-                        card.transform.Find("ArtworkMask").transform.Find("BG").GetComponent<Image>().color = _mouseOverColor;
-                        card.transform.SetAsFirstSibling();
-                    }
-                    else
-                    {
-                        card.transform.Find("ArtworkMask").transform.Find("BG").GetComponent<Image>().color = Color.white;
-                    }
-                }
-            }
             else
             {
-                var child = GetComponentInChildren<UIItemDragNDrop>();
-                if (child.cardsList == null)
+                slot.LightDown();
+            }
+        }
+        if (transform.childCount == 0)
+        {
+            foreach (var card in GetComponent<DefaultCards>()._cardsList)
+            {
+                if (command == "lightup")
                 {
-                    return;
+                    card.transform.Find("ArtworkMask").transform.Find("BG").GetComponent<Image>().color = _mouseOverColor;
+                    card.transform.SetAsFirstSibling();
                 }
-                foreach (var card in child.cardsList)
+                else
                 {
-                    if (card == null) break;
-                    if (command == "lightup")
-                    {
-                        
-                        card.transform.Find("ArtworkMask").transform.Find("BG").GetComponent<Image>().color = _mouseOverColor;
-                        card.transform.SetAsFirstSibling();
-                    }
-                    else
-                    {
-                        card.transform.Find("ArtworkMask").transform.Find("BG").GetComponent<Image>().color = Color.white;
-                    }
+                    card.transform.Find("ArtworkMask").transform.Find("BG").GetComponent<Image>().color = Color.white;
                 }
             }
-            
         }
+        else
+        {
+            var child = GetComponentInChildren<UIItemDragNDrop>();
+            if (child.cardsList == null)
+            {
+                return;
+            }
+            foreach (var card in child.cardsList)
+            {
+                if (card == null) break;
+                if (command == "lightup")
+                {
+
+                    card.transform.Find("ArtworkMask").transform.Find("BG").GetComponent<Image>().color = _mouseOverColor;
+                    card.transform.SetAsFirstSibling();
+                }
+                else
+                {
+                    card.transform.Find("ArtworkMask").transform.Find("BG").GetComponent<Image>().color = Color.white;
+                }
+            }
+        }
+
+
     }
 
     protected void LightUp()
@@ -174,7 +172,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 
         foreach (ItemSlot itemSlot in allItemSlots)
         {
-            if ( transform.GetChild(0).GetComponent<UIItemDragNDrop>().item.itemType == itemSlot.allowedItemType && itemSlot.transform.childCount == 0)
+            if (transform.GetChild(0).GetComponent<UIItemDragNDrop>().item.itemType == itemSlot.allowedItemType && itemSlot.transform.childCount == 0)
             {
                 var item = transform.GetChild(0);
                 item.transform.SetParent(itemSlot.transform, false);
