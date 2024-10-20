@@ -28,9 +28,15 @@ namespace UI
         [Header("Constraints")] [SerializeField]
         private bool _forceFitContainer; //Decyduje czy karty się na siebie nakładają lub nie
 
-        public static int cardLimit = 5;
+        public static int attackCardLimit = 2;
+        public static int defenceCardLimit = 2;
+        public static int movementCardLimit = 3;
+        public static int cardLimit = attackCardLimit + defenceCardLimit + movementCardLimit;
 
         public static int currentCardNumber;
+        public static int currentAttackCardNumber;
+        public static int currentDefenceNumber;
+        public static int currentMovementNumber;
 
         [Header("Alignment")] [SerializeField] private AnimationConfig _animationConfig;
 
