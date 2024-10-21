@@ -8,13 +8,14 @@ public class PauseMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject _pauseView;
     [SerializeField] private GameObject _gameOverView;
+    [SerializeField] private GameObject _menuView;
     private Animator pauseMenuAnimator;
     private static bool _menuOpen = false;
     private bool _gameOver = false;
 
     void Start()
     {
-        pauseMenuAnimator = _pauseView.GetComponent<Animator>();
+        pauseMenuAnimator = _menuView.GetComponent<Animator>();
         EventSystem.OpenClosePauseMenu.AddListener(ChangePauseMenuState);
         _pauseView.SetActive(false);
         _gameOverView.SetActive(false);

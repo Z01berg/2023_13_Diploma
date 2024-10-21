@@ -19,6 +19,8 @@ public class InventoryActions : MonoBehaviour
     private static bool _active;
     [SerializeField] private GameObject _inv;
     [SerializeField] private GameObject _minimap;
+    [SerializeField] private GameObject _menuView;
+    private Animator pauseMenuAnimator;
 
     private bool locked = false;
 
@@ -29,6 +31,7 @@ public class InventoryActions : MonoBehaviour
 
     private void Start()
     {
+        pauseMenuAnimator = _menuView.GetComponent<Animator>();
         _active = _inv.activeSelf;
     }
 
@@ -41,6 +44,7 @@ public class InventoryActions : MonoBehaviour
             _inv.GetComponent<UIInventory>().SaveState();
             EventSystem.HideHand?.Invoke(false);
             _minimap.gameObject.SetActive(true);
+            pauseMenuAnimator.SetTrigger("Quit");
         }
         else
         {
@@ -48,6 +52,7 @@ public class InventoryActions : MonoBehaviour
             _active = true;
             EventSystem.HideHand?.Invoke(true);
             _minimap.gameObject.SetActive(false);
+            pauseMenuAnimator.SetTrigger("Inventory");
         }
     }
     
