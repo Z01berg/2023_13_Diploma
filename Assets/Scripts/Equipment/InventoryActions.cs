@@ -44,18 +44,24 @@ public class InventoryActions : MonoBehaviour
             _inv.GetComponent<UIInventory>().SaveState();
             EventSystem.HideHand?.Invoke(false);
             _minimap.gameObject.SetActive(true);
-            pauseMenuAnimator.SetTrigger("Quit");
+            _menuView.SetActive(false);
         }
         else
         {
-            _inv.gameObject.SetActive(true);
+            //_inv.gameObject.SetActive(true);
             _active = true;
             EventSystem.HideHand?.Invoke(true);
             _minimap.gameObject.SetActive(false);
+            _menuView.SetActive(true);
             pauseMenuAnimator.SetTrigger("Inventory");
         }
     }
     
+    public void SetInventoryVisible()
+    {
+        _inv.SetActive(true);
+    }
+
     public void LockInventory()
     {
         locked = !locked;
