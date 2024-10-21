@@ -15,10 +15,15 @@ public enum ItemType
 {
     cheast,hand,head,boots,legs,additional,any
 }
+public enum Accessibility
+{
+    locked, unlocked
+}
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Scriptable Objects/Item")]
 public class Item : ScriptableObject
 {
+    public Accessibility accessibility;
     public ItemType itemType;
     public string itemName = "PLC";
     [TextArea]

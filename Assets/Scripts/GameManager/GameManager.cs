@@ -122,6 +122,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     private void ChangeGameState_NewLevel()
     {
         GameState = GameState.bossStage;
+        AddressablesUtilities.SaveAsUnlockedItems();
     }
     
     public OverlayTile GetSpawnOverlayTile(Vector3 spawnPosition)

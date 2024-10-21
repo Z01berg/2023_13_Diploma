@@ -1,14 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using UnityEditor.AddressableAssets.Settings;
-using UnityEditor.AddressableAssets;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEditor.VersionControl;
-using UnityEditor;
-using Unity.Mathematics;
 
 public enum AddressablesTags
 {
@@ -47,51 +41,33 @@ public class AddressablesUtilities : MonoBehaviour
 
     public static void SaveAsUnlockedItems()
     {
-        AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
         
         var inventory = Inventory.Instance ?? throw new Exception("No inventory exists");
 
         foreach (var item in inventory.items) 
         {
-            string assetPath = AssetDatabase.GetAssetPath(item);
-            string assetGUID = AssetDatabase.AssetPathToGUID(assetPath);
-
-            var group = settings.FindGroup("items");
-            var entry = settings.FindAssetEntry(assetGUID);
-
-            if (entry != null)
-            {
-                entry.labels.Add("unlocked");
-                entry.labels.Remove("locked");
-            }
+            item.accessibility = Accessibility.unlocked;
+            PlayerPrefs.SetString(item.itemName, item.accessibility.ToString());
         }
+        PlayerPrefs.Save();
     }
 
     public static void LockAllItems()
     {
-        AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
-
         var inventory = Inventory.Instance ?? throw new Exception("No inventory exists");
 
         foreach (var item in inventory.items)
         {
-            string assetPath = AssetDatabase.GetAssetPath(item);
-            string assetGUID = AssetDatabase.AssetPathToGUID(assetPath);
-
-            var group = settings.FindGroup("items");
-            var entry = settings.FindAssetEntry(assetGUID);
-
-            if (entry != null)
-            {
-                entry.labels.Remove("unlocked");
-                entry.labels.Add("locked");
-            }
+            item.accessibility = Accessibility.locked;
+            PlayerPrefs.SetString(item.itemName,item.accessibility.ToString());
         }
+        Inventory.Instance = new();
+        PlayerPrefs.Save();
     }
 
     public static Item GetRandomItem()
     {
-        var items = LoadItems(Addressables.MergeMode.Union,AddressablesTags.Item, AddressablesTags.locked);
+        var items = LoadItems(Addressables.MergeMode.Union,AddressablesTags.Item );
         
         for (int i = 0; i < items.Count; i++)
         {

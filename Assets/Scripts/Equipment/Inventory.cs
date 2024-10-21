@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -29,7 +30,14 @@ public class Inventory : MonoBehaviour
         
         LoadItems();
         _loadHandle.WaitForCompletion();
-        
+
+        foreach (var item in items) 
+        {
+            item.accessibility = Enum.Parse<Accessibility>(PlayerPrefs.GetString(item.itemName));
+        }
+
+        items.RemoveAll(x  => x.accessibility == Accessibility.locked);
+
         GameObject.Find("ItemsPanel").GetComponent<ListAllAvailable>().ListAllItemsInInv();
         
     }
@@ -41,7 +49,7 @@ public class Inventory : MonoBehaviour
 
     private void LoadItems()
     {
-        List<string> _keys = new List<string>() { "Item","unlocked" };
+        List<string> _keys = new List<string>() { "Item" };
         items.Clear();
 
         _loadHandle = Addressables.LoadAssetsAsync<Item>(
@@ -51,5 +59,6 @@ public class Inventory : MonoBehaviour
                items.Add(addressable);
             }, Addressables.MergeMode.Intersection,
             false);
+        
     }
 }
