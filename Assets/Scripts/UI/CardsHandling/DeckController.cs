@@ -160,7 +160,7 @@ namespace UI
             //     Debug.Log("Brak kart");
             // }
 
-            while (HandController.currentCardNumber < 5)
+            while (HandController.currentCardNumber <= HandController.cardLimit)
             {
                     
                 if (HandController.currentAttackCardNumber < HandController.attackCardLimit)
@@ -169,16 +169,14 @@ namespace UI
             
                 }
                 
-                if (HandController.currentDefenceNumber < HandController.attackCardLimit)
+                if (HandController.currentDefenceNumber < HandController.defenceCardLimit)
                 {
                     SendCardToHand(CardType.Defense);
-            
                 }
                 
-                if (HandController.currentDefenceNumber < HandController.attackCardLimit)
+                if (HandController.currentMovementNumber < HandController.movementCardLimit)
                 {
                     SendCardToHand(CardType.Movement);
-                    continue;
                 }
                 
                 HandController.currentCardNumber++;
