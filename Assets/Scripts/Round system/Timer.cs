@@ -40,6 +40,7 @@ public class Timer : MonoBehaviour
 
     private Animator _animator;
     private DeckController _deckController;
+    private EnemyController _enemyController;
     private bool _canDraw = false; // TODO: Zmienić to dobieranie
 
     public void AddTextFromSetTimer(TMP_Text newText, String text, GameObject HP)
@@ -52,6 +53,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         _animator = GetComponent<Animator>();
+        _enemyController = FindObjectOfType<EnemyController>();
         EventSystem.InstatiatedRoom.AddListener(AddToTimer);
         EventSystem.DeleteReference.AddListener(DeleteTimer);
         EventSystem.FinishEnemyTurn.AddListener(FinishTurn);
@@ -71,7 +73,18 @@ public class Timer : MonoBehaviour
         for (int i = 0; i < _texts.Count; i++)
         {
             int value = int.Parse(_texts[i].text);
-            _timers.Add(new TimerData { Value = value, Tag = _id[i], HP = _hpAdres[i] });
+            
+            if (_id[i] == "Enemy" && _hpAdres[i] != null)
+            {
+                Transform enemyTransform = _hpAdres[i].transform.parent.parent;
+                if (enemyTransform != null)
+                {
+                    _enemyController = enemyTransform.GetComponent<EnemyController>();
+                }
+            }
+
+            int enemyId = _enemyController != null ? _enemyController.GetEnemyId() : -1;
+            _timers.Add(new TimerData { Value = value, Tag = _id[i], HP = _hpAdres[i], EnemyId = enemyId});
             EventSystem.AssignTimerIndex.Invoke(i);
         }
     }
@@ -161,14 +174,14 @@ public class Timer : MonoBehaviour
                     EventSystem.PlayerMove.Invoke(false);
                 }
 
-                if (_timers[_activeTimerIndex].Tag == "Enemy")
+                if (_timers[_activeTimerIndex].Tag == "Enemy" && _timers[_activeTimerIndex] != null)
                 {
                     _animator.SetBool("K_turn", true);
-                    EventSystem.EnemyMove.Invoke(true, new Vector3(_player.transform.position.x, _player.transform.position.y, -6) );
+                    EventSystem.EnemyMove.Invoke(_timers[_activeTimerIndex].EnemyId, new Vector3(_player.transform.position.x, _player.transform.position.y, -6) );
                 }
                 else
                 {
-                    EventSystem.EnemyMove.Invoke(false, new Vector3(_player.transform.position.x, _player.transform.position.y, -6) );
+                    EventSystem.EnemyMove.Invoke(-1, new Vector3(_player.transform.position.x, _player.transform.position.y, -6) );
                 }
 
                 _turn.text = "Turn: " + _timers[_activeTimerIndex].Tag;
