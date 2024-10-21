@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using Dungeon;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
+using Vector3 = UnityEngine.Vector3;
 
 public class EnemyController : MonoBehaviour
 {
@@ -20,13 +22,16 @@ public class EnemyController : MonoBehaviour
     private bool _isChasing;
     private InstantiatedRoom room;
     
-    private bool _turnOff = false;
-    private static bool _isEnemyTurn = false;
+    private bool _turnOff = false; 
+    private bool _isEnemyTurn = false;
     private bool _endedMove = true;
     private Vector3 _playerPosition;
+    private int _enemyId;
 
     void Start()
     {
+        _enemyId = GetInstanceID();
+        
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         
         _pathfinding = GetComponent<Pathfinding>();
@@ -84,6 +89,11 @@ public class EnemyController : MonoBehaviour
         {
             MoveTowardsThePlayer();
         }
+        else
+        {
+            _turnOff = false;
+            _isEnemyTurn = false;
+        }
         
         /*
         if (Input.GetMouseButtonDown(0))
@@ -134,6 +144,11 @@ public class EnemyController : MonoBehaviour
         
     }
 
+    private void Attack()
+    {
+        EventSystem.ChangeHealthPlayer.Invoke(-2);
+    }
+
     private void MoveTowardsThePlayer()
     {
         _endedMove = false;
@@ -141,30 +156,32 @@ public class EnemyController : MonoBehaviour
         _playerPosition = _player.position;
 
         _currentPath = _pathfinding.FindPath(transform.position, _playerPosition);
-        if (_currentPath != null && _currentPath.Count > 0)
+        if (_currentPath != null && _currentPath.Count > 3)
         {
             StartCoroutine(MoveAlongPath());
         }
         else
         {
+            Attack();
             EndEnemyTurn();
         }
     }
 
     private IEnumerator MoveAlongPath()
     {
+        
         for(int i = 1; i <= 3 && i < _currentPath.Count; i++)
         {
             Vector3 nextWaypoint = _currentPath[i];
             nextWaypoint.z = transform.position.z;
-            while (Vector3.Distance(transform.position, nextWaypoint) > 0.01f)
+            while (Vector3.Distance(transform.position, nextWaypoint) > 0.001f)
             {
                 float step = _moveSpeed * Time.deltaTime;
                 transform.position = Vector3.MoveTowards(transform.position, nextWaypoint, step);
                 yield return null;
             }
         }
-
+        
         EndEnemyTurn();
     }
 
@@ -193,25 +210,26 @@ public class EnemyController : MonoBehaviour
     }
     */
     
-    private void ToggleScript(bool isThis, Vector3 plpos)
+    
+    private void ToggleScript(int enemyId, Vector3 plpos)
     {
-        _playerPosition = plpos;
-
-        if (isThis)
+        
+        if (enemyId == _enemyId)
         {
             _isEnemyTurn = true;
+            this.enabled = true;
         }
         else
         {
             _isEnemyTurn = false;
+            this.enabled = false;
         }
-
-        this.enabled = isThis;
     }
 
-    /*
+    
     void LateUpdate()
     {
+        /*
         if (_isChasing)
         {
             ChaseTarget(_player.position);
@@ -234,16 +252,17 @@ public class EnemyController : MonoBehaviour
             float step = _moveSpeed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(currentPosition, nextWaypoint, step);
         }
+        */
         
+        /*
         if (_turnOff)
         {
             _turnOff = false;
             this.enabled = false;
         }
+        */
         
     }
-    */
-    
 
     private void OnDrawGizmos()
     {
@@ -257,5 +276,15 @@ public class EnemyController : MonoBehaviour
         {
             CombatMode.SetFalse();
         }
+    }
+
+    public int GetEnemyId()
+    {
+        return _enemyId;
+    }
+
+    private bool CheckIfEnemyExists()
+    {
+        return gameObject != null;
     }
 }
