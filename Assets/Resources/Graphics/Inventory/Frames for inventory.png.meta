@@ -139,40 +139,19 @@ TextureImporter:
       name: Frames for inventory_0
       rect:
         serializedVersion: 2
-        x: 958
+        x: 956
         y: 589
-        width: 260
+        width: 642
         height: 2036
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 270, y: 285, z: 258, w: 280}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 7fb4c041d9517404cbf3c77054216bdc
       internalID: -215638273
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Frames for inventory_1
-      rect:
-        serializedVersion: 2
-        x: 1341
-        y: 588
-        width: 263
-        height: 2040
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aceaf0834632e144b9727cf5b89b4f25
-      internalID: -1253184518
       vertices: []
       indices: 
       edges: []
@@ -186,7 +165,7 @@ TextureImporter:
         width: 378
         height: 378
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -207,7 +186,7 @@ TextureImporter:
         width: 380
         height: 378
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -228,7 +207,7 @@ TextureImporter:
         width: 377
         height: 379
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -249,7 +228,7 @@ TextureImporter:
         width: 378
         height: 378
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -262,37 +241,16 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Frames for inventory_6
-      rect:
-        serializedVersion: 2
-        x: 510
-        y: 589
-        width: 260
-        height: 2037
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 281fc254e6e3a174f87df357be586a99
-      internalID: -1310152572
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Frames for inventory_7
       rect:
         serializedVersion: 2
         x: 125
-        y: 589
-        width: 260
-        height: 2037
+        y: 584
+        width: 642
+        height: 2042
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 263, y: 286, z: 260, w: 281}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -310,10 +268,10 @@ TextureImporter:
         x: 77
         y: 3306
         width: 2038
-        height: 261
+        height: 624
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 284, y: 260, z: 284, w: 261}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -325,64 +283,22 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Frames for inventory_9
-      rect:
-        serializedVersion: 2
-        x: 76
-        y: 3670
-        width: 2037
-        height: 261
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: af5007a072573294d8cc4b346efb39ea
-      internalID: 1668498954
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Frames for inventory_10
       rect:
         serializedVersion: 2
         x: 76
         y: 4156
         width: 2039
-        height: 263
+        height: 582
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 284, y: 266, z: 281, w: 262}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 42034c616a8b5b84491026031a686a4e
       internalID: 205581671
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Frames for inventory_11
-      rect:
-        serializedVersion: 2
-        x: 75
-        y: 4477
-        width: 2041
-        height: 263
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1e780ada0ff1c714d8c879cf3939cbca
-      internalID: -1793320841
       vertices: []
       indices: 
       edges: []
