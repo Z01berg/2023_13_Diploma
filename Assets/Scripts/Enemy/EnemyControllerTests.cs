@@ -26,7 +26,7 @@ namespace Player
             var srPos = _spriteRenderer.transform.position;
             //_random = new Random(); // Inicjalizacja generatora liczb losowych
             //GetComponent<EnemyControllerTests>().enabled = !GetComponent<EnemyControllerTests>().enabled;
-            EventSystem.EnemyMove.AddListener(ToggleScript);
+            //EventSystem.EnemyMove.AddListener(ToggleScript);
         }
 
         private void Update()
@@ -123,6 +123,7 @@ namespace Player
             _endedMove = true;
         }
 
+        /*
         private void ToggleScript(bool isThis, Vector3 plpos)
         {
             _playerPosition = plpos;
@@ -136,6 +137,7 @@ namespace Player
                 this.enabled = isThis;
             }
         }
+        */
 
         private void RotateSprite(Vector3 direction)
         {
