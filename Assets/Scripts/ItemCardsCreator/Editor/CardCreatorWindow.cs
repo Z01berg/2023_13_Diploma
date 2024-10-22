@@ -188,6 +188,7 @@ public class CardCreatorWindow : ScrollView, IModifiable
         Add(_isActiveField);
 
         _cardQualityField = new SliderInt("card quality", 0, 3);
+        _cardQualityField.value = 1;
         _cardQualityField.RegisterValueChangedCallback(CardQualityChanged);
         Add(_cardQualityField);
 
