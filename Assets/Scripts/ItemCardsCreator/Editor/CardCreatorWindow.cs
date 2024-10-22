@@ -105,52 +105,54 @@ public class CardCreatorWindow : ScrollView, IModifiable
 
         if(_savedCardReference == null)
         {
+            var guids = AssetDatabase.FindAssets("t:" + typeof(CardsSO), null);
+            List<CardsSO> all_cards_list = new();
+            
+            foreach (var guid in guids)
+            {
+                string p = AssetDatabase.GUIDToAssetPath(guid);
+
+                all_cards_list.Add(AssetDatabase.LoadAssetAtPath<CardsSO>(p));
+            }
+
+            all_cards_list = all_cards_list.Where(x => x.type == _cardReference.type).ToList();
+
             var path = "";
             var group = "";
             var tag = "";
-            List<object> cards = new();
             if (_cardReference.type == CardType.Defense)
             {
                 path = "Assets/ScriptableObjectAssets/Card/Defence/";
                 group = "DefenceCardsGroup";
                 tag = "DefenceCard";
-                cards = AddressablesUtilities.LoadItems(Addressables.MergeMode.Union, AddressablesTags.DefenceCard);
             }
             else if (_cardReference.type == CardType.Attack) 
             {
                 path = "Assets/ScriptableObjectAssets/Card/Attack/";
                 group = "AttackCardsGroup";
                 tag = "AttackCard";
-                cards = AddressablesUtilities.LoadItems(Addressables.MergeMode.Union, AddressablesTags.AttackCard);
             }
             else if (_cardReference.type == CardType.Curse)
             {
                 path = "Assets/ScriptableObjectAssets/Card/Curse/";
                 group = "CurseCardsGroup";
                 tag = "CurseCard";
-                cards = AddressablesUtilities.LoadItems(Addressables.MergeMode.Union, AddressablesTags.CurseCard);
             }
             else if (_cardReference.type == CardType.Movement)
             {
                 path = "Assets/ScriptableObjectAssets/Card/Move/";
                 group = "MovementCardsGroup";
                 tag = "MovementCard";
-                cards = AddressablesUtilities.LoadItems(Addressables.MergeMode.Union,AddressablesTags.MovementCard);
             }
+
+            var maxid = all_cards_list.Max(x => x.id);
+            _cardReference.id = (maxid + 1);
+            _idField.value = _cardReference.id;
+
             AssetDatabase.CreateAsset(_cardReference, path + _cardReference.title + ".asset");
             AssetDatabase.SaveAssets();
 
             AssignAsAddressable(_cardReference, group, tag, _cardReference.cardQuality == 0);
-
-            List<CardsSO> convCards = new List<CardsSO>();
-            foreach (var card in cards) 
-            {
-                convCards.Add(card as CardsSO);
-            }
-
-            var maxid = convCards.Max(x => x.id);
-            _cardReference.id = (maxid + 1);
-            _idField.value = _cardReference.id;
 
             AssetDatabase.Refresh();
 
