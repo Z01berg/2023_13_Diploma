@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a5a1fad4f20824d8ec432780ab1840, type: 3}
   m_Name: Fireball
   m_EditorClassIdentifier: 
-  id: 16
+  id: 23
   type: 0
   range: 6
   isActive: 1

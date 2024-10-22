@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Button = UnityEngine.UIElements.Button;
@@ -12,6 +13,7 @@ public class ItemCreatorWindow : VisualElement, IModifiable
     private Item _itemReference;
 
     private Image _spriteImage;
+    private ObjectField _spriteObjectField;
     private TextField _nameField;
     private TextField _descriptionField;
     private EnumField _typeField;
@@ -28,6 +30,7 @@ public class ItemCreatorWindow : VisualElement, IModifiable
         _itemReference = itemReference;
 
         _spriteImage.sprite = sprite;
+        _spriteObjectField.value = sprite;
         _nameField.value = name;
         _descriptionField.value = desc;
         _typeField.value = itemType;
@@ -40,6 +43,7 @@ public class ItemCreatorWindow : VisualElement, IModifiable
 
     private void CreateFields()
     {
+        
         _spriteImage = new Image();
 
         _spriteImage.style.backgroundColor = Color.white;
@@ -49,18 +53,15 @@ public class ItemCreatorWindow : VisualElement, IModifiable
         _spriteImage.scaleMode = ScaleMode.ScaleToFit;
         Add(_spriteImage);
 
-        Button importGraphic = new Button(ImportGraphic);
-        importGraphic.text = "import graphic";
-        importGraphic.style.paddingBottom = 10;
-        importGraphic.style.height = 20;
-        importGraphic.style.width = 100;
-        importGraphic.style.alignSelf = Align.Center;
-        importGraphic.style.unityTextAlign = TextAnchor.MiddleCenter;
-        Add(importGraphic);
-
+        _spriteObjectField = new ObjectField("Sprite");
+        _spriteObjectField.objectType = typeof(Sprite);
+        _spriteObjectField.searchContext = SearchService.CreateContext("t:sprite");
+        _spriteObjectField.RegisterValueChangedCallback(UserPickedNewSprite);
+        Add(_spriteObjectField);
+        
         _nameField = new TextField("name");
         Add(_nameField);
-
+        
         _descriptionField = new TextField("description");
         _descriptionField.multiline = true;
         Add(_descriptionField);
@@ -68,6 +69,11 @@ public class ItemCreatorWindow : VisualElement, IModifiable
         _typeField = new EnumField("item type", ItemType.any);
         Add(_typeField);
 
+    }
+
+    private void UserPickedNewSprite(ChangeEvent<Object> evt)
+    {
+        _spriteImage.sprite = evt.newValue as Sprite;
     }
 
     public void Save()
@@ -83,6 +89,11 @@ public class ItemCreatorWindow : VisualElement, IModifiable
             AssetDatabase.CreateAsset(_itemReference, itemsPath + _nameField.value + ".asset");
             AssignAsAddressable(_itemReference, "Items", "Item", false);
             AssetDatabase.SaveAssets();
+
+            foreach (var win in CardCreatorWindow.creators)
+            {
+                win._itemReference = _itemReference;
+            }
         }
 
         _itemReference.itemName = _nameField.value;
@@ -92,19 +103,6 @@ public class ItemCreatorWindow : VisualElement, IModifiable
         _itemReference.name = _nameField.value;
 
         EditorUtility.SetDirty(_itemReference);
-    }
-
-    void ImportGraphic()
-    {
-        var file = EditorUtility.OpenFilePanel("graphic selection", "..", "");
-        Debug.Log(file);
-
-        if (file == null || file == "")
-        {
-            return;
-        }
-
-        // TODO: Copy file to item graphic directory
     }
 
     private void AssignAsAddressable(Object asset, string targetGroup, string targetLabel, bool isDefault)

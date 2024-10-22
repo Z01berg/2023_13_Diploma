@@ -12,12 +12,15 @@ using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 using UnityEditor.AddressableAssets.Build.DataBuilders;
 using UnityEngine.AddressableAssets;
+using Unity.VisualScripting;
 
 public class CardCreatorWindow : ScrollView, IModifiable
 {
+    public static List<CardCreatorWindow> creators = new List<CardCreatorWindow>();
+
     private CardsSO _cardReference;
     private CardsSO _savedCardReference;
-    private Item _itemReference;
+    public Item _itemReference;
 
     private PopupField<CardsSO> _cards;
     private IntegerField _idField;
@@ -42,7 +45,7 @@ public class CardCreatorWindow : ScrollView, IModifiable
 
         _cardReference.backgroundPath = "Graphics/CardBackgrounds/AttackCards/Attack";
         _cardReference.spritePath = $"Graphics/CardSprites/AttackCards/name";
-
+        creators.Add(this);
         CreateFields();
     }
 
@@ -56,7 +59,9 @@ public class CardCreatorWindow : ScrollView, IModifiable
         _savedCardReference = cardReference;
         _currentBackgroundPath = _cardReference.backgroundPath;
         PopulateFields();
+        creators.Add(this);
 
+        
     }
 
     private void CardSelectionChanged(ChangeEvent<CardsSO> evt)
@@ -81,7 +86,10 @@ public class CardCreatorWindow : ScrollView, IModifiable
     {
         if (_itemReference != null)
         {
-            _itemReference.cards.Remove(_savedCardReference);
+            if (_savedCardReference != null) 
+            {
+                _itemReference.cards.Remove(_savedCardReference);
+            }
             _itemReference.cards.Add(_cardReference);
             foreach (var element in parent.Children())
             {
@@ -103,7 +111,7 @@ public class CardCreatorWindow : ScrollView, IModifiable
         _cardReference.spritePath = _currentBannerPath;
         _cardReference.name = _titleField.value;
 
-        if(_savedCardReference == null)
+        if(_savedCardReference == null && _itemReference == null)
         {
             var guids = AssetDatabase.FindAssets("t:" + typeof(CardsSO), null);
             List<CardsSO> all_cards_list = new();
@@ -164,6 +172,21 @@ public class CardCreatorWindow : ScrollView, IModifiable
 
     }
 
+    public void ShowCardsSelector()
+    {
+        _cards = new PopupField<CardsSO>();
+        _cards.RegisterValueChangedCallback(CardSelectionChanged);
+        var addressables = AddressablesUtilities.LoadItems(Addressables.MergeMode.Union, AddressablesTags.AttackCard, AddressablesTags.DefenceCard, AddressablesTags.MovementCard);
+        List<CardsSO> convCards = new();
+        foreach (var card in addressables)
+        {
+            convCards.Add(card as CardsSO);
+        }
+        _cards.choices = convCards;
+        _cards.value = _cardReference;
+        Insert(0, _cards);
+    }
+
     private void CreateFields()
     {
         if (_itemReference != null)
@@ -217,10 +240,14 @@ public class CardCreatorWindow : ScrollView, IModifiable
         Add(_background);
 
         _banner = new Image();
-        Button editBannerButton = new(PickCardBanner);
-        editBannerButton.text = "select banner";
-        Add(editBannerButton);
 
+        if(_itemReference == null)
+        {
+            Button editBannerButton = new(PickCardBanner);
+            editBannerButton.text = "select banner";
+            Add(editBannerButton);
+        }
+        
         _banner.scaleMode = ScaleMode.ScaleToFit;
         _banner.style.height = 70;
         Add(_banner);
@@ -230,6 +257,20 @@ public class CardCreatorWindow : ScrollView, IModifiable
         style.borderRightColor = Color.white;
         style.borderLeftWidth = 1;
         style.borderLeftColor = Color.white;
+
+        if (_itemReference != null)
+        {
+            _cardTypeField.SetEnabled(false);
+            _rangeField.isReadOnly = true;
+            _cardQualityField.SetEnabled(false);
+            _titleField.isReadOnly = true;
+            _descriptionField.isReadOnly = true;
+            _costField.isReadOnly = true;
+            _damageField.isReadOnly = true;
+            _moveField.isReadOnly = true;
+
+        }
+
     }
 
     private void CardNameChanged(ChangeEvent<string> evt = null)

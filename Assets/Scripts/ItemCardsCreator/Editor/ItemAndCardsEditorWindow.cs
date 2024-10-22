@@ -82,6 +82,7 @@ public class ItemAndCardsEditorWindow : EditorWindow
 
     private void OnItemSelectionChange(IEnumerable<object> selectedItems)
     {
+        CardCreatorWindow.creators.Clear();
         m_RightPane.Clear();
         _rightPaneWindows.Clear();
 
@@ -212,6 +213,7 @@ public class ItemAndCardsEditorWindow : EditorWindow
                 var cardCreatorWindow = new CardCreatorWindow();
                 lower.Add(cardCreatorWindow);
                 _rightPaneWindows.Add(cardCreatorWindow);
+                cardCreatorWindow.ShowCardsSelector();
             }
         }
         if(_selectedAdressableType == "Cards")
