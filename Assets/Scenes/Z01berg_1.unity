@@ -210,6 +210,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -201.58
       objectReference: {fileID: 0}
+    - target: {fileID: 4090376165820700730, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4417581628772329249, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 595
@@ -253,6 +257,10 @@ PrefabInstance:
     - target: {fileID: 7055363007123939130, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 595
+      objectReference: {fileID: 0}
+    - target: {fileID: 7114449657300885502, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_TagString
+      value: ItemSlot
       objectReference: {fileID: 0}
     - target: {fileID: 7127408389948755436, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_Color.a

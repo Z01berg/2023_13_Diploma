@@ -66,12 +66,6 @@ MonoBehaviour:
     - Item
     - locked
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4ed3639169c0a5f459ef46b1b06ae3cb
-    m_Address: Assets/ScriptableObjectAssets/Items/awdwad.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Item
-    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f505d56935b80a94cb01aefad73250da, type: 2}
   m_SchemaSet:

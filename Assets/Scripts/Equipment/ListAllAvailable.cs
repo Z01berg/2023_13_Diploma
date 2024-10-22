@@ -31,6 +31,7 @@ public class ListAllAvailable : MonoBehaviour
             item.transform.SetParent(slot.transform);
             item.transform.localScale = Vector3.one;
             item.GetComponent<UnityEngine.UI.Image>().sprite = x.icon;
+            item.GetComponent<UnityEngine.UI.Image>().preserveAspect = true;
             var d = item.GetComponent<UIItemDragNDrop>();
             d.item = x;
             d.parentTransform = slot.transform;

@@ -36,6 +36,8 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     public GameObject itemSlotPF;
     private bool cardsSpawned = false;
 
+    public GameObject _tempOldParent;
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -49,7 +51,9 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     {
         canvasGroup.alpha = .6f;
         canvasGroup.blocksRaycasts = false;
-        
+        _tempOldParent = transform.parent.gameObject;
+        transform.SetParent(transform.parent.parent.parent, true);
+        transform.SetAsLastSibling();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -60,6 +64,12 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     public void OnEndDrag(PointerEventData eventData)
     {
         OnItemChangePlace();
+    }
+
+    public void BackToTempParent(bool doubleClick = false)
+    {
+        if (doubleClick) return;
+        transform.SetParent(_tempOldParent.transform, true);
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -104,13 +114,14 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
             }
         cardsList.Clear();
     }
-    public void OnItemChangePlace()
+    public void OnItemChangePlace(bool doubleClicked = false)
     {
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
+        BackToTempParent(doubleClicked);
         if (transform.parent.transform == parentTransform)
         {
-
+            
             if (originParentTransform == null)
             {
                 var sl = Instantiate(itemSlotPF);
@@ -124,7 +135,6 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
         else
         {
             AddCardsToDeck();
-
         }
         parentTransform = transform.parent.transform;
     }

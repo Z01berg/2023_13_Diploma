@@ -42,8 +42,11 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 
     public void OnDrop(PointerEventData eventData)
     {
+        
         if (eventData.pointerDrag != null && eventData.pointerDrag.GetComponent<UIItemDragNDrop>().item.itemType == allowedItemType && transform.childCount == 0)
         {
+            eventData.pointerDrag.GetComponent<UIItemDragNDrop>().BackToTempParent();
+            eventData.pointerDrag.GetComponent<UIItemDragNDrop>()._tempOldParent = gameObject;
             eventData.pointerDrag.transform.SetParent(transform, false);
             eventData.pointerDrag.GetComponent<RectTransform>().position = transform.GetComponent<RectTransform>().position;
         }
@@ -165,7 +168,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         {
             if (transform.childCount == 1)
             {
-                transform.GetChild(0).GetComponent<UIItemDragNDrop>().OnItemChangePlace();
+                transform.GetChild(0).GetComponent<UIItemDragNDrop>().OnItemChangePlace(true);
             }
         }
         if (transform.childCount == 0) return;
@@ -177,7 +180,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
                 var item = transform.GetChild(0);
                 item.transform.SetParent(itemSlot.transform, false);
                 item.GetComponent<RectTransform>().position = itemSlot.transform.GetComponent<RectTransform>().position;
-                item.GetComponent<UIItemDragNDrop>().OnItemChangePlace();
+                item.GetComponent<UIItemDragNDrop>().OnItemChangePlace(true);
                 break;
             }
         }

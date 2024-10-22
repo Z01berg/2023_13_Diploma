@@ -31,13 +31,6 @@ public class Inventory : MonoBehaviour
         LoadItems();
         _loadHandle.WaitForCompletion();
 
-        foreach (var item in items) 
-        {
-            item.accessibility = Enum.Parse<Accessibility>(PlayerPrefs.GetString(item.itemName));
-        }
-
-        items.RemoveAll(x  => x.accessibility == Accessibility.locked);
-
         GameObject.Find("ItemsPanel").GetComponent<ListAllAvailable>().ListAllItemsInInv();
         
     }
