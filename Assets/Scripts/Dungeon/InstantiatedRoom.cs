@@ -44,6 +44,7 @@ public class InstantiatedRoom : MonoBehaviour
     private BoxCollider2D boxCollider2D;
     public int counter = 1;
 
+    private bool _itemGiven = false;
 
     private void Awake()
     {
@@ -255,6 +256,12 @@ public class InstantiatedRoom : MonoBehaviour
         foreach (var door in doorsList)
         {
             door.GetComponent<DoorLogic>().RoomCleared();
+        }
+
+        if (!_itemGiven && _cleared)
+        {
+            _itemGiven = true;
+            AddressablesUtilities.GetRandomItem();
         }
 
         EventSystem.InstatiatedRoom.Invoke();
