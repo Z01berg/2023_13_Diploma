@@ -17,26 +17,39 @@ public class ListAllAvailable : MonoBehaviour
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private GameObject itemUIPrefab;
 
+    private void Start()
+    {
+        EventSystem.DisplayAllItems.AddListener(ListAllItemsInInv);
+    }
+
     public void ListAllItemsInInv()
     {
+        foreach (Transform child in parent.transform) 
+        {
+            GameObject.Destroy(child.gameObject);
+        }
         foreach (var x in Inventory.Instance.items)
         {
-            var slot = Instantiate(slotPrefab);
-            slot.transform.SetParent(parent);
-            slot.transform.localScale = Vector3.one;
-
-            slot.GetComponent<ItemSlot>().allowedItemType = ItemType.any;
-
-            var item = Instantiate(itemUIPrefab);
-            item.transform.SetParent(slot.transform);
-            item.transform.localScale = Vector3.one;
-            item.GetComponent<UnityEngine.UI.Image>().sprite = x.icon;
-            item.GetComponent<UnityEngine.UI.Image>().preserveAspect = true;
-            var d = item.GetComponent<UIItemDragNDrop>();
-            d.item = x;
-            d.parentTransform = slot.transform;
-            d.originParentTransform = slot.transform;
-
+            AddItemToList(x);
         }
+    }
+
+    public void AddItemToList(Item x)
+    {
+        var slot = Instantiate(slotPrefab);
+        slot.transform.SetParent(parent);
+        slot.transform.localScale = Vector3.one;
+
+        slot.GetComponent<ItemSlot>().allowedItemType = ItemType.any;
+
+        var item = Instantiate(itemUIPrefab);
+        item.transform.SetParent(slot.transform);
+        item.transform.localScale = Vector3.one;
+        item.GetComponent<UnityEngine.UI.Image>().sprite = x.icon;
+        item.GetComponent<UnityEngine.UI.Image>().preserveAspect = true;
+        var d = item.GetComponent<UIItemDragNDrop>();
+        d.item = x;
+        d.parentTransform = slot.transform;
+        d.originParentTransform = slot.transform;
     }
 }

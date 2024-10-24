@@ -20,7 +20,6 @@ public class IngameUIManager : MonoBehaviour
 
     private bool _locked = false;
 
-
     private void Start()
     {
         _menuMenuAnimator = _menuView.GetComponent<Animator>();
@@ -33,11 +32,12 @@ public class IngameUIManager : MonoBehaviour
 
         _pauseView.SetActive(false);
         _gameOverView.SetActive(false);
-        //_menuView.SetActive(true);
         _inv.SetActive(false);
+        _menuView.SetActive(false);
+        
         ChangeInventoryState();
     }
-
+    
     public void OpenInventory()
     {
         if (_locked) return;
@@ -120,6 +120,10 @@ public class IngameUIManager : MonoBehaviour
     {
         if (_locked) return;
         _inv.SetActive(visible);
+        if (visible)
+        {
+            EventSystem.DisplayAllItems?.Invoke();
+        }
     }
 
     public void SetMenuInvisible()

@@ -11,9 +11,14 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject _creditsView;
     [SerializeField] private GameObject _optionsView;
     [SerializeField] private GameObject _keysView;
+    [SerializeField] private GameObject _continueButton;
 
     private void Start()
     {
+        if (!SaveSystem.CheckIfSaveExists())
+        {
+            _continueButton.SetActive(false);
+        }
         _mainMenuView.SetActive(true);
         _settingsView.SetActive(false);
         _creditsView.SetActive(false);
@@ -64,14 +69,15 @@ public class MainMenuManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void StartGame()
+    public void ContinueGame()
     {
         SceneManager.LoadScene(1);
     }
 
-    public void StartGame2()
+    public void StartGame()
     {
-        SceneManager.LoadScene(2);
+        SaveSystem.NewGame();
+        SceneManager.LoadScene(1);
     }
 
     public void OpenOptions()

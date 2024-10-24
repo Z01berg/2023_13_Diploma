@@ -149,4 +149,10 @@ public static class EventSystem
     public static UnityEvent OpenGameover = new UnityEvent();
 
     #endregion
+
+    #region Display all items: IngameUIManager.cs -> ListAllAvailable.cs 
+
+    public static UnityEvent DisplayAllItems = new UnityEvent();
+
+    #endregion
 }

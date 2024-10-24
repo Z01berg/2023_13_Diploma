@@ -13,7 +13,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class Inventory : MonoBehaviour
 {
-
+    public GameObject _itemsPanel;
     private AsyncOperationHandle<IList<Item>> _loadHandle;
 
     #region Singleton
@@ -27,19 +27,15 @@ public class Inventory : MonoBehaviour
             return;
         }
         Instance = this;
-        
-        LoadItems();
-        _loadHandle.WaitForCompletion();
 
-        GameObject.Find("ItemsPanel").GetComponent<ListAllAvailable>().ListAllItemsInInv();
-        
+        SaveSystem.LoadGame();
     }
 
     #endregion
 
 
     public List<Item> items = new List<Item>();
-
+    /*
     private void LoadItems()
     {
         List<string> _keys = new List<string>() { "Item" };
@@ -52,6 +48,10 @@ public class Inventory : MonoBehaviour
                items.Add(addressable);
             }, Addressables.MergeMode.Intersection,
             false);
-        
+
+        _loadHandle.WaitForCompletion();
+
+        _itemsPanel.GetComponent<ListAllAvailable>().ListAllItemsInInv();
     }
+    */
 }

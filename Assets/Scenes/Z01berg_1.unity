@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &174723071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8704000286153613096, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+  m_PrefabInstance: {fileID: 1677917912}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &308086432 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1220835084138148249, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
@@ -428,6 +433,10 @@ PrefabInstance:
       propertyPath: dungeonLevelList.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: e38c7ea796500dd4ebc11f1b4a1fe7de, type: 2}
+    - target: {fileID: 4205339106594048853, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: _itemsPanel
+      value: 
+      objectReference: {fileID: 174723071}
     - target: {fileID: 4205339106594048853, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
       propertyPath: items.Array.data[0]
       value: 

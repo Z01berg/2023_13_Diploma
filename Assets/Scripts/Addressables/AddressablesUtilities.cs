@@ -39,33 +39,7 @@ public class AddressablesUtilities : MonoBehaviour
         return result;
     }
 
-    public static void SaveAsUnlockedItems()
-    {
-        
-        var inventory = Inventory.Instance ?? throw new Exception("No inventory exists");
-
-        foreach (var item in inventory.items) 
-        {
-            item.accessibility = Accessibility.unlocked;
-            PlayerPrefs.SetString(item.itemName, item.accessibility.ToString());
-        }
-        PlayerPrefs.Save();
-    }
-
-    public static void LockAllItems()
-    {
-        var inventory = Inventory.Instance ?? throw new Exception("No inventory exists");
-
-        foreach (var item in inventory.items)
-        {
-            item.accessibility = Accessibility.locked;
-            PlayerPrefs.SetString(item.itemName,item.accessibility.ToString());
-        }
-        Inventory.Instance = new();
-        PlayerPrefs.Save();
-    }
-
-    public static Item GetRandomItem()
+    public static void GetRandomItem()
     {
         var items = LoadItems(Addressables.MergeMode.Union,AddressablesTags.Item );
         
@@ -77,14 +51,33 @@ public class AddressablesUtilities : MonoBehaviour
                 i--;
             }
         }
-
+        if (items.Count <= 0) return;
         var index = UnityEngine.Random.Range(0,items.Count);
         if (index < 0)
         {
-            return null;
+            return;
         }
         var result = items[index] as Item;
 
-        return result;
+        Inventory.Instance.items.Add(result);
+        if(!Inventory.Instance._itemsPanel.activeInHierarchy) return;
+        Inventory.Instance._itemsPanel.GetComponent<ListAllAvailable>().AddItemToList(result);
+    }
+
+    public static void ItemsWithNames(List<string> names)
+    {
+        Inventory.Instance.items.Clear();
+
+        var items = LoadItems(Addressables.MergeMode.Union, AddressablesTags.Item);
+
+        foreach (var item in items) 
+        {
+            if(names.Contains((item as Item).itemName))
+            {
+                Inventory.Instance.items.Add(item as Item);
+            }
+        }
+        if (!Inventory.Instance._itemsPanel.activeInHierarchy) return;
+        Inventory.Instance._itemsPanel.GetComponent<ListAllAvailable>().ListAllItemsInInv();
     }
 }

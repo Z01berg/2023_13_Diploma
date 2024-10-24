@@ -25,20 +25,20 @@ public class CustomInventoryIspector : Editor
 
         if (GUILayout.Button("AddItem"))
         {
-            var item = AddressablesUtilities.GetRandomItem();
-            if (item != null) 
-            { 
-                ds.items.Add(item);
-            }
+            AddressablesUtilities.GetRandomItem();
             
         }
         if (GUILayout.Button("SaveItems"))
         {
-            AddressablesUtilities.SaveAsUnlockedItems();
+            SaveSystem.SaveGame();
         }
         if (GUILayout.Button("LockItems"))
         {
-            AddressablesUtilities.LockAllItems();
+            SaveSystem.NewGame();
+        }
+        if (GUILayout.Button("LoadItems"))
+        {
+            SaveSystem.LoadGame();
         }
     }
 }
