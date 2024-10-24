@@ -27,6 +27,7 @@ public class IngameUIManager : MonoBehaviour
 
         EventSystem.OpenClosePauseMenu.AddListener(ChangePauseMenuState);
         EventSystem.OpenCloseInventory.AddListener(ChangeInventoryState);
+        EventSystem.OpenGameover.AddListener(GameOver);
 
         _minimap.SetActive(true);
 
@@ -116,17 +117,37 @@ public class IngameUIManager : MonoBehaviour
 
     public void ChangeInventoryVisible(bool visible = true)
     {
+        if (_locked) return;
         _inv.SetActive(visible);
     }
 
     public void SetMenuInvisible()
     {
+        if (_locked) return;
         _minimap.SetActive(true);
         _menuView.SetActive(false);
     }
 
     public void ChangePauseVisible(bool visible = true)
     {
+        if (_locked)
+        {
+            _gameOverView.SetActive(visible);
+            return;
+        } 
         _pauseView.SetActive(visible);
+    }
+
+    public void GameOver()
+    {
+        if (_locked) return;
+        _locked = true;
+        Time.timeScale = 0;
+        EventSystem.HideHand?.Invoke(true);
+        _minimap.SetActive(false);
+        menuOpen = true;
+        _menuView.SetActive(true);
+        _inv.SetActive(false);
+        _menuMenuAnimator.SetTrigger("Quit");
     }
 }

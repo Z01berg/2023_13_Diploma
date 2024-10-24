@@ -71,13 +71,13 @@ public static class EventSystem
 
     #endregion
 
-    #region Open/CloseInventory: PlayerInputController.cs -> InventoryActions
+    #region Open/CloseInventory: PlayerInputController.cs -> IngameUIManager
 
     public static UnityEvent OpenCloseInventory = new UnityEvent();
 
     #endregion
 
-    #region Open/ClosePauseMenu: PlayerInputsController.cs -> PauseMenuManager
+    #region Open/ClosePauseMenu: PlayerInputsController.cs -> IngameUIManager
 
     public static UnityEvent OpenClosePauseMenu = new UnityEvent();
 
@@ -141,6 +141,12 @@ public static class EventSystem
     #region Event Spawn Portal over Player: GameManager.cs -> SpawnPortal.cs 
     
     public static UnityEvent NewLevel = new UnityEvent();
-    
+
+    #endregion
+
+    #region Open game over menu: GameManager.cs -> IngameUIManager.cs 
+
+    public static UnityEvent OpenGameover = new UnityEvent();
+
     #endregion
 }
