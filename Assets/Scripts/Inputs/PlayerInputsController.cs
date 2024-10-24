@@ -58,7 +58,6 @@ public class PlayerInputsController : MonoBehaviour, IDefaultMausenKeysActions
     public void OnMenu(InputAction.CallbackContext context)
     {
         EventSystem.OpenClosePauseMenu?.Invoke();
-        Inventory.Instance?.items.Add(AddressablesUtilities.GetRandomItem());
     }
 
     public void OnEquipment(InputAction.CallbackContext context)
@@ -91,7 +90,6 @@ public class PlayerInputsController : MonoBehaviour, IDefaultMausenKeysActions
 
     public void OnHelp(InputAction.CallbackContext context)
     {
-        AddressablesUtilities.LockAllItems();
         EventSystem.ShowHelpSheet?.Invoke();
     }
 }

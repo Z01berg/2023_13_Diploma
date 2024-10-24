@@ -223,8 +223,8 @@ namespace UI
         
         private void DisableHand(bool isDisabled)
         {
-            var isPauseOpen = PauseMenuManager.getMenuOpen();
-            var isInventoryOpen = InventoryActions.getActive();
+            var isPauseOpen = IngameUIManager.menuOpen;
+            var isInventoryOpen = IngameUIManager.menuOpen;
             // Debug.Log("Pause: " + isPauseOpen);
             // Debug.Log("Inventory: " + isInventoryOpen);
             // Debug.Log("isDisabled: " + isDisabled);

@@ -29,7 +29,6 @@ public class UIInventory : MonoBehaviour
 
     private void Start()
     {
-        gameObject.SetActive(false);
         _deckController = _deck.GetComponent<DeckController>();
     }
 
