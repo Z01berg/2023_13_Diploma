@@ -2,6 +2,14 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/**
+ * Publiczna klasa ShowCaseEvent dziedzicząca po klasie MonoBehaviour
+ *
+ * Klasa odpowiedzialna za wyświetlanie informacji o obiektach w grze
+ * oraz za wyświetlanie powiadomień w grze
+ *
+ */
+
 public class ShowCaseEvent : MonoBehaviour
 {
     [HideInInspector] public InstantiatedRoom room;

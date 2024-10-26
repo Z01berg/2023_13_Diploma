@@ -8,6 +8,18 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 
+/**
+ * Publiczna klasa GameManager jest odpowiedzialna za zarządzanie grą.
+ *
+ * Ma możliwość:
+ * - Zarządzania stanami gry.
+ * - Uruchamiania poziomów.
+ * - Przechowywania referencji do poziomów.
+ * - Przechowywania referencji do gracza.
+ * - Przechowywania referencji do punktu ruchu gracza.
+ * - Przechowywania referencji do obiektu budującego poziom.
+ */
+
 [DisallowMultipleComponent]
 public class GameManager : SingletonMonobehaviour<GameManager>
 {

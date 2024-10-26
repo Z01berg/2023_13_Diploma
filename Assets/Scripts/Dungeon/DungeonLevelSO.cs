@@ -3,6 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * DungeonLevelSO is a ScriptableObject that stores the details for a dungeon level.
+ *
+ * It contains the following information:
+ * - The name for the level.
+ * - A list of room templates that are part of the level.
+ * - A list of room node graphs which should be randomly selected from for the level.
+ */
+
 [CreateAssetMenu(fileName = "DungeonLevel_", menuName = "Scriptable Objects/Dungeon/Dungeon Level")]
 public class DungeonLevelSO : ScriptableObject
 {

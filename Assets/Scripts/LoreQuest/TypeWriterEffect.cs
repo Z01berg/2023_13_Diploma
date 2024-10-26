@@ -2,6 +2,13 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
+/**
+ * Publiczna klasa TypeWriterEffect dziedzicząca po klasie MonoBehaviour
+ *
+ * Klasa odpowiedzialna za efekt pisania tekstu w grze
+ *
+ */
+
 [RequireComponent(typeof(TMP_Text))]
 public class TypeWriterEffect : MonoBehaviour
 {
