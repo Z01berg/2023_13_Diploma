@@ -4,6 +4,16 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+/**
+ * Publiczna klasa DungeonBuilder dziedzicząca po SingletonMonobehaviour
+ *
+ * Ma za zadanie {get; set} 3 rzeczy:
+ * - Tworzenie losowego labiryntu
+ * - Generowanie losowego labiryntu
+ * - Sprawdzanie czy dwa przedziały się nakładają na siebie
+ * 
+ */
+
 [DisallowMultipleComponent]
 public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
 {

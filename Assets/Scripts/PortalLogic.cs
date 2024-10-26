@@ -4,6 +4,15 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/**
+ * Public class PortalLogic jest skryptem odpowiedzialnym za logikę działania portalu, który przenosi gracza na kolejny poziom.
+ *
+ * Zawiera informacje o:
+ * - kolizji portalu
+ * - animacji portalu
+ * 
+ */
+
 public class PortalLogic : MonoBehaviour
 {
     [SerializeField] private Collider2D collision;

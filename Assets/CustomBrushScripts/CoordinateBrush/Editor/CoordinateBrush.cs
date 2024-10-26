@@ -3,6 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.Tilemaps;
 
+/**
+ * Klasa CoordinateBrush jest odpowiedzialna za rysowanie obiektów na siatce w określonych współrzędnych.
+ *
+ * Ma w sobie informacje o:
+ * - współrzędnej z
+ * - pozycji obiektu
+ * - siatce
+ * - obiekcie, na którym rysujemy
+ *
+ * Na podstawie współrzędnej z, CoordinateBrush określa pozycję obiektu na siatce.
+ */
+
 namespace UnityEditor
 {
     [CustomGridBrush(true, false, false, "Coordinate Brush")]

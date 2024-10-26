@@ -9,6 +9,26 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
 
+ /**
+  * Publiczna klasa InstantiatedRoom jest odpowiedzialna za inicjalizację pokoi w grze.
+  *
+  * Ma w sobie informacje o:
+  * - pokoju
+  * - siatce
+  * - mapie kafelków
+  * - dekoracjach
+  * - kolizjach
+  * - minimapie
+  * - granicach kolizji pokoju
+  * - portalu
+  * - prefabrykacie przeciwników
+  * - zegarze
+  * - liście przeciwników w pokoju
+  * - liście drzwi w pokoju
+  * - skrypcie BoxCollider2D
+  * - liczniku
+  */
+ 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(BoxCollider2D))]
 public class InstantiatedRoom : MonoBehaviour
