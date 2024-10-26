@@ -122,7 +122,14 @@ public class IngameUIManager : MonoBehaviour
         _inv.SetActive(visible);
         if (visible)
         {
-            EventSystem.DisplayAllItems?.Invoke();
+            while (Inventory.Instance.notDisplayedYet.Count > 0) 
+            {
+                var item = Inventory.Instance.notDisplayedYet[0];
+                Inventory.Instance._itemsPanel.GetComponent<ListAllAvailable>().AddItemToList(item);
+                Inventory.Instance.notDisplayedYet.Remove(item);
+            }
+
+
         }
     }
 

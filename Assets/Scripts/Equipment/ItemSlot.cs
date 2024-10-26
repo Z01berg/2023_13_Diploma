@@ -177,7 +177,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 
         foreach (ItemSlot itemSlot in allItemSlots)
         {
-            if (transform.GetChild(0).GetComponent<UIItemDragNDrop>().item.itemType == itemSlot.allowedItemType && (itemSlot.transform.childCount == 0 || force))
+            if (transform.GetChild(0).GetComponent<UIItemDragNDrop>().item.itemType == itemSlot.allowedItemType && (itemSlot.transform.childCount == 0 || force && itemSlot.transform.childCount <= 1))
             {
                 var item = transform.GetChild(0);
                 item.transform.SetParent(itemSlot.transform, false);

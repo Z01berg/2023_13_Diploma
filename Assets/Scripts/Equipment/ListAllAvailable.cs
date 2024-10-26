@@ -34,8 +34,7 @@ public class ListAllAvailable : MonoBehaviour
         {
             if(slot.transform.childCount > 0)
             {
-                Destroy(slot.transform.GetChild(0).gameObject);
-                Debug.Log(slot.GetComponent<ItemSlot>().allowedItemType.ToString() + ": " + slot.transform.childCount);
+                //Destroy(slot.transform.GetChild(0).gameObject);
             }
         }
         foreach (var x in Inventory.Instance.items)
@@ -78,7 +77,7 @@ public class ListAllAvailable : MonoBehaviour
             (eq.item5 != null && eq.item5.itemName == x.itemName) || 
             (eq.item6 != null && eq.item6.itemName == x.itemName))
         {
-            slot.GetComponent<ItemSlot>().DoubleClicked(true);
+            slot.GetComponent<ItemSlot>().DoubleClicked();
         }
     }
 }

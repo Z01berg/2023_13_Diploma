@@ -33,6 +33,7 @@ public class Inventory : MonoBehaviour
 
     #endregion
 
+    public List<Item> notDisplayedYet = new List<Item>();
 
     public List<Item> items = new List<Item>();
     /*

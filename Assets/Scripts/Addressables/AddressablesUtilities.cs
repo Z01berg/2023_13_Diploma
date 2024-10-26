@@ -61,7 +61,11 @@ public class AddressablesUtilities : MonoBehaviour
         var result = items[index] as Item;
 
         Inventory.Instance.items.Add(result);
-        if(!Inventory.Instance._itemsPanel.activeInHierarchy) return;
+        if (!Inventory.Instance._itemsPanel.activeInHierarchy)
+        {
+            Inventory.Instance.notDisplayedYet.Add(result);
+            return;
+        }
         Inventory.Instance._itemsPanel.GetComponent<ListAllAvailable>().AddItemToList(result);
     }
 
