@@ -2053,8 +2053,8 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -683349101
-  m_SortingLayer: 6
-  m_SortingOrder: 2
+  m_SortingLayer: 5
+  m_SortingOrder: 4
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -4002,7 +4002,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -683349101
-  m_SortingLayer: 6
+  m_SortingLayer: 5
   m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -5550,7 +5550,14 @@ MonoBehaviour:
   roomColliderBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
+  portal: {fileID: 0}
   enemyPrefab: {fileID: 0}
+  eE_Miner: {fileID: 0}
+  eE_Wizard: {fileID: 0}
+  eE_Warrior: {fileID: 0}
+  eE_Skeleton: {fileID: 0}
+  eE_Clerick: {fileID: 0}
+  eE_Explorer: {fileID: 0}
   timer: {fileID: 0}
   enemyInRoomList: []
   doorsList: []
