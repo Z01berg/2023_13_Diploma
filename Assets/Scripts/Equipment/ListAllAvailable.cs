@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /**
@@ -16,6 +17,7 @@ public class ListAllAvailable : MonoBehaviour
     [SerializeField] private Transform parent;
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private GameObject itemUIPrefab;
+    [SerializeField] private List<GameObject> _eqSlots; 
 
     private void Start()
     {
@@ -28,6 +30,14 @@ public class ListAllAvailable : MonoBehaviour
         {
             GameObject.Destroy(child.gameObject);
         }
+        foreach (var slot in _eqSlots) 
+        {
+            if(slot.transform.childCount > 0)
+            {
+                Destroy(slot.transform.GetChild(0).gameObject);
+                Debug.Log(slot.GetComponent<ItemSlot>().allowedItemType.ToString() + ": " + slot.transform.childCount);
+            }
+        }
         foreach (var x in Inventory.Instance.items)
         {
             AddItemToList(x);
@@ -36,6 +46,8 @@ public class ListAllAvailable : MonoBehaviour
 
     public void AddItemToList(Item x)
     {
+        var eq = Equipment.Instance;
+
         var slot = Instantiate(slotPrefab);
         slot.transform.SetParent(parent);
         slot.transform.localScale = Vector3.one;
@@ -51,5 +63,22 @@ public class ListAllAvailable : MonoBehaviour
         d.item = x;
         d.parentTransform = slot.transform;
         d.originParentTransform = slot.transform;
+
+        if (
+            (eq.leftHand != null && eq.leftHand.itemName == x.itemName) || 
+            (eq.rightHand != null && eq.rightHand.itemName == x.itemName) || 
+            (eq.boots != null && eq.boots.itemName == x.itemName) || 
+            (eq.legs != null && eq.legs.itemName == x.itemName) || 
+            (eq.chest != null && eq.chest.itemName == x.itemName) || 
+            (eq.head != null && eq.head.itemName == x.itemName) || 
+            (eq.item1 != null && eq.item1.itemName == x.itemName) || 
+            (eq.item2 != null && eq.item2.itemName == x.itemName) || 
+            (eq.item3 != null && eq.item3.itemName == x.itemName) || 
+            (eq.item4 != null && eq.item4.itemName == x.itemName) || 
+            (eq.item5 != null && eq.item5.itemName == x.itemName) || 
+            (eq.item6 != null && eq.item6.itemName == x.itemName))
+        {
+            slot.GetComponent<ItemSlot>().DoubleClicked(true);
+        }
     }
 }

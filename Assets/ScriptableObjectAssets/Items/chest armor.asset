@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6edbbd9d6e38d284088822ae57f76e59, type: 3}
   m_Name: chest armor
   m_EditorClassIdentifier: 
+  accessibility: 0
   itemType: 0
   itemName: chest armor
   description: protec chest
@@ -19,4 +20,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5125fa6c7605d564fa3dc065c06a8965, type: 2}
   - {fileID: 11400000, guid: 5125fa6c7605d564fa3dc065c06a8965, type: 2}
   - {fileID: 11400000, guid: 4f4cedcce626fe048bb27e881b8e3dc8, type: 2}
-  icon: {fileID: 0}
+  icon: {fileID: -487857766, guid: 7212ad04eaf3da84580de4bab8dec60b, type: 3}

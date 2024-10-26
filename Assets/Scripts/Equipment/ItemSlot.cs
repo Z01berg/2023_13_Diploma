@@ -140,11 +140,13 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 
     protected void LightUp()
     {
+        if(_image == null) return;
         _image.color = _mouseOverColor;
     }
 
     protected void LightDown()
     {
+        if (_image == null) return;
         _image.color = _originalColor;
     }
 
@@ -158,7 +160,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         LookForSlotsOfType("lightdown");
     }
 
-    public void DoubleClicked()
+    public void DoubleClicked(bool force = false)
     {
         foreach (ItemSlot itemSlot in allItemSlots)
         {
@@ -175,7 +177,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 
         foreach (ItemSlot itemSlot in allItemSlots)
         {
-            if (transform.GetChild(0).GetComponent<UIItemDragNDrop>().item.itemType == itemSlot.allowedItemType && itemSlot.transform.childCount == 0)
+            if (transform.GetChild(0).GetComponent<UIItemDragNDrop>().item.itemType == itemSlot.allowedItemType && (itemSlot.transform.childCount == 0 || force))
             {
                 var item = transform.GetChild(0);
                 item.transform.SetParent(itemSlot.transform, false);

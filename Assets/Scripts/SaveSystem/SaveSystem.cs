@@ -33,6 +33,21 @@ public static class SaveSystem
             saveTemplate.inventory.Add(item.itemName);
         }
 
+        var eq = Equipment.Instance;
+
+        if (eq.leftHand != null) saveTemplate.leftHand = eq.leftHand.itemName;
+        if (eq.rightHand != null) saveTemplate.rightHand = eq.rightHand.itemName;
+        if (eq.chest != null) saveTemplate.chest = eq.chest.itemName;
+        if (eq.boots != null) saveTemplate.boots = eq.boots.itemName;
+        if (eq.head != null) saveTemplate.head = eq.head.itemName;
+        if (eq.legs != null) saveTemplate.legs = eq.legs.itemName;
+        if (eq.item1 != null) saveTemplate.item1 = eq.item1.itemName;
+        if (eq.item2 != null) saveTemplate.item2 = eq.item2.itemName;
+        if (eq.item3 != null) saveTemplate.item3 = eq.item3.itemName;
+        if (eq.item4 != null) saveTemplate.item4 = eq.item4.itemName;
+        if (eq.item5 != null) saveTemplate.item5 = eq.item5.itemName;
+        if (eq.item6 != null) saveTemplate.item6 = eq.item6.itemName;
+
         string save = JsonUtility.ToJson(saveTemplate,true);
 
         System.IO.File.WriteAllText(_saveGameFilePath, save);
@@ -44,7 +59,7 @@ public static class SaveSystem
         var text = File.ReadAllText(_saveGameFilePath);
         var data = JsonUtility.FromJson<SaveTemplate>(text);
 
-        AddressablesUtilities.ItemsWithNames(data.inventory);
+        AddressablesUtilities.ItemsWithNames(data);
         Debug.Log("game loaded");
     }
 

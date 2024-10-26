@@ -125,6 +125,7 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
             if (originParentTransform == null)
             {
                 var sl = Instantiate(itemSlotPF);
+                sl.GetComponent<ItemSlot>().allowedItemType = ItemType.any;
                 sl.transform.SetParent(itemsPanel.transform);
                 originParentTransform = sl.transform;
             }

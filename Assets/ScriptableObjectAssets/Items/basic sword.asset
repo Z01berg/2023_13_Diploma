@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6edbbd9d6e38d284088822ae57f76e59, type: 3}
   m_Name: basic sword
   m_EditorClassIdentifier: 
+  accessibility: 0
   itemType: 1
   itemName: basic sword
   description: dasdawdawdsadawdadwadasd
   cards:
-  - {fileID: 11400000, guid: ceaacde49ece90f458da52c537f71053, type: 2}
-  - {fileID: 11400000, guid: ceaacde49ece90f458da52c537f71053, type: 2}
-  - {fileID: 11400000, guid: d302ca7a6f77bfb41a74e1fa41b3e300, type: 2}
-  icon: {fileID: 0}
+  - {fileID: 11400000, guid: 53c3255cf3911df4e9ce68e0861430f4, type: 2}
+  - {fileID: 11400000, guid: 53c3255cf3911df4e9ce68e0861430f4, type: 2}
+  - {fileID: 11400000, guid: 53c3255cf3911df4e9ce68e0861430f4, type: 2}
+  icon: {fileID: 1367251809, guid: 535824487e05bed4282a2ad4364f4235, type: 3}
