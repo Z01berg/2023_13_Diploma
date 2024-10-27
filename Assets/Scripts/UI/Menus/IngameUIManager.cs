@@ -92,6 +92,7 @@ public class IngameUIManager : MonoBehaviour
 
     private void ChangeInventoryState()
     {
+        if (_menuMenuAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Book_close")) return;
         if (_locked) return;
         if (!_inv.activeSelf)
         {
@@ -102,9 +103,10 @@ public class IngameUIManager : MonoBehaviour
         }
         CloseMenu();
     }
-
+    
     private void ChangePauseMenuState()
     {
+        if (_menuMenuAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Book_close")) return;
         if (_locked) return;
         if (!_pauseView.activeSelf)
         {
@@ -139,7 +141,7 @@ public class IngameUIManager : MonoBehaviour
         _minimap.SetActive(true);
         _menuView.SetActive(false);
     }
-
+    
     public void ChangePauseVisible(bool visible = true)
     {
         if (_locked)
