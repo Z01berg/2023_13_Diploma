@@ -58,6 +58,7 @@ public class CardCreatorWindow : ScrollView, IModifiable
         _cardReference = cardReference;
         _savedCardReference = cardReference;
         _currentBackgroundPath = _cardReference.backgroundPath;
+        _currentBannerPath = cardReference.spritePath;
         PopulateFields();
         creators.Add(this);
 

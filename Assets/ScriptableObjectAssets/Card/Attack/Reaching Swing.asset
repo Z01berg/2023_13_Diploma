@@ -23,4 +23,4 @@ MonoBehaviour:
   damage: 6
   move: 0
   backgroundPath: Graphics/CardBackgrounds/AttackCards/Attack II
-  spritePath: 
+  spritePath: Graphics/CardSprites/AttackCards/Reaching Swing

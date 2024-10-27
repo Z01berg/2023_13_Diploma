@@ -66,6 +66,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
                     if (command == "lightup")
                     {
                         slot.LightUp();
+                        //slot.MakeTransparent();
                     }
                     else
                     {
@@ -86,6 +87,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
                 if (command == "lightup")
                 {
                     slot.LightUp();
+                    //slot.MakeTransparent();
                 }
                 else
                 {
@@ -148,6 +150,13 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
     {
         if (_image == null) return;
         _image.color = _originalColor;
+        _image.color = new Color(_originalColor.r, _originalColor.g, _originalColor.b,1);
+    }
+
+    protected void MakeTransparent()
+    {
+        if (_image == null) return;
+        _image.color = new Color(_originalColor.r, _originalColor.g, _originalColor.b, 0.4f);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
