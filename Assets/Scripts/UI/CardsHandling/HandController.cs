@@ -214,13 +214,32 @@ namespace UI
                 _cards.Remove(card);
                 _eventsConfig.cardDestroy?.Invoke(new CardDestroy(card));
                 PlaceHolder.isTaken = false;
-                currentCardNumber--;
+                
+                CardCountDeduction(card.GetComponent<CardDisplay>().cardSO.type);
                 Destroy(card.gameObject);
             }
             else
             {
                 Debug.Log("Wybierz kartę zanim jej użyjesz");
             }
+        }
+
+        private void CardCountDeduction(CardType type)
+        {
+            currentCardNumber--;
+            switch (type)
+            {
+                case CardType.Attack:
+                    currentAttackCardNumber--;
+                    break;
+                case CardType.Defense:
+                    currentDefenceNumber--;
+                    break;
+                case CardType.Movement:
+                    currentMovementNumber--;
+                    break;
+            }
+            
         }
 
         public Vector2 getPlaceHolderPosition()

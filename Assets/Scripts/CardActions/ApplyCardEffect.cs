@@ -74,7 +74,7 @@ namespace CardActions
             _healthBar.ChangeHealth(hpChange);
             _timer.ChangeActiveTimerValue(cost);
             ShowPopUpDamage(hpChange);
-            EventSystem.DestroyCard?.Invoke();
+            EventSystem.DestroyCard.Invoke();
             EventSystem.LogAction?.Invoke(card);
 
             Debug.Log("Change: " + hpChange);
