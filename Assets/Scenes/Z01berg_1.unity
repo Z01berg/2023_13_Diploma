@@ -465,10 +465,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 262237943593376390, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
-      propertyPath: enemyPrefab
-      value: 
-      objectReference: {fileID: 9778427497311827, guid: b1d8a5582503b0340a3200882385ce62, type: 3}
     - target: {fileID: 404082218437203262, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -533,22 +529,6 @@ PrefabInstance:
       propertyPath: _playerMovePoint
       value: 
       objectReference: {fileID: 803237028}
-    - target: {fileID: 1978499998629159124, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
-      propertyPath: dungeonLevelList.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1978499998629159124, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
-      propertyPath: dungeonLevelList.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: af4280dc6d09855479ce6db67c58cfaa, type: 2}
-    - target: {fileID: 1978499998629159124, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
-      propertyPath: dungeonLevelList.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 27ae7e2e935151248b08b273756597ab, type: 2}
-    - target: {fileID: 1978499998629159124, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
-      propertyPath: dungeonLevelList.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: e38c7ea796500dd4ebc11f1b4a1fe7de, type: 2}
     - target: {fileID: 2597701751550688956, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
       propertyPath: playerPrefab
       value: 
@@ -557,10 +537,6 @@ PrefabInstance:
       propertyPath: _itemsPanel
       value: 
       objectReference: {fileID: 174723071}
-    - target: {fileID: 4205339106594048853, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
-      propertyPath: items.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 14b9ec58d496c8b438d10087012c971a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

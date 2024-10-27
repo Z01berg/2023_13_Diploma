@@ -160,7 +160,6 @@ public class Timer : MonoBehaviour
 
                 if (_timers[_activeTimerIndex].Tag == "Player")
                 {
-                    _animator.SetBool("K_turn", true);
                     EventSystem.PlayerMove.Invoke(true);
                     if (_canDraw && CombatMode.isPlayerInCombat)
                     {
@@ -176,7 +175,6 @@ public class Timer : MonoBehaviour
 
                 if (_timers[_activeTimerIndex].Tag == "Enemy" && _timers[_activeTimerIndex] != null)
                 {
-                    _animator.SetBool("K_turn", true);
                     EventSystem.EnemyMove.Invoke(_timers[_activeTimerIndex].EnemyId, new Vector3(_player.transform.position.x, _player.transform.position.y, -6) );
                 }
                 else
