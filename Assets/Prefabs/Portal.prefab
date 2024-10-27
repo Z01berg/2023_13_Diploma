@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3915433133722241345}
-  - component: {fileID: 4892937537118751580}
+  - component: {fileID: 1940686320681038687}
   m_Layer: 23
   m_Name: Portal
   m_TagString: Untagged
@@ -35,7 +35,7 @@ Transform:
   - {fileID: 6038802678259710826}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4892937537118751580
+--- !u!114 &1940686320681038687
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -364,8 +364,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.51860154, y: 0.1677, z: 0}
-    m_Extent: {x: 1.0186015, y: 0.6677, z: 0}
+    m_Center: {x: 0.51860154, y: 0.16995001, z: 0}
+    m_Extent: {x: 1.0186015, y: 0.67025, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.5829965
