@@ -37,6 +37,8 @@ public class Timer : MonoBehaviour
     private float _timeToPause = 0.4f; //do animacji timerów
 
     private bool _cheat = false; // włączenie na "R CTRL" zmieniania znaczenia timerów
+    
+    private bool _createdDeck = false;
 
     private Animator _animator;
     private DeckController _deckController;
@@ -57,8 +59,15 @@ public class Timer : MonoBehaviour
         EventSystem.InstatiatedRoom.AddListener(AddToTimer);
         EventSystem.DeleteReference.AddListener(DeleteTimer);
         EventSystem.FinishEnemyTurn.AddListener(FinishTurn);
+        EventSystem.InitInv.AddListener(ChangeBool);
         _deckController = _deck.GetComponent<DeckController>();
     }
+
+    private void ChangeBool()
+    {
+        _createdDeck = true;
+    }
+    
 
     private void FinishTurn(int arg0)
     {
@@ -128,11 +137,12 @@ public class Timer : MonoBehaviour
             ChangeActiveTimerValue(-1);
         }
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) || _createdDeck)
         {
             if (_deckController.IsDeckCreated())
             {
                 _counting = true;
+                _createdDeck = !_createdDeck;
             }
             else
             {

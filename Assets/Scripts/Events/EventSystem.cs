@@ -161,4 +161,10 @@ public static class EventSystem
     public static UnityEvent DisplayAllItems = new UnityEvent();
 
     #endregion
+    
+    #region Event InitInventory: GameManager.cs -> Timer.cs
+    
+    public static UnityEvent InitInv = new UnityEvent();
+    
+    #endregion
 }

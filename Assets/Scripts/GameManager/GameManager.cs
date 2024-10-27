@@ -80,6 +80,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
             case GameState.gameStarted:
                 PlayDungeonLevel(currenDungeonLevelListIndex);
                 
+                EventSystem.InitInv.Invoke();
                 GameState = GameState.playingLevel;
                 break;
             
