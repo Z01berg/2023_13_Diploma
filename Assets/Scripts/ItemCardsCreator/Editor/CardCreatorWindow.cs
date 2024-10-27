@@ -11,6 +11,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 using UnityEditor.AddressableAssets.Build.DataBuilders;
+using UnityEngine.AddressableAssets;
 
 public class CardCreatorWindow : ScrollView, IModifiable
 {
@@ -113,28 +114,28 @@ public class CardCreatorWindow : ScrollView, IModifiable
                 path = "Assets/ScriptableObjectAssets/Card/Defence/";
                 group = "DefenceCardsGroup";
                 tag = "DefenceCard";
-                cards = AddressablesUtilities.LoadItems(AddressablesTags.DefenceCard);
+                cards = AddressablesUtilities.LoadItems(Addressables.MergeMode.Union, AddressablesTags.DefenceCard);
             }
             else if (_cardReference.type == CardType.Attack) 
             {
                 path = "Assets/ScriptableObjectAssets/Card/Attack/";
                 group = "AttackCardsGroup";
                 tag = "AttackCard";
-                cards = AddressablesUtilities.LoadItems(AddressablesTags.AttackCard);
+                cards = AddressablesUtilities.LoadItems(Addressables.MergeMode.Union, AddressablesTags.AttackCard);
             }
             else if (_cardReference.type == CardType.Curse)
             {
                 path = "Assets/ScriptableObjectAssets/Card/Curse/";
                 group = "CurseCardsGroup";
                 tag = "CurseCard";
-                cards = AddressablesUtilities.LoadItems(AddressablesTags.CurseCard);
+                cards = AddressablesUtilities.LoadItems(Addressables.MergeMode.Union, AddressablesTags.CurseCard);
             }
             else if (_cardReference.type == CardType.Movement)
             {
                 path = "Assets/ScriptableObjectAssets/Card/Move/";
                 group = "MovementCardsGroup";
                 tag = "MovementCard";
-                cards = AddressablesUtilities.LoadItems(AddressablesTags.MovementCard);
+                cards = AddressablesUtilities.LoadItems(Addressables.MergeMode.Union,AddressablesTags.MovementCard);
             }
             AssetDatabase.CreateAsset(_cardReference, path + _cardReference.title + ".asset");
             AssetDatabase.SaveAssets();
@@ -348,7 +349,7 @@ public class CardCreatorWindow : ScrollView, IModifiable
     {
         if (_itemReference != null)
         {
-            var addressables = AddressablesUtilities.LoadItems(AddressablesTags.AttackCard, AddressablesTags.DefenceCard, AddressablesTags.MovementCard);
+            var addressables = AddressablesUtilities.LoadItems(Addressables.MergeMode.Union, AddressablesTags.AttackCard, AddressablesTags.DefenceCard, AddressablesTags.MovementCard);
             List<CardsSO> convCards = new();
             foreach (var card in addressables)
             {
