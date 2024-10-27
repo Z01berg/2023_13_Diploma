@@ -44,7 +44,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9778427497311827}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59951289de003694fb1aa5902e9c09ae, type: 3}
+  m_Script: {fileID: 11500000, guid: e62c5f3660edbae4a99856c69ab8d60a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   collision: {fileID: 2549892323644547154}
@@ -148,7 +148,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 144045155
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: -1
   m_Sprite: {fileID: 428272420, guid: 2cc4e79c011ec774590a33b7cca347aa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -364,8 +364,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.5217, y: 0.16655695, z: 0}
-    m_Extent: {x: 1.0217, y: 0.66755694, z: 0}
+    m_Center: {x: 0.51860154, y: 0.1677, z: 0}
+    m_Extent: {x: 1.0186015, y: 0.6677, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.5829965
