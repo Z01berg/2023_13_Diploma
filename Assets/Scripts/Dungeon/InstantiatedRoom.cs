@@ -363,7 +363,7 @@ public class InstantiatedRoom : MonoBehaviour
             if (spawnEventEnemy && !eventEnemySpawned)
             {
                 var eventE = Instantiate(selectedEnemy, transform.Find("Grid"));
-                eventE.transform.localPosition = new Vector3(position.x, position.y, -6f);
+                eventE.transform.localPosition = new Vector3(position.x + 0.5f, position.y + 0.5f, -6f);
                 enemyInRoomList.Add(eventE);
                 eventE.GetComponentInChildren<ShowCaseEvent>().room = this;
                 eventEnemySpawned = true;
@@ -372,7 +372,7 @@ public class InstantiatedRoom : MonoBehaviour
             {
                 var enemy = Instantiate(enemyPrefab, transform.Find("Grid"));
                 enemy.gameObject.GetComponentInChildren<ApplyCardEffect>().gameObjectTimer = timer;
-                enemy.transform.localPosition = new Vector3(position.x, position.y, -6f);
+                enemy.transform.localPosition = new Vector3(position.x + 0.5f, position.y + 0.5f, -6f);
                 enemyInRoomList.Add(enemy);
                 enemy.GetComponent<HealthBar>().room = this;
                 CombatMode.isPlayerInCombat = true;
