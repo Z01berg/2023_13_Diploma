@@ -80,7 +80,7 @@ namespace UI
 
         private void CreateDeck()
         {
-            var diff = _overlay;
+            // var diff = _overlay;
             
             foreach (var card in _cards)
             {
@@ -98,13 +98,13 @@ namespace UI
                     case CardType.Movement: _movementDeck.Add(newCard);
                         break;
                 }
-                _overlay += diff;
-                _coverPosition.UpdatePosition(newCard.transform);
+                // _overlay += diff;
+                // _coverPosition.UpdatePosition(newCard.transform);
             }
 
             _deckExists = true;
             Destroy(_createDeckText);
-            _overlay = diff;
+            // _overlay = diff;
         }
 
         private void UpdateCards()
@@ -160,27 +160,26 @@ namespace UI
             //     Debug.Log("Brak kart");
             // }
 
-            while (HandController.currentCardNumber <= HandController.cardLimit)
+
+            do
             {
-                    
                 if (HandController.currentAttackCardNumber < HandController.attackCardLimit)
                 {
                     SendCardToHand(CardType.Attack);
-            
                 }
-                
+
                 if (HandController.currentDefenceNumber < HandController.defenceCardLimit)
                 {
                     SendCardToHand(CardType.Defense);
                 }
-                
+
                 if (HandController.currentMovementNumber < HandController.movementCardLimit)
                 {
                     SendCardToHand(CardType.Movement);
                 }
-                
+
                 HandController.currentCardNumber++;
-            }
+            }while (HandController.currentCardNumber < HandController.cardLimit);
         }
 
         private void SendCardToHand(CardType type)
