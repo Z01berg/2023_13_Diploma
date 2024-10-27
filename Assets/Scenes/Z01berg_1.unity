@@ -545,6 +545,10 @@ PrefabInstance:
       propertyPath: dungeonLevelList.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: e38c7ea796500dd4ebc11f1b4a1fe7de, type: 2}
+    - target: {fileID: 2597701751550688956, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 1588645368}
     - target: {fileID: 4205339106594048853, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
       propertyPath: _itemsPanel
       value: 
@@ -678,6 +682,10 @@ PrefabInstance:
     - target: {fileID: 902848126179402424, guid: 72c464ea0d6153f4198a069d72aa8adb, type: 3}
       propertyPath: m_Name
       value: Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989101151596241865, guid: 72c464ea0d6153f4198a069d72aa8adb, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 25167991
       objectReference: {fileID: 0}
     - target: {fileID: 8825355594499857502, guid: 72c464ea0d6153f4198a069d72aa8adb, type: 3}
       propertyPath: m_Follow

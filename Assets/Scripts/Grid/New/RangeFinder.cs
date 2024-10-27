@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using Grid.New;
 using UnityEngine;
 
-namespace CardActions
+namespace Grid.New
 {
     public class RangeFinder
     {
@@ -13,17 +12,15 @@ namespace CardActions
             var RangeTiles = new List<OverlayTile>();
 
             int stepCount = 0;
-
-            var tilesForPreviousStep = new List<OverlayTile>();
-            tilesForPreviousStep.Add(playersTile);
+            var tilesForPreviousStep = new List<OverlayTile> { playersTile };
 
             while (stepCount < range)
             {
                 var surroundingTiles = new List<OverlayTile>();
 
-                foreach (var item in tilesForPreviousStep)
+                foreach (var tile in tilesForPreviousStep)
                 {
-                    surroundingTiles.AddRange(OverlayManager.Instance.GetRangeTiles(new Vector2(item.gridLocation.x, item.gridLocation.y)));
+                    surroundingTiles.AddRange(OverlayManager.Instance.GetRangeTiles(new Vector2(tile.gridLocation.x, tile.gridLocation.y)));
                 }
                 
                 RangeTiles.AddRange(surroundingTiles);

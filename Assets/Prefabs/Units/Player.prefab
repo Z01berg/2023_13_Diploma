@@ -1594,7 +1594,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 144045155
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -861509414, guid: 3198e18dc9395c2499ddde975f9ca165, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1666,3 +1666,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popUpPrefab: {fileID: 467837565738204250, guid: 76ee967cebe21914aab9b16f2c3ddd77, type: 3}
   gameObjectTimer: {fileID: 0}
+  standingOnTile: {fileID: 0}

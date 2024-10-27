@@ -34,6 +34,12 @@ public class OverlayManager : MonoBehaviour
     // Start is called before the first frame update
     public void CreateOverlaysForRoom(List<Tilemap> tilemaps)
     {
+
+        if (overlayContainer.transform.childCount != 0)
+        {
+            ResetOverContainer();
+        }
+        
         map = new Dictionary<Vector2, OverlayTile>();
         
         foreach (var tm in tilemaps)
@@ -70,6 +76,14 @@ public class OverlayManager : MonoBehaviour
             }
         }
     }
+
+    private void ResetOverContainer()
+    {
+        foreach (Transform child in overlayContainer.transform) {
+            Destroy(child.gameObject);
+        }
+    }
+
     public List<OverlayTile> GetRangeTiles(Vector2 playerOccupiedTile)
     {
         var rangeTiles = new List<OverlayTile>();
