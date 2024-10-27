@@ -4,7 +4,7 @@ using UnityEngine;
 namespace UI
 {
     /**
-     * Publiczna klasa CardReader, która odpowiada za sczytywanie informacji a ktualnie wybranej karty
+     * Publiczna klasa CardReader, która odpowiada za zczytywanie informacji a ktualnie wybranej karty
      */
     public class CardReader : MonoBehaviour
     {
