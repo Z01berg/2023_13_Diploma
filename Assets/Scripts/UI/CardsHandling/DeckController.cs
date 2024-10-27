@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using Dungeon;
 using TMPro;
 using UnityEngine;
-using Random = System.Random;
+using Random = UnityEngine.Random;
 
 namespace UI
 {
     public class DeckController : MonoBehaviour
     {
         private List<CardsSO> _cards;
-        private Stack<GameObject> _deck = new Stack<GameObject>();
+        private List<GameObject> _attackDeck = new List<GameObject>();
+        private List<GameObject> _defenceDeck = new List<GameObject>();
+        private List<GameObject> _movementDeck = new List<GameObject>();
         private HandController _handController;
         private Equipment _equipment;
 
@@ -23,9 +25,11 @@ namespace UI
         [SerializeField] private GameObject _cardPrefab;
         [SerializeField] private int _overlay = 50;
         private CoverPosition _coverPosition;
+            
+        /*Stworzyć 3 decki na kazdy rodzaj karty: attack, def, move. W momencie dobierania dobierać po dwie karty ataku, po dwie obrony i jedną ruchu.
+         Utworzyć 3 heapy. Sprawdzać aktualną rękę i zliczać rodzaje kart. Na podstawie ich liczności dobierać karty  */
 
-
-        private Random _rng = new Random();
+        // private Random _rng = new Random();
 
         private void Awake()
         {
@@ -37,9 +41,9 @@ namespace UI
 
         private void Update()
         {
-            if (_deck.Count == 0 && _deckExists)
+            if (_attackDeck.Count == 0 && _defenceDeck.Count == 0 && _movementDeck.Count == 0 && _deckExists)
             {
-                CreateDeck();
+                // CreateDeck();
             }
         }
 
@@ -47,9 +51,17 @@ namespace UI
         {
             UpdateCards();
             Debug.Log(CombatMode.isPlayerInCombat);
-            if (_deck.Count != 0 && !CombatMode.GetIsPlayerInCombat())
+            if (_attackDeck.Count != 0 && !CombatMode.GetIsPlayerInCombat())
             {
-                UpdateDeck();
+                UpdateDeck(_attackDeck);
+            }
+            if (_defenceDeck.Count != 0 && !CombatMode.GetIsPlayerInCombat())
+            {
+                UpdateDeck(_defenceDeck);
+            }
+            if (_movementDeck.Count != 0 && !CombatMode.GetIsPlayerInCombat())
+            {
+                UpdateDeck(_movementDeck);
             }
 
             if (!CombatMode.GetIsPlayerInCombat())
@@ -59,9 +71,9 @@ namespace UI
             
         }
 
-        private void UpdateDeck()
+        private void UpdateDeck(List<GameObject> deck)
         {
-            _deck.Clear();
+            deck.Clear();
             DestroyCreatedCards();
         }
 
@@ -69,13 +81,23 @@ namespace UI
         private void CreateDeck()
         {
             var diff = _overlay;
+            
             foreach (var card in _cards)
             {
                 var newCard = Instantiate(_cardPrefab, transform, true);
                 newCard.GetComponent<CardDisplay>().cardSO = card;
-                newCard.transform.position = new Vector2(transform.position.x - _overlay, transform.position.y);
+                var position = transform.position;
+                newCard.transform.position = new Vector2(position.x - _overlay, position.y);
                 newCard.transform.localScale = new Vector3(1, 1, 1);
-                _deck.Push(newCard);
+                switch (card.type)
+                {
+                    case CardType.Attack: _attackDeck.Add(newCard);
+                        break;
+                    case CardType.Defense: _defenceDeck.Add(newCard);
+                        break;
+                    case CardType.Movement: _movementDeck.Add(newCard);
+                        break;
+                }
                 _overlay += diff;
                 _coverPosition.UpdatePosition(newCard.transform);
             }
@@ -88,7 +110,6 @@ namespace UI
         private void UpdateCards()
         {
             _cards = _equipment.cards;
-            Shuffle();
         }
 
         private void DestroyCreatedCards()
@@ -99,38 +120,95 @@ namespace UI
             }
         }
 
-        private void Shuffle()
-        {
-            int n = _cards.Count;
-            while (n > 1)
-            {
-                n--;
-                int k = _rng.Next(n + 1);
-                (_cards[k], _cards[n]) = (_cards[n], _cards[k]);
-            }
-        }
+        // private void Shuffle()
+        // {
+        //     int n = _cards.Count;
+        //     while (n > 1)
+        //     {
+        //         n--;
+        //         int k = _rng.Next(n + 1);
+        //         (_cards[k], _cards[n]) = (_cards[n], _cards[k]);
+        //     }
+        // }
 
-        public void DrawACard()
+        // public void DrawACard() 
+        // {
+        //     if (_attackDeck.Count == 0 || _defenceDeck.Count == 0 || _movementDeck.Count == 0)
+        //     {
+        //         Debug.Log("Brak kart");
+        //         return;
+        //     }
+        //
+        //     while (HandController.currentCardNumber < HandController.cardLimit)
+        //     {
+        //         if (_attackDeck.Count == 0 || _defenceDeck.Count == 0 || _movementDeck.Count == 0)
+        //         {
+        //             return;
+        //         }
+        //
+        //         // _coverPosition.UpdatePosition(_deck.Peek().transform);
+        //         // var card = _deck.Pop();
+        //         // card.transform.SetParent(_hand.transform);
+        //         HandController.currentCardNumber++;
+        //     }
+        // }
+        
+        public void DrawACard() 
         {
-            if (_deck.Count == 0)
-            {
-                Debug.Log("Brak kart");
-                return;
-            }
+            // if (_attackDeck.Count == 0 || _defenceDeck.Count == 0 || _movementDeck.Count == 0)
+            // {
+            //     Debug.Log("Brak kart");
+            // }
 
-            while (HandController.currentCardNumber < HandController.cardLimit)
+            while (HandController.currentCardNumber <= HandController.cardLimit)
             {
-                if (_deck.Count == 0)
+                    
+                if (HandController.currentAttackCardNumber < HandController.attackCardLimit)
                 {
-                    return;
+                    SendCardToHand(CardType.Attack);
+            
                 }
-
-                _coverPosition.UpdatePosition(_deck.Peek().transform);
-                var card = _deck.Pop();
-                card.transform.SetParent(_hand.transform);
+                
+                if (HandController.currentDefenceNumber < HandController.defenceCardLimit)
+                {
+                    SendCardToHand(CardType.Defense);
+                }
+                
+                if (HandController.currentMovementNumber < HandController.movementCardLimit)
+                {
+                    SendCardToHand(CardType.Movement);
+                }
+                
                 HandController.currentCardNumber++;
             }
         }
+
+        private void SendCardToHand(CardType type)
+        {
+            GameObject card;
+            switch (type)
+            {
+                case CardType.Attack:
+                    card = _attackDeck[Random.Range(0, _attackDeck.Count)];
+                    _attackDeck.Remove(card);
+                    card.transform.SetParent(_hand.transform);
+                    HandController.currentAttackCardNumber++;
+                    break;
+                case CardType.Defense:
+                    card = _defenceDeck[Random.Range(0, _defenceDeck.Count)];
+                    _defenceDeck.Remove(card);
+                    card.transform.SetParent(_hand.transform);
+                    HandController.currentDefenceNumber++;
+                    break;
+                case CardType.Movement:
+                    card = _movementDeck[Random.Range(0, _movementDeck.Count)];
+                    _movementDeck.Remove(card);
+                    card.transform.SetParent(_hand.transform);
+                    HandController.currentMovementNumber++;
+                    break;
+            }
+        }
+        
 
         public bool IsDeckCreated()
         {

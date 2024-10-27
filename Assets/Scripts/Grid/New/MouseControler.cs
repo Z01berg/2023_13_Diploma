@@ -1,8 +1,10 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using CardActions;
 using Grid.New;
 using Player;
-using System.Collections.Generic;
-using System.Linq;
+using UI;
 using UnityEngine;
 
 
@@ -10,26 +12,52 @@ public class MouseController : MonoBehaviour
 {
     public GameObject cursor;
 
-    public float speed; //do pathFindingu
     public GameObject playerPrefab;
-    public int _range = 3; // TODO: będzie przypisywany kartą
 
     private RangeFinder _rangeFinder;
-    private List<OverlayTile> _rangeTiles;
+    public static List<OverlayTile> _rangeTiles;
     private bool _isMoving;
 
     private Vector2 _playerPosition;
     private PlayerController _playerController;
+    private bool _canHideRange = false;
+
 
 
     private void Start()
     {
         _rangeFinder = new RangeFinder();
         _rangeTiles = new List<OverlayTile>();
-        // _playerPosition = GetPlayerPosition();
         _playerController = playerPrefab.GetComponent<PlayerController>();
+        EventSystem.ShowRange.AddListener(ShowRangeTiles);
+        EventSystem.HideRange.AddListener(HideRangeTiles);
     }
 
+
+    private void Update()
+    {
+        // if (Wrapper.cardInUse)
+        // {
+        //     String range = Wrapper.cardInUse.GetComponent<CardDisplay>().range.text;
+        //     GetRangeTiles(int.Parse(range));
+        //     _canHideRange = true;
+        //     if (_playerController.enabled)
+        //     {
+        //         _playerController.enabled = false;
+        //     }
+        // }
+        // else if (_canHideRange && !Wrapper.cardInUse)
+        // {
+        //     if (!_playerController.enabled)
+        //     {
+        //         _playerController.enabled = true;
+        //         foreach (var tile in _rangeTiles)
+        //         {
+        //             tile.HideTile();
+        //         }
+        //     }
+        // }
+    }
 
     void LateUpdate()
     {
@@ -50,15 +78,10 @@ public class MouseController : MonoBehaviour
                 cursor.GetComponent<SpriteRenderer>().sortingOrder =
                     overlayTile.GetComponent<SpriteRenderer>().sortingOrder;
 
-                if (_rangeTiles.Contains(overlayTile))
-                {
-                    //Tu cos jeszcze bedzie      
-                }
 
-                if (Input.GetMouseButtonDown(0)) // if użyta karta pobierz range i wyswietl go na gridzie else nic nie rób i schowaj pola
+                if (Input.GetMouseButtonDown(0))
                 {
                     overlayTile.ShowTile();
-                    // overlayTile.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
                 }
 
                 if (Input.GetMouseButtonDown(1))
@@ -66,22 +89,10 @@ public class MouseController : MonoBehaviour
                     overlayTile.gameObject.GetComponent<OverlayTile>().HideTile();
                 }
             }
-            else
-                Debug.Log("Cos nie działa");
-
-            // if (_playerController.standingOnTile == null)
-            // {
-            //     
-            // }
         }
     }
 
-    public void ShowRangeTiles()
-    {
-        GetRangeTiles();
-    }
-
-    public RaycastHit2D? GetFocusedOnTile()
+    private RaycastHit2D? GetFocusedOnTile()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 mousePos2d = new Vector2(mousePos.x, mousePos.y);
@@ -105,15 +116,34 @@ public class MouseController : MonoBehaviour
         _playerController.standingOnTile = tile;
     }
 
-    private void GetRangeTiles()
+    private void ShowRangeTiles(int range)
     {
+        _rangeTiles.Clear();
         _rangeTiles = _rangeFinder.GetTilesInRange(
-            new Vector2(_playerController.standingOnTile.gridLocation.x,
-                _playerController.standingOnTile.gridLocation.y), _range);
-
+            range, _playerController.standingOnTile);
         foreach (var tile in _rangeTiles)
         {
-            tile.ShowTile();
+            tile.ShowRangeTile();
+        }
+        
+        if (_playerController.enabled)
+        {
+            _playerController.enabled = false;
+        }
+    }
+
+    private void HideRangeTiles()
+    {
+        if (_rangeTiles.Count > 0)
+        {
+            foreach (var tile in _rangeTiles)
+            {
+                tile.HideRangeTile();
+            }
+        }
+        if (!_playerController.enabled)
+        {
+            _playerController.enabled = true;
         }
     }
 

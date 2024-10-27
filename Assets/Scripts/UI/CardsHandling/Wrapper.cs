@@ -1,4 +1,5 @@
-﻿using UI.Config;
+﻿using System;
+using UI.Config;
 using UI.Events;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -147,14 +148,15 @@ namespace UI
                     cardInUse._isPressed = false;
                     cardInUse._isHovered = false;
                     eventsConfig?.cardUnHover?.Invoke(new CardUnhover(this));
-                    
+                    EventSystem.HideRange.Invoke();
                 }
                 eventsConfig?.cardHover?.Invoke(new CardHover(this));
                 _isPressed = true;
                 _isHovered = true;
                 cardInUse = this;
                 PlaceHolder.isTaken = true;
-                
+                int range = Convert.ToInt32(GetComponent<CardDisplay>().range.text);
+                EventSystem.ShowRange.Invoke(range);
             }
 
             if (Input.GetMouseButtonDown(1))
@@ -166,8 +168,14 @@ namespace UI
                     _isHovered = false;
                     cardInUse = null;
                     PlaceHolder.isTaken = false;
+                    EventSystem.HideRange.Invoke();
                 }
             }
+        }
+
+        private void OnDestroy()
+        {
+            EventSystem.HideRange.Invoke();
         }
 
         public static Wrapper GetCardCurrentCardInfo()
