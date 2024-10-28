@@ -14,6 +14,8 @@ namespace Grid.New
             int stepCount = 0;
             var tilesForPreviousStep = new List<OverlayTile> { playersTile };
 
+            RangeTiles.Add(playersTile);
+            
             while (stepCount < range)
             {
                 var surroundingTiles = new List<OverlayTile>();
@@ -27,6 +29,7 @@ namespace Grid.New
                 tilesForPreviousStep = surroundingTiles.Distinct().ToList();
                 stepCount++;
             }
+            
 
             return RangeTiles.Distinct().ToList();
         }

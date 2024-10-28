@@ -33,32 +33,6 @@ public class MouseController : MonoBehaviour
         EventSystem.HideRange.AddListener(HideRangeTiles);
     }
 
-
-    private void Update()
-    {
-        // if (Wrapper.cardInUse)
-        // {
-        //     String range = Wrapper.cardInUse.GetComponent<CardDisplay>().range.text;
-        //     GetRangeTiles(int.Parse(range));
-        //     _canHideRange = true;
-        //     if (_playerController.enabled)
-        //     {
-        //         _playerController.enabled = false;
-        //     }
-        // }
-        // else if (_canHideRange && !Wrapper.cardInUse)
-        // {
-        //     if (!_playerController.enabled)
-        //     {
-        //         _playerController.enabled = true;
-        //         foreach (var tile in _rangeTiles)
-        //         {
-        //             tile.HideTile();
-        //         }
-        //     }
-        // }
-    }
-
     void LateUpdate()
     {
         RaycastHit2D? hit = GetFocusedOnTile();
