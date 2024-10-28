@@ -41,9 +41,12 @@ namespace UI
 
         private void Update()
         {
-            if (_attackDeck.Count == 0 && _defenceDeck.Count == 0 && _movementDeck.Count == 0 && _deckExists)
+            if ((_attackDeck.Count == 0 || _defenceDeck.Count == 0 || _movementDeck.Count == 0) && _deckExists)
             {
-                // CreateDeck();
+                foreach (Transform child in gameObject.transform) {
+                    Destroy(child.gameObject);
+                }
+                CreateDeck();
             }
         }
 
