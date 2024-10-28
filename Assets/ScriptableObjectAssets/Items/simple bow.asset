@@ -17,7 +17,7 @@ MonoBehaviour:
   itemName: simple bow
   description: shooti shooti
   cards:
-  - {fileID: 11400000, guid: 50d8c15d635a12f42bc5dfbdbc5e4573, type: 2}
-  - {fileID: 11400000, guid: 50d8c15d635a12f42bc5dfbdbc5e4573, type: 2}
-  - {fileID: 11400000, guid: 50d8c15d635a12f42bc5dfbdbc5e4573, type: 2}
+  - {fileID: 11400000, guid: 33d3fe5b925968b44a69f7fcb441c142, type: 2}
+  - {fileID: 11400000, guid: 7812e2fbe22425d49b2190c187dc673c, type: 2}
+  - {fileID: 11400000, guid: e2e2e19ece6016643b1859f5ae18f59d, type: 2}
   icon: {fileID: 1507356466, guid: 535824487e05bed4282a2ad4364f4235, type: 3}

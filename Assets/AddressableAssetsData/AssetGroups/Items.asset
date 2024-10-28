@@ -59,6 +59,36 @@ MonoBehaviour:
     m_SerializedLabels:
     - Item
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4d22808e9f9fcff41b7d6f59a19ec31b
+    m_Address: Assets/ScriptableObjectAssets/Items/sword.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Item
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aa4912ee8f6db1f40b0354c973ea50cd
+    m_Address: Assets/ScriptableObjectAssets/Items/staff.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Item
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d26c273942370084381660381082d723
+    m_Address: Assets/ScriptableObjectAssets/Items/greater staff.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Item
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a10b4ef47e6144e4fb4bf872a1aadb5c
+    m_Address: Assets/ScriptableObjectAssets/Items/great bow.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Item
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0b239b6d5a2b16b468a9614eea903625
+    m_Address: Assets/ScriptableObjectAssets/Items/boots.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Item
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f505d56935b80a94cb01aefad73250da, type: 2}
   m_SchemaSet:

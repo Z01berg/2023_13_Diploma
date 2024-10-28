@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6edbbd9d6e38d284088822ae57f76e59, type: 3}
-  m_Name: lek armor
+  m_Name: boots
   m_EditorClassIdentifier: 
   accessibility: 0
-  itemType: 4
-  itemName: lek armor
-  description: protec lek
+  itemType: 3
+  itemName: boots
+  description: awdawd
   cards:
-  - {fileID: 11400000, guid: a1726d6c4b6131246bf5f9faec97a0c6, type: 2}
-  - {fileID: 11400000, guid: 6e3961a164e4dee47adaae01ac598527, type: 2}
   - {fileID: 11400000, guid: 52fc134a28dc7a942aa72ff854943fdf, type: 2}
-  icon: {fileID: -1829240335, guid: 7212ad04eaf3da84580de4bab8dec60b, type: 3}
+  - {fileID: 11400000, guid: 1824ffe34e80cc54c92f776d8ceef47f, type: 2}
+  - {fileID: 11400000, guid: 52fc134a28dc7a942aa72ff854943fdf, type: 2}
+  icon: {fileID: -100041709, guid: 7212ad04eaf3da84580de4bab8dec60b, type: 3}
