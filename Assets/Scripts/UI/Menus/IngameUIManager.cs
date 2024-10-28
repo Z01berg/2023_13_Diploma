@@ -92,7 +92,7 @@ public class IngameUIManager : MonoBehaviour
 
     private void ChangeInventoryState()
     {
-        if (_menuMenuAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Book_close")) return;
+        if (_menuMenuAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Book_close") || _menuMenuAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Book_open")) return;
         if (_locked) return;
         if (!_inv.activeSelf)
         {
@@ -106,7 +106,7 @@ public class IngameUIManager : MonoBehaviour
     
     private void ChangePauseMenuState()
     {
-        if (_menuMenuAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Book_close")) return;
+        if (_menuMenuAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Book_close") || _menuMenuAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Book_open")) return;
         if (_locked) return;
         if (!_pauseView.activeSelf)
         {

@@ -106,7 +106,6 @@ public class HealthBar : MonoBehaviour
     {
         if (_value <= 0)
         {
-            EventSystem.OpenGameover.Invoke();
             Debug.Log("killed: " + myTimerIndex);
             room.enemyInRoomList.Remove(this.gameObject);
             EventSystem.DeleteReference.Invoke(myTimerIndex);

@@ -225,7 +225,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 19f246c7aa8bc774180166db04a9df73, type: 2}
-  m_Tag: 
+  m_Tag: Book_open
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
