@@ -53,9 +53,9 @@ public class IngameUIManager : MonoBehaviour
     {
         if (_locked) return;
         menuOpen = false;
+        _inv.GetComponent<UIInventory>().SaveState();
         if (_inv.activeSelf)
         {
-            _inv.GetComponent<UIInventory>().SaveState();
             _inv.SetActive(false);
         }
         _pauseView.SetActive(false);

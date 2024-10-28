@@ -114,15 +114,6 @@ public class UIInventory : MonoBehaviour
             Equipment.Instance.item6 = slot.GetComponentInChildren<UIItemDragNDrop>().item;
         else
             Equipment.Instance.item6 = null;
-        
-        
-
-        //SceneManager.LoadScene("Z01berg"); moze byc potrzebne w razie zmiany scen
-    }
-
-    public void LoadState()
-    {
-        Debug.LogWarning("NotImplemented");
     }
     
 }
