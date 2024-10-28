@@ -9,12 +9,12 @@ namespace Grid.New
         public List<OverlayTile> GetTilesInRange(int range, OverlayTile playersTile)
         {
             // var StartingTile = OverlayManager.Instance.map[location];
-            var RangeTiles = new List<OverlayTile>();
+            var rangeTiles = new List<OverlayTile>();
 
             int stepCount = 0;
             var tilesForPreviousStep = new List<OverlayTile> { playersTile };
 
-            RangeTiles.Add(playersTile);
+            rangeTiles.Add(playersTile);
             
             while (stepCount < range)
             {
@@ -25,13 +25,13 @@ namespace Grid.New
                     surroundingTiles.AddRange(OverlayManager.Instance.GetRangeTiles(new Vector2(tile.gridLocation.x, tile.gridLocation.y)));
                 }
                 
-                RangeTiles.AddRange(surroundingTiles);
+                rangeTiles.AddRange(surroundingTiles);
                 tilesForPreviousStep = surroundingTiles.Distinct().ToList();
                 stepCount++;
             }
             
 
-            return RangeTiles.Distinct().ToList();
+            return rangeTiles.Distinct().ToList();
         }
     }
 }
