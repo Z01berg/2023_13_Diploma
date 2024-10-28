@@ -26,7 +26,7 @@ RectTransform:
   m_GameObject: {fileID: 642104159361244498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalScale: {x: 0.69, y: 0.69, z: 0.69}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5769980607224551599}
@@ -657,7 +657,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2053827435
   m_SortingLayer: 7
-  m_SortingOrder: 2
+  m_SortingOrder: 21
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &168721498808235815
 MonoBehaviour:
@@ -1037,8 +1037,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.51124454, y: 0.06863353, z: 0}
-    m_Extent: {x: 1.0137445, y: 0.56863356, z: 0}
+    m_Center: {x: 0.5113945, y: 0.06733352, z: 0}
+    m_Extent: {x: 1.0135945, y: 0.56993353, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.5829965
