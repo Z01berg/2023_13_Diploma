@@ -22,6 +22,7 @@ public enum CharacterType
    None
 }
 //TODO: Przebudować to bardziej orientowaną do naszego produktu
+// Wykorzystuje się przy zarządzaniu stanami gry
 public enum GameState
 {
     gameStarted,
@@ -36,6 +37,7 @@ public enum GameState
     dngeonOverviewMap,
     restartGame
 }
+
 // Wykorzystywane do oznaczania typu karty
 public enum CardType
 {
