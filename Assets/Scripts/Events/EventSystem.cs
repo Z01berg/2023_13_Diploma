@@ -166,4 +166,10 @@ public static class EventSystem
     public static UnityEvent InitInv = new UnityEvent();
     
     #endregion
+    
+    #region Event ZeroTimer: GameManager.cs -> Timer.cs
+    
+    public static UnityEvent ZeroTimer = new UnityEvent();
+    
+    #endregion
 }

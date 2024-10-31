@@ -5,8 +5,6 @@ using System.Threading.Tasks;
 using Grid.New;
 using Player;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UIElements;
 
 /**
  * Publiczna klasa GameManager jest odpowiedzialna za zarządzanie grą.
@@ -89,6 +87,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
                 {
                     ChangeLevel();
                     PlayDungeonLevel(currenDungeonLevelListIndex);
+                    EventSystem.ZeroTimer.Invoke();
                     GameState = GameState.playingLevel;
                 }
                 
