@@ -123,38 +123,6 @@ namespace UI
             }
         }
 
-        // private void Shuffle()
-        // {
-        //     int n = _cards.Count;
-        //     while (n > 1)
-        //     {
-        //         n--;
-        //         int k = _rng.Next(n + 1);
-        //         (_cards[k], _cards[n]) = (_cards[n], _cards[k]);
-        //     }
-        // }
-
-        // public void DrawACard() 
-        // {
-        //     if (_attackDeck.Count == 0 || _defenceDeck.Count == 0 || _movementDeck.Count == 0)
-        //     {
-        //         Debug.Log("Brak kart");
-        //         return;
-        //     }
-        //
-        //     while (HandController.currentCardNumber < HandController.cardLimit)
-        //     {
-        //         if (_attackDeck.Count == 0 || _defenceDeck.Count == 0 || _movementDeck.Count == 0)
-        //         {
-        //             return;
-        //         }
-        //
-        //         // _coverPosition.UpdatePosition(_deck.Peek().transform);
-        //         // var card = _deck.Pop();
-        //         // card.transform.SetParent(_hand.transform);
-        //         HandController.currentCardNumber++;
-        //     }
-        // }
         
         public void DrawACard() 
         {

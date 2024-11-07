@@ -41,9 +41,4 @@ public class GridShow : MonoBehaviour
             child.gameObject.SetActive(visible);
         }
     }
-
-    private void OnMouseEnter()
-    {
-        Debug.Log("Hover");
-    }
 }
