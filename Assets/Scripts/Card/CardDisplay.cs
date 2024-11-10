@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,6 +24,11 @@ public class CardDisplay : MonoBehaviour
     public Image BG;
     public Image banner;
 
+    public Image costBackground;
+    public Image firstActionIconPanel;
+    public List<Sprite> costBackgrounds;
+    public List<Sprite> firstActionSprites;
+
     void Start()
     {
         //cardSO.Print();
@@ -35,6 +42,28 @@ public class CardDisplay : MonoBehaviour
 
         BG.sprite = Resources.Load<Sprite>(cardSO.backgroundPath);
         banner.sprite = Resources.Load<Sprite>(cardSO.spritePath);
+
+        if(cardSO.cardQuality <= 1)
+        {
+            costBackground.sprite = costBackgrounds.Where(x => x.name == "TimerBox_0").First();
+        }
+        else if (cardSO.cardQuality == 2)
+        {
+            costBackground.sprite = costBackgrounds.Where(x => x.name == "TimerBox_1").First();
+        }
+        else if (cardSO.cardQuality == 3)
+        {
+            costBackground.sprite = costBackgrounds.Where(x => x.name == "TimerBox_2").First();
+        }
+
+        if (cardSO.type == CardType.Attack || cardSO.type == CardType.Movement) 
+        {
+            firstActionIconPanel.sprite = firstActionSprites.Where(x => x.name == "Sword").First();
+        }
+        if (cardSO.type == CardType.Defense)
+        {
+            firstActionIconPanel.sprite = firstActionSprites.Where(x => x.name == "Shield").First();
+        }
     }
 
     
