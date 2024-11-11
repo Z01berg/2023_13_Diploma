@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MapView : MonoBehaviour
 {
+    /*
     [SerializeField] private CinemachineVirtualCamera _camera;
     [SerializeField] private GameObject _overlayContainer;
 
@@ -37,5 +38,5 @@ public class MapView : MonoBehaviour
         //Debug.Log($"Max X: {maxX} | Min X: {minX} | Max Y: {maxY} | Min Y: {minY}");
 
         //_camera.gameObject.transform.set
-    }
+    }*/
 }
