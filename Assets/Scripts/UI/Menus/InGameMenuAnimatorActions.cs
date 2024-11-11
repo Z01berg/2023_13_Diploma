@@ -25,4 +25,10 @@ public class InGameMenuAnimatorActions : MonoBehaviour
     {
         _IngameMenu.GetComponent<IngameUIManager>().ChangePauseVisible();
     }
+
+    public void SetMapVisible()
+    {
+        _IngameMenu.GetComponent<IngameUIManager>().ChangeMapVisible();
+    }
+    
 }

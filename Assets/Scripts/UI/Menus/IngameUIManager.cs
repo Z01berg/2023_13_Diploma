@@ -12,6 +12,7 @@ public class IngameUIManager : MonoBehaviour
     [SerializeField] private GameObject _menuView;
 
     [SerializeField] private GameObject _pauseView;
+    [SerializeField] private GameObject _mapView;
     [SerializeField] private GameObject _gameOverView;
     private Animator _menuMenuAnimator;
 
@@ -29,7 +30,7 @@ public class IngameUIManager : MonoBehaviour
         EventSystem.OpenGameover.AddListener(GameOver);
 
         _minimap.SetActive(true);
-
+        _mapView.SetActive(false);
         _pauseView.SetActive(false);
         _gameOverView.SetActive(false);
         _inv.SetActive(false);
@@ -45,6 +46,7 @@ public class IngameUIManager : MonoBehaviour
         _minimap.SetActive(false);
         menuOpen = true;
         _menuView.SetActive(true);
+        _mapView.SetActive(false);
         _pauseView.SetActive(false);
         _menuMenuAnimator.SetTrigger("Inventory");
     }
@@ -59,6 +61,7 @@ public class IngameUIManager : MonoBehaviour
             _inv.SetActive(false);
         }
         _pauseView.SetActive(false);
+        _mapView.SetActive(false);
         Time.timeScale = 1;
         EventSystem.HideHand?.Invoke(false);
         _menuMenuAnimator.SetTrigger("Close");
@@ -83,6 +86,7 @@ public class IngameUIManager : MonoBehaviour
     {
         if (_locked) return;
         if (_pauseView.activeSelf) return;
+        _mapView.SetActive(false);
         _minimap.SetActive(false);
         menuOpen = true;
         _menuView.SetActive(true);
@@ -117,7 +121,34 @@ public class IngameUIManager : MonoBehaviour
         }
         CloseMenu();
     }
-
+    public void OpenMap()
+    {
+        if (_locked) return;
+        if (_mapView.activeSelf) return;
+        _mapView.SetActive(false);
+        _minimap.SetActive(false);
+        menuOpen = true;
+        _menuView.SetActive(true);
+        _inv.SetActive(false);
+        _menuMenuAnimator.SetTrigger("Map");
+    }
+    private void ChangeMapState()
+    {
+        if (_menuMenuAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Book_close") || _menuMenuAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Book_open")) return;
+        if (_locked) return;
+        if (!_mapView.activeSelf)
+        {
+            Time.timeScale = 0;
+            EventSystem.HideHand?.Invoke(true);
+            OpenMap();
+            return;
+        }
+        CloseMenu();
+    }
+    public void ChangeMapVisible(bool visible = true)
+    {
+        _mapView.SetActive(visible);
+    }
     public void ChangeInventoryVisible(bool visible = true)
     {
         if (_locked) return;
