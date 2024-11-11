@@ -170,6 +170,12 @@ public static class EventSystem
     #region Event ZeroTimer: GameManager.cs -> Timer.cs
     
     public static UnityEvent ZeroTimer = new UnityEvent();
-    
+
+    #endregion
+
+    #region Open Map in menu: PlayerInputsController.cs -> IngameUIManager.cs 
+
+    public static UnityEvent OpenMap = new UnityEvent();
+
     #endregion
 }

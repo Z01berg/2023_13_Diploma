@@ -24,6 +24,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Map",
+                    "type": "Button",
+                    "id": "4a8e1d8f-30a0-434e-bf8f-d46ea816c95b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Equipment",
                     "type": "Button",
                     "id": "6a5dd1e5-8ff5-42a2-a5f9-f2e1920fa16b",
@@ -223,6 +232,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Help",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1f2d9d04-016b-49e7-940c-6bfeec8efb3c",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MousenKeys",
+                    "action": "Map",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

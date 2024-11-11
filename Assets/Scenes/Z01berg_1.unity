@@ -133,11 +133,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1220835084138148249, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
   m_PrefabInstance: {fileID: 1836116342}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &440201490 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 667875170217612253, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
-  m_PrefabInstance: {fileID: 288755213662719501}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &520071388
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,8 +222,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb44bf1137d5c7942b41b09b0aa7c7f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 0}
-  _overlayContainer: {fileID: 440201490}
 --- !u!1 &532881408
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,6 +330,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2709433044352046491, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
   m_PrefabInstance: {fileID: 1836116342}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1595791325 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 782378176850839103, guid: 2f91f1a77729e5e4fb5460f9b0030a64, type: 3}
+  m_PrefabInstance: {fileID: 6508679872957899077}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1669971688 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8430557056507411394, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
@@ -351,9 +355,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2864969684796256058, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 1595791325}
+    - target: {fileID: 2864969684796256058, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: _mapView
       value: 
       objectReference: {fileID: 520071388}
+    - target: {fileID: 2864969684796256058, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: _mapViewCameraSize
+      value: 16.96
+      objectReference: {fileID: 0}
     - target: {fileID: 5190701253611071457, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

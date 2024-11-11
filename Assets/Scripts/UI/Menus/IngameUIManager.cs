@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,14 +20,20 @@ public class IngameUIManager : MonoBehaviour
     [HideInInspector] public static bool menuOpen = false;
     private bool _gameOver = false;
 
+    [SerializeField] private CinemachineVirtualCamera _camera;
+    private float _originalCameraSize;
+    [SerializeField] private float _mapViewCameraSize;
+
     private bool _locked = false;
 
     private void Start()
     {
+        _originalCameraSize = _camera.m_Lens.OrthographicSize;
         _menuMenuAnimator = _menuView.GetComponent<Animator>();
 
         EventSystem.OpenClosePauseMenu.AddListener(ChangePauseMenuState);
         EventSystem.OpenCloseInventory.AddListener(ChangeInventoryState);
+        EventSystem.OpenMap.AddListener(ChangeMapState);
         EventSystem.OpenGameover.AddListener(GameOver);
 
         _minimap.SetActive(true);
@@ -60,6 +67,7 @@ public class IngameUIManager : MonoBehaviour
         {
             _inv.SetActive(false);
         }
+        _camera.m_Lens.OrthographicSize = _originalCameraSize;
         _pauseView.SetActive(false);
         _mapView.SetActive(false);
         Time.timeScale = 1;
@@ -125,6 +133,7 @@ public class IngameUIManager : MonoBehaviour
     {
         if (_locked) return;
         if (_mapView.activeSelf) return;
+        _camera.m_Lens.OrthographicSize = _mapViewCameraSize;
         _mapView.SetActive(false);
         _minimap.SetActive(false);
         menuOpen = true;
@@ -138,6 +147,7 @@ public class IngameUIManager : MonoBehaviour
         if (_locked) return;
         if (!_mapView.activeSelf)
         {
+            _camera.m_Lens.OrthographicSize = _mapViewCameraSize;
             Time.timeScale = 0;
             EventSystem.HideHand?.Invoke(true);
             OpenMap();
