@@ -2359,6 +2359,18 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4609525438592523263, guid: f3267b61bb14551489bfa1de5e61c968, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4609525438592523263, guid: f3267b61bb14551489bfa1de5e61c968, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1160851136, guid: 0b1b450a798f25a4e9d6777669fd89a1, type: 3}
+    - target: {fileID: 4609525438592523263, guid: f3267b61bb14551489bfa1de5e61c968, type: 3}
+      propertyPath: m_Maskable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5851782883733456974, guid: f3267b61bb14551489bfa1de5e61c968, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
