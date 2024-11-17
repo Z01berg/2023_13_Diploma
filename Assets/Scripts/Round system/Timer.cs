@@ -61,7 +61,7 @@ public class Timer : MonoBehaviour
         EventSystem.FinishEnemyTurn.AddListener(FinishTurn);
         EventSystem.InitInv.AddListener(ChangeBool);
         EventSystem.ZeroTimer.AddListener(ResetCurrentTimer);
-        EventSystem.StartCountdown.AddListener(EnteredRoom);
+        //EventSystem.StartCountdown.AddListener(EnteredRoom);
         _deckController = _deck.GetComponent<DeckController>();
     }
 

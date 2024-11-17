@@ -138,6 +138,7 @@ public class IngameUIManager : MonoBehaviour
         _minimap.SetActive(false);
         menuOpen = true;
         _menuView.SetActive(true);
+        _pauseView.SetActive(false);
         _inv.SetActive(false);
         _menuMenuAnimator.SetTrigger("Map");
     }
