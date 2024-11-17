@@ -326,7 +326,7 @@ public class InstantiatedRoom : MonoBehaviour
         }
 
 
-        bool spawnEventEnemy = Random.Range(1, 6) == 1;
+        bool spawnEventEnemy = Random.Range(1, 2) == 1;
         IEnumerable<Vector2Int> selectedPositions;
         bool eventEnemySpawned = false;
         if (spawnEventEnemy)
