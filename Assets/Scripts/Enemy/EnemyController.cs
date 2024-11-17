@@ -155,7 +155,7 @@ public class EnemyController : MonoBehaviour
         
         _playerPosition = _player.position;
 
-        _currentPath = _pathfinding.FindPath(transform.position, _playerPosition);
+        _currentPath = _pathfinding.FindPath(_playerPosition);
         if (_currentPath != null && _currentPath.Count > 3)
         {
             StartCoroutine(MoveAlongPath());
@@ -169,7 +169,6 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator MoveAlongPath()
     {
-        
         for(int i = 1; i <= 3 && i < _currentPath.Count; i++)
         {
             Vector3 nextWaypoint = _currentPath[i];
@@ -181,12 +180,13 @@ public class EnemyController : MonoBehaviour
                 yield return null;
             }
         }
-        
         EndEnemyTurn();
     }
 
     private void EndEnemyTurn()
-    {
+    { 
+         
+        
         _endedMove = true;
         _isEnemyTurn = false;
         EventSystem.FinishEnemyTurn.Invoke(Random.Range(5, 8));
