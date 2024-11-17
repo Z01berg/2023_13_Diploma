@@ -13,6 +13,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
 {
     [SerializeField] private GameObject _player;
     [SerializeField] private Transform _playerMovePoint; //TODO: DELETE and fix this shit
+    private CameraProperties _camera;
     
     // [SerializeField] private GameObject _dungeonBuilder; 
     private PlayerController _playerController;
@@ -47,6 +48,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     {
         GameState = GameState.gameStarted;
         _playerController = _player.GetComponent<PlayerController>();
+        _camera = FindObjectOfType<CameraProperties>();
         EventSystem.NewLevel.AddListener(ChangeGameState_NewLevel);
     }
     
@@ -58,6 +60,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
         if (Input.GetKeyDown(KeyCode.R))
         {
             ChangeGameState_NewLevel();
+            _camera.virtualCamera.Follow = _player.transform;
         }
     }
     
