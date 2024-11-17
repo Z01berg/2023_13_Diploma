@@ -166,6 +166,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 118465602177703370, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 798896156927477973, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.10998535
@@ -177,6 +181,18 @@ PrefabInstance:
     - target: {fileID: 3173494725403916108, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3375070631950199958, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 98.7854
+      objectReference: {fileID: 0}
+    - target: {fileID: 3375070631950199958, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3375070631950199958, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 95
       objectReference: {fileID: 0}
     - target: {fileID: 5190701253611071457, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_AnchorMax.x
@@ -297,6 +313,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8262816936440441009, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 1890502668}
     - targetCorrespondingSourceObject: {fileID: 8340904050978781175, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2043528447}
@@ -392,6 +411,82 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
+--- !u!224 &1853823676 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8262816936440441009, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+  m_PrefabInstance: {fileID: 1677917912}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1890502667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1890502668}
+  - component: {fileID: 1890502670}
+  - component: {fileID: 1890502669}
+  m_Layer: 5
+  m_Name: Handv3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1890502668
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890502667}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1853823676}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 9, y: 95}
+  m_SizeDelta: {x: -1361.3904, y: 98.7854}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1890502669
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890502667}
+  m_CullTransparentMesh: 1
+--- !u!114 &1890502670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890502667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &2008930652 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3505373189155625271, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}

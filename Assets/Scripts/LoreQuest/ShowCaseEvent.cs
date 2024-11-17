@@ -17,9 +17,11 @@ public class ShowCaseEvent : MonoBehaviour
     private bool vpressed = false;
     private bool skipped = false;
     private bool is_triggered = false;
+    [NonSerialized] public bool _inRange = false;
     
     [SerializeField] private GameObject _gameObject;
     [SerializeField] private GameObject _body;
+
 
     private void Start()
     {
@@ -33,7 +35,7 @@ public class ShowCaseEvent : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B) && !vpressed)
+        if (Input.GetKeyDown(KeyCode.B) && !vpressed && _inRange)
         {
             vpressed = true;
             EventSystem.HideHand?.Invoke(vpressed);
@@ -55,6 +57,7 @@ public class ShowCaseEvent : MonoBehaviour
             
             skipped = !skipped;
         }
+        
     }
     
     private void Kill()
@@ -66,5 +69,15 @@ public class ShowCaseEvent : MonoBehaviour
         Destroy(_body);
         Debug.Log("killed EVENT BROO");
         Debug.Log(room.enemyInRoomList.Count);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        
     }
 }

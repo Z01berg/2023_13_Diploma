@@ -47,7 +47,11 @@ namespace UI
                     Destroy(child.gameObject);
                 }
                 CreateDeck();
+                
             }
+
+            
+            
         }
 
         public void ManageDeck()
@@ -83,8 +87,6 @@ namespace UI
 
         private void CreateDeck()
         {
-            // var diff = _overlay;
-            
             foreach (var card in _cards)
             {
                 var newCard = Instantiate(_cardPrefab, transform, true);
@@ -101,13 +103,11 @@ namespace UI
                     case CardType.Movement: _movementDeck.Add(newCard);
                         break;
                 }
-                // _overlay += diff;
-                // _coverPosition.UpdatePosition(newCard.transform);
+                
             }
 
             _deckExists = true;
             Destroy(_createDeckText);
-            // _overlay = diff;
         }
 
         private void UpdateCards()
@@ -126,10 +126,10 @@ namespace UI
         
         public void DrawACard() 
         {
-            // if (_attackDeck.Count == 0 || _defenceDeck.Count == 0 || _movementDeck.Count == 0)
-            // {
-            //     Debug.Log("Brak kart");
-            // }
+            if (_attackDeck.Count == 0 || _defenceDeck.Count == 0 || _movementDeck.Count == 0)
+            {
+                CreateDeck();
+            }
 
 
             do
