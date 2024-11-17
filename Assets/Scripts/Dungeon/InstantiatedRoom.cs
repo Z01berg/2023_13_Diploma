@@ -326,7 +326,7 @@ public class InstantiatedRoom : MonoBehaviour
         }
 
 
-        bool spawnEventEnemy = Random.Range(1, 2) == 1;
+        bool spawnEventEnemy = Random.Range(1, 6) == 1;
         IEnumerable<Vector2Int> selectedPositions;
         bool eventEnemySpawned = false;
         if (spawnEventEnemy)
@@ -352,32 +352,26 @@ public class InstantiatedRoom : MonoBehaviour
             switch(randomValue) 
             {
                 case 0:
-                    // selectedEnemy = eE_Miner;
-                    selectedEnemy = eE_Skeleton;
+                    selectedEnemy = eE_Miner;
 
                     break;
                 case 1:
-                    // selectedEnemy = eE_Wizard;
-                    selectedEnemy = eE_Skeleton;
+                    selectedEnemy = eE_Wizard;
 
                     break;
                 case 2:
-                    // selectedEnemy = eE_Warrior;
-                    selectedEnemy = eE_Skeleton;
+                    selectedEnemy = eE_Warrior;
 
                     break;
                 case 3:
                     selectedEnemy = eE_Skeleton;
                     break;
                 case 4:
-                    // selectedEnemy = eE_Clerick;
-                    selectedEnemy = eE_Skeleton;
+                    selectedEnemy = eE_Clerick;
 
                     break;
                 case 5:
-                    // selectedEnemy = eE_Explorer;
-                    selectedEnemy = eE_Skeleton;
-
+                    selectedEnemy = eE_Explorer;
                     break;
             }
             
