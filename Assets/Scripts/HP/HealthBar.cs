@@ -35,7 +35,7 @@ public class HealthBar : MonoBehaviour
     private bool _currentObject = false;
     private int _timerNumbToDelete;
 
-    public int myTimerIndex = -2;
+    public int myTimerIndex;
 
     [HideInInspector] public InstantiatedRoom room;
     

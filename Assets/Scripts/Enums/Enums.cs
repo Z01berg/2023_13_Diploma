@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 /**
  * File Enums.cs zawiera w sobie wszystkie enumy z całego projektu
  */

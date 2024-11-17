@@ -61,9 +61,15 @@ public class Timer : MonoBehaviour
         EventSystem.FinishEnemyTurn.AddListener(FinishTurn);
         EventSystem.InitInv.AddListener(ChangeBool);
         EventSystem.ZeroTimer.AddListener(ResetCurrentTimer);
+        EventSystem.StartCountdown.AddListener(EnteredRoom);
         _deckController = _deck.GetComponent<DeckController>();
     }
 
+    void EnteredRoom()
+    {
+        _counting = true;
+    }
+    
     private void ResetCurrentTimer()
     {
         ChangeActiveTimerValue(0);
@@ -74,11 +80,10 @@ public class Timer : MonoBehaviour
         _createdDeck = true;
     }
     
-
     private void FinishTurn(int arg0)
     {
         _timers[_activeTimerIndex].Value = arg0;
-        _counting = true;
+        EnteredRoom();
     }
 
     void AddToTimer()
@@ -103,7 +108,7 @@ public class Timer : MonoBehaviour
             EventSystem.AssignTimerIndex.Invoke(i);
         }
     }
-
+    
     void Update()
     {
         HandleTimerInput();
@@ -147,13 +152,9 @@ public class Timer : MonoBehaviour
         {
             if (_deckController.IsDeckCreated())
             {
-                _counting = true;
+                EnteredRoom();
                 _createdDeck = !_createdDeck;
             }
-            // else
-            // {
-            //     Debug.Log("Stworz talie kart");
-            // }
         }
 
         if (Input.GetKeyDown(KeyCode.P))
@@ -289,15 +290,6 @@ public class Timer : MonoBehaviour
 
     void CalculatePriority()
     {
-        Dictionary<string, int> tagPriority = new Dictionary<string, int>
-        {
-            { "Item", 3 },
-            { "Player", 2 },
-            { "Boss", 1 },
-            { "Enemy", 0 },
-            { "N/A", -1 }
-        };
-
         int highestPriority = -1;
         int highestPriorityIndex = -1;
 
@@ -360,6 +352,17 @@ public class Timer : MonoBehaviour
             Debug.LogError("Timer index out of range: " + timerToDelete);
         }
     }
+    
+    
+    //Dictionary for Timer
+    public Dictionary<string, int> tagPriority = new Dictionary<string, int>
+    {
+        { "Item", 3 },
+        { "Player", 2 },
+        { "Boss", 1 },
+        { "Enemy", 0 },
+        { "N/A", -1 }
+    };
 }
 
 

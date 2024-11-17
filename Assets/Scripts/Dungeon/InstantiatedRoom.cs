@@ -266,7 +266,7 @@ public class InstantiatedRoom : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (enemyInRoomList.Count == 0 && !collision.gameObject.CompareTag("Player")) return;
-
+        EventSystem.StartCountdown.Invoke();
         CloseAllDoors();
     }
 

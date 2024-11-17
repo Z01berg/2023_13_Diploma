@@ -172,6 +172,12 @@ public static class EventSystem
     public static UnityEvent ZeroTimer = new UnityEvent();
 
     #endregion
+    
+    #region Event StartCountdown: GameManager.cs -> Timer.cs
+    
+    public static UnityEvent StartCountdown = new UnityEvent();
+
+    #endregion
 
     #region Open Map in menu: PlayerInputsController.cs -> IngameUIManager.cs 
 
