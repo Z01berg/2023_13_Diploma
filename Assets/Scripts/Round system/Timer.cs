@@ -60,7 +60,13 @@ public class Timer : MonoBehaviour
         EventSystem.DeleteReference.AddListener(DeleteTimer);
         EventSystem.FinishEnemyTurn.AddListener(FinishTurn);
         EventSystem.InitInv.AddListener(ChangeBool);
+        EventSystem.ZeroTimer.AddListener(ResetCurrentTimer);
         _deckController = _deck.GetComponent<DeckController>();
+    }
+
+    private void ResetCurrentTimer()
+    {
+        ChangeActiveTimerValue(0);
     }
 
     private void ChangeBool()
