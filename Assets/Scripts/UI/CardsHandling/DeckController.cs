@@ -139,12 +139,12 @@ namespace UI
                     SendCardToHand(CardType.Attack);
                 }
 
-                if (HandController.currentDefenceNumber < HandController.defenceCardLimit)
+                if (HandController.currentDefenceCardNumber < HandController.defenceCardLimit)
                 {
                     SendCardToHand(CardType.Defense);
                 }
 
-                if (HandController.currentMovementNumber < HandController.movementCardLimit)
+                if (HandController.currentMovementCardNumber < HandController.movementCardLimit)
                 {
                     SendCardToHand(CardType.Movement);
                 }
@@ -168,13 +168,13 @@ namespace UI
                     card = _defenceDeck[Random.Range(0, _defenceDeck.Count)];
                     _defenceDeck.Remove(card);
                     card.transform.SetParent(_hand.transform);
-                    HandController.currentDefenceNumber++;
+                    HandController.currentDefenceCardNumber++;
                     break;
                 case CardType.Movement:
                     card = _movementDeck[Random.Range(0, _movementDeck.Count)];
                     _movementDeck.Remove(card);
                     card.transform.SetParent(_hand.transform);
-                    HandController.currentMovementNumber++;
+                    HandController.currentMovementCardNumber++;
                     break;
             }
         }
@@ -184,5 +184,8 @@ namespace UI
         {
             return _deckExists;
         }
+        
+        
+        
     }
 }

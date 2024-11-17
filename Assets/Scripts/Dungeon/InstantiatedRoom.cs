@@ -305,6 +305,7 @@ public class InstantiatedRoom : MonoBehaviour
         {
             _itemGiven = true;
             AddressablesUtilities.GetRandomItem();
+            EventSystem.RemoveHand.Invoke();
         }
 
         EventSystem.InstatiatedRoom.Invoke();
@@ -355,6 +356,7 @@ public class InstantiatedRoom : MonoBehaviour
         if (spawnEventEnemy)
         {
             eventEnemySpawned = false;
+            eventEnemySpawned = false;
             selectedPositions = positions.Take(1);
         }
         else
@@ -376,7 +378,6 @@ public class InstantiatedRoom : MonoBehaviour
             {
                 case 0:
                     selectedEnemy = eE_Miner;
-
                     break;
                 case 1:
                     selectedEnemy = eE_Wizard;
@@ -384,14 +385,12 @@ public class InstantiatedRoom : MonoBehaviour
                     break;
                 case 2:
                     selectedEnemy = eE_Warrior;
-
                     break;
                 case 3:
                     selectedEnemy = eE_Skeleton;
                     break;
                 case 4:
                     selectedEnemy = eE_Clerick;
-
                     break;
                 case 5:
                     selectedEnemy = eE_Explorer;

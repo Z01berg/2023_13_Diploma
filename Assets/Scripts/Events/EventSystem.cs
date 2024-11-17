@@ -70,6 +70,12 @@ public static class EventSystem
     public static UnityEvent<bool> HideHand = new UnityEvent<bool>();
 
     #endregion
+    
+    #region DisableHand: PauseMenuManager.cs -> HandController.cs
+
+    public static UnityEvent RemoveHand = new UnityEvent();
+
+    #endregion
 
     #region Open/CloseInventory: PlayerInputController.cs -> IngameUIManager
 
