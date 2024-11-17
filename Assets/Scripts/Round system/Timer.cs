@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Dungeon;
 using TMPro;
 using UI;
-using Unity.VisualScripting;
 using UnityEngine;
 
 /**
@@ -23,9 +22,6 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] private TMP_Text _turn;
     [SerializeField] private GameObject _deck;
-    [SerializeField] private List<TMP_Text> _texts = new List<TMP_Text>();
-    [SerializeField] private List<String> _id = new List<String>();
-    [SerializeField] private List<GameObject> _hpAdres = new List<GameObject>();
     [SerializeField] private GameObject _player;
 
     private List<TimerData> _timers = new List<TimerData>();
@@ -47,9 +43,7 @@ public class Timer : MonoBehaviour
 
     public void AddTextFromSetTimer(TMP_Text newText, String text, GameObject HP)
     {
-        _texts.Add(newText);
-        _id.Add(text);
-        _hpAdres.Add(HP);
+        _timers.Add(new TimerData(0, text, HP, -1, newText, text));
     }
 
     void Start()
@@ -69,7 +63,7 @@ public class Timer : MonoBehaviour
     {
         _counting = true;
     }
-    
+
     private void ResetCurrentTimer()
     {
         ChangeActiveTimerValue(0);
@@ -82,7 +76,7 @@ public class Timer : MonoBehaviour
     
     private void FinishTurn(int arg0)
     {
-        _timers[_activeTimerIndex].Value = arg0;
+        SetTimerValue(_activeTimerIndex, arg0);
         EnteredRoom();
     }
 
@@ -90,25 +84,30 @@ public class Timer : MonoBehaviour
     {
         _timers.Clear();
 
-        for (int i = 0; i < _texts.Count; i++)
+        for (int i = 0; i < _timers.Count; i++)
         {
-            int value = int.Parse(_texts[i].text);
-            
-            if (_id[i] == "Enemy" && _hpAdres[i] != null)
+            int value = int.Parse(_timers[i].Text.text);
+            string tag = _timers[i].Id;
+            GameObject hp = _timers[i].HP;
+            int enemyId = -1;
+
+            if (tag == "Enemy" && hp != null)
             {
-                Transform enemyTransform = _hpAdres[i].transform.parent.parent;
+                Transform enemyTransform = hp.transform.parent?.parent;
                 if (enemyTransform != null)
                 {
                     _enemyController = enemyTransform.GetComponent<EnemyController>();
+                    enemyId = _enemyController?.GetEnemyId() ?? -1;
                 }
             }
 
-            int enemyId = _enemyController != null ? _enemyController.GetEnemyId() : -1;
-            _timers.Add(new TimerData { Value = value, Tag = _id[i], HP = _hpAdres[i], EnemyId = enemyId});
-            EventSystem.AssignTimerIndex.Invoke(i);
+            var timerData = new TimerData(value, tag, hp, enemyId, _timers[i].Text, _timers[i].Id);
+            _timers.Add(timerData);
         }
+
+        EventSystem.AssignTimerIndex?.Invoke(0); 
     }
-    
+
     void Update()
     {
         HandleTimerInput();
@@ -119,7 +118,6 @@ public class Timer : MonoBehaviour
         {
             StartCountdown();
         }
-
     }
 
     void HandleTimerInput()
@@ -236,18 +234,14 @@ public class Timer : MonoBehaviour
         StartCountdown();
     }
 
-    public void ChangeActiveTimerValue(int change)
+    public void SetTimerValue(int index, int newValue)
     {
-        for (int i = 0; i < _timers.Count; i++)
+        if (index >= 0 && index < _timers.Count)
         {
-            if (i == _activeTimerIndex)
-            {
-                _timers[i].Value += change;
-            }
+            _timers[index].UpdateValue(newValue);
         }
         UpdateTexts();
     }
-
 
     void ChangeActiveTimer(int change)
     {
@@ -260,81 +254,31 @@ public class Timer : MonoBehaviour
         {
             _activeTimerIndex = 0;
         }
+
+        UpdateTexts();
     }
 
     void UpdateTexts()
     {
         for (int i = 0; i < _timers.Count; i++)
         {
-            if (i == _activeTimerIndex && !_counting)
-            {
-                if (_timers[i].Value > 99)
-                {
-                    _timers[i].Value = 99;
-                }
-                else if (_timers[i].Value < 0)
-                {
-                    _timers[i].Value = 0;
-                }
-
-                _texts[i].color = Color.green;
-            }
-            else
-            {
-                _texts[i].color = Color.white;
-            }
-
-            _texts[i].text = _timers[i].Value.ToString();
+            _timers[i].Text.text = _timers[i].Value.ToString();
         }
     }
 
     void CalculatePriority()
     {
-        int highestPriority = -1;
-        int highestPriorityIndex = -1;
-
-        for (int i = 0; i < _timers.Count; i++)
+        if (_timers.Count > 0)
         {
-            string currentTag = _timers[i].Tag;
-            int currentValue = _timers[i].Value;
-
-            if (tagPriority.ContainsKey(currentTag))
-            {
-                int currentPriority = tagPriority[currentTag];
-
-                if (currentPriority > highestPriority && currentValue == 0)
-                {
-                    highestPriority = currentPriority;
-                    highestPriorityIndex = i;
-                }
-            }
-        }
-
-        if (highestPriorityIndex != -1)
-        {
-            _activeTimerIndex = highestPriorityIndex;
-            UpdateTexts();
-        }
-        else
-        {
-            _activeTimerIndex = _timers.FindIndex(timer => timer.Tag == "N/A");
-            UpdateTexts();
+            _activeTimerIndex = (_activeTimerIndex + 1) % _timers.Count;
         }
     }
-
-    void PlayedAttackCard()
-    {
-        EventSystem.WhatHP.Invoke(_timers[_activeTimerIndex].HP, _activeTimerIndex);
-    }
-
+    
     void DeleteTimer(int timerToDelete)
     {
         if (timerToDelete >= 0 && timerToDelete < _timers.Count)
         {
             _timers.RemoveAt(timerToDelete);
-            _id.RemoveAt(timerToDelete);
-            _texts.RemoveAt(timerToDelete);
-            _hpAdres.RemoveAt(timerToDelete);
 
             if (timerToDelete == _activeTimerIndex)
             {
@@ -353,8 +297,20 @@ public class Timer : MonoBehaviour
         }
     }
     
-    
-    //Dictionary for Timer
+    void PlayedAttackCard()
+    {
+        EventSystem.WhatHP.Invoke(_timers[_activeTimerIndex].HP, _activeTimerIndex);
+    }
+
+    public void ChangeActiveTimerValue(int change)
+    {
+        if (_timers.Count > _activeTimerIndex)
+        {
+            _timers[_activeTimerIndex].UpdateValue(change);
+        }
+        UpdateTexts();
+    }
+
     public Dictionary<string, int> tagPriority = new Dictionary<string, int>
     {
         { "Item", 3 },
@@ -364,5 +320,3 @@ public class Timer : MonoBehaviour
         { "N/A", -1 }
     };
 }
-
-

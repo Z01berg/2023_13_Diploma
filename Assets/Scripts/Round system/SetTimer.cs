@@ -29,27 +29,20 @@ public class SetTimer : MonoBehaviour
     {
         Timer timer = FindObjectOfType<Timer>();
 
-        string person = Define(_characterType);
-
         if (timer != null)
         {
-            if (_characterType == CharacterType.Enemy)
-            {
-                int ran = Random.Range(5, 10);
-                _text.text = ran.ToString();
-                timer.AddTextFromSetTimer(_text, person, _hp);
-            }
-            else
-            {
-                timer.AddTextFromSetTimer(_text, person, _hp);
-            }
-            
+            string tag = Define(_characterType);
+            int value = (_characterType == CharacterType.Enemy) ? Random.Range(5, 10) : 0;
+            _text.text = value.ToString();
+
+            timer.AddTextFromSetTimer(_text, tag, _hp);
         }
         else
         {
-            Debug.LogError("WSTAW \"MANAGERS\" HALO <( ‵□′)───C＜─___-)||");
+            Debug.LogError("Timer manager is missing!");
         }
     }
+
 
     private string Define(CharacterType type)
     {

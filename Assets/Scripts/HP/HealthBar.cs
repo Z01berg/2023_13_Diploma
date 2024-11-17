@@ -118,16 +118,17 @@ public class HealthBar : MonoBehaviour
         }
     }
     //TODO: Sprawdzic czy ktos z tego korzysta
-    private void HandleWhatHP(GameObject recieved, int timerNumber)
+    private void HandleWhatHP(GameObject received, int timerNumber)
     {
-        if (recieved == _gameObject)
+        if (received == _gameObject)
         {
             _currentObject = true;
         }
 
         _switch = true;
-        _timerNumbToDelete = timerNumber;
+        _timerNumbToDelete = timerNumber; 
     }
+
 
     public int getHealth()
     {
