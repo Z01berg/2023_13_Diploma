@@ -9,20 +9,34 @@ public class Pathfinding : MonoBehaviour
     [HideInInspector] public Tilemap topTilemap;
 
     private Dictionary<Vector3Int, Node> _nodes = new Dictionary<Vector3Int, Node>();
+    private HashSet<Vector3Int> _busyTilesSet = new HashSet<Vector3Int>();
 
+    /*
     private void Start()
     {
         CreateNodes();
     }
+    */
 
     public void CreateNodes()
     {
         _nodes.Clear();
+        _busyTilesSet.Clear();
+        
+        EnemyController[] enemies = FindObjectsOfType<EnemyController>();
+
+        foreach (EnemyController enemy in enemies)
+        {
+            Vector3 enemyPosition = enemy.transform.position;
+            Vector3Int tilePosition = groundTilemap.WorldToCell(enemyPosition);
+            _busyTilesSet.Add(tilePosition);
+        }
 
         foreach (var pos in groundTilemap.cellBounds.allPositionsWithin)
         {
             var worldPos = groundTilemap.GetCellCenterWorld(pos);
-            if (groundTilemap.HasTile(pos) && !topTilemap.HasTile(pos))
+            bool isTileBusy = _busyTilesSet.Contains(pos);
+            if (groundTilemap.HasTile(pos) && !topTilemap.HasTile(pos) && !isTileBusy)
             {
                 _nodes[pos] = new Node(worldPos, pos);
             }
@@ -30,17 +44,25 @@ public class Pathfinding : MonoBehaviour
         // Debug.Log($"Created {_nodes.Count} nodes");
     }
 
-    public List<Vector3> FindPath(Vector3 startPosition, Vector3 targetPosition)
+    public List<Vector3> FindPath(Vector3 targetPosition)
     {
-        
         if (groundTilemap == null || topTilemap == null)
         {
             // Debug.LogWarning("Ground or top tilemap not set.");
             return null;
         }
         
-        var startCell = groundTilemap.WorldToCell(startPosition);
+        CreateNodes();
+        
+        var startCell = groundTilemap.WorldToCell(transform.position);
         var targetCell = groundTilemap.WorldToCell(targetPosition);
+
+        Vector3 thisObjectWorldPosition = transform.position;
+        
+        _nodes.Add(
+            groundTilemap.WorldToCell(thisObjectWorldPosition), 
+            new Node(thisObjectWorldPosition, groundTilemap.WorldToCell(thisObjectWorldPosition))
+            );
 
         if (!_nodes.ContainsKey(startCell) || !_nodes.ContainsKey(targetCell))
         {
@@ -160,6 +182,32 @@ public class Pathfinding : MonoBehaviour
             this.gridPosition = gridPosition;
         }
     }
+
+    /*
+    private bool IsGroundTileBusy(Vector3Int tilePosition)
+    {
+        _busyTilesSet.Clear();
+
+        EnemyController[] enemies = FindObjectsOfType<EnemyController>();
+
+        foreach (EnemyController enemy in enemies)
+        {
+            Vector3 
+        }
+        
+        Vector3 worldTileCenter = groundTilemap.GetCellCenterWorld(tilePosition);
+        Collider2D[] colliders2D = Physics2D.OverlapPointAll(worldTileCenter);
+
+        foreach (Collider2D collider in colliders2D)
+        {
+            if (collider.GetComponentInParent<EnemyController>() != null)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    */
     
     private void OnDrawGizmos()
     {
