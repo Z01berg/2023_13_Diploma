@@ -31,13 +31,13 @@ namespace UI
         public static readonly int attackCardLimit = 2;
         public static int defenceCardLimit = 2;
         public static int movementCardLimit = 1;
-        
+
         public static int cardLimit = attackCardLimit + defenceCardLimit + movementCardLimit;
 
         public static int currentCardNumber;
         public static int currentAttackCardNumber;
-        public static int currentDefenceNumber;
-        public static int currentMovementNumber;
+        public static int currentDefenceCardNumber;
+        public static int currentMovementCardNumber;
 
         [Header("Alignment")] [SerializeField] private AnimationConfig _animationConfig;
 
@@ -55,9 +55,9 @@ namespace UI
             InitCards();
             EventSystem.DestroyCard.AddListener(DestroyCard);
             EventSystem.HideHand.AddListener(DisableHand);
-
+            EventSystem.RemoveHand.AddListener(RemoveHand);
         }
-        
+
 
         private void InitCards()
         {
@@ -182,7 +182,9 @@ namespace UI
             }
         }
 
-        private void DistributeChildrenToFitContainer(float cardsTotalWidth) // Karty są rozkładane żeby zmiesciły sie w kontenerze (przez to się na siebie nakładaja)
+        private void
+            DistributeChildrenToFitContainer(
+                float cardsTotalWidth) // Karty są rozkładane żeby zmiesciły sie w kontenerze (przez to się na siebie nakładaja)
         {
             var width = _rectTransform.rect.width * transform.lossyScale.x;
             var distanceBetweenCards = (width - cardsTotalWidth) / (_cards.Count - 1);
@@ -195,7 +197,9 @@ namespace UI
             }
         }
 
-        private void DistributeChildrenWithoutOverlap(float cardsTotalWidth) // Karty są rozkładane nie zależnie od szerokości kontenera (nie będą się na siebie nakładać)
+        private void
+            DistributeChildrenWithoutOverlap(
+                float cardsTotalWidth) // Karty są rozkładane nie zależnie od szerokości kontenera (nie będą się na siebie nakładać)
         {
             var currPosition = transform.position.x - cardsTotalWidth / 2;
             foreach (Wrapper card in _cards)
@@ -214,7 +218,7 @@ namespace UI
                 _cards.Remove(card);
                 _eventsConfig.cardDestroy?.Invoke(new CardDestroy(card));
                 PlaceHolder.isTaken = false;
-                
+
                 CardCountDeduction(card.GetComponent<CardDisplay>().cardSO.type);
                 Destroy(card.gameObject);
             }
@@ -233,20 +237,19 @@ namespace UI
                     currentAttackCardNumber--;
                     break;
                 case CardType.Defense:
-                    currentDefenceNumber--;
+                    currentDefenceCardNumber--;
                     break;
                 case CardType.Movement:
-                    currentMovementNumber--;
+                    currentMovementCardNumber--;
                     break;
             }
-            
         }
 
         public Vector2 getPlaceHolderPosition()
         {
             return _placeHolderPosition.transform.position;
         }
-        
+
         private void DisableHand(bool isDisabled)
         {
             var isPauseOpen = IngameUIManager.menuOpen;
@@ -254,13 +257,27 @@ namespace UI
             // Debug.Log("Pause: " + isPauseOpen);
             // Debug.Log("Inventory: " + isInventoryOpen);
             // Debug.Log("isDisabled: " + isDisabled);
-            
-            if ((isInventoryOpen == true && isPauseOpen == false|| isInventoryOpen == false && isPauseOpen == true) && isDisabled == false)
+
+            if ((isInventoryOpen == true && isPauseOpen == false || isInventoryOpen == false && isPauseOpen == true) &&
+                isDisabled == false)
             {
                 return;
             }
+
             gameObject.SetActive(!isDisabled);
-            
+        }
+
+        private void RemoveHand()
+        {
+            foreach (Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            currentCardNumber = 0;
+            currentAttackCardNumber = 0;
+            currentDefenceCardNumber = 0;
+            currentMovementCardNumber = 0;
         }
     }
 }
