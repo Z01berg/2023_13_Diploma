@@ -60,7 +60,8 @@ public class MouseController : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(1))
                 {
-                    overlayTile.gameObject.GetComponent<OverlayTile>().HideTile();
+                    // overlayTile.gameObject.GetComponent<OverlayTile>().HideTile();
+                    overlayTile.HideTile();
                 }
             }
         }

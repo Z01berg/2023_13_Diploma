@@ -1,6 +1,7 @@
 ﻿using System;
 using UI.Config;
 using UI.Events;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -23,6 +24,7 @@ namespace UI
         private Canvas _canvas;
         private bool _isPressed;
         private bool _isHovered;
+        private bool _isPointerIn;
 
         public ZoomConfig zoomConfig;
         public EventsConfig eventsConfig;
@@ -31,6 +33,7 @@ namespace UI
         public static Wrapper cardInUse;
 
         public CardDisplay display;
+        
 
         public float Width
         {
@@ -50,6 +53,15 @@ namespace UI
 
         private void Update()
         {
+            if (Input.GetMouseButtonDown(1))
+            {
+                eventsConfig?.cardUnHover?.Invoke(new CardUnhover(this));
+                _isPressed = false;
+                _isHovered = false;
+                cardInUse = null;
+                PlaceHolder.isTaken = false;
+                EventSystem.HideRange.Invoke();
+            }
             UpdatePosition();
             UpdateScale();
             UpdateUILayer();
@@ -125,6 +137,8 @@ namespace UI
 
             eventsConfig?.cardHover?.Invoke(new CardHover(this));
             _isHovered = true;
+            _isPointerIn = true;
+
         }
 
         public void OnPointerExit(PointerEventData eventData)
@@ -137,6 +151,7 @@ namespace UI
             _canvas.sortingOrder = uiLayer;
             _isHovered = false;
             eventsConfig.cardUnHover.Invoke(new CardUnhover(this));
+            _isPointerIn = false;
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -172,7 +187,7 @@ namespace UI
                 }
             }
         }
-
+        
         private void OnDestroy()
         {
             EventSystem.HideRange.Invoke();

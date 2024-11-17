@@ -315,10 +315,8 @@ public class InstantiatedRoom : MonoBehaviour
             CombatMode.SetFalse();
             return;
         }
-        
-        int randomNumEnemiesToSpawn = Random.Range(1, positions.Count + 1);
-        
-        
+
+
         for (int i = 0; i < positions.Count; i++)
         {
             var temp = positions[i];
@@ -326,12 +324,25 @@ public class InstantiatedRoom : MonoBehaviour
             positions[i] = positions[randomIndex];
             positions[randomIndex] = temp;
         }
-        
-        var selectedPositions = positions.Take(randomNumEnemiesToSpawn);
 
-        bool spawnEventEnemy = Random.Range(1, 6) == 5;
+
+        bool spawnEventEnemy = Random.Range(1, 6) == 1;
+        IEnumerable<Vector2Int> selectedPositions;
         bool eventEnemySpawned = false;
+        if (spawnEventEnemy)
+        {
+            eventEnemySpawned = false;
+            selectedPositions = positions.Take(1);
+        }
+        else
+        {
+            int randomNumEnemiesToSpawn = Random.Range(1, positions.Count + 1);
+            selectedPositions = positions.Take(randomNumEnemiesToSpawn);
+        }
+
         
+
+
         foreach (var position in selectedPositions)
         {
             int randomValue = Random.Range(0, 6);
@@ -342,28 +353,34 @@ public class InstantiatedRoom : MonoBehaviour
             {
                 case 0:
                     selectedEnemy = eE_Miner;
+
                     break;
                 case 1:
                     selectedEnemy = eE_Wizard;
+
                     break;
                 case 2:
                     selectedEnemy = eE_Warrior;
+
                     break;
                 case 3:
                     selectedEnemy = eE_Skeleton;
                     break;
                 case 4:
                     selectedEnemy = eE_Clerick;
+
                     break;
                 case 5:
                     selectedEnemy = eE_Explorer;
                     break;
             }
             
+            
             if (spawnEventEnemy && !eventEnemySpawned)
             {
                 var eventE = Instantiate(selectedEnemy, transform.Find("Grid"));
                 eventE.transform.localPosition = new Vector3(position.x + 0.5f, position.y + 0.5f, -6f);
+                enemyInRoomList.Clear();
                 enemyInRoomList.Add(eventE);
                 eventE.GetComponentInChildren<ShowCaseEvent>().room = this;
                 eventEnemySpawned = true;

@@ -5,7 +5,6 @@ namespace Grid.New
 {
     public class OverlayTile : MonoBehaviour
     {
-        public OverlayTile peviousTile;
         public Vector3 gridLocation;
         [NonSerialized] public bool isRangeTile;
         public Vector2 grid2DLocation => new Vector2(gridLocation.x, gridLocation.y);
@@ -13,7 +12,7 @@ namespace Grid.New
         
         void Update()
         {
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(0))
             {
                 HideTile();
             }
@@ -43,7 +42,6 @@ namespace Grid.New
         {
             gameObject.GetComponent<SpriteRenderer>().color = new Color32(1, 1, 1, 0);
             isRangeTile = false;
-            
         }
 
 
@@ -51,7 +49,7 @@ namespace Grid.New
         {
             if (other.CompareTag("Player"))
             {
-                UnityEngine.Debug.Log(transform.position);
+                Debug.Log(transform.position);
             }
         }
     }

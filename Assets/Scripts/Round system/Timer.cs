@@ -150,10 +150,10 @@ public class Timer : MonoBehaviour
                 _counting = true;
                 _createdDeck = !_createdDeck;
             }
-            else
-            {
-                Debug.Log("Stworz talie kart");
-            }
+            // else
+            // {
+            //     Debug.Log("Stworz talie kart");
+            // }
         }
 
         if (Input.GetKeyDown(KeyCode.P))

@@ -47,7 +47,11 @@ namespace UI
                     Destroy(child.gameObject);
                 }
                 CreateDeck();
+                
             }
+
+            
+            
         }
 
         public void ManageDeck()
@@ -83,8 +87,6 @@ namespace UI
 
         private void CreateDeck()
         {
-            // var diff = _overlay;
-            
             foreach (var card in _cards)
             {
                 var newCard = Instantiate(_cardPrefab, transform, true);
@@ -101,13 +103,11 @@ namespace UI
                     case CardType.Movement: _movementDeck.Add(newCard);
                         break;
                 }
-                // _overlay += diff;
-                // _coverPosition.UpdatePosition(newCard.transform);
+                
             }
 
             _deckExists = true;
             Destroy(_createDeckText);
-            // _overlay = diff;
         }
 
         private void UpdateCards()
@@ -123,45 +123,13 @@ namespace UI
             }
         }
 
-        // private void Shuffle()
-        // {
-        //     int n = _cards.Count;
-        //     while (n > 1)
-        //     {
-        //         n--;
-        //         int k = _rng.Next(n + 1);
-        //         (_cards[k], _cards[n]) = (_cards[n], _cards[k]);
-        //     }
-        // }
-
-        // public void DrawACard() 
-        // {
-        //     if (_attackDeck.Count == 0 || _defenceDeck.Count == 0 || _movementDeck.Count == 0)
-        //     {
-        //         Debug.Log("Brak kart");
-        //         return;
-        //     }
-        //
-        //     while (HandController.currentCardNumber < HandController.cardLimit)
-        //     {
-        //         if (_attackDeck.Count == 0 || _defenceDeck.Count == 0 || _movementDeck.Count == 0)
-        //         {
-        //             return;
-        //         }
-        //
-        //         // _coverPosition.UpdatePosition(_deck.Peek().transform);
-        //         // var card = _deck.Pop();
-        //         // card.transform.SetParent(_hand.transform);
-        //         HandController.currentCardNumber++;
-        //     }
-        // }
         
         public void DrawACard() 
         {
-            // if (_attackDeck.Count == 0 || _defenceDeck.Count == 0 || _movementDeck.Count == 0)
-            // {
-            //     Debug.Log("Brak kart");
-            // }
+            if (_attackDeck.Count == 0 || _defenceDeck.Count == 0 || _movementDeck.Count == 0)
+            {
+                CreateDeck();
+            }
 
 
             do
