@@ -84,7 +84,6 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-
         if (_isEnemyTurn && _endedMove)
         {
             MoveTowardsThePlayer();
@@ -146,7 +145,8 @@ public class EnemyController : MonoBehaviour
 
     private void Attack()
     {
-        EventSystem.ChangeHealthPlayer.Invoke(-2);
+        EventSystem.ChangeHealthPlayer.Invoke(-1);
+        EndEnemyTurn();
     }
 
     private void MoveTowardsThePlayer()
@@ -156,24 +156,30 @@ public class EnemyController : MonoBehaviour
         _playerPosition = _player.position;
 
         _currentPath = _pathfinding.FindPath(_playerPosition);
-        if (_currentPath != null && _currentPath.Count > 3)
+        if (_currentPath != null)
         {
             StartCoroutine(MoveAlongPath());
         }
         else
         {
-            Attack();
             EndEnemyTurn();
         }
     }
 
     private IEnumerator MoveAlongPath()
     {
-        for(int i = 1; i <= 3 && i < _currentPath.Count; i++)
+        for(int i = 0; i <= 3; i++)
         {
+            if (i >= _currentPath.Count - 1)
+            {
+                Attack();
+                break;
+            }
+            
             Vector3 nextWaypoint = _currentPath[i];
             nextWaypoint.z = transform.position.z;
-            while (Vector3.Distance(transform.position, nextWaypoint) > 0.001f)
+            
+            while (Vector3.Distance(transform.position, nextWaypoint) >= 0.001f)
             {
                 float step = _moveSpeed * Time.deltaTime;
                 transform.position = Vector3.MoveTowards(transform.position, nextWaypoint, step);
@@ -182,11 +188,9 @@ public class EnemyController : MonoBehaviour
         }
         EndEnemyTurn();
     }
-
+    
     private void EndEnemyTurn()
     { 
-         
-        
         _endedMove = true;
         _isEnemyTurn = false;
         EventSystem.FinishEnemyTurn.Invoke(Random.Range(5, 8));
