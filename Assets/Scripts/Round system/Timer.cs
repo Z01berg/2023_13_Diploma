@@ -50,11 +50,9 @@ public class Timer : MonoBehaviour
 
     void Start()
     {
-        //_animator = GetComponent<Animator>();
         _enemyController = FindObjectOfType<EnemyController>();
         _deckController = _deck.GetComponent<DeckController>();
 
-        // Register event listeners
         EventSystem.InstatiatedRoom.AddListener(AddToTimer);
         EventSystem.DeleteReference.AddListener(DeleteTimer);
         EventSystem.FinishEnemyTurn.AddListener(FinishTurn);
@@ -222,7 +220,6 @@ public class Timer : MonoBehaviour
                 }
 
                 _turn.text = "Turn: " + _timers[_activeTimerIndex].Tag;
-                _timeToPause = 0.4f;
 
                 return;
             }
@@ -236,6 +233,7 @@ public class Timer : MonoBehaviour
                 {
                     _timers[i].Value--;
                 }
+                _timeToPause = 0.4f;
             }
 
             UpdateTexts();
@@ -245,16 +243,16 @@ public class Timer : MonoBehaviour
 
     IEnumerator AnimationPauseCoroutine()
     {
+        yield return new WaitForSeconds(_timeToPause);
+        
         if (_timeToPause > 0.01)
         {
-            _timeToPause -= 0.05f;
+            _timeToPause -= 0.01f;
         }
         else
         {
             _timeToPause = 0.01f;
         }
-
-        yield return new WaitForSeconds(_timeToPause);
 
         StartCountdown();
     }
