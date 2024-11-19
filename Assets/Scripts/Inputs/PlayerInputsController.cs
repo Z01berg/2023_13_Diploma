@@ -26,6 +26,7 @@ public class PlayerInputsController : MonoBehaviour, IDefaultMausenKeysActions
         _controls.DefaultMausenKeys.DoubleClick.performed += OnDoubleClick;
         _controls.DefaultMausenKeys.Move.canceled += OnMoveCancelled;
         _controls.DefaultMausenKeys.Help.performed += OnHelp;
+        _controls.DefaultMausenKeys.Map.performed += OnMap;
     }
 
     private void OnDisable()
@@ -37,6 +38,7 @@ public class PlayerInputsController : MonoBehaviour, IDefaultMausenKeysActions
         _controls.DefaultMausenKeys.DoubleClick.performed -= OnDoubleClick;
         _controls.DefaultMausenKeys.Move.canceled -= OnMoveCancelled;
         _controls.DefaultMausenKeys.Help.performed -= OnHelp;
+        _controls.DefaultMausenKeys.Map.performed -= OnMap;
     }
 
     private void PrepareInputs()
@@ -91,5 +93,10 @@ public class PlayerInputsController : MonoBehaviour, IDefaultMausenKeysActions
     public void OnHelp(InputAction.CallbackContext context)
     {
         EventSystem.ShowHelpSheet?.Invoke();
+    }
+
+    public void OnMap(InputAction.CallbackContext context)
+    {
+        EventSystem.OpenMap?.Invoke();
     }
 }

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Dungeon;
 using TMPro;
 using UI;
-using Unity.VisualScripting;
 using UnityEngine;
 
 /**
@@ -23,45 +22,72 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] private TMP_Text _turn;
     [SerializeField] private GameObject _deck;
-    [SerializeField] private List<TMP_Text> _texts = new List<TMP_Text>();
-    [SerializeField] private List<String> _id = new List<String>();
-    [SerializeField] private List<GameObject> _hpAdres = new List<GameObject>();
     [SerializeField] private GameObject _player;
 
     private List<TimerData> _timers = new List<TimerData>();
 
-    private int _activeTimerIndex = 0; //czyja runda
+    private int _activeTimerIndex = 0; // whose turn
 
-    private bool _counting = false; // po wciśnięciu enter
+    private bool _counting = false; // after pressing enter
 
-    private float _timeToPause = 0.4f; //do animacji timerów
+    private float _timeToPause = 0.4f; // for timer animations
 
-    private bool _cheat = false; // włączenie na "R CTRL" zmieniania znaczenia timerów
-    
+    private bool _cheat = false; // enable cheat mode on "R CTRL" for changing timer meanings
+
     private bool _createdDeck = false;
 
     private Animator _animator;
     private DeckController _deckController;
     private EnemyController _enemyController;
-    private bool _canDraw = false; // TODO: Zmienić to dobieranie
+    private bool _canDraw = false; // TODO: Change this selection
 
-    public void AddTextFromSetTimer(TMP_Text newText, String text, GameObject HP)
+    public Dictionary<string, int> tagPriority = new Dictionary<string, int>
     {
-        _texts.Add(newText);
-        _id.Add(text);
-        _hpAdres.Add(HP);
-    }
+        { "Item", 3 },
+        { "Player", 2 },
+        { "Boss", 1 },
+        { "Enemy", 0 },
+        { "N/A", -1 }
+    };
 
     void Start()
     {
-        _animator = GetComponent<Animator>();
         _enemyController = FindObjectOfType<EnemyController>();
+        _deckController = _deck.GetComponent<DeckController>();
+
         EventSystem.InstatiatedRoom.AddListener(AddToTimer);
         EventSystem.DeleteReference.AddListener(DeleteTimer);
         EventSystem.FinishEnemyTurn.AddListener(FinishTurn);
         EventSystem.InitInv.AddListener(ChangeBool);
         EventSystem.ZeroTimer.AddListener(ResetCurrentTimer);
-        _deckController = _deck.GetComponent<DeckController>();
+        EventSystem.StartCountdown.AddListener(EnteredRoom);
+    }
+
+    public void AddTextFromSetTimer(TMP_Text newText, string tag, GameObject HP)
+    {
+        int initialValue = (tag == "Enemy") ? UnityEngine.Random.Range(5, 10) : 0;
+
+        TimerData timerData = new TimerData(initialValue, tag, HP, -1, newText, tag);
+
+        if (tag == "Player")
+        {
+            if (_timers.Exists(t => t.Tag == "Player"))
+            {
+                Debug.LogWarning("Player timer already exists. Skipping addition.");
+                return;
+            }
+
+            _timers.Insert(0, timerData);
+        }
+        else
+        {
+            _timers.Add(timerData);
+        }
+    }
+
+    void EnteredRoom()
+    {
+        _counting = true;
     }
 
     private void ResetCurrentTimer()
@@ -73,33 +99,41 @@ public class Timer : MonoBehaviour
     {
         _createdDeck = true;
     }
-    
 
     private void FinishTurn(int arg0)
     {
-        _timers[_activeTimerIndex].Value = arg0;
-        _counting = true;
+        SetTimerValue(_activeTimerIndex, arg0);
+        EnteredRoom();
     }
 
     void AddToTimer()
     {
-        _timers.Clear();
-
-        for (int i = 0; i < _texts.Count; i++)
+        foreach (var timer in _timers)
         {
-            int value = int.Parse(_texts[i].text);
-            
-            if (_id[i] == "Enemy" && _hpAdres[i] != null)
+            if (timer.Tag == "Enemy" && timer.HP != null)
             {
-                Transform enemyTransform = _hpAdres[i].transform.parent.parent;
+                Transform enemyTransform = timer.HP.transform.parent?.parent;
                 if (enemyTransform != null)
                 {
                     _enemyController = enemyTransform.GetComponent<EnemyController>();
+                    timer.EnemyId = (_enemyController != null) ? _enemyController.GetEnemyId() : -1;
+                }
+                else
+                {
+                    timer.EnemyId = -1;
                 }
             }
+        }
 
-            int enemyId = _enemyController != null ? _enemyController.GetEnemyId() : -1;
-            _timers.Add(new TimerData { Value = value, Tag = _id[i], HP = _hpAdres[i], EnemyId = enemyId});
+        _timers.Sort((a, b) =>
+        {
+            if (a.Tag == "Player") return -1;
+            if (b.Tag == "Player") return 1;
+            return 0;
+        });
+
+        for (int i = 0; i < _timers.Count; i++)
+        {
             EventSystem.AssignTimerIndex.Invoke(i);
         }
     }
@@ -108,13 +142,10 @@ public class Timer : MonoBehaviour
     {
         HandleTimerInput();
 
-        UpdateTexts();
-
         if (_counting)
         {
             StartCountdown();
         }
-
     }
 
     void HandleTimerInput()
@@ -125,35 +156,30 @@ public class Timer : MonoBehaviour
             EventSystem.ShowCheatEngine.Invoke();
         }
 
-        if (Input.GetKeyDown(KeyCode.Comma) && _cheat)
+        if (Input.GetKeyDown(KeyCode.Numlock)) //TODO: TEST DELETE PLS
         {
-            ChangeActiveTimer(1);
-        }
-        else if (Input.GetKeyDown(KeyCode.Period) && _cheat)
-        {
-            ChangeActiveTimer(-1);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Quote) && _cheat)
-        {
-            ChangeActiveTimerValue(1);
-        }
-        else if (Input.GetKeyDown(KeyCode.Slash) && _cheat)
-        {
-            ChangeActiveTimerValue(-1);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Return) || _createdDeck)
-        {
-            if (_deckController.IsDeckCreated())
+            for (int i = 0; i < _timers.Count; i++)
             {
-                _counting = true;
-                _createdDeck = !_createdDeck;
+                Debug.LogError("Tag " + _timers[i].Tag + "\nEnemyID " + _timers[i].EnemyId + "\nID " + _timers[i].Id + "\nValue " + _timers[i].Value + "\nHp " + _timers[i].HP);
             }
-            // else
-            // {
-            //     Debug.Log("Stworz talie kart");
-            // }
+        }
+        
+        if (_cheat)
+        {
+            if (Input.GetKeyDown(KeyCode.Comma))
+                ChangeActiveTimer(1);
+            if (Input.GetKeyDown(KeyCode.Period))
+                ChangeActiveTimer(-1);
+            if (Input.GetKeyDown(KeyCode.Quote))
+                ChangeActiveTimerValue(1);
+            if (Input.GetKeyDown(KeyCode.Slash))
+                ChangeActiveTimerValue(-1);
+        }
+
+        if ((Input.GetKeyDown(KeyCode.Return) || _createdDeck) && _deckController.IsDeckCreated())
+        {
+            EnteredRoom();
+            _createdDeck = false;
         }
 
         if (Input.GetKeyDown(KeyCode.P))
@@ -189,29 +215,35 @@ public class Timer : MonoBehaviour
                     EventSystem.PlayerMove.Invoke(false);
                 }
 
-                if (_timers[_activeTimerIndex].Tag == "Enemy" && _timers[_activeTimerIndex] != null)
+                if (_timers[_activeTimerIndex].Tag == "Enemy")
                 {
-                    EventSystem.EnemyMove.Invoke(_timers[_activeTimerIndex].EnemyId, new Vector3(_player.transform.position.x, _player.transform.position.y, -6) );
+                    Vector3 movePosition = new Vector3(
+                        _player.transform.position.x,
+                        _player.transform.position.y,
+                        -6
+                    );
+                    EventSystem.EnemyMove.Invoke(_timers[_activeTimerIndex].EnemyId, movePosition);
                 }
                 else
                 {
-                    EventSystem.EnemyMove.Invoke(-1, new Vector3(_player.transform.position.x, _player.transform.position.y, -6) );
+                    EventSystem.EnemyMove.Invoke(-1, new Vector3(_player.transform.position.x, _player.transform.position.y, -6));
                 }
 
                 _turn.text = "Turn: " + _timers[_activeTimerIndex].Tag;
-                _timeToPause = 0.4f;
+
+                return;
             }
         }
 
         if (!anyTimerReachedZero)
         {
-            _counting = false;
             for (int i = 0; i < _timers.Count; i++)
             {
                 if (_timers[i].Value > 0)
                 {
                     _timers[i].Value--;
                 }
+                _timeToPause = 0.4f;
             }
 
             UpdateTexts();
@@ -221,32 +253,32 @@ public class Timer : MonoBehaviour
 
     IEnumerator AnimationPauseCoroutine()
     {
+        yield return new WaitForSeconds(_timeToPause);
+        
         if (_timeToPause > 0.01)
         {
-            _timeToPause -= 0.05f;
+            _timeToPause -= 0.01f;
         }
         else
         {
             _timeToPause = 0.01f;
         }
 
-        yield return new WaitForSeconds(_timeToPause);
-
         StartCountdown();
     }
 
-    public void ChangeActiveTimerValue(int change)
+    public void SetTimerValue(int index, int newValue)
     {
-        for (int i = 0; i < _timers.Count; i++)
+        if (index >= 0 && index < _timers.Count)
         {
-            if (i == _activeTimerIndex)
-            {
-                _timers[i].Value += change;
-            }
+            _timers[index].Value = Mathf.Clamp(newValue, 0, 99);
+        }
+        else
+        {
+            Debug.LogWarning($"SetTimerValue: Index {index} is out of range.");
         }
         UpdateTexts();
     }
-
 
     void ChangeActiveTimer(int change)
     {
@@ -259,45 +291,36 @@ public class Timer : MonoBehaviour
         {
             _activeTimerIndex = 0;
         }
+
+        UpdateTexts();
+    }
+
+    public void ChangeActiveTimerValue(int change)
+    {
+        if (_activeTimerIndex >= 0 && _activeTimerIndex < _timers.Count)
+        {
+            int newValue = _timers[_activeTimerIndex].Value + change;
+            _timers[_activeTimerIndex].Value = Mathf.Clamp(newValue, 0, 99);
+            UpdateTexts();
+        }
+        else
+        {
+            Debug.LogWarning("ChangeActiveTimerValue: Aktywny timer jest poza zakresem.");
+        }
     }
 
     void UpdateTexts()
     {
         for (int i = 0; i < _timers.Count; i++)
         {
-            if (i == _activeTimerIndex && !_counting)
-            {
-                if (_timers[i].Value > 99)
-                {
-                    _timers[i].Value = 99;
-                }
-                else if (_timers[i].Value < 0)
-                {
-                    _timers[i].Value = 0;
-                }
-
-                _texts[i].color = Color.green;
-            }
-            else
-            {
-                _texts[i].color = Color.white;
-            }
-
-            _texts[i].text = _timers[i].Value.ToString();
+            TMP_Text text = _timers[i].Text;
+            text.color = (i == _activeTimerIndex && !_counting) ? Color.green : Color.white;
+            text.text = _timers[i].Value.ToString();
         }
     }
 
     void CalculatePriority()
     {
-        Dictionary<string, int> tagPriority = new Dictionary<string, int>
-        {
-            { "Item", 3 },
-            { "Player", 2 },
-            { "Boss", 1 },
-            { "Enemy", 0 },
-            { "N/A", -1 }
-        };
-
         int highestPriority = -1;
         int highestPriorityIndex = -1;
 
@@ -306,10 +329,8 @@ public class Timer : MonoBehaviour
             string currentTag = _timers[i].Tag;
             int currentValue = _timers[i].Value;
 
-            if (tagPriority.ContainsKey(currentTag))
+            if (tagPriority.TryGetValue(currentTag, out int currentPriority))
             {
-                int currentPriority = tagPriority[currentTag];
-
                 if (currentPriority > highestPriority && currentValue == 0)
                 {
                     highestPriority = currentPriority;
@@ -326,24 +347,33 @@ public class Timer : MonoBehaviour
         else
         {
             _activeTimerIndex = _timers.FindIndex(timer => timer.Tag == "N/A");
+            if (_activeTimerIndex == -1 && _timers.Count > 0)
+            {
+                _activeTimerIndex = 0;
+            }
             UpdateTexts();
         }
     }
 
     void PlayedAttackCard()
     {
-        EventSystem.WhatHP.Invoke(_timers[_activeTimerIndex].HP, _activeTimerIndex);
+        EventSystem.WhatHP.Invoke(_timers[_activeTimerIndex].HP, _timers[_activeTimerIndex].EnemyId);
     }
 
     void DeleteTimer(int timerToDelete)
     {
-        if (timerToDelete >= 0 && timerToDelete < _timers.Count)
+        Debug.LogWarning("Wszedłem" + timerToDelete);
+        for (int i = 0; i < _timers.Count; i++)
         {
-            _timers.RemoveAt(timerToDelete);
-            _id.RemoveAt(timerToDelete);
-            _texts.RemoveAt(timerToDelete);
-            _hpAdres.RemoveAt(timerToDelete);
-
+            if (timerToDelete == _timers[i].EnemyId)
+            {
+                _timers.RemoveAt(i);
+                Debug.LogWarning("Wyszedłem" + timerToDelete);
+            }
+        }
+            
+            
+            /*
             if (timerToDelete == _activeTimerIndex)
             {
                 if (_timers.Count > 0)
@@ -351,15 +381,11 @@ public class Timer : MonoBehaviour
                     _activeTimerIndex = Mathf.Clamp(_activeTimerIndex, 0, _timers.Count - 1);
                 }
             }
-
+*/
             UpdateTexts();
-            AddToTimer();
-        }
-        else
-        {
-            Debug.LogError("Timer index out of range: " + timerToDelete);
-        }
+            //AddToTimer(); WHY??????
     }
+
 }
 
 

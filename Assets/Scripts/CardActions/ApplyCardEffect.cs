@@ -78,7 +78,7 @@ namespace CardActions
             EventSystem.LogAction?.Invoke(card);
 
             Debug.Log("Change: " + hpChange);
-            Debug.Log(_healthBar.getHealth());
+            Debug.Log(_healthBar.GetHealth());
         }
 
         private void ShowPopUpDamage(int hpChange)

@@ -1,35 +1,29 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 /**
- * Publiczna klasa SetTimer jest odpowiedzialna za ustawienie czasomierza oraz wyświetlenie tekstu na podstawie typu postaci.
+ * Public class SetTimer is responsible for setting up timers and displaying text based on character type.
  *
- * Ma w sobie informacje o:
- * - tekście do wyświetlenia
- * - typie postaci (Player, Enemy, Item, Boss, None)
- * - obiekcie HealthBar, z którym jest powiązany
+ * It contains information about:
+ * - The text to display
+ * - The character type (Player, Enemy, Item, Boss, None)
+ * - The HealthBar object it's linked to
  *
- * Na podstawie typu postaci, SetTimer określa tekst do wyświetlenia oraz przekazuje go do czasomierza.
+ * Based on the character type, SetTimer determines the text to display and passes it to the Timer.
  */
-
-
 public class SetTimer : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;
-
     [SerializeField] private CharacterType _characterType = CharacterType.None;
-
     [SerializeField] private GameObject _hp;
 
     private void Awake()
     {
         Timer timer = FindObjectOfType<Timer>();
 
-        string person = Define(_characterType);
+        string tag = Define(_characterType);
 
         if (timer != null)
         {
@@ -37,17 +31,25 @@ public class SetTimer : MonoBehaviour
             {
                 int ran = Random.Range(5, 10);
                 _text.text = ran.ToString();
-                timer.AddTextFromSetTimer(_text, person, _hp);
+                timer.AddTextFromSetTimer(_text, tag, _hp);
             }
             else
             {
-                timer.AddTextFromSetTimer(_text, person, _hp);
+                if (_characterType == CharacterType.Player)
+                {
+                    _text.text = "0";
+                }
+                else
+                {
+                    _text.text = "0";
+                }
+
+                timer.AddTextFromSetTimer(_text, tag, _hp);
             }
-            
         }
         else
         {
-            Debug.LogError("WSTAW \"MANAGERS\" HALO <( ‵□′)───C＜─___-)||");
+            Debug.LogError("Timer manager is missing!");
         }
     }
 
@@ -56,4 +58,3 @@ public class SetTimer : MonoBehaviour
         return type.ToString();
     }
 }
-

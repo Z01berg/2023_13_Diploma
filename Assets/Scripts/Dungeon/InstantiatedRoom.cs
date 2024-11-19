@@ -66,12 +66,15 @@ public class InstantiatedRoom : MonoBehaviour
 
     private bool _itemGiven = false;
 
+    private CameraProperties _camera;
+
     private void Awake()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
 
         //Save room collider bounds
         roomColliderBounds = boxCollider2D.bounds;
+        _camera = FindObjectOfType<CameraProperties>();
     }
 
     public void Initialise(GameObject roomGameObject)
@@ -266,8 +269,28 @@ public class InstantiatedRoom : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (enemyInRoomList.Count == 0 && !collision.gameObject.CompareTag("Player")) return;
-
+        EventSystem.StartCountdown.Invoke();
         CloseAllDoors();
+        if (CombatMode.isPlayerInCombat)
+        {
+            CompositeCollider2D compCollider = GetComponentInChildren<CompositeCollider2D>();
+            Vector3 roomWorldCenterCords = compCollider.bounds.center;
+            //Debug.LogError(this.collision.transform.parent.parent.name);
+            _camera.AdjustCameraToTheRoomSize(new Vector2(
+                    compCollider.bounds.size.x/2, 
+                    compCollider.bounds.size.y/2), 
+                roomWorldCenterCords);
+            GameObject roomCenterObject = InstantiateRoomCenterObject(roomWorldCenterCords);
+            _camera.virtualCamera.Follow = roomCenterObject.transform;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!CombatMode.isPlayerInCombat)
+        {
+            _camera.virtualCamera.Follow = _camera.player;
+        }
     }
 
     public void OpenAllDoors()
@@ -403,6 +426,14 @@ public class InstantiatedRoom : MonoBehaviour
         EventSystem.DrawACard.Invoke();
         EventSystem.InstatiatedRoom.Invoke();
         }
+    }
+
+    private GameObject InstantiateRoomCenterObject(Vector3 roomCenter)
+    {
+        GameObject roomCenterObject = new GameObject("RoomCenterObject");
+        roomCenterObject.transform.position = roomCenter;
+        roomCenterObject.transform.SetParent(collision.transform);
+        return roomCenterObject;
     }
     
 }

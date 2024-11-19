@@ -104,11 +104,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d12b0eeb0e71e64a938c93174bbdadc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameObject: {fileID: 1140273312231265067}
-  _body: {fileID: 9778427497311827}
   _slider: {fileID: 4466824464876825584}
   _data: {fileID: 929507247219044678}
-  myTimerIndex: -2
+  _body: {fileID: 9778427497311827}
+  myTimerIndex: -1
   room: {fileID: 0}
 --- !u!114 &2234614580466985181
 MonoBehaviour:

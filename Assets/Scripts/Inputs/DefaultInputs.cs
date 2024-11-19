@@ -46,6 +46,15 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Map"",
+                    ""type"": ""Button"",
+                    ""id"": ""4a8e1d8f-30a0-434e-bf8f-d46ea816c95b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Equipment"",
                     ""type"": ""Button"",
                     ""id"": ""6a5dd1e5-8ff5-42a2-a5f9-f2e1920fa16b"",
@@ -247,6 +256,17 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Help"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1f2d9d04-016b-49e7-940c-6bfeec8efb3c"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MousenKeys"",
+                    ""action"": ""Map"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -285,6 +305,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
         m_DefaultMausenKeys = asset.FindActionMap("DefaultMausenKeys", throwIfNotFound: true);
         m_DefaultMausenKeys_Move = m_DefaultMausenKeys.FindAction("Move", throwIfNotFound: true);
         m_DefaultMausenKeys_Menu = m_DefaultMausenKeys.FindAction("Menu", throwIfNotFound: true);
+        m_DefaultMausenKeys_Map = m_DefaultMausenKeys.FindAction("Map", throwIfNotFound: true);
         m_DefaultMausenKeys_Equipment = m_DefaultMausenKeys.FindAction("Equipment", throwIfNotFound: true);
         m_DefaultMausenKeys_Interact = m_DefaultMausenKeys.FindAction("Interact", throwIfNotFound: true);
         m_DefaultMausenKeys_DoubleClick = m_DefaultMausenKeys.FindAction("DoubleClick", throwIfNotFound: true);
@@ -352,6 +373,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
     private List<IDefaultMausenKeysActions> m_DefaultMausenKeysActionsCallbackInterfaces = new List<IDefaultMausenKeysActions>();
     private readonly InputAction m_DefaultMausenKeys_Move;
     private readonly InputAction m_DefaultMausenKeys_Menu;
+    private readonly InputAction m_DefaultMausenKeys_Map;
     private readonly InputAction m_DefaultMausenKeys_Equipment;
     private readonly InputAction m_DefaultMausenKeys_Interact;
     private readonly InputAction m_DefaultMausenKeys_DoubleClick;
@@ -362,6 +384,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
         public DefaultMausenKeysActions(@DefaultInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_DefaultMausenKeys_Move;
         public InputAction @Menu => m_Wrapper.m_DefaultMausenKeys_Menu;
+        public InputAction @Map => m_Wrapper.m_DefaultMausenKeys_Map;
         public InputAction @Equipment => m_Wrapper.m_DefaultMausenKeys_Equipment;
         public InputAction @Interact => m_Wrapper.m_DefaultMausenKeys_Interact;
         public InputAction @DoubleClick => m_Wrapper.m_DefaultMausenKeys_DoubleClick;
@@ -381,6 +404,9 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
             @Menu.started += instance.OnMenu;
             @Menu.performed += instance.OnMenu;
             @Menu.canceled += instance.OnMenu;
+            @Map.started += instance.OnMap;
+            @Map.performed += instance.OnMap;
+            @Map.canceled += instance.OnMap;
             @Equipment.started += instance.OnEquipment;
             @Equipment.performed += instance.OnEquipment;
             @Equipment.canceled += instance.OnEquipment;
@@ -403,6 +429,9 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
             @Menu.started -= instance.OnMenu;
             @Menu.performed -= instance.OnMenu;
             @Menu.canceled -= instance.OnMenu;
+            @Map.started -= instance.OnMap;
+            @Map.performed -= instance.OnMap;
+            @Map.canceled -= instance.OnMap;
             @Equipment.started -= instance.OnEquipment;
             @Equipment.performed -= instance.OnEquipment;
             @Equipment.canceled -= instance.OnEquipment;
@@ -454,6 +483,7 @@ public partial class @DefaultInputs: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
+        void OnMap(InputAction.CallbackContext context);
         void OnEquipment(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnDoubleClick(InputAction.CallbackContext context);

@@ -127,7 +127,7 @@ namespace UI
             {
                 return;
             }
-
+            currentCardNumber = currentAttackCardNumber  + currentDefenceCardNumber + currentMovementCardNumber;
             SetCardsPosition();
             // SetCardsRotation(); 
             SetCardsUILayers();
@@ -216,9 +216,9 @@ namespace UI
             if (card == Wrapper.cardInUse && PlaceHolder.isTaken)
             {
                 _cards.Remove(card);
-                _eventsConfig.cardDestroy?.Invoke(new CardDestroy(card));
                 PlaceHolder.isTaken = false;
 
+                _eventsConfig.cardDestroy?.Invoke(new CardDestroy(card));
                 CardCountDeduction(card.GetComponent<CardDisplay>().cardSO.type);
                 Destroy(card.gameObject);
             }
@@ -230,7 +230,6 @@ namespace UI
 
         private void CardCountDeduction(CardType type)
         {
-            currentCardNumber--;
             switch (type)
             {
                 case CardType.Attack:
