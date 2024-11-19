@@ -154,6 +154,14 @@ public class Timer : MonoBehaviour
             EventSystem.ShowCheatEngine.Invoke();
         }
 
+        if (Input.GetKeyDown(KeyCode.Numlock)) //TODO: TEST DELETE PLS
+        {
+            for (int i = 0; i < _timers.Count; i++)
+            {
+                Debug.LogError("Tag " + _timers[i].Tag + "\nEnemyID " + _timers[i].EnemyId + "\nID " + _timers[i].Id + "\nValue " + _timers[i].Value + "\nHp " + _timers[i].HP);
+            }
+        }
+        
         if (_cheat)
         {
             if (Input.GetKeyDown(KeyCode.Comma))
@@ -347,21 +355,23 @@ public class Timer : MonoBehaviour
 
     void PlayedAttackCard()
     {
-        EventSystem.WhatHP.Invoke(_timers[_activeTimerIndex].HP, _activeTimerIndex);
+        EventSystem.WhatHP.Invoke(_timers[_activeTimerIndex].HP, _timers[_activeTimerIndex].EnemyId);
     }
 
     void DeleteTimer(int timerToDelete)
     {
-        if (timerToDelete >= 0 && timerToDelete < _timers.Count)
+        Debug.LogWarning("Wszedłem" + timerToDelete);
+        for (int i = 0; i < _timers.Count; i++)
         {
-            if (_timers[timerToDelete].Tag == "Player")
+            if (timerToDelete == _timers[i].EnemyId)
             {
-                Debug.LogWarning("Cannot delete Player timer.");
-                return;
+                _timers.RemoveAt(i);
+                Debug.LogWarning("Wyszedłem" + timerToDelete);
             }
-
-            _timers.RemoveAt(timerToDelete);
-
+        }
+            
+            
+            /*
             if (timerToDelete == _activeTimerIndex)
             {
                 if (_timers.Count > 0)
@@ -369,14 +379,9 @@ public class Timer : MonoBehaviour
                     _activeTimerIndex = Mathf.Clamp(_activeTimerIndex, 0, _timers.Count - 1);
                 }
             }
-
+*/
             UpdateTexts();
             //AddToTimer(); WHY??????
-        }
-        else
-        {
-            Debug.LogError($"Timer index out of range: {timerToDelete}");
-        }
     }
 
 }

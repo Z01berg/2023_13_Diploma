@@ -6,12 +6,12 @@ using TMPro;
  */
 public class TimerData
 {
-    public int Value { get; set; }
-    public string Tag { get; set; }
+    public int Value { get; set; } // znaczenie timera
+    public string Tag { get; set; } // znaczenie TAG
     public GameObject HP { get; set; }
     public int EnemyId { get; set; }
     public TMP_Text Text { get; set; }
-    public string Id { get; set; }
+    public string Id { get; set; } 
 
     public TimerData(int value, string tag, GameObject hp, int enemyId, TMP_Text text, string id)
     {

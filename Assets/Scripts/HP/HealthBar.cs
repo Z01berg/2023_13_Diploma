@@ -30,9 +30,9 @@ public class HealthBar : MonoBehaviour
 
     private bool _switch = false;
     private bool _currentObject = false;
-    private int _timerNumbToDelete;
+    private int _timerNumbToDelete = 99;
 
-    public int myTimerIndex = -2;
+    public int myTimerIndex;
 
     [HideInInspector] public InstantiatedRoom room;
 
@@ -115,17 +115,9 @@ public class HealthBar : MonoBehaviour
             {
                 room.enemyInRoomList.Remove(this.gameObject);
             }
+            
+            EventSystem.DeleteReference.Invoke(_timerNumbToDelete);
 
-            if (myTimerIndex >= 0)
-            {
-                EventSystem.DeleteReference.Invoke(myTimerIndex);
-            }
-            else
-            {
-                Debug.LogWarning("Invalid timer index, cannot delete: " + myTimerIndex);
-            }
-
-            Destroy(gameObject);
             Destroy(_body);
         }
     }
