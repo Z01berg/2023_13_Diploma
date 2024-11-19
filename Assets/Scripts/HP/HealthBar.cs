@@ -30,7 +30,7 @@ public class HealthBar : MonoBehaviour
 
     private bool _switch = false;
     private bool _currentObject = false;
-    private int _timerNumbToDelete = 99;
+    private int _timerNumbToDelete;
 
     public int myTimerIndex;
 
