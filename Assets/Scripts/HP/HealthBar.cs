@@ -3,31 +3,28 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /**
- * Publiczna clasa HealthBar jest klasą która robi wszystkie działanie na HP
+ * Public class HealthBar handles all HP-related actions.
  *
- * ma w sobie informacje o:
- * - znaczenie slidera
- * - tekst na sliderze
- * - do kogo jest podpięty ten HpBar
- * - dostęp do gameObjectu podpiętego objektu
+ * It contains information about:
+ * - The slider value
+ * - The text on the slider
+ * - The object this HP bar is linked to
+ * - Access to the linked GameObject
  *
- * Kiedy HealthBar dostaje informacje od eventu że jest urażony to sprawdza czy jest to właściwy obiekt
- * - jeżeli nie to nic nie robi
- * - jeżeli tak to zmienia _currentObject = true
+ * When HealthBar receives damage information from an event, it checks if it's the correct object.
+ * - If not, it does nothing
+ * - If yes, it sets _currentObject to true
  *
- * Jeżeli _currentObject to można
- * - zmienić health public ChangeHealth
- * - zabić przeciwnika Kill() jeżeli health < 0
+ * If _currentObject is true, you can:
+ * - Change health using ChangeHealth
+ * - Kill the enemy using Kill() if health < 0
  */
-
 public class HealthBar : MonoBehaviour
 {
-    [SerializeField] private GameObject _gameObject;
-    [SerializeField] private GameObject _body;
-    
     [SerializeField] private Slider _slider;
     [SerializeField] private TMP_Text _data;
-    private string[] _parts;
+    [SerializeField] private GameObject _body;
+
     private int _maxValue = 0;
     private int _value = 0;
 
@@ -38,7 +35,7 @@ public class HealthBar : MonoBehaviour
     public int myTimerIndex;
 
     [HideInInspector] public InstantiatedRoom room;
-    
+
     private void Start()
     {
         Split();
@@ -56,50 +53,51 @@ public class HealthBar : MonoBehaviour
         {
             ChangeHealth(-1);
             UpdateHealthText();
-            
-            _currentObject = !_currentObject;
+
+            _currentObject = false;
             _switch = false;
         }
     }
 
     private void Split()
     {
-        _parts = (_data.text).Split('/');
+        string[] parts = _data.text.Split('/');
+        if (parts.Length >= 2)
+        {
+            _value = int.Parse(parts[0]);
+            _maxValue = int.Parse(parts[1]);
+        }
+        else
+        {
+            Debug.LogError("HealthBar data format incorrect. Expected 'current/max'.");
+        }
+
+        _slider.maxValue = _maxValue;
+        _slider.value = _value;
     }
 
     private void SetData()
     {
-        _maxValue = int.Parse(_parts[1]);
         _slider.maxValue = _maxValue;
-        
-        _value = int.Parse(_parts[0]);
         _slider.value = _value;
     }
 
     private void UpdateHealth()
     {
-        _value = int.Parse(_parts[0]);
         _slider.value = _value;
     }
 
     public void ChangeHealth(int health)
     {
-        if (_value + health > _maxValue)
-        {
-            _value = _maxValue;
-            _slider.value = _value;
-        }
-        else
-        {
-            _value += health;
-            _slider.value = _value;
-        }
+        _value += health;
+        _value = Mathf.Clamp(_value, 0, _maxValue);
+        _slider.value = _value;
         UpdateHealthText();
     }
 
     private void UpdateHealthText()
     {
-        _data.text = _value.ToString();
+        _data.text = $"{_value}/{_maxValue}";
     }
 
     private void Kill()
@@ -111,36 +109,44 @@ public class HealthBar : MonoBehaviour
                 EventSystem.OpenGameover?.Invoke();
                 return;
             }
+
             Debug.Log("killed: " + myTimerIndex);
-            room.enemyInRoomList.Remove(this.gameObject);
-            EventSystem.DeleteReference.Invoke(myTimerIndex);
-            Destroy(_gameObject);
+        
+            if (room != null)
+            {
+                room.enemyInRoomList.Remove(this.gameObject);
+            }
+            
+            EventSystem.DeleteReference.Invoke(_timerNumbToDelete);
+
             Destroy(_body);
         }
     }
-    //TODO: Sprawdzic czy ktos z tego korzysta
-    private void HandleWhatHP(GameObject recieved, int timerNumber)
+
+
+    private void HandleWhatHP(GameObject received, int timerNumber)
     {
-        if (recieved == _gameObject)
+        if (received == gameObject)
         {
             _currentObject = true;
+            _timerNumbToDelete = timerNumber;
         }
 
         _switch = true;
-        _timerNumbToDelete = timerNumber;
     }
 
-    public int getHealth()
+    public int GetHealth()
     {
         return _value;
     }
 
     private void SetTimerIndex(int value)
     {
-        if (myTimerIndex != -2)
+        if (myTimerIndex == -1) 
         {
             myTimerIndex = value;
+            Debug.Log($"Timer index set: {myTimerIndex}");
         }
-        
     }
+
 }
