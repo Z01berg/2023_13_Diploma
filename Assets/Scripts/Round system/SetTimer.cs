@@ -1,41 +1,51 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 /**
- * Publiczna klasa SetTimer jest odpowiedzialna za ustawienie czasomierza oraz wyświetlenie tekstu na podstawie typu postaci.
+ * Public class SetTimer is responsible for setting up timers and displaying text based on character type.
  *
- * Ma w sobie informacje o:
- * - tekście do wyświetlenia
- * - typie postaci (Player, Enemy, Item, Boss, None)
- * - obiekcie HealthBar, z którym jest powiązany
+ * It contains information about:
+ * - The text to display
+ * - The character type (Player, Enemy, Item, Boss, None)
+ * - The HealthBar object it's linked to
  *
- * Na podstawie typu postaci, SetTimer określa tekst do wyświetlenia oraz przekazuje go do czasomierza.
+ * Based on the character type, SetTimer determines the text to display and passes it to the Timer.
  */
-
-
 public class SetTimer : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;
-
     [SerializeField] private CharacterType _characterType = CharacterType.None;
-
     [SerializeField] private GameObject _hp;
 
     private void Awake()
     {
         Timer timer = FindObjectOfType<Timer>();
 
+        string tag = Define(_characterType);
+
         if (timer != null)
         {
-            string tag = Define(_characterType);
-            int value = (_characterType == CharacterType.Enemy) ? Random.Range(5, 10) : 0;
-            _text.text = value.ToString();
+            if (_characterType == CharacterType.Enemy)
+            {
+                int ran = Random.Range(5, 10);
+                _text.text = ran.ToString();
+                timer.AddTextFromSetTimer(_text, tag, _hp);
+            }
+            else
+            {
+                if (_characterType == CharacterType.Player)
+                {
+                    _text.text = "0";
+                }
+                else
+                {
+                    _text.text = "0";
+                }
 
-            timer.AddTextFromSetTimer(_text, tag, _hp);
+                timer.AddTextFromSetTimer(_text, tag, _hp);
+            }
         }
         else
         {
@@ -43,10 +53,8 @@ public class SetTimer : MonoBehaviour
         }
     }
 
-
     private string Define(CharacterType type)
     {
         return type.ToString();
     }
 }
-

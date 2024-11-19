@@ -1,17 +1,19 @@
 using UnityEngine;
 using TMPro;
 
+/**
+ * Public class TimerData encapsulates the data for each timer.
+ */
 public class TimerData
 {
-    public int Value;
-    public string Tag;
-    public GameObject HP;
-    public int EnemyId;
+    public int Value { get; set; }
+    public string Tag { get; set; }
+    public GameObject HP { get; set; }
+    public int EnemyId { get; set; }
+    public TMP_Text Text { get; set; }
+    public string Id { get; set; }
 
-    public TMP_Text Text;
-    public string Id;
-
-    public TimerData(int value, string tag, GameObject hp, int enemyId, TMP_Text text = null, string id = null)
+    public TimerData(int value, string tag, GameObject hp, int enemyId, TMP_Text text, string id)
     {
         Value = value;
         Tag = tag;
