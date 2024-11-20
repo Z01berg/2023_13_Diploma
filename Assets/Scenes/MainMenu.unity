@@ -1144,11 +1144,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9216454532953095445, guid: f302c1296165ef84ea5489727505a305, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -160.29
+      value: -227.91
       objectReference: {fileID: 0}
     - target: {fileID: 9216454532953095445, guid: f302c1296165ef84ea5489727505a305, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -41.784
+      value: -41.763
       objectReference: {fileID: 0}
     - target: {fileID: 9216454532953095445, guid: f302c1296165ef84ea5489727505a305, type: 3}
       propertyPath: m_LocalScale.x
@@ -1192,11 +1192,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9216454532953095445, guid: f302c1296165ef84ea5489727505a305, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -12.488998
+      value: -12.599998
       objectReference: {fileID: 0}
     - target: {fileID: 9216454532953095445, guid: f302c1296165ef84ea5489727505a305, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.0107994
+      value: 0.016246796
       objectReference: {fileID: 0}
     - target: {fileID: 9216454532953095445, guid: f302c1296165ef84ea5489727505a305, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4668,7 +4668,7 @@ MonoBehaviour:
       - m_Target: {fileID: 927825781}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: SetVolume
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5036,6 +5036,7 @@ MonoBehaviour:
   _antiAliasingDropdown: {fileID: 1824310574}
   _volumeSlider: {fileID: 844761557}
   _currentVolume: 0
+  _fullscreenToggle: {fileID: 1055292223}
 --- !u!1 &931125283
 GameObject:
   m_ObjectHideFlags: 0
@@ -5685,7 +5686,7 @@ MonoBehaviour:
       - m_Target: {fileID: 927825781}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: SetTextureQuality
-        m_Mode: 3
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5832,7 +5833,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 927825781}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
+        m_MethodName: SetQuality
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!1001 &1009449935
 PrefabInstance:
@@ -6236,7 +6249,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 17, y: 262}
+  m_AnchoredPosition: {x: 135, y: 262}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1055292223
@@ -6289,14 +6302,14 @@ MonoBehaviour:
       - m_Target: {fileID: 927825781}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: SetFullscreen
-        m_Mode: 6
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1089857122
@@ -10136,7 +10149,7 @@ MonoBehaviour:
       - m_Target: {fileID: 927825781}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: SetAntiAliasing
-        m_Mode: 3
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12635,8 +12648,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -219, y: 262}
-  m_SizeDelta: {x: 161.74, y: 42.21}
+  m_AnchoredPosition: {x: -184.83, y: 262}
+  m_SizeDelta: {x: 230.08, y: 42.21}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2064318593
 MonoBehaviour:
@@ -12700,7 +12713,7 @@ MonoBehaviour:
       - m_Target: {fileID: 927825781}
         m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
         m_MethodName: SetResolution
-        m_Mode: 3
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

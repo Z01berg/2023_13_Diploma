@@ -1,0 +1,8 @@
+{
+    "qualitySettingPreference": 5,
+    "resolutionPreference": 15,
+    "textureQualityPreference": 0,
+    "antiAliasingPreference": 0,
+    "fullscreenPreference": false,
+    "volumePreference": 0.0
+}
