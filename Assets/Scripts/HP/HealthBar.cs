@@ -117,6 +117,7 @@ public class HealthBar : MonoBehaviour
                 room.enemyInRoomList.Remove(this.gameObject);
             }
             
+            HandleWhatHP(gameObject, myTimerIndex);
             EventSystem.DeleteReference.Invoke(_timerNumbToDelete);
 
             Destroy(_body);

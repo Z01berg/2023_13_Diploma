@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using Grid.New;
 using Player;
+using Round_system;
 using TMPro;
 using UI;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace CardActions
         [SerializeField] private GameObject popUpPrefab;
         [Header("Timer from Managers")][SerializeField] public GameObject gameObjectTimer;
         private HealthBar _healthBar;
-        private Timer _timer;
+        private TimersManager _timersManager;
         private CardsEffectsManager _cardsEffectsManager;
         private Image _image; 
         public OverlayTile standingOnTile;
@@ -25,7 +26,7 @@ namespace CardActions
 
         private void Start()
         {
-            _timer = gameObjectTimer.GetComponent<Timer>();
+            _timersManager = gameObjectTimer.GetComponent<TimersManager>();
             _healthBar = gameObject.GetComponentInParent<HealthBar>();
             // _image = gameObject.GetComponent<SpriteRenderer>()
         }
@@ -54,6 +55,8 @@ namespace CardActions
             if (!PlaceHolder.isTaken) return;
             
             var cardInfo = Wrapper.GetCardCurrentCardInfo();
+            
+            // _timersManager.PlayedAttackCard(_healthBar.gameObject, _timersManager.);
             SendHpModification(cardInfo);
         }
 
@@ -72,13 +75,11 @@ namespace CardActions
             }
             
             _healthBar.ChangeHealth(hpChange);
-            _timer.ChangeActiveTimerValue(cost);
+            _timersManager.ChangeActiveTimerValue(cost);
             ShowPopUpDamage(hpChange);
             EventSystem.DestroyCard.Invoke();
             EventSystem.LogAction?.Invoke(card);
 
-            Debug.Log("Change: " + hpChange);
-            Debug.Log(_healthBar.GetHealth());
         }
 
         private void ShowPopUpDamage(int hpChange)
