@@ -8,7 +8,7 @@ public class TimerData
 {
     public int Value { get; set; } // znaczenie timera
     public string Tag { get; set; } // znaczenie TAG
-    public GameObject HP { get; set; }
+    public GameObject HP { get; set; } // slider przyczepiony do obiektu do którego nalezy timer i hp
     public int EnemyId { get; set; }
     public TMP_Text Text { get; set; }
     public string Id { get; set; } 

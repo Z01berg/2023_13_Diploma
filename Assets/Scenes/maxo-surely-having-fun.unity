@@ -284,6 +284,10 @@ PrefabInstance:
       propertyPath: _inventory
       value: 
       objectReference: {fileID: 995666802}
+    - target: {fileID: 8244081960514245159, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -3.657959
+      objectReference: {fileID: 0}
     - target: {fileID: 8262816936440441009, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -364,6 +368,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8430557056507411394, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.0024414
+      objectReference: {fileID: 0}
+    - target: {fileID: 8430557056507411394, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 143.93
+      objectReference: {fileID: 0}
     - target: {fileID: 8641116138309439211, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_Type
       value: 1
@@ -432,10 +444,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 299063472759132790, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
-      propertyPath: _skillRange
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1220835084138148249, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -485,7 +493,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2264738450791556759, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
-      propertyPath: gameObjectTimer
+      propertyPath: timersController
       value: 
       objectReference: {fileID: 2008930652}
     - target: {fileID: 2709433044352046491, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
@@ -584,6 +592,10 @@ PrefabInstance:
       propertyPath: playerPrefab
       value: 
       objectReference: {fileID: 1588645368}
+    - target: {fileID: 3505373189155625271, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: m_Name
+      value: Timers Controller
+      objectReference: {fileID: 0}
     - target: {fileID: 4205339106594048853, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
       propertyPath: _itemsPanel
       value: 
@@ -721,7 +733,7 @@ PrefabInstance:
       objectReference: {fileID: 308086432}
     - target: {fileID: 4989101151596241865, guid: 72c464ea0d6153f4198a069d72aa8adb, type: 3}
       propertyPath: orthographic size
-      value: 9.2
+      value: 10.99999
       objectReference: {fileID: 0}
     - target: {fileID: 8825355594499857502, guid: 72c464ea0d6153f4198a069d72aa8adb, type: 3}
       propertyPath: m_Follow
@@ -729,7 +741,7 @@ PrefabInstance:
       objectReference: {fileID: 308086432}
     - target: {fileID: 8825355594499857502, guid: 72c464ea0d6153f4198a069d72aa8adb, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 9.2
+      value: 10.99999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

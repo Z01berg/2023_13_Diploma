@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Dungeon;
 using TMPro;
 using UI;
@@ -23,7 +24,7 @@ using UnityEngine;
         [SerializeField] private GameObject _deck;
         [SerializeField] private GameObject _player;
 
-        private List<TimerData> _timers = new List<TimerData>();
+        private static List<TimerData> _timers = new List<TimerData>();
 
         private int _activeTimerIndex = 0; // whose turn
 
@@ -354,23 +355,30 @@ using UnityEngine;
             }
         }
 
-        public void PlayedAttackCard(GameObject hpBar, int timerID)
+        public void PlayedAttackCard(GameObject hpBarOwner, GameObject hpSliderGameObj)
         {
-        
-        
-            EventSystem.WhatHP.Invoke(hpBar, timerID);
+
+            var timerData = FindEnemyIDByHpBar(hpSliderGameObj);
+            Debug.Log("enemyid: " + timerData);
+            Debug.Log("activeTimerIndex: " + _timers[_activeTimerIndex].EnemyId);
+            EventSystem.WhatHP.Invoke(hpBarOwner, timerData);
             // EventSystem.WhatHP.Invoke(_timers[_activeTimerIndex].HP, _timers[_activeTimerIndex].EnemyId);
         }
 
-        void DeleteTimer(int timerToDelete)
+        private int FindEnemyIDByHpBar(GameObject hpBar)
         {
-            Debug.LogWarning("Wyszedłem: " + timerToDelete);
+            return _timers.FirstOrDefault(timerData => timerData.HP == hpBar)!.EnemyId;
+        }
+
+        void DeleteTimer(int enemyIdToDelete)
+        {
+            Debug.LogWarning("Wyszedłem: " + enemyIdToDelete);
             for (int i = 0; i < _timers.Count; i++)
             {
-                if (timerToDelete == _timers[i].EnemyId)
+                if (enemyIdToDelete == _timers[i].EnemyId) // tu się pierdoli
                 {
                     _timers.RemoveAt(i);
-                    Debug.LogWarning("Wyszedłem" + timerToDelete);
+                    Debug.LogWarning("Wyszedłem" + enemyIdToDelete);
                 }
             }
             
