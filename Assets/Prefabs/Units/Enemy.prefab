@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2234614580466985181}
   - component: {fileID: 411639774008011573}
   - component: {fileID: -7014063825015132035}
+  - component: {fileID: 1948330975391658815}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -151,6 +152,27 @@ MonoBehaviour:
   _whatStopsMovement:
     serializedVersion: 2
     m_Bits: 64
+--- !u!95 &1948330975391658815
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9778427497311827}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 06ba44429f208e64bb3f2d68491b1561, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1043278491967500237
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,6 +597,7 @@ GameObject:
   - component: {fileID: 3470049179118965618}
   - component: {fileID: 2549892323644547154}
   - component: {fileID: 6839262925599601899}
+  - component: {fileID: 4844968655640848621}
   m_Layer: 6
   m_Name: body
   m_TagString: Untagged
@@ -721,6 +744,27 @@ MonoBehaviour:
   popUpPrefab: {fileID: 467837565738204250, guid: 76ee967cebe21914aab9b16f2c3ddd77, type: 3}
   gameObjectTimer: {fileID: 0}
   standingOnTile: {fileID: 0}
+--- !u!95 &4844968655640848621
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2311194676742583287}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 06ba44429f208e64bb3f2d68491b1561, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4161966778136955142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,8 +1192,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.5153015, y: 0.16275695, z: 0}
-    m_Extent: {x: 1.0219016, y: 0.6713569, z: 0}
+    m_Center: {x: 0.51860154, y: 0.16890001, z: 0}
+    m_Extent: {x: 1.0186015, y: 0.6689, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.5829965

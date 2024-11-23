@@ -7,6 +7,7 @@ using TMPro;
 using UI;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace CardActions
 {
@@ -17,7 +18,8 @@ namespace CardActions
         private HealthBar _healthBar;
         private Timer _timer;
         private CardsEffectsManager _cardsEffectsManager;
-        private Image _image; 
+        private Image _image;
+        private Animator _animator;
         public OverlayTile standingOnTile;
 
         private bool isInRange = false; // TODO przygotowanie pod animator
@@ -25,6 +27,7 @@ namespace CardActions
 
         private void Start()
         {
+            _animator = GetComponent<Animator>();
             _timer = gameObjectTimer.GetComponent<Timer>();
             _healthBar = gameObject.GetComponentInParent<HealthBar>();
             // _image = gameObject.GetComponent<SpriteRenderer>()
@@ -91,15 +94,33 @@ namespace CardActions
             {
                 popUpText = "+" + hpChange;
                 text.color = Color.green;
+                ShowHitAnimation();
             }
             else
             {
                 popUpText = hpChange.ToString();
                 text.color = Color.red;
+                ShowHitAnimation();
             }
 
             text.text = popUpText;
         }
+        
+        private void ShowHitAnimation()
+        {
+            _animator.SetInteger("checker", GetRandomNumber());
+            _animator.SetTrigger("Electric");
+        }
+        
+        int GetRandomNumber()
+        {
+            int random = Random.Range(1, 10); 
+            if (random == 5)
+                random++; 
+            
+            return random;
+        }
+        
         public OverlayTile GetCurrentTile()
         {
             RaycastHit2D? hit = GetFocusedOnTile(transform.position);
