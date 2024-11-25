@@ -133,6 +133,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7934358016564866798, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
   m_PrefabInstance: {fileID: 1836116342}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &618412748 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 782378176850839103, guid: 2f91f1a77729e5e4fb5460f9b0030a64, type: 3}
+  m_PrefabInstance: {fileID: 6508679872957899077}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &803237028 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8780337058267761887, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
@@ -389,6 +400,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 85.2283
       objectReference: {fileID: 0}
+    - target: {fileID: 2864969684796256058, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 618412748}
     - target: {fileID: 2927914201668745620, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -465,6 +480,10 @@ PrefabInstance:
       propertyPath: _inventory
       value: 
       objectReference: {fileID: 995666802}
+    - target: {fileID: 8244081960514245159, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -3.657959
+      objectReference: {fileID: 0}
     - target: {fileID: 8262816936440441009, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -658,6 +677,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2264738450791556759, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
       propertyPath: gameObjectTimer
+      value: 
+      objectReference: {fileID: 2008930652}
+    - target: {fileID: 2264738450791556759, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
+      propertyPath: timersController
       value: 
       objectReference: {fileID: 2008930652}
     - target: {fileID: 2483750482375177036, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
@@ -1019,6 +1042,10 @@ PrefabInstance:
       propertyPath: playerPrefab
       value: 
       objectReference: {fileID: 1588645368}
+    - target: {fileID: 3505373189155625271, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
+      propertyPath: m_Name
+      value: Timers Controller
+      objectReference: {fileID: 0}
     - target: {fileID: 4205339106594048853, guid: 8d54fba18d2c31c45b48669efa471c3f, type: 3}
       propertyPath: _itemsPanel
       value: 
@@ -1161,6 +1188,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1819752211550092859, guid: 72c464ea0d6153f4198a069d72aa8adb, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 308086432}
     - target: {fileID: 3118462869405283552, guid: 72c464ea0d6153f4198a069d72aa8adb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.59249425
