@@ -410,7 +410,7 @@ public class InstantiatedRoom : MonoBehaviour
             else
             {
                 var enemy = Instantiate(enemyPrefab, transform.Find("Grid"));
-                enemy.gameObject.GetComponentInChildren<ApplyCardEffect>().gameObjectTimer = timer;
+                enemy.gameObject.GetComponentInChildren<ApplyCardEffect>().timersController = timer;
                 enemy.transform.localPosition = new Vector3(position.x + 0.5f, position.y + 0.5f, -6f);
                 enemyInRoomList.Add(enemy);
                 enemy.GetComponent<HealthBar>().room = this;

@@ -878,10 +878,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d12b0eeb0e71e64a938c93174bbdadc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameObject: {fileID: 642104159361244498}
-  _body: {fileID: 2709433044352046491}
   _slider: {fileID: 2149619698750589151}
   _data: {fileID: 1881339646750721677}
+  _body: {fileID: 2709433044352046491}
   myTimerIndex: -2
   room: {fileID: 0}
 --- !u!114 &5124372952555467009
@@ -1037,8 +1036,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.5113945, y: 0.06733352, z: 0}
-    m_Extent: {x: 1.0135945, y: 0.56993353, z: 0}
+    m_Center: {x: 0.5124945, y: 0.065933526, z: 0}
+    m_Extent: {x: 1.0124946, y: 0.5713335, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.5829965
@@ -1665,5 +1664,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popUpPrefab: {fileID: 467837565738204250, guid: 76ee967cebe21914aab9b16f2c3ddd77, type: 3}
-  gameObjectTimer: {fileID: 0}
+  timersController: {fileID: 0}
   standingOnTile: {fileID: 0}

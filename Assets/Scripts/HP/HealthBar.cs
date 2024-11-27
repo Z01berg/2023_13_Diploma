@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,7 +22,7 @@ using UnityEngine.UI;
  */
 public class HealthBar : MonoBehaviour
 {
-    [SerializeField] private Slider _slider;
+    [SerializeField] public Slider _slider;
     [SerializeField] private TMP_Text _data;
     [SerializeField] private GameObject _body;
 
@@ -47,11 +48,12 @@ public class HealthBar : MonoBehaviour
 
     void Update()
     {
-        Kill();
-
+        
+       
+        
         if (_switch && _currentObject)
         {
-            ChangeHealth(-1);
+            // ChangeHealth(-1);
             UpdateHealthText();
 
             _currentObject = false;
@@ -130,8 +132,10 @@ public class HealthBar : MonoBehaviour
         {
             _currentObject = true;
             _timerNumbToDelete = timerNumber;
-        }
 
+            Kill();
+        }
+    
         _switch = true;
     }
 

@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -7014063825015132035}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1148,8 +1148,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.5153015, y: 0.16275695, z: 0}
-    m_Extent: {x: 1.0219016, y: 0.6713569, z: 0}
+    m_Center: {x: 0.51860154, y: 0.169, z: 0}
+    m_Extent: {x: 1.0186015, y: 0.669, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.5829965

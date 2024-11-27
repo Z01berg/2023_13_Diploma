@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using Dungeon;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class CameraProperties : MonoBehaviour
@@ -17,6 +18,15 @@ public class CameraProperties : MonoBehaviour
     public float minZoom = 1f;
     public float maxZoom = 100f;
     private float _previousZoom;
+
+
+    private void Start()
+    {
+        if (player == null)
+        {
+            Debug.LogError("Player obj not connected to the camera");
+        }
+    }
 
     private void Update()
     {

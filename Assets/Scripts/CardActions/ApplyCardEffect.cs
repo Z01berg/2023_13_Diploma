@@ -6,6 +6,7 @@ using Player;
 using TMPro;
 using UI;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace CardActions
@@ -13,9 +14,10 @@ namespace CardActions
     public class ApplyCardEffect : MonoBehaviour
     {
         [SerializeField] private GameObject popUpPrefab;
-        [Header("Timer from Managers")][SerializeField] public GameObject gameObjectTimer;
-        private HealthBar _healthBar;
-        private Timer _timer;
+        [SerializeField] public GameObject timersController;
+        private HealthBar _healthBarScript;
+        private GameObject _hpSliderGameObj;
+        private TimersManager _timersManager;
         private CardsEffectsManager _cardsEffectsManager;
         private Image _image; 
         public OverlayTile standingOnTile;
@@ -25,8 +27,9 @@ namespace CardActions
 
         private void Start()
         {
-            _timer = gameObjectTimer.GetComponent<Timer>();
-            _healthBar = gameObject.GetComponentInParent<HealthBar>();
+            _timersManager = timersController.GetComponent<TimersManager>();
+            _healthBarScript = gameObject.GetComponentInParent<HealthBar>();
+            _hpSliderGameObj = _healthBarScript._slider.gameObject;
             // _image = gameObject.GetComponent<SpriteRenderer>()
         }
 
@@ -54,7 +57,9 @@ namespace CardActions
             if (!PlaceHolder.isTaken) return;
             
             var cardInfo = Wrapper.GetCardCurrentCardInfo();
+
             SendHpModification(cardInfo);
+            _timersManager.PlayedAttackCard(_healthBarScript.gameObject, _hpSliderGameObj);
         }
 
         private void SendHpModification(Wrapper cardInfo)
@@ -71,14 +76,12 @@ namespace CardActions
                     break;
             }
             
-            _healthBar.ChangeHealth(hpChange);
-            _timer.ChangeActiveTimerValue(cost);
+            _healthBarScript.ChangeHealth(hpChange);
+            _timersManager.ChangeActiveTimerValue(cost);
             ShowPopUpDamage(hpChange);
             EventSystem.DestroyCard.Invoke();
             EventSystem.LogAction?.Invoke(card);
 
-            Debug.Log("Change: " + hpChange);
-            Debug.Log(_healthBar.GetHealth());
         }
 
         private void ShowPopUpDamage(int hpChange)
@@ -100,7 +103,7 @@ namespace CardActions
 
             text.text = popUpText;
         }
-        public OverlayTile GetCurrentTile()
+        private OverlayTile GetCurrentTile()
         {
             RaycastHit2D? hit = GetFocusedOnTile(transform.position);
 
@@ -112,7 +115,7 @@ namespace CardActions
             }
             return null;
         }
-        public RaycastHit2D? GetFocusedOnTile(Vector3 spawnPosition)
+        private RaycastHit2D? GetFocusedOnTile(Vector3 spawnPosition)
         {
             Vector2 spawnPosition2d = new Vector2(spawnPosition.x, spawnPosition.y);
 

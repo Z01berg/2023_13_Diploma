@@ -21,17 +21,17 @@ public class SetTimer : MonoBehaviour
 
     private void Awake()
     {
-        Timer timer = FindObjectOfType<Timer>();
+        TimersManager timersManager = FindObjectOfType<TimersManager>();
 
         string tag = Define(_characterType);
 
-        if (timer != null)
+        if (timersManager != null)
         {
             if (_characterType == CharacterType.Enemy)
             {
                 int ran = Random.Range(5, 10);
                 _text.text = ran.ToString();
-                timer.AddTextFromSetTimer(_text, tag, _hp);
+                timersManager.AddTextFromSetTimer(_text, tag, _hp);
             }
             else
             {
@@ -44,7 +44,7 @@ public class SetTimer : MonoBehaviour
                     _text.text = "0";
                 }
 
-                timer.AddTextFromSetTimer(_text, tag, _hp);
+                timersManager.AddTextFromSetTimer(_text, tag, _hp);
             }
         }
         else
