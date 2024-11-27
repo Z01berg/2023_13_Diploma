@@ -4,5 +4,5 @@
     "textureQualityPreference": 0,
     "antiAliasingPreference": 0,
     "fullscreenPreference": false,
-    "volumePreference": 0.0
+    "volumePreference": 0.5
 }
