@@ -685,7 +685,7 @@ GameObject:
   - component: {fileID: 5841855842469657823}
   - component: {fileID: 3065012626878896549}
   m_Layer: 6
-  m_Name: AnimationHit
+  m_Name: AnimationOnHit&&OnCast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1237,8 +1237,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.51985, y: 0.1703, z: 0}
-    m_Extent: {x: 1.02255, y: 0.6703, z: 0}
+    m_Center: {x: 0.52094996, y: 0.16270694, z: 0}
+    m_Extent: {x: 1.02205, y: 0.671407, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.5829965

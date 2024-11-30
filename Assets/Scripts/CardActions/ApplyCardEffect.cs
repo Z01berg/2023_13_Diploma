@@ -65,14 +65,8 @@ namespace CardActions
             var card = cardInfo.display.cardSO;
             var cost = card.cost;
             var hpChange = card.damage;
-            switch (card.type)
-            {
-                case CardType.Attack:
-                    hpChange = hpChange * -1;
-                    break;
-                case CardType.Defense:
-                    break;
-            }
+            hpChange = card.type == CardType.Attack ? hpChange = hpChange * -1 : hpChange;
+            HandleTypeAction(card.type);
             
             _healthBar.ChangeHealth(hpChange);
             _timer.ChangeActiveTimerValue(cost);
@@ -82,6 +76,28 @@ namespace CardActions
 
             Debug.Log("Change: " + hpChange);
             Debug.Log(_healthBar.GetHealth());
+        }
+
+        private void HandleTypeAction(CardType cardType)
+        {
+            switch (cardType)
+            {
+                case CardType.Attack:
+                    _animator.SetTrigger("Attack");
+                    break;
+                
+                case CardType.Defense:
+                    _animator.SetTrigger("Armor");
+                    break;
+                
+                case CardType.Curse:
+                    _animator.SetTrigger("Curse");
+                    break;
+                
+                case CardType.Movement:
+                    _animator.SetTrigger("Move");
+                    break;
+            }
         }
 
         private void ShowPopUpDamage(int hpChange)

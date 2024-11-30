@@ -658,7 +658,7 @@ AnimatorController:
     m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []
-    m_BlendingMode: 0
+    m_BlendingMode: 1
     m_SyncedLayerIndex: -1
     m_DefaultWeight: 1
     m_IKPass: 0
@@ -1120,7 +1120,7 @@ AnimatorStateMachine:
     m_Position: {x: -20, y: -50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1850939110793995009}
-    m_Position: {x: 70, y: -200, z: 0}
+    m_Position: {x: 90, y: -130, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 4681098148007325470}
@@ -1130,9 +1130,9 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 100, y: 40, z: 0}
-  m_EntryPosition: {x: -240, y: -200, z: 0}
-  m_ExitPosition: {x: 350, y: -190, z: 0}
+  m_AnyStatePosition: {x: 100, y: 30, z: 0}
+  m_EntryPosition: {x: -140, y: -130, z: 0}
+  m_ExitPosition: {x: 360, y: -130, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1850939110793995009}
 --- !u!1101 &7903483977728943895
