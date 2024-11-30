@@ -109,7 +109,16 @@ namespace CardActions
         private void ShowHitAnimation()
         {
             _animator.SetInteger("checker", GetRandomNumber());
-            _animator.SetTrigger("Electric");
+            _animator.SetTrigger(GetAnimationOnHit());
+        }
+        
+        public String GetAnimationOnHit()
+        {   
+            Array values = Enum.GetValues(typeof(HitAnimation));
+        
+            HitAnimation randomAnimation = (HitAnimation)values.GetValue(Random.Range(0, values.Length));
+        
+            return randomAnimation.ToString();
         }
         
         int GetRandomNumber()
