@@ -14,12 +14,13 @@ namespace CardActions
     public class ApplyCardEffect : MonoBehaviour
     {
         [SerializeField] private GameObject popUpPrefab;
+        [SerializeField] private Animator _animator;
         [Header("Timer from Managers")][SerializeField] public GameObject gameObjectTimer;
         private HealthBar _healthBar;
         private Timer _timer;
         private CardsEffectsManager _cardsEffectsManager;
         private Image _image;
-        private Animator _animator;
+        
         public OverlayTile standingOnTile;
 
         private bool isInRange = false; // TODO przygotowanie pod animator
@@ -27,7 +28,6 @@ namespace CardActions
 
         private void Start()
         {
-            _animator = GetComponent<Animator>();
             _timer = gameObjectTimer.GetComponent<Timer>();
             _healthBar = gameObject.GetComponentInParent<HealthBar>();
             // _image = gameObject.GetComponent<SpriteRenderer>()
