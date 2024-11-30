@@ -788,6 +788,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2815949574748413133}
   - {fileID: 8780337058267761887}
   - {fileID: 1382243527740377931}
   - {fileID: 1626204197899383624}
@@ -1036,8 +1037,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.5124945, y: 0.065933526, z: 0}
-    m_Extent: {x: 1.0124946, y: 0.5713335, z: 0}
+    m_Center: {x: 0.5124945, y: 0.06863353, z: 0}
+    m_Extent: {x: 1.0124946, y: 0.56863356, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.5829965
@@ -1664,5 +1665,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popUpPrefab: {fileID: 467837565738204250, guid: 76ee967cebe21914aab9b16f2c3ddd77, type: 3}
-  timersController: {fileID: 0}
+  gameObjectTimer: {fileID: 0}
   standingOnTile: {fileID: 0}
