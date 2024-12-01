@@ -8,18 +8,22 @@ using UI;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace CardActions
 {
     public class ApplyCardEffect : MonoBehaviour
     {
         [SerializeField] private GameObject popUpPrefab;
+        [SerializeField] private Animator _animator;
+        
         [SerializeField] public GameObject timersController;
         private HealthBar _healthBarScript;
         private GameObject _hpSliderGameObj;
         private TimersManager _timersManager;
         private CardsEffectsManager _cardsEffectsManager;
-        private Image _image; 
+        private Image _image;
+        
         public OverlayTile standingOnTile;
 
         private bool isInRange = false; // TODO przygotowanie pod animator
@@ -67,14 +71,8 @@ namespace CardActions
             var card = cardInfo.display.cardSO;
             var cost = card.cost;
             var hpChange = card.damage;
-            switch (card.type)
-            {
-                case CardType.Attack:
-                    hpChange = hpChange * -1;
-                    break;
-                case CardType.Defense:
-                    break;
-            }
+            hpChange = card.type == CardType.Attack ? hpChange = hpChange * -1 : hpChange;
+            HandleTypeAction(card.type);
             
             _healthBarScript.ChangeHealth(hpChange);
             _timersManager.ChangeActiveTimerValue(cost);
@@ -82,6 +80,30 @@ namespace CardActions
             EventSystem.DestroyCard.Invoke();
             EventSystem.LogAction?.Invoke(card);
 
+            Debug.Log("Change: " + hpChange);
+            Debug.Log(_healthBarScript.GetHealth());
+        }
+
+        private void HandleTypeAction(CardType cardType)
+        {
+            switch (cardType)
+            {
+                case CardType.Attack:
+                    _animator.SetTrigger("Attack");
+                    break;
+                
+                case CardType.Defense:
+                    _animator.SetTrigger("Armor");
+                    break;
+                
+                case CardType.Curse:
+                    _animator.SetTrigger("Curse");
+                    break;
+                
+                case CardType.Movement:
+                    _animator.SetTrigger("Move");
+                    break;
+            }
         }
 
         private void ShowPopUpDamage(int hpChange)
@@ -94,15 +116,43 @@ namespace CardActions
             {
                 popUpText = "+" + hpChange;
                 text.color = Color.green;
+                ShowHitAnimation();
             }
             else
             {
                 popUpText = hpChange.ToString();
                 text.color = Color.red;
+                ShowHitAnimation();
             }
 
             text.text = popUpText;
         }
+        
+        private void ShowHitAnimation()
+        {
+            _animator.SetInteger("checker", GetRandomNumber());
+            _animator.SetTrigger(GetAnimationOnHit());
+        }
+        
+        public String GetAnimationOnHit()
+        {   
+            Array values = Enum.GetValues(typeof(HitAnimation));
+        
+            HitAnimation randomAnimation = (HitAnimation)values.GetValue(Random.Range(0, values.Length));
+        
+            return randomAnimation.ToString();
+        }
+        
+        int GetRandomNumber()
+        {
+            int random = Random.Range(1, 10); 
+            if (random == 5)
+                random++; 
+            
+            return random;
+        }
+
+        
         private OverlayTile GetCurrentTile()
         {
             RaycastHit2D? hit = GetFocusedOnTile(transform.position);

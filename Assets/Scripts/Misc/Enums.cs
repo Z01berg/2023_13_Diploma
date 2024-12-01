@@ -48,3 +48,14 @@ public enum CardType
     Movement,
     Curse
 }
+
+// Wykorzystywane do oznaczenia animacji onHit
+public enum HitAnimation
+{
+    Arrow,
+    Blood,
+    Boom,
+    Fire_Meteor,
+    Electric,
+    Physical
+}
