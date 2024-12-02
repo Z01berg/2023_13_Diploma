@@ -116,9 +116,11 @@ public class MouseController : MonoBehaviour
                 tile.HideRangeTile();
             }
         }
-        if (!_playerController.enabled)
-        {
-            _playerController.enabled = true;
+        if (_playerController != null){
+            if (!_playerController.enabled)
+            {
+                _playerController.enabled = true;
+            }
         }
     }
 
