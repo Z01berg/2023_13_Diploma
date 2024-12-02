@@ -27,6 +27,7 @@ using UnityEngine;
         private static List<TimerData> _timers = new List<TimerData>();
 
         private int _activeTimerIndex = 0; // whose turn
+        public int ActiveTimerIndex => _activeTimerIndex;
 
         private bool _counting = false; // after pressing enter
 
@@ -394,6 +395,15 @@ using UnityEngine;
 */
             UpdateTexts();
             //AddToTimer(); WHY??????
+        }
+        
+        public TimerData GetTimerDataByIndex(int index)
+        {
+            if (index >= 0 && index < _timers.Count)
+            {
+                return _timers[index];
+            }
+            return null;
         }
 
     }

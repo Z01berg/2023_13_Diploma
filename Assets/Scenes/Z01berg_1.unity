@@ -586,14 +586,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2264738450791556759, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
-      propertyPath: _animator
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2264738450791556759, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
-      propertyPath: gameObjectTimer
-      value: 
-      objectReference: {fileID: 2008930652}
-    - target: {fileID: 2264738450791556759, guid: 52eb13be90228484ba87069d06e9d755, type: 3}
       propertyPath: timersController
       value: 
       objectReference: {fileID: 2008930652}

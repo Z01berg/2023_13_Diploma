@@ -71,20 +71,38 @@ namespace CardActions
             var card = cardInfo.display.cardSO;
             var cost = card.cost;
             var hpChange = card.damage;
-            hpChange = card.type == CardType.Attack ? hpChange = hpChange * -1 : hpChange;
-            HandleTypeAction(card.type);
-            
+            hpChange = (card.type == CardType.Attack ? hpChange * -1 : hpChange);
+
             _healthBarScript.ChangeHealth(hpChange);
             _timersManager.ChangeActiveTimerValue(cost);
+            AnimateSourceEntity(card.type); 
             ShowPopUpDamage(hpChange);
             EventSystem.DestroyCard.Invoke();
             EventSystem.LogAction?.Invoke(card);
-
-            Debug.Log("Change: " + hpChange);
-            Debug.Log(_healthBarScript.GetHealth());
         }
 
-        private void HandleTypeAction(CardType cardType)
+        private void AnimateSourceEntity(CardType cardType)
+        {
+            var sourceTimerData = _timersManager.GetTimerDataByIndex(_timersManager.ActiveTimerIndex);
+
+            if (sourceTimerData != null && sourceTimerData.HP != null)
+            {
+                Transform root = sourceTimerData.HP.transform.root;
+        
+                Transform animationTransform = root.Find("AnimationOnHit&&OnCast");
+                
+                if (animationTransform != null)
+                {
+                    Animator sourceAnimator = animationTransform.GetComponent<Animator>();
+                    if (sourceAnimator != null)
+                    {
+                        HandleTypeAction(cardType, sourceAnimator);
+                    }
+                }
+            }
+        }
+
+        private void HandleTypeAction(CardType cardType, Animator _animator)
         {
             switch (cardType)
             {

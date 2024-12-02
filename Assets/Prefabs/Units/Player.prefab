@@ -1037,8 +1037,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.51124454, y: 0.068749994, z: 0}
-    m_Extent: {x: 1.0137445, y: 0.57155, z: 0}
+    m_Center: {x: 0.51435, y: 0.06463352, z: 0}
+    m_Extent: {x: 1.0143499, y: 0.5726335, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.5829965
@@ -1639,6 +1639,7 @@ GameObject:
   - component: {fileID: 7146570010130287962}
   - component: {fileID: 7505738115539394662}
   - component: {fileID: 2264738450791556759}
+  - component: {fileID: 8538784782528161428}
   m_Layer: 0
   m_Name: body
   m_TagString: Player
@@ -1774,3 +1775,24 @@ MonoBehaviour:
   _animator: {fileID: 8687110412781917615}
   timersController: {fileID: 0}
   standingOnTile: {fileID: 0}
+--- !u!95 &8538784782528161428
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7934358016564866798}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b1435f8126b519c4281bc1847e1cc1f4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
