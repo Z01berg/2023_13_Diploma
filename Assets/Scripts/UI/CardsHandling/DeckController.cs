@@ -25,6 +25,7 @@ namespace UI
         [SerializeField] private GameObject _cardPrefab;
         [SerializeField] private int _overlay = 50;
         private CoverPosition _coverPosition;
+        
             
         /*Stworzyć 3 decki na kazdy rodzaj karty: attack, def, move. W momencie dobierania dobierać po dwie karty ataku, po dwie obrony i jedną ruchu.
          Utworzyć 3 heapy. Sprawdzać aktualną rękę i zliczać rodzaje kart. Na podstawie ich liczności dobierać karty  */
@@ -43,15 +44,14 @@ namespace UI
         {
             if ((_attackDeck.Count == 0 || _defenceDeck.Count == 0 || _movementDeck.Count == 0) && _deckExists)
             {
-                foreach (Transform child in gameObject.transform) {
+                foreach (Transform child in gameObject.transform)
+                {
                     Destroy(child.gameObject);
                 }
-                CreateDeck();
-                
-            }
 
-            
-            
+                CreateDeck();
+
+            }
         }
 
         public void ManageDeck()

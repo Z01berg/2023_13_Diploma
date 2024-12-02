@@ -172,10 +172,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 931036830296573056, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2864969684796256058, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: _camera
       value: 
       objectReference: {fileID: 1595791325}
+    - target: {fileID: 3375070631950199958, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -1314.846
+      objectReference: {fileID: 0}
+    - target: {fileID: 3375070631950199958, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 38.803467
+      objectReference: {fileID: 0}
     - target: {fileID: 3493898501580104390, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_Size
       value: 1
@@ -203,6 +215,30 @@ PrefabInstance:
     - target: {fileID: 3686208094149085902, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_AspectRatio
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198351598135630279, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: requiredHoldTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198351598135630279, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: _animationConfig.drawingCardsSpeed
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198351598135630279, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: _animationConfig.hoveringCardsSpeed
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198351598135630279, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: _animationConfig.positionChangeSpeed
+      value: 3500
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198351598135630279, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: _zoomConfig.overrideYPositionOfChosenCard
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198351598135630279, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: _zoomConfig.overrideYPositionOfUnusedCard
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 5190701253611071457, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_AnchorMax.x
@@ -370,7 +406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8430557056507411394, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.0024414
+      value: -0.0024414062
       objectReference: {fileID: 0}
     - target: {fileID: 8430557056507411394, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -733,7 +769,7 @@ PrefabInstance:
       objectReference: {fileID: 308086432}
     - target: {fileID: 4989101151596241865, guid: 72c464ea0d6153f4198a069d72aa8adb, type: 3}
       propertyPath: orthographic size
-      value: 10.99999
+      value: 8.300001
       objectReference: {fileID: 0}
     - target: {fileID: 8825355594499857502, guid: 72c464ea0d6153f4198a069d72aa8adb, type: 3}
       propertyPath: m_Follow
@@ -741,7 +777,7 @@ PrefabInstance:
       objectReference: {fileID: 308086432}
     - target: {fileID: 8825355594499857502, guid: 72c464ea0d6153f4198a069d72aa8adb, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 10.99999
+      value: 8.300001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

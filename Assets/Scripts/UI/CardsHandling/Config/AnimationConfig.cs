@@ -9,7 +9,8 @@ namespace UI
     [Serializable]
     public class AnimationConfig
     {
-        public float positionChangeSpeed = 500f;
+        public float drawingCardsSpeed = 500f;
+        public float hoveringCardsSpeed = 500f;
         public float zoomSpeed = 0.3f;
     }
 }

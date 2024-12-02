@@ -47,7 +47,9 @@ namespace UI
         [SerializeField] private GameObject _placeHolder;
 
         private RectTransform _placeHolderPosition;
-
+        
+        public float requiredHoldTime = 1.5f;
+        
         private void Start()
         {
             _rectTransform = GetComponent<RectTransform>();
@@ -69,8 +71,7 @@ namespace UI
         {
             UpdateCards();
         }
-
-        //
+        
         private void SetUpCards()
         {
             _cards.Clear();
@@ -266,6 +267,15 @@ namespace UI
             gameObject.SetActive(!isDisabled);
         }
 
+        public void OnCardDragStart(Wrapper card)
+        {
+            _currDraggedCard = card;
+        }
+        
+        public void OnCardDragEnd()
+        {
+            _currDraggedCard = null;
+        }
         private void RemoveHand()
         {
             foreach (Transform child in transform)
