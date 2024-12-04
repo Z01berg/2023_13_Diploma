@@ -279,8 +279,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -72.7, y: 0.00081038}
-  m_SizeDelta: {x: 6.12, y: 6.46}
+  m_AnchoredPosition: {x: -75.142, y: 0.00081038}
+  m_SizeDelta: {x: 11.534, y: 6.46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &5993661479862548668
 MeshRenderer:
@@ -371,11 +371,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
+  m_fontSize: 41.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 70
+  m_fontSizeMin: 40
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -407,7 +407,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -1.2935104, y: -0.2348826, z: -1.3018103, w: -0.2618277}
+  m_margin: {x: -0.095292576, y: -0.2348826, z: -0.103610516, w: -0.2618277}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popUpPrefab: {fileID: 467837565738204250, guid: 76ee967cebe21914aab9b16f2c3ddd77, type: 3}
   _animator: {fileID: 5841855842469657823}
-  gameObjectTimer: {fileID: 0}
+  timersController: {fileID: 0}
   standingOnTile: {fileID: 0}
 --- !u!95 &5386332985551933821
 Animator:
@@ -1237,8 +1237,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.52094996, y: 0.16270694, z: 0}
-    m_Extent: {x: 1.02205, y: 0.671407, z: 0}
+    m_Center: {x: 0.522, y: 0.16440696, z: 0}
+    m_Extent: {x: 1.0220001, y: 0.66970694, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.5829965
