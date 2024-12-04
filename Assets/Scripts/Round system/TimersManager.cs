@@ -149,7 +149,7 @@ using UnityEngine;
             }
         }
 
-        void HandleTimerInput()
+        public void HandleTimerInput(bool endTurnButton = false)
         {
             if (Input.GetKeyDown(KeyCode.RightControl))
             {
@@ -177,7 +177,7 @@ using UnityEngine;
                     ChangeActiveTimerValue(-1);
             }
 
-            if ((Input.GetKeyDown(KeyCode.Return) || _createdDeck) && _deckController.IsDeckCreated())
+            if (((Input.GetKeyDown(KeyCode.Return) || _createdDeck) || endTurnButton) && _deckController.IsDeckCreated())
             {
                 EnteredRoom();
                 _createdDeck = false;
