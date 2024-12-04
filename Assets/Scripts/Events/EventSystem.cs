@@ -34,7 +34,13 @@ public static class EventSystem
     public static UnityEvent<int> FinishEnemyTurn = new UnityEvent<int>();
 
     #endregion
-    
+
+    #region Finish turn button: EndTurnButton.cs -> Timer.cs
+
+    public static UnityEvent<bool> FinishTurnPlayer = new UnityEvent<bool>();
+
+    #endregion
+
     #region Delete Reference: HealthBar.cs -> TimerData.cs
 
     public static UnityEvent<int> DeleteReference = new UnityEvent<int>();

@@ -62,6 +62,7 @@ using UnityEngine;
             EventSystem.InitInv.AddListener(ChangeBool);
             EventSystem.ZeroTimer.AddListener(ResetCurrentTimer);
             EventSystem.StartCountdown.AddListener(EnteredRoom);
+        EventSystem.FinishTurnPlayer.AddListener(HandleTimerInput);
         }
 
         public void AddTextFromSetTimer(TMP_Text newText, string tag, GameObject HP)
@@ -149,7 +150,7 @@ using UnityEngine;
             }
         }
 
-        public void HandleTimerInput(bool endTurnButton = false)
+        void HandleTimerInput(bool endTurnButton = false)
         {
             if (Input.GetKeyDown(KeyCode.RightControl))
             {
