@@ -11,11 +11,13 @@ using UnityEngine;
 public class MouseController : MonoBehaviour
 {
     public GameObject cursor;
-
+    public float speed = 2;
     public GameObject playerPrefab;
 
     private RangeFinder _rangeFinder;
+    private PathFinder _pathFinder;
     public static List<OverlayTile> _rangeTiles;
+    private List<OverlayTile> path;
     private bool _isMoving;
 
     private Vector2 _playerPosition;
@@ -23,11 +25,13 @@ public class MouseController : MonoBehaviour
     private bool _canHideRange = false;
 
 
-
     private void Start()
     {
         _rangeFinder = new RangeFinder();
         _rangeTiles = new List<OverlayTile>();
+        path = new List<OverlayTile>();
+        _pathFinder = playerPrefab.GetComponent<PathFinder>();
+
         _playerController = playerPrefab.GetComponent<PlayerController>();
         EventSystem.ShowRange.AddListener(ShowRangeTiles);
         EventSystem.HideRange.AddListener(HideRangeTiles);
@@ -60,12 +64,36 @@ public class MouseController : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(1))
                 {
-                    // overlayTile.gameObject.GetComponent<OverlayTile>().HideTile();
+                    if (_playerController.standingOnTile == null)
+                    {
+                        _playerController.standingOnTile = _playerController.GetCurrentTile();
+                    }
+                    if (_playerController != null)
+                    {
+                        _playerController.PlayerMouseMovement(overlayTile);
+                    }
                     overlayTile.HideTile();
                 }
             }
+
+            // if (path.Count > 0)
+            // {
+            //     MoveAlongPath();
+            // }
         }
     }
+
+    // private void MoveAlongPath()
+    // {
+    //     var step = speed * Time.deltaTime;
+    //     playerPrefab.transform.position =
+    //         Vector2.MoveTowards(playerPrefab.transform.position, path[0].transform.position, step);
+    //     if (Vector2.Distance(playerPrefab.transform.position, path[0].transform.position) < 0.0001f)
+    //     {
+    //         PositionCharacterOnTile(path[0]);
+    //         path.RemoveAt(0);
+    //     }
+    // }
 
     private RaycastHit2D? GetFocusedOnTile()
     {
@@ -82,14 +110,14 @@ public class MouseController : MonoBehaviour
         return null;
     }
 
-    private void PositionCharacterOnTile(OverlayTile tile)
-    {
-        var closestTile =
-            playerPrefab.transform.position = new Vector3(tile.transform.position.x,
-                tile.transform.position.y + 0.0001f, tile.transform.position.z);
-        playerPrefab.GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder;
-        _playerController.standingOnTile = tile;
-    }
+    // private void PositionCharacterOnTile(OverlayTile tile)
+    // {
+    //     var closestTile =
+    //         playerPrefab.transform.position = new Vector3(tile.transform.position.x,
+    //             tile.transform.position.y + 0.0001f, tile.transform.position.z);
+    //     // playerPrefab.GetComponentInChildren<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder;
+    //     _playerController.standingOnTile = tile;
+    // }
 
     private void ShowRangeTiles(int range)
     {
@@ -100,7 +128,7 @@ public class MouseController : MonoBehaviour
         {
             tile.ShowRangeTile();
         }
-        
+
         if (_playerController.enabled)
         {
             _playerController.enabled = false;
@@ -116,7 +144,9 @@ public class MouseController : MonoBehaviour
                 tile.HideRangeTile();
             }
         }
-        if (_playerController != null){
+
+        if (_playerController != null)
+        {
             if (!_playerController.enabled)
             {
                 _playerController.enabled = true;
@@ -129,4 +159,17 @@ public class MouseController : MonoBehaviour
         var playerPos = playerPrefab.GetComponent<PlayerController>();
         return new Vector2(playerPos.standingOnTile.gridLocation.x, playerPos.standingOnTile.gridLocation.y);
     }
+
+    // private void MoveTowardsThePlayer()
+    // {
+    //     _endedMove = false;
+    //     
+    //     _playerPosition = _player.position;
+    //
+    //     _currentPath = _pathfinding.FindPath(_playerPosition);
+    //     if (_currentPath != null)
+    //     {
+    //         StartCoroutine(MoveAlongPath());
+    //     }
+    // }
 }
