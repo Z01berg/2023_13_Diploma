@@ -145,8 +145,8 @@ namespace CardActions
 
             text.text = popUpText;
         }
-        
-        private void ShowHitAnimation()
+
+        public void ShowHitAnimation()
         {
             _animator.SetInteger("checker", GetRandomNumber());
             _animator.SetTrigger(GetAnimationOnHit());

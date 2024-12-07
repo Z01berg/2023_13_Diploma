@@ -122,6 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 5
   _spriteRenderer: {fileID: 0}
+  _animator: {fileID: 5841855842469657823}
 --- !u!114 &411639774008011573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1237,8 +1238,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.522, y: 0.16440696, z: 0}
-    m_Extent: {x: 1.0220001, y: 0.66970694, z: 0}
+    m_Center: {x: 0.5158515, y: 0.16445693, z: 0}
+    m_Extent: {x: 1.0213516, y: 0.669657, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1.5829965

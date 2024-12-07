@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using CardActions;
 using Dungeon;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -13,6 +14,7 @@ public class EnemyController : MonoBehaviour
     
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Animator _animator;
 
     private Transform _player;
     private Tilemap _gridOverlayTilemap;
@@ -145,7 +147,19 @@ public class EnemyController : MonoBehaviour
 
     private void Attack()
     {
+        _animator.SetTrigger("Attack");
         EventSystem.ChangeHealthPlayer.Invoke(-1);
+        
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            ApplyCardEffect playerCardEffect = player.GetComponent<ApplyCardEffect>();
+            if (playerCardEffect != null)
+            {
+                playerCardEffect.ShowHitAnimation();
+            }
+        }
+        
         EndEnemyTurn();
     }
 
@@ -178,6 +192,8 @@ public class EnemyController : MonoBehaviour
             
             Vector3 nextWaypoint = _currentPath[i];
             nextWaypoint.z = transform.position.z;
+            
+            _animator.SetTrigger("Move");
             
             while (Vector3.Distance(transform.position, nextWaypoint) >= 0.001f)
             {
