@@ -62,7 +62,7 @@ public class MouseController : MonoBehaviour
                 {
                     overlayTile.ShowTile();
 
-                    if (CombatMode.isPlayerInCombat)
+                    if (CombatMode.isPlayerInCombat && Wrapper.cardInUse != null)
                     {
                         if (Wrapper.cardInUse.display.cardSO.type == CardType.Movement)
                         {
@@ -75,10 +75,6 @@ public class MouseController : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(1))
                 {
-                    if (_playerController.standingOnTile == null)
-                    {
-                        _playerController.standingOnTile = _playerController.GetCurrentTile();
-                    }
                     if (_playerController != null && !CombatMode.isPlayerInCombat)
                     {
                         _playerController.PlayerMouseMovement(overlayTile);
@@ -91,6 +87,10 @@ public class MouseController : MonoBehaviour
             // {
             //     MoveAlongPath();
             // }
+        }
+        if (_playerController.standingOnTile == null)
+        {
+            _playerController.standingOnTile = _playerController.GetCurrentTile();
         }
     }
 
@@ -140,10 +140,10 @@ public class MouseController : MonoBehaviour
             tile.ShowRangeTile();
         }
 
-        if (_playerController.enabled)
-        {
-            _playerController.enabled = false;
-        }
+        // if (_playerController.enabled)
+        // {
+        //     _playerController.enabled = false;
+        // }
     }
 
     private void HideRangeTiles()

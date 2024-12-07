@@ -166,7 +166,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private IEnumerator MoveAlongPath() //TODO przepisać do gracza żeby brało karty w czasie combatu 
+    private IEnumerator MoveAlongPath() 
     {
         for(int i = 0; i <= 3; i++)
         {

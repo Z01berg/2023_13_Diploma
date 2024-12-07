@@ -812,7 +812,7 @@ PrefabInstance:
       objectReference: {fileID: 308086432}
     - target: {fileID: 4989101151596241865, guid: 72c464ea0d6153f4198a069d72aa8adb, type: 3}
       propertyPath: orthographic size
-      value: 14.4
+      value: 11.99999
       objectReference: {fileID: 0}
     - target: {fileID: 8825355594499857502, guid: 72c464ea0d6153f4198a069d72aa8adb, type: 3}
       propertyPath: m_Follow
@@ -820,7 +820,7 @@ PrefabInstance:
       objectReference: {fileID: 308086432}
     - target: {fileID: 8825355594499857502, guid: 72c464ea0d6153f4198a069d72aa8adb, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 14.4
+      value: 11.99999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

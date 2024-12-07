@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Dungeon;
 using Grid.New;
+using UI;
 using UnityEngine;
 
 /**
@@ -213,16 +214,20 @@ namespace Player
             if (CombatMode.isPlayerInCombat)
             {
                 _currentPath = _pathFinder.FindPathInCombat(standingOnTile, overlayTile, rangeTiles);
+                EventSystem.DestroyCard?.Invoke();
             }
         }
         
         private void MoveAlongPath()
         {
+            if (Wrapper.cardInUse != null)
+            {
+                return;
+            }
             if (_currentPath[0] == null)
             {
                 return;   
             }
-            var step = _moveSpeed * Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, _currentPath[0].transform.position, _moveSpeed * Time.deltaTime);
             
             if (Vector2.Distance(transform.position, _currentPath[0].transform.position) < 0.0001f)

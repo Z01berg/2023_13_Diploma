@@ -42,16 +42,12 @@ namespace UI
 
         private void Update()
         {
-            if ((_attackDeck.Count == 0 || _defenceDeck.Count == 0 || _movementDeck.Count == 0) && _deckExists)
-            {
-                foreach (Transform child in gameObject.transform)
-                {
-                    Destroy(child.gameObject);
-                }
-
-                CreateDeck();
-
-            }
+            // if ((_attackDeck.Count == 0 || _defenceDeck.Count == 0 || _movementDeck.Count == 0) && _deckExists)
+            // {
+            //     RemoveCardsFromDeck();
+            //
+            //     CreateDeck();
+            // }
         }
 
         public void ManageDeck()
@@ -60,15 +56,15 @@ namespace UI
             Debug.Log(CombatMode.isPlayerInCombat);
             if (_attackDeck.Count != 0 && !CombatMode.GetIsPlayerInCombat())
             {
-                UpdateDeck(_attackDeck);
+                UpdateDeck();
             }
             if (_defenceDeck.Count != 0 && !CombatMode.GetIsPlayerInCombat())
             {
-                UpdateDeck(_defenceDeck);
+                UpdateDeck();
             }
             if (_movementDeck.Count != 0 && !CombatMode.GetIsPlayerInCombat())
             {
-                UpdateDeck(_movementDeck);
+                UpdateDeck();
             }
 
             if (!CombatMode.GetIsPlayerInCombat())
@@ -78,13 +74,25 @@ namespace UI
             
         }
 
-        private void UpdateDeck(List<GameObject> deck)
+        private void UpdateDeck()
         {
-            deck.Clear();
-            DestroyCreatedCards();
+            RemoveCardsFromDeck();
+            CreateDeck();
         }
 
 
+        private void RemoveCardsFromDeck()
+        {
+            foreach (Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
+            
+            _movementDeck.Clear();
+            _attackDeck.Clear();
+            _defenceDeck.Clear();
+        }
+        
         private void CreateDeck()
         {
             foreach (var card in _cards)
@@ -128,10 +136,9 @@ namespace UI
         {
             if (_attackDeck.Count == 0 || _defenceDeck.Count == 0 || _movementDeck.Count == 0)
             {
+                DestroyCreatedCards();
                 CreateDeck();
             }
-
-
             do
             {
                 if (HandController.currentAttackCardNumber < HandController.attackCardLimit)
