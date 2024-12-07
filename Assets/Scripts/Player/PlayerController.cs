@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Dungeon;
 using Grid.New;
 using UnityEngine;
 
@@ -76,6 +77,11 @@ namespace Player
             //     _movePoint.position,
             //     _moveSpeed * Time.deltaTime
             // );
+            _movePoint.position = Vector3.MoveTowards(
+                _movePoint.position,
+                transform.position,
+                _moveSpeed * Time.deltaTime);
+
             CalculatePlayerMove();
         }
 
@@ -187,21 +193,35 @@ namespace Player
         
         public void PlayerMouseMovement(OverlayTile overlayTile) 
         {
-            if (_currentPath.Count > 0)
-            {
-             return;   
-            }
+            // if (_currentPath.Count > 0)
+            // { 
+            //     return;   
+            // }
             
             _currentPath = _pathFinder.FindPathOutsideOfCombat(standingOnTile, overlayTile);
             var _endedMove = false;
-        
-            // var _playerPosition = gameObject.transform.position;
-        
             
+            // var _playerPosition = gameObject.transform.position
+        }
+        public void PlayerCardMovement(OverlayTile overlayTile, List<OverlayTile> rangeTiles) 
+        {
+            if (_currentPath.Count > 0)
+            { 
+                return;   
+            }
+            
+            if (CombatMode.isPlayerInCombat)
+            {
+                _currentPath = _pathFinder.FindPathInCombat(standingOnTile, overlayTile, rangeTiles);
+            }
         }
         
         private void MoveAlongPath()
         {
+            if (_currentPath[0] == null)
+            {
+                return;   
+            }
             var step = _moveSpeed * Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, _currentPath[0].transform.position, _moveSpeed * Time.deltaTime);
             

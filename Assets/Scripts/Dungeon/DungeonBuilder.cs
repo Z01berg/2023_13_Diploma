@@ -101,7 +101,8 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
     // init prefabs
     private void InstantiatedRoomGameobjects()
     {
-        List<Tilemap> wholeTileMap = new List<Tilemap>(); 
+        List<Tilemap> groundTileMap = new List<Tilemap>();
+        List<Tilemap> wallTileMap = new List<Tilemap>();
         foreach (KeyValuePair<string, Room> keyValuePair in DungeonBuilderRoomDictionary)
         {
             Room room = keyValuePair.Value;
@@ -128,9 +129,10 @@ public class DungeonBuilder : SingletonMonobehaviour<DungeonBuilder>
 
             room.InstantiatedRoom = instantiatedRoom;
 
-            wholeTileMap.Add(roomGameObject.transform.GetComponentsInChildren<Tilemap>().First(x => x.GetComponent<TilemapRenderer>().sortingLayerName.Equals("Ground")));
+            groundTileMap.Add(roomGameObject.transform.GetComponentsInChildren<Tilemap>().First(x => x.GetComponent<TilemapRenderer>().sortingLayerName.Equals("Ground")));
+            wallTileMap.Add(roomGameObject.transform.GetComponentsInChildren<Tilemap>().First(x => x.GetComponent<TilemapRenderer>().sortingLayerName.Equals("Wall")));
         }
-        _overlayManager.CreateOverlaysForRoom(wholeTileMap);
+        _overlayManager.CreateOverlaysForRoom(groundTileMap, wallTileMap);
 
     }
 

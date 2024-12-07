@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using CardActions;
+using Dungeon;
 using Grid.New;
 using Player;
 using UI;
@@ -60,6 +61,16 @@ public class MouseController : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     overlayTile.ShowTile();
+
+                    if (CombatMode.isPlayerInCombat)
+                    {
+                        if (Wrapper.cardInUse.display.cardSO.type == CardType.Movement)
+                        {
+                            _playerController.PlayerCardMovement(overlayTile, _rangeTiles);
+                        }
+                    }
+                    
+                    
                 }
 
                 if (Input.GetMouseButtonDown(1))
@@ -68,7 +79,7 @@ public class MouseController : MonoBehaviour
                     {
                         _playerController.standingOnTile = _playerController.GetCurrentTile();
                     }
-                    if (_playerController != null)
+                    if (_playerController != null && !CombatMode.isPlayerInCombat)
                     {
                         _playerController.PlayerMouseMovement(overlayTile);
                     }

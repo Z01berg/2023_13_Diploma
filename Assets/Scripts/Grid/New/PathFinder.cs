@@ -54,8 +54,8 @@ namespace Grid.New
         {
             searchableTiles = new Dictionary<Vector2, OverlayTile>();
 
-            List<OverlayTile> openList = new List<OverlayTile>();
-            HashSet<OverlayTile> closedList = new HashSet<OverlayTile>();
+            List<OverlayTile> possibleNodes = new List<OverlayTile>();
+            HashSet<OverlayTile> chosenNodes = new HashSet<OverlayTile>();
 
             if (inRangeTiles.Count > 0)
             {
@@ -64,19 +64,15 @@ namespace Grid.New
                     searchableTiles.Add(item.grid2DLocation, OverlayManager.Instance.map[item.grid2DLocation]);
                 }
             }
-            else
+
+            possibleNodes.Add(start);
+
+            while (possibleNodes.Count > 0)
             {
-                searchableTiles = OverlayManager.Instance.map;
-            }
+                OverlayTile currentOverlayTile = possibleNodes.OrderBy(x => x.F).First();
 
-            openList.Add(start);
-
-            while (openList.Count > 0)
-            {
-                OverlayTile currentOverlayTile = openList.OrderBy(x => x.F).First();
-
-                openList.Remove(currentOverlayTile);
-                closedList.Add(currentOverlayTile);
+                possibleNodes.Remove(currentOverlayTile);
+                chosenNodes.Add(currentOverlayTile);
 
                 if (currentOverlayTile == end)
                 {
@@ -85,7 +81,7 @@ namespace Grid.New
 
                 foreach (var tile in GetNeightbourOverlayTiles(currentOverlayTile))
                 {
-                    if (closedList.Contains(tile) || Mathf.Abs(currentOverlayTile.transform.position.z - tile.transform.position.z) > 1)
+                    if (chosenNodes.Contains(tile) || Mathf.Abs(currentOverlayTile.transform.position.z - tile.transform.position.z) > 1)
                     {
                         continue;
                     }
@@ -96,9 +92,9 @@ namespace Grid.New
                     tile.Previous = currentOverlayTile;
 
 
-                    if (!openList.Contains(tile))
+                    if (!possibleNodes.Contains(tile))
                     {
-                        openList.Add(tile);
+                        possibleNodes.Add(tile);
                     }
                 }
             }
