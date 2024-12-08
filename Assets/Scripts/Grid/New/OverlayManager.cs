@@ -32,7 +32,7 @@ public class OverlayManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    public void CreateOverlaysForRoom(List<Tilemap> tilemaps)
+    public void CreateOverlaysForRoom(List<Tilemap> groundTilemaps, List<Tilemap> wallTilemaps)
     {
 
         if (overlayContainer.transform.childCount != 0)
@@ -42,9 +42,10 @@ public class OverlayManager : MonoBehaviour
         
         map = new Dictionary<Vector2, OverlayTile>();
         
-        foreach (var tm in tilemaps)
+        foreach (var groundTm in groundTilemaps)
         {
-            BoundsInt bounds = tm.cellBounds;
+            var wallTm = wallTilemaps[groundTilemaps.IndexOf(groundTm)];
+            BoundsInt bounds = groundTm.cellBounds;
 
             for (int z = bounds.max.z; z > bounds.min.z; z--)
             {
@@ -52,11 +53,17 @@ public class OverlayManager : MonoBehaviour
                 {
                     for (int x = bounds.min.x; x < bounds.max.x; x++)
                     {
-                        var tileLocation = new Vector3Int(x, y, z);
-                        var cellWorldPosition = tm.GetCellCenterWorld(tileLocation);
+                        var groundTileLocation = new Vector3Int(x, y, z);
+                        var cellWorldPosition = groundTm.GetCellCenterWorld(groundTileLocation);
+                        
+                        if (wallTm.HasTile(wallTm.WorldToCell(cellWorldPosition))) //check if there is a wall tile on the same spot so the overlay tile won't generate in walls
+                        {
+                            continue;
+                        }
+                        
                         var tileKey = new Vector2((float)Math.Round(cellWorldPosition.x,3), (float)Math.Round(cellWorldPosition.y,3));
 
-                        if (tm.HasTile(tileLocation - new Vector3Int(0, 0, 1)) && tm.gameObject
+                        if (groundTm.HasTile(groundTileLocation - new Vector3Int(0, 0, 1)) && groundTm.gameObject
                                 .GetComponent<TilemapRenderer>().sortingLayerName.Equals("Ground"))
                         {
                             if (!map.ContainsKey(tileKey))
@@ -66,8 +73,7 @@ public class OverlayManager : MonoBehaviour
                                     cellWorldPosition.z + 1);
                                 // overlayTile.GetComponent<SpriteRenderer>().sortingOrder =
                                 //     tm.GetComponent<TilemapRenderer>().sortingOrder+1;
-                                overlayTile.gameObject.GetComponent<OverlayTile>().gridLocation =
-                                    cellWorldPosition;
+                                overlayTile.gameObject.GetComponent<OverlayTile>().gridLocation = tileKey;
                                 map.Add(tileKey, overlayTile.gameObject.GetComponent<OverlayTile>());
                             }
                         }

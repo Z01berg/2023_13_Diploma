@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UI.Config
 {
@@ -14,7 +15,8 @@ namespace UI.Config
 
         [Range(1f, 5f)] public float multiplier = 1;
 
-        public float overrideYPosition = -1; // -1 oznacza że nic się nie zmienia
+        public float overrideYPositionOfChosenCard = -1; // -1 oznacza że nic się nie zmienia, określa o ile idzie w góre po hoverze lub wyborze
+        public float overrideYPositionOfUnUsedCard = -1; // -1 oznacza że nic się nie zmienia, określa o ile idzie w dół gdy inna karta jest wybrana
 
         [Header("UI Layer")] public int defaultSortOrder;
 

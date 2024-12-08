@@ -25,6 +25,7 @@ namespace UI
         [SerializeField] private GameObject _cardPrefab;
         [SerializeField] private int _overlay = 50;
         private CoverPosition _coverPosition;
+        
             
         /*Stworzyć 3 decki na kazdy rodzaj karty: attack, def, move. W momencie dobierania dobierać po dwie karty ataku, po dwie obrony i jedną ruchu.
          Utworzyć 3 heapy. Sprawdzać aktualną rękę i zliczać rodzaje kart. Na podstawie ich liczności dobierać karty  */
@@ -41,17 +42,12 @@ namespace UI
 
         private void Update()
         {
-            if ((_attackDeck.Count == 0 || _defenceDeck.Count == 0 || _movementDeck.Count == 0) && _deckExists)
-            {
-                foreach (Transform child in gameObject.transform) {
-                    Destroy(child.gameObject);
-                }
-                CreateDeck();
-                
-            }
-
-            
-            
+            // if ((_attackDeck.Count == 0 || _defenceDeck.Count == 0 || _movementDeck.Count == 0) && _deckExists)
+            // {
+            //     RemoveCardsFromDeck();
+            //
+            //     CreateDeck();
+            // }
         }
 
         public void ManageDeck()
@@ -60,17 +56,16 @@ namespace UI
             Debug.Log(CombatMode.isPlayerInCombat);
             if (_attackDeck.Count != 0 && !CombatMode.GetIsPlayerInCombat())
             {
-                UpdateDeck(_attackDeck);
+                UpdateDeck();
             }
             if (_defenceDeck.Count != 0 && !CombatMode.GetIsPlayerInCombat())
             {
-                UpdateDeck(_defenceDeck);
+                UpdateDeck();
             }
             if (_movementDeck.Count != 0 && !CombatMode.GetIsPlayerInCombat())
             {
-                UpdateDeck(_movementDeck);
+                UpdateDeck();
             }
-
             if (!CombatMode.GetIsPlayerInCombat())
             {
                 CreateDeck();
@@ -78,17 +73,31 @@ namespace UI
             
         }
 
-        private void UpdateDeck(List<GameObject> deck)
+        private void UpdateDeck()
         {
-            deck.Clear();
-            DestroyCreatedCards();
+            RemoveCardsFromDeck();
+            UpdateCards();
+            CreateDeck();
         }
 
 
+        private void RemoveCardsFromDeck()
+        {
+            foreach (Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
+            
+            _movementDeck.Clear();
+            _attackDeck.Clear();
+            _defenceDeck.Clear();
+        }
+        
         private void CreateDeck()
         {
             foreach (var card in _cards)
             {
+                
                 var newCard = Instantiate(_cardPrefab, transform, true);
                 newCard.GetComponent<CardDisplay>().cardSO = card;
                 var position = transform.position;
@@ -128,10 +137,8 @@ namespace UI
         {
             if (_attackDeck.Count == 0 || _defenceDeck.Count == 0 || _movementDeck.Count == 0)
             {
-                CreateDeck();
+                UpdateDeck();
             }
-
-
             do
             {
                 if (HandController.currentAttackCardNumber < HandController.attackCardLimit)
@@ -156,6 +163,8 @@ namespace UI
         private void SendCardToHand(CardType type)
         {
             GameObject card;
+            
+            
             switch (type)
             {
                 case CardType.Attack:

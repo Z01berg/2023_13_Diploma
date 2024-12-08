@@ -1,5 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using Dungeon;
 using Grid.New;
+using UI;
 using UnityEngine;
 
 /**
@@ -41,10 +45,12 @@ namespace Player
 
         private bool _turnOff = false;
         private static bool _isPlayerTurn;
+        private PathFinder _pathFinder;
 
         private Vector2 _moveVector = Vector2.zero;
-        
+
         public OverlayTile standingOnTile;
+        private List<OverlayTile> _currentPath;
 
 
         private void Start()
@@ -52,9 +58,12 @@ namespace Player
             _movePoint.parent = null;
             GetComponent<PlayerController>().enabled = !GetComponent<PlayerController>().enabled;
             EventSystem.ChangeHealthPlayer.AddListener(UpdateHealth);
+            _pathFinder = gameObject.GetComponent<PathFinder>();
+            _currentPath = new List<OverlayTile>();
             EventSystem.PlayerMove.AddListener(ToogleScrypt);
             EventSystem.MovePlayer.AddListener(SetMoveVector);
             standingOnTile = GetCurrentTile();
+
         }
 
         private void UpdateHealth(int arg0)
@@ -64,14 +73,17 @@ namespace Player
 
         private void Update()
         {
-            transform.position = Vector3.MoveTowards(
-                transform.position,
+            // transform.position = Vector3.MoveTowards(
+            //     transform.position,
+            //     _movePoint.position,
+            //     _moveSpeed * Time.deltaTime
+            // );
+            _movePoint.position = Vector3.MoveTowards(
                 _movePoint.position,
-                _moveSpeed * Time.deltaTime
-            );
+                transform.position,
+                _moveSpeed * Time.deltaTime);
+
             CalculatePlayerMove();
-            CalculatePlayerGrid();
-            standingOnTile = GetCurrentTile();
         }
 
         public OverlayTile GetCurrentTile()
@@ -84,6 +96,7 @@ namespace Player
 
                 return overlayTile;
             }
+
             return null;
         }
 
@@ -106,7 +119,12 @@ namespace Player
             if (_turnOff)
             {
                 _turnOff = false;
-                this.enabled = false;
+                enabled = false;
+            }
+            
+            if (_currentPath.Count > 0)
+            {
+                  MoveAlongPath();
             }
         }
 
@@ -116,7 +134,8 @@ namespace Player
             {
                 if (Mathf.Abs(_moveVector.x) == 1f || Mathf.Abs(_moveVector.y) == 1f)
                 {
-                    if (!Physics2D.OverlapCircle(_movePoint.position + new Vector3(_moveVector.x, _moveVector.y, 0), .2f,
+                    if (!Physics2D.OverlapCircle(_movePoint.position + new Vector3(_moveVector.x, _moveVector.y, 0),
+                            .2f,
                             _whatStopsMovement))
                     {
                         _movePoint.position += new Vector3(_moveVector.x, _moveVector.y, 0);
@@ -126,10 +145,7 @@ namespace Player
             }
         }
 
-        private void CalculatePlayerGrid()
-        {
-                // RaycastHit2D
-        }
+        
 
         public void ToogleScrypt(bool isThis)
         {
@@ -140,10 +156,10 @@ namespace Player
             }
             else
             {
-                
                 this.enabled = isThis;
             }
         }
+
         public static bool getPlayerTurn()
         {
             return _isPlayerTurn;
@@ -157,7 +173,7 @@ namespace Player
         public int ActionPoints => _actionPoints;
         public int SkillRange => _skillRange;
         public int SkillDamage => _skillDamage;
-        
+
         private void RotateSprite(Vector3 direction)
         {
             if (direction == new Vector3(-1, 0, 0))
@@ -170,5 +186,67 @@ namespace Player
             }
         }
         
+        // Vector3Int GetClickedTilePosition()
+        // {
+        //     Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //     return _gridOverlayTilemap.WorldToCell(clickPosition);
+        // }
+        
+        public void PlayerMouseMovement(OverlayTile overlayTile) 
+        {
+            // if (_currentPath.Count > 0)
+            // { 
+            //     return;   
+            // }
+            
+            _currentPath = _pathFinder.FindPathOutsideOfCombat(standingOnTile, overlayTile);
+            var _endedMove = false;
+            
+            // var _playerPosition = gameObject.transform.position
+        }
+        public void PlayerCardMovement(OverlayTile overlayTile, List<OverlayTile> rangeTiles) 
+        {
+            if (_currentPath.Count > 0)
+            { 
+                return;   
+            }
+            
+            if (CombatMode.isPlayerInCombat)
+            {
+                _currentPath = _pathFinder.FindPathInCombat(standingOnTile, overlayTile, rangeTiles);
+                if (_currentPath.Count == 0)
+                {
+                    return;
+                }
+                EventSystem.DestroyCard?.Invoke();
+            }
+        }
+        
+        private void MoveAlongPath()
+        {
+            if (Wrapper.cardInUse != null)
+            {
+                return;
+            }
+            if (_currentPath[0] == null)
+            {
+                return;   
+            }
+            transform.position = Vector2.MoveTowards(transform.position, _currentPath[0].transform.position, _moveSpeed * Time.deltaTime);
+            
+            if (Vector2.Distance(transform.position, _currentPath[0].transform.position) < 0.0001f)
+            {
+                PlaceOnTile(_currentPath[0]);
+                _currentPath.RemoveAt(0);
+            }
+        }
+        private void PlaceOnTile(OverlayTile overlayTile)
+        {
+            var position = overlayTile.transform.position;
+            var closestTile =
+                transform.position = new Vector3(position.x,
+                    position.y + 0.0001f, position.z);
+            standingOnTile = overlayTile;
+        }
     }
 }

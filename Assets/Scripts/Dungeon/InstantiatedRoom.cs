@@ -1,4 +1,4 @@
- using CardActions;
+using CardActions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,26 +9,25 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
 
- /**
-  * Publiczna klasa InstantiatedRoom jest odpowiedzialna za inicjalizację pokoi w grze.
-  *
-  * Ma w sobie informacje o:
-  * - pokoju
-  * - siatce
-  * - mapie kafelków
-  * - dekoracjach
-  * - kolizjach
-  * - minimapie
-  * - granicach kolizji pokoju
-  * - portalu
-  * - prefabrykacie przeciwników
-  * - zegarze
-  * - liście przeciwników w pokoju
-  * - liście drzwi w pokoju
-  * - skrypcie BoxCollider2D
-  * - liczniku
-  */
- 
+/**
+ * Publiczna klasa InstantiatedRoom jest odpowiedzialna za inicjalizację pokoi w grze.
+ *
+ * Ma w sobie informacje o:
+ * - pokoju
+ * - siatce
+ * - mapie kafelków
+ * - dekoracjach
+ * - kolizjach
+ * - minimapie
+ * - granicach kolizji pokoju
+ * - portalu
+ * - prefabrykacie przeciwników
+ * - zegarze
+ * - liście przeciwników w pokoju
+ * - liście drzwi w pokoju
+ * - skrypcie BoxCollider2D
+ * - liczniku
+ */
 [DisallowMultipleComponent]
 [RequireComponent(typeof(BoxCollider2D))]
 public class InstantiatedRoom : MonoBehaviour
@@ -45,7 +44,7 @@ public class InstantiatedRoom : MonoBehaviour
     [HideInInspector] public Bounds roomColliderBounds;
 
     public GameObject portal;
-    
+
     public GameObject enemyPrefab;
     public GameObject eE_Miner;
     public GameObject eE_Wizard;
@@ -54,7 +53,7 @@ public class InstantiatedRoom : MonoBehaviour
     public GameObject eE_Clerick;
     public GameObject eE_Explorer;
     public GameObject timer;
-    
+
     public List<GameObject> enemyInRoomList = new();
     public List<GameObject> doorsList = new();
 
@@ -203,7 +202,7 @@ public class InstantiatedRoom : MonoBehaviour
                 //copy
                 tilemap.SetTile(new Vector3Int(startPosition.x + xPos, startPosition.y - 1 - yPos, 0),
                     tilemap.GetTile(new Vector3Int(startPosition.x + xPos, startPosition.y - yPos, 0)));
-                
+
                 //set rotation
                 tilemap.SetTransformMatrix(new Vector3Int(startPosition.x + xPos, startPosition.y - 1 - yPos, 0),
                     transformMatrix);
@@ -277,8 +276,8 @@ public class InstantiatedRoom : MonoBehaviour
             Vector3 roomWorldCenterCords = compCollider.bounds.center;
             //Debug.LogError(this.collision.transform.parent.parent.name);
             _camera.AdjustCameraToTheRoomSize(new Vector2(
-                    compCollider.bounds.size.x/2, 
-                    compCollider.bounds.size.y/2), 
+                    compCollider.bounds.size.x / 2,
+                    compCollider.bounds.size.y / 2),
                 roomWorldCenterCords);
             GameObject roomCenterObject = InstantiateRoomCenterObject(roomWorldCenterCords);
             _camera.virtualCamera.Follow = roomCenterObject.transform;
@@ -310,12 +309,12 @@ public class InstantiatedRoom : MonoBehaviour
 
         EventSystem.InstatiatedRoom.Invoke();
     }
-    
+
     public void CloseAllDoors()
     {
         var positions = room.SpawnPositionArray.ToList();
         bool _boss = false;
-        
+
         int numEnemiesToSpawn = positions.Count;
         foreach (var position in positions.Take(numEnemiesToSpawn))
         {
@@ -330,101 +329,99 @@ public class InstantiatedRoom : MonoBehaviour
 
         if (!_boss)
         {
-            if (_cleared)return;
-        CombatMode.SetTrue();
-        _cleared = true;
-        
-        if (positions.Count() == 1)
-        {
-            CombatMode.SetFalse();
-            return;
-        }
+            if (_cleared) return;
+            CombatMode.SetTrue();
+            _cleared = true;
 
-
-        for (int i = 0; i < positions.Count; i++)
-        {
-            var temp = positions[i];
-            int randomIndex = Random.Range(i, positions.Count);
-            positions[i] = positions[randomIndex];
-            positions[randomIndex] = temp;
-        }
-
-
-        bool spawnEventEnemy = Random.Range(1, 6) == 1;
-        IEnumerable<Vector2Int> selectedPositions;
-        bool eventEnemySpawned = false;
-        if (spawnEventEnemy)
-        {
-            eventEnemySpawned = false;
-            eventEnemySpawned = false;
-            selectedPositions = positions.Take(1);
-        }
-        else
-        {
-            int randomNumEnemiesToSpawn = Random.Range(1, positions.Count + 1);
-            selectedPositions = positions.Take(randomNumEnemiesToSpawn);
-        }
-
-        
-
-
-        foreach (var position in selectedPositions)
-        {
-            int randomValue = Random.Range(0, 6);
-
-            GameObject selectedEnemy = null;
-
-            switch(randomValue) 
+            if (positions.Count() == 1)
             {
-                case 0:
-                    selectedEnemy = eE_Miner;
-                    break;
-                case 1:
-                    selectedEnemy = eE_Wizard;
-
-                    break;
-                case 2:
-                    selectedEnemy = eE_Warrior;
-                    break;
-                case 3:
-                    selectedEnemy = eE_Skeleton;
-                    break;
-                case 4:
-                    selectedEnemy = eE_Clerick;
-                    break;
-                case 5:
-                    selectedEnemy = eE_Explorer;
-                    break;
+                CombatMode.SetFalse();
+                return;
             }
-            
-            
-            if (spawnEventEnemy && !eventEnemySpawned)
+
+
+            for (int i = 0; i < positions.Count; i++)
             {
-                var eventE = Instantiate(selectedEnemy, transform.Find("Grid"));
-                eventE.transform.localPosition = new Vector3(position.x + 0.5f, position.y + 0.5f, -6f);
-                enemyInRoomList.Clear();
-                enemyInRoomList.Add(eventE);
-                eventE.GetComponentInChildren<ShowCaseEvent>().room = this;
-                eventEnemySpawned = true;
+                var temp = positions[i];
+                int randomIndex = Random.Range(i, positions.Count);
+                positions[i] = positions[randomIndex];
+                positions[randomIndex] = temp;
+            }
+
+
+            bool spawnEventEnemy = Random.Range(1, 6) == 1;
+            IEnumerable<Vector2Int> selectedPositions;
+            bool eventEnemySpawned = false;
+            if (spawnEventEnemy)
+            {
+                eventEnemySpawned = false;
+                eventEnemySpawned = false;
+                selectedPositions = positions.Take(1);
             }
             else
             {
-                var enemy = Instantiate(enemyPrefab, transform.Find("Grid"));
-                enemy.gameObject.GetComponentInChildren<ApplyCardEffect>().timersController = timer;
-                enemy.transform.localPosition = new Vector3(position.x + 0.5f, position.y + 0.5f, -6f);
-                enemyInRoomList.Add(enemy);
-                enemy.GetComponent<HealthBar>().room = this;
-                CombatMode.isPlayerInCombat = true;
+                int randomNumEnemiesToSpawn = Random.Range(1, positions.Count + 1);
+                selectedPositions = positions.Take(randomNumEnemiesToSpawn);
             }
-        }
-        
-        foreach (var door in doorsList)
-        {
-            door.GetComponent<DoorLogic>().CloseDoors();
-        }
-        
-        EventSystem.DrawACard.Invoke();
-        EventSystem.InstatiatedRoom.Invoke();
+
+
+            foreach (var position in selectedPositions)
+            {
+                int randomValue = Random.Range(0, 6);
+
+                GameObject selectedEnemy = null;
+
+                switch (randomValue)
+                {
+                    case 0:
+                        selectedEnemy = eE_Miner;
+                        break;
+                    case 1:
+                        selectedEnemy = eE_Wizard;
+
+                        break;
+                    case 2:
+                        selectedEnemy = eE_Warrior;
+                        break;
+                    case 3:
+                        selectedEnemy = eE_Skeleton;
+                        break;
+                    case 4:
+                        selectedEnemy = eE_Clerick;
+                        break;
+                    case 5:
+                        selectedEnemy = eE_Explorer;
+                        break;
+                }
+
+
+                if (spawnEventEnemy && !eventEnemySpawned)
+                {
+                    var eventE = Instantiate(selectedEnemy, transform.Find("Grid"));
+                    eventE.transform.localPosition = new Vector3(position.x + 0.5f, position.y + 0.5f, -6f);
+                    enemyInRoomList.Clear();
+                    enemyInRoomList.Add(eventE);
+                    eventE.GetComponentInChildren<ShowCaseEvent>().room = this;
+                    eventEnemySpawned = true;
+                }
+                else
+                {
+                    var enemy = Instantiate(enemyPrefab, transform.Find("Grid"));
+                    enemy.gameObject.GetComponentInChildren<ApplyCardEffect>().timersController = timer;
+                    enemy.transform.localPosition = new Vector3(position.x + 0.5f, position.y + 0.5f, -6f);
+                    enemyInRoomList.Add(enemy);
+                    enemy.GetComponent<HealthBar>().room = this;
+                    CombatMode.isPlayerInCombat = true;
+                }
+            }
+
+            foreach (var door in doorsList)
+            {
+                door.GetComponent<DoorLogic>().CloseDoors();
+            }
+
+            EventSystem.DrawACard.Invoke();
+            EventSystem.InstatiatedRoom.Invoke();
         }
     }
 
@@ -435,5 +432,4 @@ public class InstantiatedRoom : MonoBehaviour
         roomCenterObject.transform.SetParent(collision.transform);
         return roomCenterObject;
     }
-    
 }
