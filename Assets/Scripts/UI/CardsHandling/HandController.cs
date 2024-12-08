@@ -214,8 +214,8 @@ namespace UI
                 _cards.Remove(card);
                 PlaceHolder.isTaken = false;
 
-                _eventsConfig.cardDestroy?.Invoke(new CardDestroy(card));
                 CardCountDeduction(card.GetComponent<CardDisplay>().cardSO.type);
+                _eventsConfig.cardDestroy?.Invoke(new CardDestroy(card));
                 Destroy(card.gameObject);
             }
             else
