@@ -47,7 +47,9 @@ namespace UI
         [SerializeField] private GameObject _placeHolder;
 
         private RectTransform _placeHolderPosition;
-
+        
+        public float requiredHoldTime = 1.5f;
+        
         private void Start()
         {
             _rectTransform = GetComponent<RectTransform>();
@@ -69,8 +71,7 @@ namespace UI
         {
             UpdateCards();
         }
-
-        //
+        
         private void SetUpCards()
         {
             _cards.Clear();
@@ -129,7 +130,6 @@ namespace UI
             }
             currentCardNumber = currentAttackCardNumber  + currentDefenceCardNumber + currentMovementCardNumber;
             SetCardsPosition();
-            // SetCardsRotation(); 
             SetCardsUILayers();
             UpdateCardOrder();
         }
@@ -182,9 +182,7 @@ namespace UI
             }
         }
 
-        private void
-            DistributeChildrenToFitContainer(
-                float cardsTotalWidth) // Karty są rozkładane żeby zmiesciły sie w kontenerze (przez to się na siebie nakładaja)
+        private void DistributeChildrenToFitContainer(float cardsTotalWidth) // Karty są rozkładane żeby zmiesciły sie w kontenerze (przez to się na siebie nakładaja)
         {
             var width = _rectTransform.rect.width * transform.lossyScale.x;
             var distanceBetweenCards = (width - cardsTotalWidth) / (_cards.Count - 1);
@@ -197,9 +195,7 @@ namespace UI
             }
         }
 
-        private void
-            DistributeChildrenWithoutOverlap(
-                float cardsTotalWidth) // Karty są rozkładane nie zależnie od szerokości kontenera (nie będą się na siebie nakładać)
+        private void DistributeChildrenWithoutOverlap(float cardsTotalWidth) // Karty są rozkładane nie zależnie od szerokości kontenera (nie będą się na siebie nakładać)
         {
             var currPosition = transform.position.x - cardsTotalWidth / 2;
             foreach (Wrapper card in _cards)
@@ -266,12 +262,22 @@ namespace UI
             gameObject.SetActive(!isDisabled);
         }
 
+        public void OnCardDragStart(Wrapper card)
+        {
+            _currDraggedCard = card;
+        }
+        
+        public void OnCardDragEnd()
+        {
+            _currDraggedCard = null;
+        }
         private void RemoveHand()
         {
             foreach (Transform child in transform)
             {
                 Destroy(child.gameObject);
             }
+            
 
             currentCardNumber = 0;
             currentAttackCardNumber = 0;

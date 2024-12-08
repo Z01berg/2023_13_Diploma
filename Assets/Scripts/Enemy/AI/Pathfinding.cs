@@ -11,14 +11,34 @@ public class Pathfinding : MonoBehaviour
     private Dictionary<Vector3Int, Node> _nodes = new Dictionary<Vector3Int, Node>();
     private HashSet<Vector3Int> _busyTilesSet = new HashSet<Vector3Int>();
 
+    private List<Vector3> _currentPath;
+
+
     /*
     private void Start()
     {
         CreateNodes();
     }
     */
+    private class Node
+    {
+        public Vector3 worldPosition;
+        public Vector3Int gridPosition;
+        public Node parent;
+        public float gCost;
+        public float hCost;
 
-    public void CreateNodes()
+        public float FCost => gCost + hCost;
+
+        public Node(Vector3 worldPosition, Vector3Int gridPosition)
+        {
+            this.worldPosition = worldPosition;
+            this.gridPosition = gridPosition;
+        }
+    }
+
+
+    private void CreateNodesForEnemies()
     {
         _nodes.Clear();
         _busyTilesSet.Clear();
@@ -44,6 +64,23 @@ public class Pathfinding : MonoBehaviour
         // Debug.Log($"Created {_nodes.Count} nodes");
     }
 
+    private void CreateNodesForPlayer()
+    {
+        _nodes.Clear();
+        _busyTilesSet.Clear();
+        
+        foreach (var pos in groundTilemap.cellBounds.allPositionsWithin)
+        {
+            var worldPos = groundTilemap.GetCellCenterWorld(pos);  
+            bool isTileBusy = _busyTilesSet.Contains(pos);
+            if (groundTilemap.HasTile(pos) && !topTilemap.HasTile(pos) && !isTileBusy)
+            {
+                _nodes[pos] = new Node(worldPos, pos);
+            }
+        }
+        // Debug.Log($"Created {_nodes.Count} nodes");
+    }
+
     public List<Vector3> FindPath(Vector3 targetPosition)
     {
         if (groundTilemap == null || topTilemap == null)
@@ -51,9 +88,16 @@ public class Pathfinding : MonoBehaviour
             // Debug.LogWarning("Ground or top tilemap not set.");
             return null;
         }
-        
-        CreateNodes();
-        
+
+        if (gameObject.CompareTag("Enemy"))
+        {
+            CreateNodesForEnemies();
+        }
+        else
+        {
+            CreateNodesForPlayer();
+        }
+
         var startCell = groundTilemap.WorldToCell(transform.position);
         var targetCell = groundTilemap.WorldToCell(targetPosition);
 
@@ -120,6 +164,7 @@ public class Pathfinding : MonoBehaviour
         return null;
     }
 
+
     private List<Vector3> RetracePath(Node startNode, Node endNode)
     {
         var path = new List<Vector3>();
@@ -166,23 +211,6 @@ public class Pathfinding : MonoBehaviour
         return distanceX + distanceY;
     }
 
-    private class Node
-    {
-        public Vector3 worldPosition;
-        public Vector3Int gridPosition;
-        public Node parent;
-        public float gCost;
-        public float hCost;
-
-        public float FCost => gCost + hCost;
-
-        public Node(Vector3 worldPosition, Vector3Int gridPosition)
-        {
-            this.worldPosition = worldPosition;
-            this.gridPosition = gridPosition;
-        }
-    }
-
     /*
     private bool IsGroundTileBusy(Vector3Int tilePosition)
     {
@@ -221,6 +249,14 @@ public class Pathfinding : MonoBehaviour
             }
         }
     }
+    
+    // public void ChaseTarget(Vector3 targetPosition)
+    // {
+    //     Vector3 startPosition = transform.position;
+    //
+    //     _currentPath = FindPath(targetPosition);
+    //     _currentWaypointIndex = 0;
+    // }
 }
 
 
