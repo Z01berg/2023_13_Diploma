@@ -194,6 +194,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1347722522410134037, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_Name
+      value: NextTurnButton
+      objectReference: {fileID: 0}
     - target: {fileID: 2864969684796256058, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: _camera
       value: 
