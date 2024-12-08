@@ -124,7 +124,7 @@ namespace Player
             
             if (_currentPath.Count > 0)
             {
-                MoveAlongPath();
+                  MoveAlongPath();
             }
         }
 
@@ -214,6 +214,10 @@ namespace Player
             if (CombatMode.isPlayerInCombat)
             {
                 _currentPath = _pathFinder.FindPathInCombat(standingOnTile, overlayTile, rangeTiles);
+                if (_currentPath.Count == 0)
+                {
+                    return;
+                }
                 EventSystem.DestroyCard?.Invoke();
             }
         }

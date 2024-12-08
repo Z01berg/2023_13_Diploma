@@ -66,7 +66,6 @@ namespace UI
             {
                 UpdateDeck();
             }
-
             if (!CombatMode.GetIsPlayerInCombat())
             {
                 CreateDeck();
@@ -77,6 +76,7 @@ namespace UI
         private void UpdateDeck()
         {
             RemoveCardsFromDeck();
+            UpdateCards();
             CreateDeck();
         }
 
@@ -97,6 +97,7 @@ namespace UI
         {
             foreach (var card in _cards)
             {
+                
                 var newCard = Instantiate(_cardPrefab, transform, true);
                 newCard.GetComponent<CardDisplay>().cardSO = card;
                 var position = transform.position;
@@ -136,8 +137,7 @@ namespace UI
         {
             if (_attackDeck.Count == 0 || _defenceDeck.Count == 0 || _movementDeck.Count == 0)
             {
-                DestroyCreatedCards();
-                CreateDeck();
+                UpdateDeck();
             }
             do
             {
@@ -163,6 +163,8 @@ namespace UI
         private void SendCardToHand(CardType type)
         {
             GameObject card;
+            
+            
             switch (type)
             {
                 case CardType.Attack:

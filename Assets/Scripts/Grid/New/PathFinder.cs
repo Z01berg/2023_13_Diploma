@@ -52,6 +52,10 @@ namespace Grid.New
         
         public List<OverlayTile> FindPathInCombat(OverlayTile start, OverlayTile end, List<OverlayTile> inRangeTiles)
         {
+            if (!inRangeTiles.Contains(end))
+            {
+                return new List<OverlayTile>();
+            }
             searchableTiles = new Dictionary<Vector2, OverlayTile>();
 
             List<OverlayTile> possibleNodes = new List<OverlayTile>();
