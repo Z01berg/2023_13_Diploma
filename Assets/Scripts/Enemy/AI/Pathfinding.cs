@@ -64,23 +64,6 @@ public class Pathfinding : MonoBehaviour
         // Debug.Log($"Created {_nodes.Count} nodes");
     }
 
-    private void CreateNodesForPlayer()
-    {
-        _nodes.Clear();
-        _busyTilesSet.Clear();
-        
-        foreach (var pos in groundTilemap.cellBounds.allPositionsWithin)
-        {
-            var worldPos = groundTilemap.GetCellCenterWorld(pos);  
-            bool isTileBusy = _busyTilesSet.Contains(pos);
-            if (groundTilemap.HasTile(pos) && !topTilemap.HasTile(pos) && !isTileBusy)
-            {
-                _nodes[pos] = new Node(worldPos, pos);
-            }
-        }
-        // Debug.Log($"Created {_nodes.Count} nodes");
-    }
-
     public List<Vector3> FindPath(Vector3 targetPosition)
     {
         if (groundTilemap == null || topTilemap == null)
@@ -92,10 +75,6 @@ public class Pathfinding : MonoBehaviour
         if (gameObject.CompareTag("Enemy"))
         {
             CreateNodesForEnemies();
-        }
-        else
-        {
-            CreateNodesForPlayer();
         }
 
         var startCell = groundTilemap.WorldToCell(transform.position);
