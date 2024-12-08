@@ -135,10 +135,6 @@ namespace UI
         
         public void DrawACard() 
         {
-            if (_attackDeck.Count == 0 || _defenceDeck.Count == 0 || _movementDeck.Count == 0)
-            {
-                UpdateDeck();
-            }
             do
             {
                 if (HandController.currentAttackCardNumber < HandController.attackCardLimit)
@@ -162,9 +158,12 @@ namespace UI
 
         private void SendCardToHand(CardType type)
         {
+            if (_attackDeck.Count == 0 || _defenceDeck.Count == 0 || _movementDeck.Count == 0)
+            {
+                UpdateDeck();
+            }
+
             GameObject card;
-            
-            
             switch (type)
             {
                 case CardType.Attack:
