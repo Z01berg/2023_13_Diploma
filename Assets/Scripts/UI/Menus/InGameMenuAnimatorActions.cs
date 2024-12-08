@@ -30,5 +30,4 @@ public class InGameMenuAnimatorActions : MonoBehaviour
     {
         _IngameMenu.GetComponent<IngameUIManager>().ChangeMapVisible();
     }
-    
 }

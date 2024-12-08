@@ -163,7 +163,7 @@ public class EnemyController : MonoBehaviour
         EndEnemyTurn();
     }
 
-    private void MoveTowardsThePlayer()
+    private void MoveTowardsThePlayer() 
     {
         _endedMove = false;
         
@@ -180,7 +180,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private IEnumerator MoveAlongPath()
+    private IEnumerator MoveAlongPath() 
     {
         for(int i = 0; i <= 3; i++)
         {
@@ -212,26 +212,24 @@ public class EnemyController : MonoBehaviour
         EventSystem.FinishEnemyTurn.Invoke(Random.Range(5, 8));
     }
 
-    /*
-    Vector3Int GetClickedTilePosition()
-    {
-        Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        return _gridOverlayTilemap.WorldToCell(clickPosition);
-    }
-    */
-    
-    /*
-    void ChaseTarget(Vector3 targetPosition)
-    {
-        Vector3 startPosition = transform.position;
-
-        _currentPath = _pathfinding.FindPath(startPosition, targetPosition);
-        _currentWaypointIndex = 0;
-    }
-    */
+     /*
+     Vector3Int GetClickedTilePosition()
+     {
+         Vector3 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+         return _gridOverlayTilemap.WorldToCell(clickPosition);
+     }
+     */
+     
+     // void ChaseTarget(Vector3 targetPosition)
+     // {
+     //     Vector3 startPosition = transform.position;
+     //
+     //     _currentPath = _pathfinding.FindPath(targetPosition);
+     //     _currentWaypointIndex = 0;
+     // }
     
     
-    private void ToggleScript(int enemyId, Vector3 plpos)
+    private void ToggleScript(int enemyId, Vector3 playerPosition)
     {
         
         if (enemyId == _enemyId)

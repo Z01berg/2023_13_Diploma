@@ -12,9 +12,11 @@ public class PlayerInputsController : MonoBehaviour, IDefaultMausenKeysActions
 
     private DefaultInputs _controls;
     private GraphicRaycaster _raycaster;
+    private bool _buttonPressed;
 
     private void Start()
     {
+        _buttonPressed = false;
         _raycaster = GameObject.Find("UI").GetComponent<GraphicRaycaster>();
     }
     private void OnEnable()
@@ -22,11 +24,14 @@ public class PlayerInputsController : MonoBehaviour, IDefaultMausenKeysActions
         PrepareInputs();
         _controls.DefaultMausenKeys.Move.performed += OnMove;
         _controls.DefaultMausenKeys.Equipment.performed += OnEquipment;
+        _controls.DefaultMausenKeys.Equipment.canceled += OnEquipmentCanceled;
         _controls.DefaultMausenKeys.Menu.performed += OnMenu;
+        _controls.DefaultMausenKeys.Menu.canceled += OnMenuCanceled;
         _controls.DefaultMausenKeys.DoubleClick.performed += OnDoubleClick;
         _controls.DefaultMausenKeys.Move.canceled += OnMoveCancelled;
         _controls.DefaultMausenKeys.Help.performed += OnHelp;
         _controls.DefaultMausenKeys.Map.performed += OnMap;
+        _controls.DefaultMausenKeys.Map.canceled += OnMapCanceled;
     }
 
     private void OnDisable()
@@ -39,6 +44,9 @@ public class PlayerInputsController : MonoBehaviour, IDefaultMausenKeysActions
         _controls.DefaultMausenKeys.Move.canceled -= OnMoveCancelled;
         _controls.DefaultMausenKeys.Help.performed -= OnHelp;
         _controls.DefaultMausenKeys.Map.performed -= OnMap;
+        _controls.DefaultMausenKeys.Equipment.canceled -= OnEquipmentCanceled;
+        _controls.DefaultMausenKeys.Menu.canceled -= OnMenuCanceled;
+        _controls.DefaultMausenKeys.Map.canceled -= OnMapCanceled;
     }
 
     private void PrepareInputs()
@@ -59,12 +67,23 @@ public class PlayerInputsController : MonoBehaviour, IDefaultMausenKeysActions
 
     public void OnMenu(InputAction.CallbackContext context)
     {
+        if (_buttonPressed) return;
+        _buttonPressed = true;
         EventSystem.OpenClosePauseMenu?.Invoke();
     }
-
+    public void OnMenuCanceled(InputAction.CallbackContext context)
+    {
+        _buttonPressed = false;
+    }
     public void OnEquipment(InputAction.CallbackContext context)
     {
+        if (_buttonPressed) return;
+        _buttonPressed = true;
         EventSystem.OpenCloseInventory?.Invoke();
+    }
+    public void OnEquipmentCanceled(InputAction.CallbackContext context)
+    {
+        _buttonPressed = false;
     }
 
     public void OnInteract(InputAction.CallbackContext context)
@@ -97,6 +116,12 @@ public class PlayerInputsController : MonoBehaviour, IDefaultMausenKeysActions
 
     public void OnMap(InputAction.CallbackContext context)
     {
+        if (_buttonPressed) return;
+        _buttonPressed = true;
         EventSystem.OpenMap?.Invoke();
+    }
+    public void OnMapCanceled(InputAction.CallbackContext context)
+    {
+        _buttonPressed = false;
     }
 }

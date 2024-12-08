@@ -172,11 +172,8 @@ public class IngameUIManager : MonoBehaviour
                 Inventory.Instance._itemsPanel.GetComponent<ListAllAvailable>().AddItemToList(item);
                 Inventory.Instance.notDisplayedYet.Remove(item);
             }
-
-
         }
     }
-
     public void SetMenuInvisible()
     {
         if (_locked) return;
