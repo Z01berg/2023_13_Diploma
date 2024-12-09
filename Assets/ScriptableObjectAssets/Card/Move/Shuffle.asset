@@ -19,7 +19,7 @@ MonoBehaviour:
   cardQuality: 0
   title: Shuffle
   description: Mortal life is very miserable
-  cost: 0
+  cost: 1
   damage: 0
   move: 1
   backgroundPath: Graphics/CardBackgrounds/MovementCards/Move I
