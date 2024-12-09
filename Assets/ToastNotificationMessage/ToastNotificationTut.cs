@@ -22,7 +22,7 @@ public class ToastNotificationTut : MonoBehaviour, IPointerEnterHandler, IPointe
     public static MessageScreenPosition messageScreenPosition; // Position of the message on the screen.
     public static Vector2 margin; // Margin X an Y of messages on screen
     public static bool darkTheme; // Set DarkTheme (true) or LightTheme (false)
-    public static float minimumMessageTime = 3; // Minimum time that all messages will remain on the screen
+    public static float minimumMessageTime = 8; // Minimum time that all messages will remain on the screen
     public static bool hideOnClick = true; // Allow/disable hide messages on click
     public static bool isHiding = false; // Check if can animate with Fade effect a message
     public static bool isCanvasGroup = false; // Check if has a CanvasGroup in toastNotificationTut object
@@ -38,7 +38,7 @@ public class ToastNotificationTut : MonoBehaviour, IPointerEnterHandler, IPointe
     [Tooltip("Disable it to use the default Light Theme on messages")]
     public bool _darkTheme = true;
     [Tooltip("Minimun time that all messages will be displayed.")]
-    public float _minimumMessageTime = 30;
+    public float _minimumMessageTime = 80;
     [Tooltip("Margin X and Y on the corners. Margin X doens't works with centralized messages.")]
     public Vector2 _margin = new Vector2(20, 20);
     [Tooltip("Stop the timer when mouse cursor is over the ToastNotificationTut object")]
@@ -46,7 +46,7 @@ public class ToastNotificationTut : MonoBehaviour, IPointerEnterHandler, IPointe
     [Tooltip("Hide/dismiss the message when it's clicked")]
     public bool _hideOnClick = true;
     [Tooltip("Position of messages on screen")]
-    public MessageScreenPosition _messageScreenPosition = MessageScreenPosition.BottomCenter;
+    public MessageScreenPosition _messageScreenPosition = MessageScreenPosition.BottomLeft;
     [Tooltip("Direction of timer countdown. Auto will choose the best position relative to the Message Screen Position option.")]
     public TimerDirection _timerDirection = TimerDirection.LeftToRight;
 

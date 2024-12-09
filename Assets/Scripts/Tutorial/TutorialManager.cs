@@ -3,9 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
-    private int currentRoom = 0;
-    private bool inventoryChecked = false;
-    private bool enemyDefeated = false;
+    private static int currentRoom = 0;
+    private static bool inventoryChecked = false;
+    private static bool enemyDefeated = false;
     
     private void Start()
     {
@@ -35,28 +35,28 @@ public class TutorialManager : MonoBehaviour
         switch (roomIndex)
         {
             case 0: 
-                ToastNotificationTut.Show("Greetings, traveler! I am King Arthurth III, ruler of these lands. I've heard rumors that you seek fortune. Well, lucky for you, I have a proposition.");
-                ToastNotificationTut.Show("Press 'E' to take stock of your belongings.");
+                MessageQueueManager.ShowMessage("Greetings, traveler! I am King Arthurth III, ruler of these lands. I've heard rumors that you seek fortune. Well, lucky for you, I have a proposition.");
+                MessageQueueManager.ShowMessage("Press 'E' to take stock of your belongings.");
                 break;
 
             case 1: 
-                ToastNotificationTut.Show("Here we are—the Trap Room. These rooms are common in the Tower, so prepare yourself each time you step through a doorway.");
-                ToastNotificationTut.Show("Now, let’s talk combat. See that strange clock near your HP bar and the enemy’s HP bar? That’s a turn timer.");
-                ToastNotificationTut.Show("Each card in your deck has a number in the top-left corner. That’s how much time it adds to your clock. Cards show effects like attack power, defense, range, or movement points.");
-                ToastNotificationTut.Show("LEFT-MOUSE button to select card RIGHT-MOUSE button to unselect card, and LEFT-MOUSE button on grid to use a card");
-                ToastNotificationTut.Show("After you played your card click button END TURN to the right or just hit ENTER");
-                ToastNotificationTut.Show("Defeat the enemy to proceed.");
+                MessageQueueManager.ShowMessage("Here we are—the Trap Room. These rooms are common in the Tower, so prepare yourself each time you step through a doorway.");
+                MessageQueueManager.ShowMessage("Now, let’s talk combat. See that strange clock near your HP bar and the enemy’s HP bar? That’s a turn timer.");
+                MessageQueueManager.ShowMessage("Each card in your deck has a number in the top-left corner. That’s how much time it adds to your clock. Cards show effects like attack power, defense, range, or movement points.");
+                MessageQueueManager.ShowMessage("LEFT-MOUSE button to select card RIGHT-MOUSE button to unselect card, and LEFT-MOUSE button on grid to use a card");
+                MessageQueueManager.ShowMessage("After you played your card click button END TURN to the right or just hit ENTER");
+                MessageQueueManager.ShowMessage("Defeat the enemy to proceed.");
                 //if (enemy != null) enemy.SetActive(true); // Activate enemy
                 break;
 
             case 2: 
-                ToastNotificationTut.Show("This is it—the entrance to the Tower. Within, you'll find rooms with portals. These portals allow you to ascend—or perhaps descend.");
-                ToastNotificationTut.Show("What lies beyond each portal? Danger, treasure, or worse. Steel your resolve, traveler, for only the brave and cunning will thrive here.");
+                MessageQueueManager.ShowMessage("This is it—the entrance to the Tower. Within, you'll find rooms with portals. These portals allow you to ascend—or perhaps descend.");
+                MessageQueueManager.ShowMessage("What lies beyond each portal? Danger, treasure, or worse. Steel your resolve, traveler, for only the brave and cunning will thrive here.");
                 break;
         }
     }
 
-    private void ProceedToNextRoom()
+    public void ProceedToNextRoom()
     {
         currentRoom++;
         EnterRoom(currentRoom);
@@ -64,7 +64,7 @@ public class TutorialManager : MonoBehaviour
 
     private void CompleteTutorial()
     {
-        ToastNotificationTut.Show("Congratulations! You’ve completed the tutorial. Now, go forth and conquer the Tower!");
+        MessageQueueManager.ShowMessage("Congratulations! You’ve completed the tutorial. Now, go forth and conquer the Tower!");
         SceneManager.LoadScene("Z01berg_1");
     }
 
@@ -73,11 +73,11 @@ public class TutorialManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && !inventoryChecked)
         {
             inventoryChecked = true;
-            ToastNotificationTut.Show("Hmm... You're quite poor, aren't you? No matter. Take a look around your inventory.");
+            MessageQueueManager.ShowMessage("Hmm... You're quite poor, aren't you? No matter. Take a look around your inventory.");
         }
         else if (inventoryChecked && Input.GetKeyDown(KeyCode.E))
         {
-            ToastNotificationTut.Show("Finished poking around? Good. Now, follow me down this corridor. (use LEFT-MOUSE BUTTON)");
+            MessageQueueManager.ShowMessage("Finished poking around? Good. Now, follow me down this corridor. (use LEFT-MOUSE BUTTON)");
             ProceedToNextRoom();
         }
     }
@@ -87,8 +87,8 @@ public class TutorialManager : MonoBehaviour
         if (enemyDefeated) 
         {
             enemyDefeated = true;
-            ToastNotificationTut.Show("Well done! You’re already shaping up to be a fine tower diver. Let’s continue through the corridor. (use LEFT-MOUSE BUTTON)");
-            ToastNotificationTut.Show("Remember after clearing the room you get new item to inventory. (press E)");
+            MessageQueueManager.ShowMessage("Well done! You’re already shaping up to be a fine tower diver. Let’s continue through the corridor. (use LEFT-MOUSE BUTTON)");
+            MessageQueueManager.ShowMessage("Remember after clearing the room you get new item to inventory. (press E)");
             ProceedToNextRoom();
         }
     }
@@ -97,7 +97,7 @@ public class TutorialManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W)) 
         {
-            ToastNotificationTut.Show("This is the entrance to the Tower. Prepare yourself! (enter inside of portal)");
+            MessageQueueManager.ShowMessage("This is the entrance to the Tower. Prepare yourself! (enter inside of portal)");
             CompleteTutorial();
         }
     }

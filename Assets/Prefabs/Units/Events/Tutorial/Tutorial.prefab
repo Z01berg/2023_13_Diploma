@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4568426875033849097}
   - component: {fileID: 4339005522671134041}
+  - component: {fileID: 2095785562713198279}
   m_Layer: 27
   m_Name: ShowCase
   m_TagString: Untagged
@@ -80,6 +81,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85378e0044c0b76489bc7f6b85cf6f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2095785562713198279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692474702388845548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9246cd9b74246909e975c57b3973f35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2643206576501656121
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,8 +120,8 @@ RectTransform:
   m_GameObject: {fileID: 2643206576501656121}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6712763530250859213}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -144,11 +157,11 @@ MonoBehaviour:
   _messagePrefab: {fileID: 7001399534701900153, guid: ecd5facade7fe2e40a4658269e9c065b, type: 3}
   _showTimerRender: 1
   _darkTheme: 1
-  _minimumMessageTime: 3
+  _minimumMessageTime: 7
   _margin: {x: 20, y: 20}
   _stopOnOver: 1
   _hideOnClick: 1
-  _messageScreenPosition: 2
+  _messageScreenPosition: 5
   _timerDirection: 0
 --- !u!1 &5003070030094881626
 GameObject:
@@ -210,8 +223,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 2110511557
+  m_SortingOrder: 19
   m_TargetDisplay: 0
 --- !u!114 &3351061007199885820
 MonoBehaviour:
