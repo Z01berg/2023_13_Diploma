@@ -196,4 +196,11 @@ public static class EventSystem
     public static UnityEvent OpenMap = new UnityEvent();
 
     #endregion
+    
+    #region StopPath when entering room 
+
+    public static UnityEvent StopPath = new UnityEvent();
+
+    #endregion
+
 }
