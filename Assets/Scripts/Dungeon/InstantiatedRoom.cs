@@ -68,6 +68,8 @@ public class InstantiatedRoom : MonoBehaviour
 
     private CameraProperties _camera;
 
+    private GameObject _roomCenterObject;
+
     private void Awake()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
@@ -75,6 +77,7 @@ public class InstantiatedRoom : MonoBehaviour
         //Save room collider bounds
         roomColliderBounds = boxCollider2D.bounds;
         _camera = FindObjectOfType<CameraProperties>();
+        _roomCenterObject = InstantiateRoomCenterObject(boxCollider2D.bounds.center);
     }
 
     public void Initialise(GameObject roomGameObject)
@@ -273,15 +276,30 @@ public class InstantiatedRoom : MonoBehaviour
         CloseAllDoors();
         if (CombatMode.isPlayerInCombat)
         {
-            CompositeCollider2D compCollider = GetComponentInChildren<CompositeCollider2D>();
-            Vector3 roomWorldCenterCords = compCollider.bounds.center;
+            //CompositeCollider2D compCollider = GetComponentInChildren<CompositeCollider2D>();
+            //Vector3 roomWorldCenterCords = compCollider.bounds.center;
             //Debug.LogError(this.collision.transform.parent.parent.name);
+            //Vector3 roomWorldCenterCords = boxCollider2D.bounds.center;
             _camera.AdjustCameraToTheRoomSize(new Vector2(
-                    compCollider.bounds.size.x/2, 
-                    compCollider.bounds.size.y/2), 
-                roomWorldCenterCords);
-            GameObject roomCenterObject = InstantiateRoomCenterObject(roomWorldCenterCords);
-            _camera.virtualCamera.Follow = roomCenterObject.transform;
+                    boxCollider2D.bounds.size.x, 
+                    boxCollider2D.bounds.size.y), 
+                boxCollider2D.bounds.center);
+            if (!_camera.isCameraPanEnabled)
+            {
+                if (_camera.virtualCamera.Follow == _camera.player.transform && _camera.isFollowEnabled)
+                {
+                    _camera.virtualCamera.Follow = _roomCenterObject.transform;
+                } else if (_camera.virtualCamera.Follow == null && !_camera.isFollowEnabled)
+                {
+                    _camera.virtualCamera.Follow = _roomCenterObject.transform;
+                    _camera.isFollowEnabled = !_camera.isFollowEnabled;
+                }
+            }
+            else
+            {
+                _camera.virtualCamera.Follow = null;
+            }
+            
         }
     }
 
@@ -432,7 +450,7 @@ public class InstantiatedRoom : MonoBehaviour
     {
         GameObject roomCenterObject = new GameObject("RoomCenterObject");
         roomCenterObject.transform.position = roomCenter;
-        roomCenterObject.transform.SetParent(collision.transform);
+        roomCenterObject.transform.SetParent(boxCollider2D.transform);
         return roomCenterObject;
     }
     
