@@ -10,28 +10,21 @@ using static ToastNotification;
 
 public class ShowCase : MonoBehaviour
 {
-    private bool skipped = false;
+
     private void Update()
     {
         // This is a example where you can use ToastNotification anywhere, like in a character script, item script, shop UI...
         // Anywhere you want, just call ToastNotification.Show :D
         if( Input.GetKeyDown( KeyCode.V ))
         {
-            ToastNotification.Show("Yeah, a simple Key can display a message. And this message doens't have a \"timer\" display render","Clerick");
+            ToastNotification.Show("Yeah, a simple Key can display a message. And this message doens't have a \"timer\" display render", 10);
         }
 
         // You can setup a key/function/event/everthing to hide messages on screen. Very useful with infinite messages.
         // Example use case: "Press E to get into the car", after pressing the key, the message disappears
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
-            EventSystem.SkipText.Invoke();
-            skipped = !skipped;
-            
-            if (skipped)
-            {
-                ToastNotification.Hide();
-                //TODO: ZABIJ SIĘ
-            }
+            ToastNotification.Hide();
         }
     }
 
@@ -48,7 +41,6 @@ public void ShowMessageDefault()
     }
     public void ShowMessageWithoutTimer()
     {
-        ToastNotification.messageScreenPosition = MessageScreenPosition.BottomCenter;
         ToastNotification.Show("If the timer hits zero, this message will be infinite... click to close it or press Z key", 0, "info" );
     }
 

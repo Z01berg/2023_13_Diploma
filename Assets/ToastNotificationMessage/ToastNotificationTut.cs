@@ -2,22 +2,17 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-// State the position of the message on the screen.
-public enum MessageScreenPosition { TopLeft, TopCenter, TopRight, Center, BottomLeft, BottomCenter, BottomRight }
-// State on the side where the timer is decreased on the screen
-public enum TimerDirection { LeftToRight, RightToLeft }
 
 /// <summary>
-/// Hierarchy ToastNotification object control. Use this class to call the Show (and its overloads) and Hide methods.
+/// Hierarchy ToastNotificationTut object control. Use this class to call the Show (and its overloads) and Hide methods.
 /// You can handle public static variables to customize the way messages appear on the screen,
 /// but by doing so, you will override the configuration of all subsequent messages.
 /// </summary>
-public class ToastNotification : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ToastNotificationTut : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
 
     // The prefab used to display messages. Please choose one prefab on root folder. You can also create your own message prefab
-    public Transform _messagePrefab_1;
-    public Transform _messagePrefab_2;
+    public Transform _messagePrefab;
 
     // Public static variables accessible throughout the project
     // Be careful when changing them at runtime, as as static variables, this will override existing settings
@@ -30,12 +25,11 @@ public class ToastNotification : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public static float minimumMessageTime = 3; // Minimum time that all messages will remain on the screen
     public static bool hideOnClick = true; // Allow/disable hide messages on click
     public static bool isHiding = false; // Check if can animate with Fade effect a message
-    public static bool isCanvasGroup = false; // Check if has a CanvasGroup in toastNotification object
+    public static bool isCanvasGroup = false; // Check if has a CanvasGroup in toastNotificationTut object
 
     // Private static variables
-    private static Transform messagePrefab_1; // Get the public prefab in a static variable
-    private static Transform messagePrefab_2;
-    private static Transform toastNotification; // Get the object that this script is linked to this static variable
+    private static Transform messagePrefab; // Get the public prefab in a static variable
+    private static Transform toastNotificationTut; // Get the object that this script is linked to this static variable
 
     // Default message patterns configurable in the Unity Editor
     [Header("Default Message Patterns:")]
@@ -44,15 +38,15 @@ public class ToastNotification : MonoBehaviour, IPointerEnterHandler, IPointerEx
     [Tooltip("Disable it to use the default Light Theme on messages")]
     public bool _darkTheme = true;
     [Tooltip("Minimun time that all messages will be displayed.")]
-    public float _minimumMessageTime = 3;
+    public float _minimumMessageTime = 30;
     [Tooltip("Margin X and Y on the corners. Margin X doens't works with centralized messages.")]
     public Vector2 _margin = new Vector2(20, 20);
-    [Tooltip("Stop the timer when mouse cursor is over the ToastNotification object")]
+    [Tooltip("Stop the timer when mouse cursor is over the ToastNotificationTut object")]
     public bool _stopOnOver = true;
     [Tooltip("Hide/dismiss the message when it's clicked")]
     public bool _hideOnClick = true;
     [Tooltip("Position of messages on screen")]
-    public MessageScreenPosition _messageScreenPosition = MessageScreenPosition.TopRight;
+    public MessageScreenPosition _messageScreenPosition = MessageScreenPosition.BottomCenter;
     [Tooltip("Direction of timer countdown. Auto will choose the best position relative to the Message Screen Position option.")]
     public TimerDirection _timerDirection = TimerDirection.LeftToRight;
 
@@ -62,9 +56,8 @@ public class ToastNotification : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
 
         // Assign public variables to their static counterparts
-        messagePrefab_1 = _messagePrefab_1;
-        messagePrefab_2 = _messagePrefab_2;
-        toastNotification = transform;
+        messagePrefab = _messagePrefab;
+        toastNotificationTut = transform;
 
         minimumMessageTime = _minimumMessageTime;
         hideOnClick = _hideOnClick;
@@ -74,19 +67,19 @@ public class ToastNotification : MonoBehaviour, IPointerEnterHandler, IPointerEx
         messageScreenPosition = _messageScreenPosition;
         margin = _margin;
 
-        // Setup toastNotification object to works correctly in any environment 
-        setupToastNotificationObject();
-        void setupToastNotificationObject(){
-            // Check if the ToastNotification object has a CanvasGroup component
+        // Setup toastNotificationTut object to works correctly in any environment 
+        setupToastNotificationTutObject();
+        void setupToastNotificationTutObject(){
+            // Check if the ToastNotificationTut object has a CanvasGroup component
             // If you don't add it, there will be no fade animations in your messages
-            if (toastNotification.GetComponent<CanvasGroup>())
+            if (toastNotificationTut.GetComponent<CanvasGroup>())
                 isCanvasGroup = true;
 
             // Set the RectTransform properties for positioning
             // The messages' parent object must be completely reset to function correctly
-            toastNotification.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
-            toastNotification.GetComponent<RectTransform>().anchorMax = new Vector2(0, 0);
-            toastNotification.GetComponent<RectTransform>().pivot = new Vector2(0, 0);
+            toastNotificationTut.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
+            toastNotificationTut.GetComponent<RectTransform>().anchorMax = new Vector2(0, 0);
+            toastNotificationTut.GetComponent<RectTransform>().pivot = new Vector2(0, 0);
         }
 
     }
@@ -102,8 +95,8 @@ public class ToastNotification : MonoBehaviour, IPointerEnterHandler, IPointerEx
         // Hide effect process
         if ( isHiding)
         {
-            toastNotification.GetComponent<CanvasGroup>().alpha -= 0.08f;
-            if (toastNotification.GetComponent<CanvasGroup>().alpha < 0.01f)
+            toastNotificationTut.GetComponent<CanvasGroup>().alpha -= 0.08f;
+            if (toastNotificationTut.GetComponent<CanvasGroup>().alpha < 0.01f)
             {
                 // When is completely hided, call Hide function to dismiss the message
                 Hide();
@@ -111,10 +104,10 @@ public class ToastNotification : MonoBehaviour, IPointerEnterHandler, IPointerEx
             }
         }
         // Show message process
-        else if (toastNotification.GetComponent<CanvasGroup>().alpha < 1)
+        else if (toastNotificationTut.GetComponent<CanvasGroup>().alpha < 1)
         {
             
-            toastNotification.GetComponent<CanvasGroup>().alpha += 0.05f;
+            toastNotificationTut.GetComponent<CanvasGroup>().alpha += 0.05f;
         }
 
     }
@@ -163,22 +156,11 @@ public class ToastNotification : MonoBehaviour, IPointerEnterHandler, IPointerEx
         if ( timerInSeconds <= -1 )
             timerInSeconds = minimumMessageTime;
 
-        Transform message;
         // Instantiate message prefab and configure it
-        if (messagePrefab_1 == null )
-        {
-            message = messagePrefab_2;
-        }else if (messagePrefab_2 == null)
-        {
-            message = messagePrefab_1;
-        }
-        else
-        {
-            message = Instantiate(Random.Range(0, 2) == 0 ? messagePrefab_1 : messagePrefab_2, toastNotification);
-        }
+        Transform message = Instantiate(messagePrefab, toastNotificationTut);
         message.gameObject.SetActive(true);
         message.name = "Message"; // <- You can change the name of messages that are created here
-        if ( isCanvasGroup ) toastNotification.GetComponent<CanvasGroup>().alpha = 0; // Instatiate with zero alpha (invisible)
+        if ( isCanvasGroup ) toastNotificationTut.GetComponent<CanvasGroup>().alpha = 0; // Instatiate with zero alpha (invisible)
 
         // Get IMAGE component of text, icons, timer and background
         TextMeshProUGUI text = message.Find("Text").GetComponent<TextMeshProUGUI>();
@@ -189,7 +171,7 @@ public class ToastNotification : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
         // Useful variables that will be used by some functions below.
         Vector2 backgroundSize = background.GetComponent<RectTransform>().sizeDelta;
-        RectTransform parentRect = toastNotification.GetComponent<RectTransform>();
+        RectTransform parentRect = toastNotificationTut.GetComponent<RectTransform>();
 
         // Start of the chain of functions that configures a new message on the screen
         SetText();
@@ -201,7 +183,7 @@ public class ToastNotification : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
         // Set the message text and his aligment
         // You can change the text alignment at any time using something like:
-        // GameObject.Find("ToastNotification").transform.Find("Text").GetComponent<TextMeshProUGUI>().aligment = ...
+        // GameObject.Find("ToastNotificationTut").transform.Find("Text").GetComponent<TextMeshProUGUI>().aligment = ...
         void SetText()
         {
             text.text = messageText;
@@ -217,7 +199,7 @@ public class ToastNotification : MonoBehaviour, IPointerEnterHandler, IPointerEx
             // If a iconName was passed
             if( iconName != "") 
             {
-                iconName = Capitalize(iconName); // You can use your Capitalize function for free. Just call ToastNotification.Capitalize
+                iconName = Capitalize(iconName); // You can use your Capitalize function for free. Just call ToastNotificationTut.Capitalize
                 selectedIcon = icons.Find(iconName).transform.GetComponent<UnityEngine.UI.Image>(); // Find icon in child
                 selectedIcon.enabled = true;
             }
@@ -229,7 +211,7 @@ public class ToastNotification : MonoBehaviour, IPointerEnterHandler, IPointerEx
                 background.GetComponent<RectTransform>().sizeDelta = backgroundSize;
                 Vector2 newAnchor = background.GetComponent<RectTransform>().anchoredPosition;
                 newAnchor = new Vector2(newAnchor.x - iconSize, newAnchor.y);
-                toastNotification.GetComponent<RectTransform>().anchoredPosition = newAnchor;
+                toastNotificationTut.GetComponent<RectTransform>().anchoredPosition = newAnchor;
                 text.GetComponent<RectTransform>().sizeDelta *= 0.90f ;
                 text.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
             }
@@ -265,13 +247,13 @@ public class ToastNotification : MonoBehaviour, IPointerEnterHandler, IPointerEx
         // Set the settings created in this parent object to the instantiated child object, which is the Message
         void SetupInvokeMessage()
         {
-            ToastNotificationMessage toastNotificationMessage = message.GetComponent<ToastNotificationMessage>();
-            toastNotificationMessage.timerRectTransform = timer.GetComponent<RectTransform>();
-            toastNotificationMessage.messageTime = timerInSeconds;
+            ToastNotificationTutMessage toastNotificationTutMessage = message.GetComponent<ToastNotificationTutMessage>();
+            toastNotificationTutMessage.timerRectTransform = timer.GetComponent<RectTransform>();
+            toastNotificationTutMessage.messageTime = timerInSeconds;
 
             timer.enabled = showTimerRender;
             timer.enabled = timerInSeconds == 0 ? false : timer.enabled;
-            toastNotificationMessage.leftToRight = timerDirection == TimerDirection.LeftToRight;
+            toastNotificationTutMessage.leftToRight = timerDirection == TimerDirection.LeftToRight;
 
         }
 
@@ -291,7 +273,7 @@ public class ToastNotification : MonoBehaviour, IPointerEnterHandler, IPointerEx
         void SetMessagePositionOnScreen()
         {
 
-            RectTransform parentRect = toastNotification.GetComponent<RectTransform>();
+            RectTransform parentRect = toastNotificationTut.GetComponent<RectTransform>();
             Vector2 backgroundSize = background.GetComponent<RectTransform>().sizeDelta;
 
             if (messageScreenPosition == MessageScreenPosition.TopLeft)
@@ -343,12 +325,12 @@ public class ToastNotification : MonoBehaviour, IPointerEnterHandler, IPointerEx
     // "HIDE" is nothing more than destroying the object on the screen. This function can be called at any time
     public static void Hide()
     {
-        if (toastNotification.childCount <= 0)
+        if (toastNotificationTut.childCount <= 0)
             return;
-        for (int i = 0; i < toastNotification.childCount; i++)
+        for (int i = 0; i < toastNotificationTut.childCount; i++)
         {
-            if (toastNotification.GetChild(i).gameObject.activeSelf == true)
-                Destroy(toastNotification.GetChild(i).gameObject);
+            if (toastNotificationTut.GetChild(i).gameObject.activeSelf == true)
+                Destroy(toastNotificationTut.GetChild(i).gameObject);
         }
     }
 
