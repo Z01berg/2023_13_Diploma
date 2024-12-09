@@ -72,10 +72,9 @@ public class Pathfinding : MonoBehaviour
             return null;
         }
 
-        if (gameObject.CompareTag("Enemy"))
-        {
-            CreateNodesForEnemies();
-        }
+        
+        CreateNodesForEnemies();
+        
 
         var startCell = groundTilemap.WorldToCell(transform.position);
         var targetCell = groundTilemap.WorldToCell(targetPosition);
