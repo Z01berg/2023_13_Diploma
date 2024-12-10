@@ -4475,7 +4475,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3473978733960977, guid: f302c1296165ef84ea5489727505a305, type: 3}
       propertyPath: m_text
-      value: v 0.4.22
+      value: v 0.4.23
       objectReference: {fileID: 0}
     - target: {fileID: 3473978733960977, guid: f302c1296165ef84ea5489727505a305, type: 3}
       propertyPath: m_fontSize
@@ -9534,8 +9534,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 510685817}
   m_HandleRect: {fileID: 510685816}
   m_Direction: 2
-  m_Value: 1.0000008
-  m_Size: 0.89303774
+  m_Value: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

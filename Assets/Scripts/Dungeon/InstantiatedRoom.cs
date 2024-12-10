@@ -270,6 +270,7 @@ public class InstantiatedRoom : MonoBehaviour
         if (enemyInRoomList.Count == 0 && !collision.gameObject.CompareTag("Player")) return;
         EventSystem.StartCountdown.Invoke();
         CloseAllDoors();
+        EventSystem.StopPath.Invoke();
         if (CombatMode.isPlayerInCombat)
         {
             CompositeCollider2D compCollider = GetComponentInChildren<CompositeCollider2D>();

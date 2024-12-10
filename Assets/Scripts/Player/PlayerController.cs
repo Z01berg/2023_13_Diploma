@@ -62,9 +62,12 @@ namespace Player
             _currentPath = new List<OverlayTile>();
             EventSystem.PlayerMove.AddListener(ToogleScrypt);
             EventSystem.MovePlayer.AddListener(SetMoveVector);
+            EventSystem.StopPath.AddListener(StopPath);
             standingOnTile = GetCurrentTile();
 
         }
+
+        
 
         private void UpdateHealth(int arg0)
         {
@@ -247,6 +250,10 @@ namespace Player
                 transform.position = new Vector3(position.x,
                     position.y + 0.0001f, position.z);
             standingOnTile = overlayTile;
+        }
+        private void StopPath()
+        {
+            _currentPath.Clear();
         }
     }
 }

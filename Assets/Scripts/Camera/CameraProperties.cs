@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Cinemachine;
-using Dungeon;
-using UnityEditor.PackageManager;
+using System;
 using UnityEngine;
 
 public class CameraProperties : MonoBehaviour
