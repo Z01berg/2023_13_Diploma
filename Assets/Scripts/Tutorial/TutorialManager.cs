@@ -1,3 +1,4 @@
+using System.Diagnostics.Tracing;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -64,7 +65,6 @@ public class TutorialManager : MonoBehaviour
     private void CompleteTutorial()
     {
         MessageQueueManager.ShowMessage("Congratulations! You’ve completed the tutorial. Now, go forth and conquer the Tower!");
-        SceneManager.LoadScene("Z01berg_1");
     }
 
     private void HandleSpawnRoom()
@@ -95,11 +95,8 @@ public class TutorialManager : MonoBehaviour
 
     private void HandleTowerEntrance()
     {
-        if (Input.GetKeyDown(KeyCode.W)) 
-        {
             MessageQueueManager.ShowMessage("This is the entrance to the Tower. Prepare yourself! (enter inside of portal)");
             CompleteTutorial();
-        }
     }
     
 }

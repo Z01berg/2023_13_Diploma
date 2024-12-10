@@ -198,6 +198,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NextTurnButton
       objectReference: {fileID: 0}
+    - target: {fileID: 1605211259840668820, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2344072107007122866, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 1.5500488
@@ -209,6 +213,10 @@ PrefabInstance:
     - target: {fileID: 2886540441974351115, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.49316406
+      objectReference: {fileID: 0}
+    - target: {fileID: 2927914201668745620, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3266153388575662066, guid: 55bd3982c8be6f2468148cdde13a3f47, type: 3}
       propertyPath: m_AnchoredPosition.x
