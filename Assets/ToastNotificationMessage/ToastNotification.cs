@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 // State the position of the message on the screen.
-public enum MessageScreenPosition { TopLeft, TopCenter, TopRight, Center, BottomLeft, BottomCenter, BottomRight }
+public enum MessageScreenPosition { TopLeft, TopCenter, TopRight, Center, BottomLeft, BottomCenter, BottomRight, MiddleLeft }
 // State on the side where the timer is decreased on the screen
 public enum TimerDirection { LeftToRight, RightToLeft }
 
@@ -329,6 +329,12 @@ public class ToastNotification : MonoBehaviour, IPointerEnterHandler, IPointerEx
                 parentRect.anchorMax = new Vector2(1, 0);
                 parentRect.anchorMin = new Vector2(1, 0);
                 parentRect.anchoredPosition = new Vector2(-backgroundSize.x - margin.x, margin.y);
+            }
+            else if (messageScreenPosition == MessageScreenPosition.MiddleLeft)
+            {
+                parentRect.anchorMax = new Vector2(0, 0.5f);
+                parentRect.anchorMin = new Vector2(0, 0.5f);
+                parentRect.anchoredPosition = new Vector2(margin.x, -backgroundSize.y / 2);
             }
             else // Center
             {

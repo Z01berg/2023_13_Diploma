@@ -46,7 +46,6 @@ public class TutorialManager : MonoBehaviour
                 MessageQueueManager.ShowMessage("LEFT-MOUSE button to select card RIGHT-MOUSE button to unselect card, and LEFT-MOUSE button on grid to use a card");
                 MessageQueueManager.ShowMessage("After you played your card click button END TURN to the right or just hit ENTER");
                 MessageQueueManager.ShowMessage("Defeat the enemy to proceed.");
-                //if (enemy != null) enemy.SetActive(true); // Activate enemy
                 break;
 
             case 2: 
@@ -77,6 +76,7 @@ public class TutorialManager : MonoBehaviour
         }
         else if (inventoryChecked && Input.GetKeyDown(KeyCode.E))
         {
+            inventoryChecked = false;
             MessageQueueManager.ShowMessage("Finished poking around? Good. Now, follow me down this corridor. (use LEFT-MOUSE BUTTON)");
             ProceedToNextRoom();
         }

@@ -22,7 +22,7 @@ public class ToastNotificationTut : MonoBehaviour, IPointerEnterHandler, IPointe
     public static MessageScreenPosition messageScreenPosition; // Position of the message on the screen.
     public static Vector2 margin; // Margin X an Y of messages on screen
     public static bool darkTheme; // Set DarkTheme (true) or LightTheme (false)
-    public static float minimumMessageTime = 8; // Minimum time that all messages will remain on the screen
+    public static float minimumMessageTime = 10; // Minimum time that all messages will remain on the screen
     public static bool hideOnClick = true; // Allow/disable hide messages on click
     public static bool isHiding = false; // Check if can animate with Fade effect a message
     public static bool isCanvasGroup = false; // Check if has a CanvasGroup in toastNotificationTut object

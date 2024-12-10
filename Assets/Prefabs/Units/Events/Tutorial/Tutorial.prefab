@@ -161,7 +161,7 @@ MonoBehaviour:
   _margin: {x: 20, y: 20}
   _stopOnOver: 1
   _hideOnClick: 1
-  _messageScreenPosition: 5
+  _messageScreenPosition: 7
   _timerDirection: 0
 --- !u!1 &5003070030094881626
 GameObject:

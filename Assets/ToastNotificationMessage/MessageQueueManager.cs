@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class MessageQueueManager : MonoBehaviour
     private bool isDisplaying = false;
 
     float waitTime = ToastNotificationTut.minimumMessageTime;
+    private bool isPausedMessage = ToastNotificationTut.isStoped;
 
     private void Awake()
     {
@@ -23,6 +25,25 @@ public class MessageQueueManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        checkForPause();
+    }
+
+    private void checkForPause()
+    {
+        if (isPausedMessage && isDisplaying)
+        {
+            StopCoroutine(DisplayMessages());
+            isDisplaying = false; 
+        }
+        else if (!isPausedMessage && !isDisplaying && messageQueue.Count > 0)
+        {
+            StartCoroutine(DisplayMessages());
+        }
+    }
+
+
     public static void ShowMessage(string message)
     {
         if (_instance == null)
@@ -33,25 +54,38 @@ public class MessageQueueManager : MonoBehaviour
 
         _instance.messageQueue.Enqueue(message);
 
-        if (!_instance.isDisplaying)
+        if (!_instance.isDisplaying && !_instance.isPausedMessage)
         {
             _instance.StartCoroutine(_instance.DisplayMessages());
         }
     }
 
+
     private IEnumerator DisplayMessages()
     {
+        if (isDisplaying) yield break; 
+
         isDisplaying = true;
 
         while (messageQueue.Count > 0)
         {
-            string message = messageQueue.Dequeue();
+            string message = messageQueue.Dequeue(); 
 
-            ToastNotificationTut.Show(message);
+            ToastNotificationTut.Show(message); 
 
-            yield return new WaitForSeconds(waitTime);
+            waitTime = ToastNotificationTut.minimumMessageTime; 
+
+            while (waitTime > 0)
+            {
+                if (!isPausedMessage)
+                {
+                    waitTime -= Time.deltaTime;
+                }
+                yield return null;
+            }
         }
 
         isDisplaying = false;
     }
+
 }
