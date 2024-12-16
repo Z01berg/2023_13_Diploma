@@ -42,8 +42,6 @@ public class IngameUIManager : MonoBehaviour
         _gameOverView.SetActive(false);
         _inv.SetActive(false);
         _menuView.SetActive(false);
-
-        //ChangeInventoryState();
     }
     
     public void OpenInventory()

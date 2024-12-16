@@ -36,23 +36,4 @@ public class Inventory : MonoBehaviour
     public List<Item> notDisplayedYet = new List<Item>();
 
     public List<Item> items = new List<Item>();
-    /*
-    private void LoadItems()
-    {
-        List<string> _keys = new List<string>() { "Item" };
-        items.Clear();
-
-        _loadHandle = Addressables.LoadAssetsAsync<Item>(
-            _keys,
-            addressable =>
-            {
-               items.Add(addressable);
-            }, Addressables.MergeMode.Intersection,
-            false);
-
-        _loadHandle.WaitForCompletion();
-
-        _itemsPanel.GetComponent<ListAllAvailable>().ListAllItemsInInv();
-    }
-    */
 }

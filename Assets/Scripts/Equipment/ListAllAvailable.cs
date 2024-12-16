@@ -30,13 +30,6 @@ public class ListAllAvailable : MonoBehaviour
         {
             GameObject.Destroy(child.gameObject);
         }
-        foreach (var slot in _eqSlots) 
-        {
-            if(slot.transform.childCount > 0)
-            {
-                //Destroy(slot.transform.GetChild(0).gameObject);
-            }
-        }
         foreach (var x in Inventory.Instance.items)
         {
             AddItemToList(x);
