@@ -17,6 +17,20 @@ using Toggle = UnityEngine.UIElements.Toggle;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.AddressableAssets;
 
+/**
+ * Publiczna klasa tworzaca okno edytora bedace baza kreatora kart i itemow. Okno posiada liste assetow kilka przyciskow itp, 
+ * oraz miejsce po prawej stronie na wyswietlenie docelowych edytorow stworzonych na podstawie wybranego assetu.
+ * Klasa posiada metody:
+ *  - ShowWindow ustawia poczatkowe rozmiary i nazwe okna
+ *  - CreateGUI tworzy i inicjalizuje kontrolki i liste assetow
+ *  - OnItemSelectionChange sledzi wybrany przez uzytkownika asset i tworzy okna edytora zgodne z wyborem
+ *  - OnAddressablesSelectionChange zmienia assety wyswietlane w liscie wyboru na karty lub itemy w zaleznosci od wyboru uzytkownika
+ *  - CreateNew tworzy puste okna edytora do stworzenia nowego assetu
+ *  - ImportJson rozpoczyna import assetow z plikow json
+ *  - ExportJson nic
+ *  - Save przechodzi przez okna edytora i wywoluje na nich funkcje Save()
+ */
+
 public class ItemAndCardsEditorWindow : EditorWindow
 {
     private List<Item> _items = new List<Item>();
@@ -112,6 +126,7 @@ public class ItemAndCardsEditorWindow : EditorWindow
 
                 splitViewCards.Add(lower);
 
+                // edytor dla karzdej karty w itemie
                 foreach(var card in cards)
                 {
                     lower.style.flexDirection = FlexDirection.Row;

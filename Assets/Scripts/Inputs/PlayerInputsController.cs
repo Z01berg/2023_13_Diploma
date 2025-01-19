@@ -7,6 +7,20 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using static DefaultInputs;
 
+/**
+ * Publiczna klasa ktorej metody sa wolane przez input system kiedy okreslone przyciski sa naciskane.
+ * Klasa zawiera metody:
+ *  - PrepareInputs aktywuje klase DefaultMausenKeys
+ *  - OnMove porusza graczem
+ *  - OnMoveCancelled zatrzymuje gracza
+ *  - OnMenu otwiera i zamyka menu pauzy
+ *  - OnEquipment otwiera i zamyka ekwipunek
+ *  - OnDoubleClick przemieszcza itemy kiedy zostana nacisniete dwa razy
+ *  - OnHelp otwiera i zamyka okno pomocy
+ *  - OnMap otwiera i zamyka mape
+ *  Karzda funkcja zarzadzajaca otwieraniem i zamykaniem okien ma soj odpowiednik wolany kiedy przycisk aktywujacy dana metode zostanie zwolniony.
+ */
+
 public class PlayerInputsController : MonoBehaviour, IDefaultMausenKeysActions
 {
 

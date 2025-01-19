@@ -4,17 +4,29 @@ using System.IO;
 using System.Text;
 using UnityEngine;
 
+/**
+ * Publiczna klasa zapisujaca i wczytujaca postepy gracza. Plik zapisywany jest w formacie json.
+ * Klasa zawiera funkcje:
+ *  - SaveGame ktora zapisuje gre
+ *  - LoadGame ktora wczytuje gre
+ *  - NewGame ktora resetuje postepy gracza
+ *  - CheckIfSaveExists ktora sprawdza czy istnieje plik z zapisem. Funkcja uzywana przez 
+ *    main menu do sprawdzenia czy powinien zostac wyswietlony przycisk "continue"
+ */
+
 public static class SaveSystem
 {
     private static string _saveGameFilePath = Application.persistentDataPath + "/Saves/save.sav";
     public static void SaveGame()
     {
         FileStream file;
+        // czy istnieje folder i stworz go jesli nie
         if (!Directory.Exists(Application.persistentDataPath + "/Saves"))
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/Saves");
         }
 
+        // czy istnieje plik json i stworz go jesli nie
         if (File.Exists(_saveGameFilePath)) 
         { 
             file = File.OpenWrite(_saveGameFilePath);
@@ -23,7 +35,7 @@ public static class SaveSystem
         {
             file = File.Create(_saveGameFilePath);
         }
-            
+        
         SaveTemplate saveTemplate = new SaveTemplate();
 
         file.Close();
@@ -59,18 +71,20 @@ public static class SaveSystem
         var text = File.ReadAllText(_saveGameFilePath);
         var data = JsonUtility.FromJson<SaveTemplate>(text);
 
+        // wloz przedmioty do inventarza i ekwipunku
         AddressablesUtilities.ItemsWithNames(data);
-        Debug.Log("game loaded");
     }
 
     public static void NewGame()
     {
         FileStream file;
+        // czy istnieje folder i stworz go jesli nie
         if (!Directory.Exists(Application.persistentDataPath + "/Saves"))
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/Saves");
         }
 
+        // czy istnieje plik json i stworz go jesli nie
         if (File.Exists(_saveGameFilePath))
         {
             file = File.OpenWrite(_saveGameFilePath);
@@ -87,15 +101,16 @@ public static class SaveSystem
         string save = JsonUtility.ToJson(saveTemplate, true);
 
         System.IO.File.WriteAllText(_saveGameFilePath, save);
-        Debug.Log("game newed");
     }
 
     public static bool CheckIfSaveExists()
     {
+        // czy istnieje folder
         if (!Directory.Exists(Application.persistentDataPath + "/Saves"))
         {
             return false;
         }
+        // czy istnieje plik json
         if (!File.Exists(_saveGameFilePath))
         {
             return false;

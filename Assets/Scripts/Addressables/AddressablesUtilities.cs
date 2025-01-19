@@ -4,6 +4,16 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
+/**
+ * Publiczna klasa pozwalajaca na asynchroniczne pobieranie assetow w trakcie dzialania aplikacji. 
+ * Do klasy do³¹czona jest klasa enum sk³adaj¹ca siê z tagów jakie mo¿na nadawaæ assetom lub po których je pobieraæ.
+ * 
+ * Klasa sk³ada siê z 3 metod:
+ *  - LoadItems zwraca liste objektow otagowanych podanymi, jako jeden z argumentow, tagami
+ *  - GetRandomItem zwraca pojedynczy losowy item nie posiadany jeszcze przez gracza
+ *  - ItemsWithNames dodaje do inventory i ekwipunku przedmioty podane wewn¹trz SaveTemplate save
+ */
+
 public enum AddressablesTags
 {
     DefenceCard,DefaultCard,MovementCard,AttackCard,Item,AttackCardsBanner,CurseCard,unlocked,locked
@@ -18,7 +28,8 @@ public class AddressablesUtilities : MonoBehaviour
         List<object> result = new List<object>();
 
         List<string> _keys = new List<string>();
-       
+        
+        // konwertowanie z enum na string
         foreach (AddressablesTags tag in addressablesTags)
         {
             _keys.Add(tag.ToString());
@@ -26,6 +37,7 @@ public class AddressablesUtilities : MonoBehaviour
 
         AsyncOperationHandle<IList<object>> _loadHandle;
 
+        // uruchamianie asynchronicznego pobierania assetow otagowanych podanymi tagami
         _loadHandle = Addressables.LoadAssetsAsync<object>(
             _keys,
             addressable =>
@@ -34,6 +46,7 @@ public class AddressablesUtilities : MonoBehaviour
             }, mergeMode,
             false);
 
+        // oczekiwanie na wynik
         _loadHandle.WaitForCompletion();
 
         return result;
@@ -41,8 +54,11 @@ public class AddressablesUtilities : MonoBehaviour
 
     public static void GetRandomItem()
     {
+        // pobieranie wszystkich itemow
         var items = LoadItems(Addressables.MergeMode.Union,AddressablesTags.Item );
         var inventory = Inventory.Instance;
+
+        // usowanie przedmiotow posiadanych przez gracza
         for (int i = 0; i < items.Count; i++)
         {
             var convItem = items[i] as Item;
@@ -58,8 +74,11 @@ public class AddressablesUtilities : MonoBehaviour
         {
             return;
         }
+
+        // convertowanie z object na Item
         var result = items[index] as Item;
 
+        // dodawanie itemu do inventory
         Inventory.Instance.items.Add(result);
         if (!Inventory.Instance._itemsPanel.activeInHierarchy)
         {
@@ -73,8 +92,10 @@ public class AddressablesUtilities : MonoBehaviour
     {
         Inventory.Instance.items.Clear();
 
+        // pobieranie wszystkich itemow
         var items = LoadItems(Addressables.MergeMode.Union, AddressablesTags.Item);
         
+        // dla kazdego itemu dodajemy go do inventory i jesli trzeba, odpowiedniego miejsca w ekwipunku
         foreach (var item in items) 
         {
             if(save.inventory.Contains((item as Item).itemName))
@@ -130,6 +151,7 @@ public class AddressablesUtilities : MonoBehaviour
                 Equipment.Instance.item6 = item as Item;
             }
         }
+        // jesli okno inventory jest aktywne to dodaj item do okna
         if (!Inventory.Instance._itemsPanel.activeInHierarchy) return;
         Inventory.Instance._itemsPanel.GetComponent<ListAllAvailable>().ListAllItemsInInv();
     }

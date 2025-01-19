@@ -14,6 +14,27 @@ using UnityEditor.AddressableAssets.Build.DataBuilders;
 using UnityEngine.AddressableAssets;
 using Unity.VisualScripting;
 
+/**
+ * Publiczna klasa tworzaca okno kreatora kart.
+ * 
+ * Klasa zawiera konstruktory:
+ *  - CardCreatorWindow() do tworzenia nowej karty
+ *  - public CardCreatorWindow(CardsSO cardReference, ...) do edycji podanej karty
+ * 
+ * Klasa zawiera metody:
+ *  - CardSelectionChanged wolana kiedy uzytkownik wybierze nowa karte w oknie edytora
+ *  - Save zapisuje asset z nowymi danymi
+ *  - ShowCardsSelector pokazuje menu wyboru karty. menu to jest potrzebne jesli wyswietlany jest tez edytor itemu powiazanego z karta
+ *  - CreateFields tworzy przyciski i inne kontrolki/pola i dodaje je do okna
+ *  - CardNameChanged wolana kiedy zmieniona zostanie nazwa karty
+ *  - CardQualityChanged wolana gdy zmieniona zostala jakosc karty
+ *  - PickCardBanner pozwala na wybor nowego banera dla karty
+ *  - CardTypeChanged wolana gdy zmieniony zostanie typ karty (np. defense -> curse)
+ *  - PickCardQuality przerabia podana liczbe na rzymska
+ *  - PopulateFields zapelnia kontrolki i pola w oknie
+ *  - AssignAsAddressable dodaje asset do rejestru systemu "Addressable"
+ */
+
 public class CardCreatorWindow : ScrollView, IModifiable
 {
     public static List<CardCreatorWindow> creators = new List<CardCreatorWindow>();

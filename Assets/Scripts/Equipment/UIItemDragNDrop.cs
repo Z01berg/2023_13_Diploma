@@ -52,6 +52,8 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
         canvasGroup.alpha = .6f;
         canvasGroup.blocksRaycasts = false;
         _tempOldParent = transform.parent.gameObject;
+
+        // item zawsze wyswietla sie przed oknami inventarza
         transform.SetParent(transform.parent.parent.parent, true);
         transform.SetAsLastSibling();
     }
@@ -86,6 +88,7 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     {
         if (cardsSpawned) return;
 
+        // tworzenie kart i dodawanie do panelu kart
         foreach(var c in item.cards)
         {
             
@@ -106,6 +109,7 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     {
         if (!cardsSpawned) return;
 
+        // usuwanie kart
         if (cardsList.Count > 0)
             foreach (var c in cardsList)
             {
@@ -119,16 +123,20 @@ public class UIItemDragNDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHan
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
         BackToTempParent(doubleClicked);
+
+        // czy zmienil sie rodzic itemu
         if (transform.parent.transform == parentTransform)
         {
-            
+            // czy istnieje oryginalny rodzic
             if (originParentTransform == null)
             {
+                // tworzenie slotu w panelu itemow
                 var sl = Instantiate(itemSlotPF);
                 sl.GetComponent<ItemSlot>().allowedItemType = ItemType.any;
                 sl.transform.SetParent(itemsPanel.transform);
                 originParentTransform = sl.transform;
             }
+            // item wraca do panelu itemow i karty sa usuwane
             rectTransform.position = originParentTransform.position;
             rectTransform.SetParent(originParentTransform);
             RemoveCardsFromDeck();

@@ -11,12 +11,22 @@ using UnityEngine.UI;
  * 
  * w momencie aktywacji publicznej funkcji OnDrop() sprawdzany jest dozwolony typ itemu, jesli 
  * sie zgadza to item przypisywany jest do danego slotu w ekwipunku.
+ * 
+ * Klasa posiada metody:
+ *  - OnDrop przypisuje przedmiot do slotu na ktury zostal upuszczony jesli jest to slot w ekwipunku
+ *  - LookForSlotsOfType szuka slotow i kart do podswietlenia lub przywrucenia koloru
+ *  - LightUp podswietla sloty poprzez zmiane koloru na _mouseOverColor
+ *  - LightDown przywraca slotom podstawowy kolor
+ *  - OnPointerEnter wywoluje LookForSlotsOfType kiedy kursor znajdzie sie wewnatrz slotu
+ *  - OnPointerExit wywoluje LookForSlotsOfType kiedy kursor wyjdzie poza slot
+ *  - DoubleClicked przenosi item wewnatrz slotu do pierwszego znalezionego slotu jaki uda sie znalezc
  */
 
 public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public static List<ItemSlot> allItemSlots = new List<ItemSlot>();
 
+    // typ ItemType.any jesli slot jest w panelu itemow
     public ItemType allowedItemType;
     public GameObject itemUIPrefab;
 
@@ -42,7 +52,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 
     public void OnDrop(PointerEventData eventData)
     {
-        
+        // czy typ itemu zgadza sie z typem slotu i czy slot jest juz zajety
         if (eventData.pointerDrag != null && eventData.pointerDrag.GetComponent<UIItemDragNDrop>().item.itemType == allowedItemType && transform.childCount == 0)
         {
             eventData.pointerDrag.GetComponent<UIItemDragNDrop>().BackToTempParent();
@@ -54,13 +64,16 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 
     private void LookForSlotsOfType(string command)
     {
+        // czy slot jest w panelu itemow
         if (allowedItemType == ItemType.any)
         {
+            // czy slot jest pusty
             if (transform.childCount == 0) return;
             ItemType childType = GetComponentInChildren<UIItemDragNDrop>().item.itemType;
             foreach (ItemSlot slot in allItemSlots)
             {
                 if (slot == this) continue;
+                // czy znaleziony slot jest tego samego typu co item
                 if (slot.allowedItemType == childType)
                 {
                     if (command == "lightup")
@@ -81,7 +94,9 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
             if (slot == this) continue;
             if (slot.gameObject.transform.childCount > 0)
             {
+                // czy typ itemu zgadza sie z typem slotu
                 if (slot.GetComponentInChildren<UIItemDragNDrop>().item.itemType != allowedItemType) continue;
+                // czy slot jest w panelu itemow
                 if (slot.allowedItemType != ItemType.any) continue;
                 if (command == "lightup")
                 {
@@ -97,8 +112,10 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
                 slot.LightDown();
             }
         }
+        // czy slot ma item
         if (transform.childCount == 0)
         {
+            // przechodzi przez karty w itemie
             foreach (var card in GetComponent<DefaultCards>()._cardsList)
             {
                 if (command == "lightup")
@@ -161,14 +178,18 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 
     public void DoubleClicked(bool force = false)
     {
+        // ustaw bazowy kolor dla wszystkich slotow
         foreach (ItemSlot itemSlot in allItemSlots)
         {
             itemSlot.LightDown();
         }
+        // czy slot jest w panelu ekwipunku
         if (allowedItemType != ItemType.any)
         {
+            // czy ma przypisany item
             if (transform.childCount == 1)
             {
+                // item przenosi sie z powrotem do panelu itemow
                 transform.GetChild(0).GetComponent<UIItemDragNDrop>().OnItemChangePlace(true);
             }
         }
@@ -176,6 +197,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 
         foreach (ItemSlot itemSlot in allItemSlots)
         {
+            // czy zgadza sie typ itemu i slotu, czy znaleziony slot ma dzieci, czy przezucic item nawet jak slot jest pelen
             if (transform.GetChild(0).GetComponent<UIItemDragNDrop>().item.itemType == itemSlot.allowedItemType && (itemSlot.transform.childCount == 0 || force && itemSlot.transform.childCount <= 1))
             {
                 var item = transform.GetChild(0);

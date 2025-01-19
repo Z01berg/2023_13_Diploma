@@ -6,7 +6,11 @@ using UnityEditor.AddressableAssets.Settings;
 using UnityEngine;
 
 /**
- * Publiczna klasa pozwalajaca na deserializacje plikow zawierajaca zapisane karty w formacie Json
+ * Publiczna klasa pozwalajaca na deserializacje plikow zawierajaca zapisane karty w formacie Json.
+ * Klasa zawiera metody:
+ *  - Import przerabia objekty pobrane z plikow json na itemy i karty
+ *  - PickCardQuality przerabia numeryczna wartosc karty na liczbe rzymska
+ *  - AssignAsAddressable dodaje assety do rejestru addressables
  */
 public struct JsonItems
 {
@@ -62,6 +66,7 @@ public class Deserialization : Editor
     {
         objects = JsonUtility.FromJson<JsonAttackCards>(AttackFile.text);
 
+        // tworzenie karty ataku
         foreach (var obj in objects.attackCardsList)
         {
             var s = ScriptableObject.CreateInstance<CardsSO>();
@@ -162,6 +167,7 @@ public class Deserialization : Editor
 
         itemsObjects = JsonUtility.FromJson<JsonItems>(jsonItemsFile.text);
 
+        // tworzenie itemow
         foreach (var obj in itemsObjects.itemsList)
         {
             var s = ScriptableObject.CreateInstance<Item>();
@@ -169,7 +175,6 @@ public class Deserialization : Editor
             switch (obj.itemType)
             {
                 case "hand":
-
                     s.itemType = ItemType.hand;
                     break;
                 case "cheast":
@@ -200,6 +205,7 @@ public class Deserialization : Editor
             s.itemName = obj.itemName;
             s.description = obj.description;
 
+            // dodawanie kart do itemow
             foreach(var c in obj.cards)
             {
                 var guids = AssetDatabase.FindAssets("t:" + typeof(CardsSO),null);

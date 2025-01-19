@@ -7,8 +7,8 @@ using UnityEngine;
  *  slotPrefab - prefab okna na item
  *  itemUIPrefab - prefab itemu
  *  
- *  Funkcja ListAllItemsInInv() odpowiada za stworzenie slotu oraz przedmiotu, usuniecie i dodanie potrzebnych komponentow
- *  i dodanie ich do okna inventory w UI poprzez dodanie parenta.
+ *  Funkcja ListAllItemsInInv() wywoluje AddItemToList dla karzdego itemu w liscie
+ *  AddItemToList dodaje pojedyncze itemy do ekwipunku i tworzy item sloty
  */
 
 public class ListAllAvailable : MonoBehaviour
@@ -40,12 +40,14 @@ public class ListAllAvailable : MonoBehaviour
     {
         var eq = Equipment.Instance;
 
+        // tworzenie slotu
         var slot = Instantiate(slotPrefab);
         slot.transform.SetParent(parent);
         slot.transform.localScale = Vector3.one;
 
         slot.GetComponent<ItemSlot>().allowedItemType = ItemType.any;
 
+        // tworzenie itemu
         var item = Instantiate(itemUIPrefab);
         item.transform.SetParent(slot.transform);
         item.transform.localScale = Vector3.one;
@@ -56,6 +58,7 @@ public class ListAllAvailable : MonoBehaviour
         d.parentTransform = slot.transform;
         d.originParentTransform = slot.transform;
 
+        // przezucanie itemu do ekwipunku jesli powinien sie tam znalezc
         if (
             (eq.leftHand != null && eq.leftHand.itemName == x.itemName) || 
             (eq.rightHand != null && eq.rightHand.itemName == x.itemName) || 

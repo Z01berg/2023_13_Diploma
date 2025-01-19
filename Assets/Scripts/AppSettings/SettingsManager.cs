@@ -13,6 +13,20 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 using UnityEngine.Windows;
 
+/**
+ * Publiczna klasa pozwalajaca na zmiane roznych ustawien aplikacji np. rozdzielczosc. 
+ * Ustawienia sa zapisywane w pliku .json wewnatrz StreammingAssets
+ * Klasa zawiera kilka publicznych metod:
+ *  - SetVolume ustawia poziom glosnosci dzwiekow gry
+ *  - SetFullscreen zmienia tryb miedzy fullscreen i windowed
+ *  - SetResolution zmienia rozdzielczosc
+ *  - SetTextureQuality zmienia jakosc tekstur
+ *  - SetAntiAliasing zmienia ustawienia antyaliasingu
+ *  - SetQuality zmienia ustawienia jakosci grafiki
+ *  - SaveSettings zapisuje wartosci ustaiwen do pliku .json
+ *  - LoadSettings laduja wartosci ustawien z pliku .json
+ */
+
 public class SettingsManager : MonoBehaviour
 {
     [SerializeField] private AudioMixer _audioMixer;
@@ -31,24 +45,28 @@ public class SettingsManager : MonoBehaviour
 
         _resolutionDropdown.ClearOptions();
         List<string> options = new List<string>();
+
+        // pobieranie wszystkich mozliwych rozdzielczosci
         _resolutions = Screen.resolutions;
         int currentResolutionIndex = 0;
-        //_resolutions = _resolutions.Distinct().ToArray();
+
         for (int i = 0; i < _resolutions.Length; i++)
         {
+            // przerabianie opcji na stringi
             string option = _resolutions[i].width + " x " + _resolutions[i].height + " " + math.round(_resolutions[i].refreshRateRatio.value) + "hz";
             options.Add(option);
+
+            // ustawianie rozdzielczosci na poczatku gry na aktualnie zapisana
             if (_resolutions[i].width == Screen.currentResolution.width && _resolutions[i].height == Screen.currentResolution.height)
             {
                 currentResolutionIndex = i;
             }
         }
 
-        //options = options.Distinct().ToList();
-
         _resolutionDropdown.AddOptions(options);
         _resolutionDropdown.RefreshShownValue();
 
+        // pobieranie wszystkich mozliwych jakosci
         var qualNames = QualitySettings.names;
 
         _qualityDropdown.ClearOptions();
@@ -93,40 +111,6 @@ public class SettingsManager : MonoBehaviour
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
-        /*
-        if (qualityIndex != 6) // if the user is not using 
-                               //any of the presets
-            QualitySettings.SetQualityLevel(qualityIndex);
-        switch (qualityIndex)
-        {
-            case 0: // quality level - very low
-                _textureDropdown.value = 3;
-                _antiAliasingDropdown.value = 0;
-                break;
-            case 1: // quality level - low
-                _textureDropdown.value = 2;
-                _antiAliasingDropdown.value = 0;
-                break;
-            case 2: // quality level - medium
-                _textureDropdown.value = 1;
-                _antiAliasingDropdown.value = 0;
-                break;
-            case 3: // quality level - high
-                _textureDropdown.value = 0;
-                _antiAliasingDropdown.value = 0;
-                break;
-            case 4: // quality level - very high
-                _textureDropdown.value = 0;
-                _antiAliasingDropdown.value = 1;
-                break;
-            case 5: // quality level - ultra
-                _textureDropdown.value = 0;
-                _antiAliasingDropdown.value = 2;
-                break;
-        }
-
-        _qualityDropdown.value = qualityIndex;
-        */
     }
     public void SaveSettings()
     {

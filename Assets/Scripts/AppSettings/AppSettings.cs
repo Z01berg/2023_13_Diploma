@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Publiczna klasa sluzaca do zapisu ustawien do pliku .json. Klasa jest latwo serializowana.
+ */
+
 public class AppSettings
 {
     public int qualitySettingPreference;

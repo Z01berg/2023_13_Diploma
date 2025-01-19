@@ -7,6 +7,17 @@ using UnityEngine.UIElements;
 using Button = UnityEngine.UIElements.Button;
 using Image = UnityEngine.UIElements.Image;
 
+/**
+ * Publiczna klasa tworzaca okno edycji itemow.
+ * Klasa zawiera dwa konstruktory, jeden pusty do tworzenia nowego przedmiotu, i jeden do edycji podanego przedmiotu.
+ * 
+ * Klasa zamiera metody:
+ *  - CreateFields tworzy kontrolki i pola i dodaje je do okna. pola zostana wypelnione w konstruktorze
+ *  - UserPickedNewSprite wolana gdy uzytkownik wybierze nowa grafike dla przedmiotu
+ *  - Save zapisuje asset z nowymi danymi
+ *  - AssignAsAddressable dodaje asset do rejestru systemu "Addressable"
+ */
+
 public class ItemCreatorWindow : VisualElement, IModifiable
 {
     string itemsPath = "Assets/ScriptableObjectAssets/Items/";

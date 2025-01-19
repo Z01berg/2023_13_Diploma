@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Publiczna klasa sluzaca do zapisywania postepow gracza do pliku json. klasa zawiera w sobie liste 
+ * wszystkich posiadanych itemow oraz miejsca w ekwipunku do ktorych moga zostac dodane nazwy przedmiotow sie tam znajdujacych
+ */
+
 public class SaveTemplate
 {
     public List<string> inventory = new List<string>();
