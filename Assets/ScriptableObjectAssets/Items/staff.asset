@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6edbbd9d6e38d284088822ae57f76e59, type: 3}
   m_Name: staff
   m_EditorClassIdentifier: 
-  accessibility: 0
   itemType: 1
   itemName: staff
   description: aaaaaa
   cards:
-  - {fileID: 11400000, guid: 15bf0b983f289ba48a76569238285c76, type: 2}
+  - {fileID: 11400000, guid: 9134df52b7c6cb947818dc6a59602a7a, type: 2}
   - {fileID: 11400000, guid: 8893be65b25a6064a936f73d4237cf01, type: 2}
   - {fileID: 11400000, guid: 9ca067d44d72e3a41bbf65116f12008c, type: 2}
   icon: {fileID: -585826711, guid: 535824487e05bed4282a2ad4364f4235, type: 3}
