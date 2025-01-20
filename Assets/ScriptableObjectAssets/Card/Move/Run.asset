@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   type: 2
-  range: 0
+  range: 3
   isActive: 1
   cardQuality: 1
   title: Run

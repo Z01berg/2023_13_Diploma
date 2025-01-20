@@ -19,7 +19,7 @@ MonoBehaviour:
   cardQuality: 0
   title: Punch
   description: '"Old School Boxing"'
-  cost: 1
+  cost: 2
   damage: 4
   move: 0
   backgroundPath: Graphics/CardBackgrounds/AttackCards/Attack I

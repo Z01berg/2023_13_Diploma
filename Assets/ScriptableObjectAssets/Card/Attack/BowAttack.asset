@@ -20,7 +20,7 @@ MonoBehaviour:
   title: BowAttack
   description: This card deals 13 range dmg.
   cost: 3
-  damage: 8
+  damage: 5
   move: 0
   backgroundPath: Graphics/CardBackgrounds/AttackCards/Attack I
   spritePath: 

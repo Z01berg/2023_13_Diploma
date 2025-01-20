@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6edbbd9d6e38d284088822ae57f76e59, type: 3}
   m_Name: greater staff
   m_EditorClassIdentifier: 
-  accessibility: 0
   itemType: 1
   itemName: greater staff
   description: addawdawdawd
   cards:
-  - {fileID: 11400000, guid: 8893be65b25a6064a936f73d4237cf01, type: 2}
+  - {fileID: 11400000, guid: 9d3385a9eb00cb740908e77a01473189, type: 2}
   - {fileID: 11400000, guid: 8893be65b25a6064a936f73d4237cf01, type: 2}
   - {fileID: 11400000, guid: 571e4085a64319949ad53fff4c49bb10, type: 2}
   icon: {fileID: 2115749186, guid: 535824487e05bed4282a2ad4364f4235, type: 3}

@@ -20,7 +20,7 @@ MonoBehaviour:
   title: Beast Scream
   description: All Enemies in range Discard all attack cards for 10 turns
   cost: 5
-  damage: 0
+  damage: 3
   move: 0
   backgroundPath: Graphics/CardBackgrounds/AttackCards/Attack III
   spritePath: Graphics/CardSprites/AttackCards/Beast Scream

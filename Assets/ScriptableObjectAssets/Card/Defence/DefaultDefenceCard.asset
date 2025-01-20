@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   type: 1
-  range: 2
+  range: 3
   isActive: 1
   cardQuality: 0
   title: DefaultDefenceCard
   description: This card gives you 1 defence point.
-  cost: 1
+  cost: 2
   damage: 1
   move: 0
   backgroundPath: Graphics/CardBackgrounds/DefenceCards/Defence I
