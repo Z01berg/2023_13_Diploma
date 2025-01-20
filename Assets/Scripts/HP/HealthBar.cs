@@ -1,3 +1,5 @@
+using Dungeon;
+using Player;
 using System;
 using TMPro;
 using UnityEngine;
@@ -95,6 +97,13 @@ public class HealthBar : MonoBehaviour
         _value = Mathf.Clamp(_value, 0, _maxValue);
         _slider.value = _value;
         UpdateHealthText();
+
+        if (_value <= 0 && gameObject.CompareTag("Player")) 
+        {
+            CombatMode.isPlayerInCombat = false;
+            EventSystem.OpenGameover?.Invoke();
+            return;
+        }
     }
 
     private void UpdateHealthText()
