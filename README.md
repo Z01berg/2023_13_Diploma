@@ -80,8 +80,7 @@ Ten projekt jest objęty licencją MIT. Szczegóły można znaleźć w pliku [LI
 
 ## Podziękowania
 
-Specjalne podziękowania dla **dr Kingi Skorupskiej** za opiekę nad projektem oraz **mgr inż. Barbary Karpowicz** za
-recenzję.
+Specjalne podziękowania dla **dr Kingi Skorupskiej** za opiekę nad projektem oraz **mgr inż. Barbary Karpowicz** za recenzję.
 
 
 
